@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="textInput" type="text" onchange="doStuffAndSendToModel(this)">
+<div id="outputDiv"></div>
+
+<script>
+        //Hjelpevariabler
+        let output = document.getElementById('outputDiv');
+        let input = document.getElementById('textInput');
+
+        //Model
+        let inputText="";
+
+        //View
+showHTMLbasedOnModel();
+      function  showHTMLbasedOnModel(){
+            let makeThisHTML=`  You wrote: ${inputText} !`;
+            output.innerHTML=makeThisHTML;
+        }     
+
+//Controller
+function doStuffAndSendToModel(textFromInputThis){
+    inputText=textFromInputThis.value;
+}
+</script>
+</body>
+</html>

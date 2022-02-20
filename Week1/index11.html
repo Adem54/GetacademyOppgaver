@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stilig{
+            background-color: red;
+        }
+
+        ::selection {
+  color: red;
+  background: yellow;
+}
+
+div.selected::before {
+    content: "🡆";
+}
+div.selected::after {
+    content: "🡄";
+}
+
+.changeBgColor {
+    background-color: cyan;
+}
+
+    </style>
+</head>
+<body>
+    <div id="bla1">Bla bla bla</div>
+    <div  id="bla2">Div1</div>
+    <div id="bla3">Div2</div>
+    <div id="bla4">Div3</div>
+    <div id="bla5">Div4</div>
+    <input class="checkbox" id="chk" type="checkbox" onchange="toggleStyle()" />
+    <input class="checkbox" id="chk2" type="checkbox" onchange="toggleStyle()" />
+    <input class="checkbox" id="chk3" type="checkbox" onchange="toggleStyle()" />
+    <input class="checkbox" id="chk4" type="checkbox" onchange="toggleStyle()" />
+    <input class="checkbox" id="chk5" type="checkbox" onchange="toggleStyle()" />
+    <script>
+        const checkBoxes=document.querySelectorAll(".checkbox");
+        console.log("checkBoxes: ",checkBoxes);
+
+        // for(let i=0; i < checkBoxes.length; i++){
+        //     const div=document.getElementById(`bla${i+1}`);
+        //     console.log("div: ",div);
+        //     const checkBox=checkBoxes[i];
+        //     checkBox.addEventListener("change", function(){
+        //         //console.log("checkBoxChecked: ",checkBox.checked)
+        //         const isCheckBoxChecked=checkBox.checked;
+        //         console.log(isCheckBoxChecked);
+        //         console.log("i: ", i)
+        //         document.getElementById(`bla${i+1}`).classList.toggle("selected", isCheckBoxChecked);
+        //     })
+        // }
+
+
+        function toggleStyle() {
+           var isChecked = document.getElementById('chk').checked;
+           // console.log("isChecked", isChecked);
+            const selectedDiv1= document.getElementById('bla1');
+        //   selectedDiv1.classList.toggle('stilig', isChecked);//isCheced elementi icin stilig class ini toggle seklinde uygula yani bir basinca stilig class ini ver tekrar basinca bu class i kaldir
+          //  selectedDiv1.classList.toggle('selected', isChecked);
+       
+        
+        }
+        //document.getElementById('checkboxId').checked = selectedDiv.classList.contains('navnPåCssKlasse');
+    </script>
+</body>
+</html>

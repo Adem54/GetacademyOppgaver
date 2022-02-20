@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.lamp {
+            height: 30px;
+            width: 30px;
+            float: left;
+            background: linear-gradient(to top left, #ff3355 0%, #ffaf02 100%);
+            border-radius: 50%;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 5px;
+            
+        }
+    
+        div.first {
+            clear: left;
+            
+        }
+    
+        div.lightOn {
+            background: yellow;
+            border: solid 2px black;
+        }
+        
+        </style>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+          const ouputDiv = document.getElementById('output');
+        let allLamps = ['','','','','', '','','','','', '','','','','', '','','','','',] //20 
+        //Sirf 20 tane yuvarlak istedigimiz ve onu dondurmek istedimiz icin kullaniyoruz...
+
+        let info='';//div icindeki textContent old icin info deniyor ama zaten ici hep bos olacak...
+        let randomIndex=turnOnRandom();
+
+        function turnOnRandom(){
+            return Math.floor(Math.random()*allLamps.length);//random olarak allLamps dizisinin indexini aliyoruz 0 dan 20 ye kadar...
+        }
+     
+     //Ana divi direk body elementleri icinde olusturduktan sonra onun icine koyacagimzi dinamik bir sekidle icinde degisiklik yapacagimz icin for icinde dondurecegimiz html i degisken icine atip kullanacagimiz her yerde de html icinde degisklik yaparak yine atadigimiz degiskene 1 kere daha atariz 
+     view();
+     function view(){
+         let html=`<div> ${info} </div>`;//Ilk basta bos div i bir degskene atiyoruz ki daha rahat kullanalim...
+         for(let i=0; i<allLamps.length; i++){//Dongu ile donder sonra class lari bizim sartlarimiza uyacak sekilde degiskene ata....
+         //Sonra da tekrardan dinamik olan html elementi icinde class lari yerlestir...
+             let first=i % 5 == 0 ? "first" : "";
+             let isTurnedOn= i == randomIndex ? "lightOn" : "";
+             html+=`<div class='lamp ${isTurnedOn} ${first}' >${allLamps[i]}</div>`
+             //class lari da degiskene atadigimiz div icine yerlestirdikten sonra da artik bu degskene atadgimz divimizi ana div imizin incine innerHTML ile erlestir..
+             ouputDiv.innerHTML=html;
+             
+         }
+     }
+
+        
+    </script>
+</body>
+</html>

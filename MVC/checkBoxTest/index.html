@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+ 
+    
+
+    <p id="text" style="position: relative;">Checkbox is CHECKED! 
+
+        <input style="position:absolute" type="checkbox" id="myCheck" onclick="myFunction()" />
+    </p>
+
+    <hr>
+
+    <ul id="ul">
+      <li id="li1">Adem</li>
+      <li id="li2">Zeynep</li>
+      <li id="li3">Zehra</li>
+      <li id="li4">Tomas</li>
+      <li id="li5">Atle</li>
+    </ul>
+
+    <script>
+      function myFunction() {
+        var checkBox = document.getElementById("myCheck");
+        var text = document.getElementById("text");
+        if (checkBox.checked) {
+          text.style.textDecoration = "line-through";
+        } else {
+          text.style.textDecoration = "none";
+        }
+      }
+
+      const ul=document.getElementById("ul");
+      console.log("ul:",ul);
+      console.log("ulFirstChild:",ul.firstChild);
+      console.log("ulFirstElementChild:",ul.firstElementChild);
+    </script>
+  </body>
+</html>

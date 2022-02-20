@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="mvc/View.js"></script>
+    <script type="module" src="mvc/Model.js"></script>
+    <script type="module" src="mvc/Controller.js"></script>
+</body>
+</html>
+
+<!-- The model never touches the view. The view never touches the model. The controller connects them.
+Neither the controller nor the model should know anything about the DOM, HTML elements, CSS, or any of that. Anything relating to it should be in the view.
+
+Our first link between the view and model is to make a method that calls displayTodos every time a todo changes. We can also call it once in the constructor to display the initial todos if there are any.
+-->

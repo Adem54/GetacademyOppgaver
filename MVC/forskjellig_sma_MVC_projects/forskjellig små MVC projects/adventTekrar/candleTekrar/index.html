@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .candle{
+            height: 300px;
+            width: 50px;
+            background-color: blueviolet;
+            float:left;
+            margin: 5px;
+        }
+        .unlitCandle{
+         width: 5px;
+         height: 15px;
+         background-color: black;
+         float:left;
+         margin-left: 27px;
+         margin-right: 25px;
+        }
+
+        .litCandle{
+         width: 10px;
+         height: 15px;
+         background-color: orangered;
+         float:left;
+         margin-left: 25px;
+         margin-right: 25px;
+        }
+
+        #output{
+            float:left;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+
+const outputDiv=document.getElementById("output");
+
+let candlesArray = [
+    {name: "candle1",
+     litState: "unlitCandle"
+    },
+    {name: "candle2",
+    litState: "unlitCandle"
+    },
+    {name: "candle3",
+    litState: "unlitCandle"
+    },
+    {name: "candle4",
+    litState: "unlitCandle"
+    }
+];
+
+showCandles();
+function showCandles(){
+let wiks=``;
+let candles=`<br>`;
+
+
+    for(let candleIndex=0; candleIndex<candlesArray.length; candleIndex++){
+wiks+=`<div class='${candlesArray[candleIndex].litState}'></div>`;
+candles+=`<div class='candle' onclick='lightCandle("${candleIndex}")' ></div>`
+    }
+    candles+=`<br/>  click canfdle to light!`;
+    outputDiv.innerHTML=wiks+candles;
+}
+
+function lightCandle(selectedIndex){
+    candlesArray[selectedIndex].litState="litCandle";
+    showCandles();
+}
+    </script>
+</body>
+</html>

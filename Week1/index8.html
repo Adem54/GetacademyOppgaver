@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="tallA" type="range" min="1" max="1000" step="1" oninput="calculate()" value="2" />
+    <input id="tallB" type="range" min="1" max="1000" step="1" oninput="calculate()" value="2" />
+
+    <div id="div"></div>
+
+    <script>
+const div=document.getElementById("div");
+let tallA=document.getElementById("tallA");
+let tallB=document.querySelector("#tallB");
+
+function calculate(){
+    div.innerHTML=`
+Bredde:  ${tallA.value} <br>
+Høyde: ${tallB.value}  <br>
+arealet : ${(tallA.value)*(tallB.value)} <br>
+omkretsen: ${parseInt(2*(tallA.value))+parseInt(2*(tallB.value))}
+`
+}
+</script>
+</body>
+</html>

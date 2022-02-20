@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        td {
+            border: 1px solid darkgray;
+            padding: 2px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: bolder;
+            text-shadow: 1px 0 #888888;
+            background-color: gray;
+        }
+
+            td.x3 {
+                color: red;
+            }
+
+            td.x2 {
+                color: green;
+            }
+
+            td.x1 {
+                color: blue;
+            }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    Minesweeper
+
+    <table id="matrix"></table>
+
+    <script type="text/javascript">
+        var matrixModel;
+        var matrixView = document.getElementById('matrix');
+        var totalNumberOfBombs = 37;
+        var size = 16;
+        init(size);
+        placeBombs();
+        calculateNearByBombs();
+        showMatrix();
+
+        function showMatrix() {
+            console.log("matrixModel: ",matrixModel.rows);//16 tane row var bir dizi...ve her bir dizi icerisinde bir object var ve icinde obje var ve icinde cells isminde bir property var ve value olarak da 16 tane dizi var her bir dizi iicnde ise isBomb,isOpen,bombsNearBy
+            console.log("matrixModelRowsCells: ",matrixModel.rows[0].cells);
+            console.log("matrixModelRowsCells[0]: ",matrixModel.rows[0].cells[0]);
+            matrixView.innerHTML = '';
+            for (var rowCounter = 0; rowCounter < matrixModel.rows.length; rowCounter++) {
+                var viewRow = matrixView.insertRow();
+                var modelRow = matrixModel.rows[rowCounter];
+                for (var cellCounter = 0; cellCounter < modelRow.cells.length; cellCounter++) {
+                    var viewCell = viewRow.insertCell();
+                    var modelCell = modelRow.cells[cellCounter];
+                    if (modelCell.isOpen) {
+                        viewCell.style.backgroundColor = 'lightcyan';
+                        if (modelCell.isBomb) {
+                            viewCell.innerHTML = '💣';
+                        } else if (modelCell.bombsNearBy > 0) {
+                            viewCell.innerHTML = modelCell.bombsNearBy;
+                            viewCell.classList.add('x' + modelCell.bombsNearBy);
+                        }
+                    } else {
+                        viewCell.addEventListener("click", handleClick, false);
+                    }
+                }
+            }
+        }
+
+        function placeBombs() {
+            for (var bombCount = 0; bombCount < totalNumberOfBombs; bombCount++) {
+                var rowIndex = Math.floor(Math.random() * size);
+                var columnIndex = Math.floor(Math.random() * size);
+                var modelCell = matrixModel.rows[rowIndex].cells[columnIndex];
+                modelCell.isBomb = true;
+            }
+        }
+
+        function calculateNearByBombs() {
+            for (var rowCounter = 0; rowCounter < matrixModel.rows.length; rowCounter++) {
+                var modelRow = matrixModel.rows[rowCounter];
+                for (var cellCounter = 0; cellCounter < modelRow.cells.length; cellCounter++) {
+                    var modelCell = modelRow.cells[cellCounter];
+                    modelCell.bombsNearBy =
+                        countBomb(rowCounter - 1, cellCounter - 1)
+                        + countBomb(rowCounter - 1, cellCounter)
+                        + countBomb(rowCounter - 1, cellCounter + 1)
+                        + countBomb(rowCounter, cellCounter - 1)
+                        + countBomb(rowCounter, cellCounter + 1)
+                        + countBomb(rowCounter + 1, cellCounter - 1)
+                        + countBomb(rowCounter + 1, cellCounter)
+                        + countBomb(rowCounter + 1, cellCounter + 1);
+                }
+            }
+        }
+
+        function countBomb(row, column) {
+            if (row < 0 || row >= size || column < 0 || column >= size) return 0;
+            return matrixModel.rows[row].cells[column].isBomb;
+        }
+
+
+        function init(size) {
+            matrixModel = {};
+            matrixModel.rows = [];
+
+            for (var rowCounter = 0; rowCounter < size; rowCounter++) {
+                var newRow = {};
+                newRow.cells = [];
+                for (var cellCounter = 0; cellCounter < size; cellCounter++) {
+                    var newCell = {};
+                    newCell.isBomb = false;
+                    newCell.isOpen = false;
+                    newCell.bombsNearBy = 0;
+                    newRow.cells.push(newCell);
+                }
+                matrixModel.rows.push(newRow);
+            }
+        }
+
+        function handleClick(aMouseEvent) {
+            var rowIndex = aMouseEvent.srcElement.parentElement.sectionRowIndex;
+            var columnIndex = aMouseEvent.srcElement.cellIndex;
+            var modelCell = matrixModel.rows[rowIndex].cells[columnIndex];
+            openBlankCells(rowIndex, columnIndex);
+            modelCell.isOpen = true;
+            showMatrix();
+        }
+
+        function openBlankCells(rowIndex, columnIndex) {
+            if (rowIndex < 0 || rowIndex >= size || columnIndex < 0 || columnIndex >= size) return;
+            var modelCell = matrixModel.rows[rowIndex].cells[columnIndex];
+            if (!modelCell.isBomb && !modelCell.isOpen && modelCell.bombsNearBy === 0) {
+                modelCell.isOpen = true;
+                openBlankCells(rowIndex - 1, columnIndex);
+                openBlankCells(rowIndex, columnIndex - 1);
+                openBlankCells(rowIndex, columnIndex + 1);
+                openBlankCells(rowIndex + 1, columnIndex);
+            }
+        }
+    </script>
+</body>
+</html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

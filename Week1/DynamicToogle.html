@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .class1 {
+            background-color: cyan;
+            color: burlywood;
+            border: 2px solid red;
+            
+        }
+
+        .border-round {
+            border-radius: 5px;
+        }
+
+        .class3 {
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+
+   <label for="input">Name</label> <input  type="text" class="border-round  class3" id="input" />
+    <h3 id="header">Header</h3>
+
+    <button id="button1"  onclick="changeStyle(this)">Button1</button>
+    <button id="button2" onclick="changeStyle(this)">Button2</button>
+    <button id="button3">Button3</button>
+    
+</body>
+
+<script>
+    //1-belirli class lar olustur bir tiklamada bircok style ozelligni ayni anda ver veya kaldir
+    //Dinamik bir yapi kur, hangi buttona tiklarsan orda ki ozellikler calissin ve bunu 1 kere de yap, this kullanarak
+    const input=document.querySelector("#input");
+    const header=document.getElementById("header");
+    const button1=document.getElementById("button1");
+    const button2=document.getElementById("button2");
+    const button3=document.getElementById("button3");
+    function changeStyle(clickedButton){
+      //  input.classList.add("class1");
+        //header.setAttribute("class","class1");
+        input.classList.toggle("class1");
+        header.style.width="200px";
+        header.classList.toggle("class1");
+        console.log(input)
+    }
+    function removeStyle(clickedButton){
+        input.classList.remove("class1");
+      
+    }
+
+    button3.addEventListener("click",removeStyle )
+
+</script>
+</html>

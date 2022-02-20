@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stein, Saks & Papir ~MVC~</title>
+</head>
+<body>
+    <div id="output"></div>
+    <div id="yourChosenWeapon"></div>
+
+    <button onclick="chooseWeapon('Stein')">Stein</button>
+    <button onclick="chooseWeapon('Saks')">Saks</button>
+    <button onclick="chooseWeapon('Papir')">Papir</button>
+    <script>
+        //Hjelpevariabler
+        let outputDiv = document.getElementById('output');
+
+        //Model
+        let yourChoice;
+        let computersChoice;
+        let winner;
+
+
+        //View
+        function show(){
+            let html = `
+            <p id="">Du valgte: ${yourChoice}, 
+                    Computer valgte: ${computersChoice}.</p>
+            <p id="">Den som vant var følgende: ${winner}</p>
+            `;
+            outputDiv.innerHTML = html;
+        }
+
+        //Controller
+        function chooseWeapon(weapon){
+            yourChoice = weapon;
+            let randomNumber =  Math.floor(Math.random()*3)+1;
+            
+            if(randomNumber == 1) computersChoice = "Stein";
+            if(randomNumber == 2) computersChoice = "Saks";
+            if(randomNumber == 3) computersChoice = "Papir";
+            
+            console.log("computers Choice: " , computersChoice);
+            whoWon();
+            show();
+        }
+        
+        function whoWon(){
+            if(yourChoice == "Stein" && computersChoice == "Saks"
+                || yourChoice == "Saks" && computersChoice == "Papir"
+                || yourChoice == "Papir" && computersChoice == "Stein"){
+                winner = "Du!!";
+            }
+            else if(computersChoice == "Stein" && yourChoice == "Saks"
+                || computersChoice == "Saks" && yourChoice == "Papir"
+                || computersChoice == "Papir" && yourChoice == "Stein"){
+                winner = "Computer :'(";
+            }
+            else {
+                winner = "Uavgjort";
+            }
+
+
+            show();
+        }
+        
+    </script>
+</body>
+</html>

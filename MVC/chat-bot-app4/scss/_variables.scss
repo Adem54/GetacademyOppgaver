@@ -1,0 +1,13 @@
+
+$secondary-color:#B9DFCC;
+$primary-color:#F5F5F5;
+
+$primary-color-dark:darken($primary-color,10%);
+$primary-color-light:lighten($primary-color,10%);
+$secondary-color-dark:darken($secondary-color,10%);
+$secondary-color-light:lighten($secondary-color,10%);
+$primary-font-color:#000;
+$secondary-font-color:lightgray;
+
+
+//Ana ve genel kullanacagimiz renkleri bu sekilde variable olarak tutariz ama spesific renkleri direk yazabiliriz..

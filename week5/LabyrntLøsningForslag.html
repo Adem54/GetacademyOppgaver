@@ -1,0 +1,202 @@
+
+   
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        table {
+    border-spacing: 0;
+}
+
+td {
+    background-color: white;
+    padding: 0;
+}
+
+td.room {
+    width: 40px;
+    height: 40px;
+}
+
+td.wall {
+    background-color: black;
+}
+
+td.noWall {
+    background-color: white;
+}
+
+td.small {
+    width: 10px;
+}
+
+td.wide {
+    width: 40px;
+}
+
+td.high {
+    height: 40px;
+}
+
+td.low {
+    height: 10px;
+}
+
+    </style>
+</head>
+
+<body>
+    <input type="range" min="1" max="20" step="1" oninput="initModel(this.value); updateView();" />
+    <div id="app"></div>
+    <script>
+
+        var mazeModel = {
+            size: 2,
+            rows: [
+                [
+                    { isHigh: false, isWide: false, isOpen: false },
+                    { isHigh: false, isWide: true, isOpen: false },
+                    { isHigh: false, isWide: false, isOpen: false },
+                    { isHigh: false, isWide: true, isOpen: false },
+                    { isHigh: false, isWide: false, isOpen: false },
+                ],
+                [
+                    { isHigh: true, isWide: false, isOpen: false },
+                    { isHigh: true, isWide: true },
+                    { isHigh: true, isWide: false, isOpen: false },
+                    { isHigh: true, isWide: true },
+                    { isHigh: true, isWide: false, isOpen: false },
+                ],
+                [
+                    { isHigh: false, isWide: false, isOpen: false },
+                    { isHigh: false, isWide: true, isOpen: false },
+                    { isHigh: false, isWide: false, isOpen: false },
+                    { isHigh: false, isWide: true, isOpen: false },
+                    { isHigh: false, isWide: false, isOpen: false },
+                ],
+                [
+                    { isHigh: true, isWide: false, isOpen: false },
+                    { isHigh: true, isWide: true },
+                    { isHigh: true, isWide: false, isOpen: false },
+                    { isHigh: true, isWide: true },
+                    { isHigh: true, isWide: false, isOpen: false },
+                ],
+                [
+                    { isHigh: false, isWide: false, isOpen: false },
+                    { isHigh: false, isWide: true, isOpen: false },
+                    { isHigh: false, isWide: false, isOpen: false },
+                    { isHigh: false, isWide: true, isOpen: false },
+                    { isHigh: false, isWide: false, isOpen: false },
+                ],
+            ]
+        };
+
+        updateView();
+        function updateView() {
+            document.getElementById('app').innerHTML = `
+                <table>
+                    ${mazeModel.rows.map((row, rowIndex) => `
+                    <tr>
+                        ${row.map((col, colIndex) => `
+                        <td onclick="toggle(${rowIndex}, ${colIndex})" class="${getCssClass(col)}">
+                        </td>
+                        `).join('')}
+                    </tr>    
+                    `).join('')}
+                </table>
+            `;
+        }
+//array.join('')  dizi icindeki elementlerin arasindaki bosluklari kaldirir
+//square col yani hucredir....yani kare yani obje.Biz objeyi gondermisiz ordan ve bir fonkksiyon yapiyoruz bu fonksiyon icerisinde tum class ile iligli condition types lar vs leri yapip temiz birsekilde class icinde kullaniyoruz.....   BESTPRACTISE....HARKA BESTPRACTISE..CLASS I BIR KOSULA GORE FARKLI CSS OZELLIKLERI VEREBILMEK IICIN BIR TANE FUNCTION YAZIYORUZ....
+        function getCssClass(square) {
+            //Hem dikey de hem de yatay da true ise yani uzun ise, o zaman room oda oldugunu aniyoruz....
+            if (square.isHigh && square.isWide) return 'room';
+            const highLow = square.isHigh ? 'high ' : 'low ';
+            const wideSmall = square.isWide ? 'wide ' : 'small ';
+            const wall = square.isOpen ? 'noWall ' : 'wall ';
+            return highLow + wideSmall + wall;
+        }
+
+        function initModel(size) {
+            console.log("inputValue; ",size);
+            console.log("  mazeModel.rows: ",  mazeModel.rows);//Burda normal model deki rowslarimiz geliyor 5 tane array bulunan data ve burda biz 
+            mazeModel.rows = [];
+            
+            for (let rowIndex = 0; rowIndex < size; rowIndex++) {
+                mazeModel.rows.push(createRow(size, false));
+                mazeModel.rows.push(createRow(size, true));
+            }
+            mazeModel.rows.push(createRow(size, false));
+            closeRow(0);
+            closeRow(mazeModel.rows.length - 1);
+            closeColumn(0);
+            closeColumn(mazeModel.rows.length - 1);
+            console.log("  mazeModel.rowssssssssssssssssss: ",  mazeModel.rows);
+            //size 3 oldugu her dondugunde 2 tane row olusturuyor ve de en son donguden sonra da 1 tane daha olusturuyor yani toplam 7 tane dizi oluyor rows icerisinde sonunda
+
+        }
+
+        function closeRow(index) {
+            const row = mazeModel.rows[index];
+            for (let cell of row) {
+                cell.isOpen = false;
+            }
+        }
+
+        function closeColumn(index) {
+            for (let row of mazeModel.rows) {
+                row[index].isOpen = false;
+            }
+        }
+
+        function createRow(size, isHigh) {
+            const row = [];
+            for (let colIndex = 0; colIndex < size; colIndex++) {
+                row.push(createCell(isHigh, false));
+                row.push(createCell(isHigh, true));
+            }
+            row.push(createCell(isHigh, false));
+            console.log("row: ",row);
+            return row;
+        }
+
+        function createCell(isHigh, isWide) {
+            if (isHigh === isWide) return { isHigh, isWide };
+          
+            const isOpen = Math.random() < 0.5;
+            //console.log("isOpen: ",isOpen);
+            console.log("test.......;: ",{ isHigh, isWide, isOpen });
+            
+            return { isHigh, isWide, isOpen };
+
+        }
+
+        function toggle(rowIndex, colIndex) {
+            const cell = mazeModel.rows[rowIndex][colIndex];
+            console.log("cell: ",cell);
+            if (cell.isOpen === undefined) return;
+            cell.isOpen = !cell.isOpen;
+            updateView();
+        }
+    </script>
+</body>
+
+</html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete

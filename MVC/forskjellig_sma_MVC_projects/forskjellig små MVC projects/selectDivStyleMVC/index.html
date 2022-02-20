@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bkg{
+            background-color: blueviolet;
+        }
+        .font{
+            color: red;
+     
+        }
+        .padding{
+            padding: 100px;
+        }
+        .border{
+            border: 2px dotted hotpink;
+            border-radius: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="checkboxes"></div>
+    <div id="divs"></div>
+    <!-- <div id="app"></div> -->
+<script>
+    const checkboxes = document.getElementById('checkboxes');
+        const divs = document.getElementById('divs');
+        let divHTML;
+        let checkHTML;
+        let model = {
+            div1 : {
+                bkg: false,
+                font: false,
+                padding: false,
+                border: false,
+                isSelected: false
+            },
+            div2 : {
+                bkg: false,
+                font: false,
+                padding: false,
+                border: false,
+                isSelected: true
+            },
+            selectedDiv: 1
+        }
+
+//Cok guzel bestpractisse....buralari not all...
+//${model.selectedDiv == 1 && model.div1.isSelected && model.div1.bkg  eger 1.dive tiklamis ve de ayni zamanda bkg checkbox ina da tilamis ise...
+checkboxesView();
+        function checkboxesView(){
+            function checkChecked(){ return `  ${model.selectedDiv == 1 && model.div1.isSelected && model.div1.bkg
+                || model.selectedDiv == 2 && model.div2.isSelected && model.div2.bkg
+                ? "checked" : "" }`};
+
+
+             checkHTML=`
+             <input type="checkbox" id="bkg" onclick="addStyle('bkg')" 
+                ${checkChecked()}
+           > BKG     <br>
+            <input type="checkbox" name="font" onclick="addStyle('font')"
+          
+            > FONT    <br>
+            <input type="checkbox" onclick="addStyle('padding')"> PADDING <br>
+            <input type="checkbox" onclick="addStyle('border')"> BORDER  <br>
+            `;
+            checkboxes.innerHTML=checkHTML;
+        }
+
+        divView();
+      
+        function divView(){
+
+
+             divHTML=`
+            <div style=" 
+            ${model.div1.isSelected ? "border:1px solid red;":  "border:1px solid black;" } 
+            height:150px; width:150px;"
+
+            class="
+          ${model.div1.bkg ? "bkg" : ""}
+            ${model.div1.font ? "font" : ""}
+            ${model.div1.padding ? "padding" : ""}
+            ${model.div1.border ? "border" : ""}
+            "onclick="selectDiv('1')">DIV 1 </div>
+
+            <div style="${model.div2.isSelected ? "border:1px solid red;" :  "border:1px solid black;" } 
+            height:150px; width:150px; "
+            class="
+            ${model.div2.bkg ? "bkg" : ""}
+            ${model.div2.font ? "font" : ""}
+            ${model.div2.padding ? "padding" : ""}
+            ${model.div2.border ? "border" : ""}
+            "
+            onclick="selectDiv('2')">DIV 2 </div>
+            ` ;
+            
+            divs.innerHTML=divHTML;
+        }
+
+//BEn hangi dive tiklarsam onun numarasi parametreye geliyor.Direk elle 1,2 diye parametre veriliyor....
+//Div ile ilgili numara gonderiliyor ve gidip data uzerinde div1 in secildgine dair veriler guncelleniyor...ve isSelected div1 icin true div2 icin false yapiliyor ve
+//Bunu ne icn yapiyoruz cunku biz checkbox lara tiklarken bir oncesinde hangi kutudan gelgi
+                function selectDiv(clickedDiv){
+                if(clickedDiv=="1"){model.div1.isSelected=true; model.div2.isSelected=false; model.selectedDiv=1; }
+                if(clickedDiv=="2"){model.div1.isSelected=false; model.div2.isSelected=true; model.selectedDiv=2}
+                divView();
+                checkboxesView();
+            }
+
+            function addStyle(addedStyle,event){
+                 if(model.selectedDiv == "1"){
+                    model.div1.isSelected=!model.div1.isSelected;
+                    model.div1[addedStyle]=!model.div1[addedStyle];//Bu ozellik bizi burda kurtariyor..BESTPRACTISE...ONEMLI...
+                 }else if(model.selectedDiv=="2"){
+                    model.div2.isSelected=!model.div2.isSelected;
+                    model.div2[addedStyle]=!model.div2[addedStyle];
+                 }   
+                 divView();
+                   checkboxesView();
+            }
+       
+</script>
+</body>
+</html>

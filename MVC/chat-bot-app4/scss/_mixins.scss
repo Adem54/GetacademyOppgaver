@@ -1,0 +1,35 @@
+//Burda surekli tekrar tekrar kullandigmiz css kodlarini bir fonksiyon haline getirip 1 kere de kullanabilecegiz
+//parametreye row da diyebilirdik burda hicbirsey kullanmaz isek row olarak gelecektir...
+@mixin flexCenter ($flexDirection:row){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:$flexDirection ;
+}
+
+@mixin responsive($breakpoint){
+    
+    @if $breakpoint == small {
+        @media (max-width:576px){
+            @content;
+        }
+    }
+    
+    @if $breakpoint == medium {
+        @media (max-width:768px){
+            @content;
+        }
+    }
+
+    @if $breakpoint == desktop {
+        @media (max-width:992px){
+            @content;
+        }
+    }
+
+    @if $breakpoint == large {
+        @media(max-width:1200px){
+            @content;
+        }
+    }
+}

@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tre på rad</title>
+    <style type="text/css">
+        div {
+            color: green;
+            background-color: lightgray;
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin: 2px;
+            font-size: 500%;
+            font-family: helvetica;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+            div.first {
+                clear: left;
+            }
+    </style>
+</head>
+<body>
+    <!--
+    1. Grunnleggende HTML
+    2. Kjøre Javascript-kommandoer ved klikk på noe på websiden
+    3. Hente ut element i Javascript - "this" eller via id
+    4. Endre HTML til et element vha. Javascript.
+    -->
+<div id="main"></div>
+    
+
+    <script type="text/javascript">
+        //Modell
+
+    let board=['','','', '','','', '','','' ];
+    let winner="";
+    let xo=["x","o"];
+
+//Bos bir dizin olacak bu bos dizinin elemanlarini div ler icine atayacaksin...ve de sen bu divi dinamik bir sekilde dolduracaksin ve div icine eleman yerlestikce biz bunu use interface de gorecegiz.....
+
+showBoard();
+    function showBoard(){
+        //Herseyi ayni olan bu sekilde div veya elementleri for dongusu ile dondurerek yapalim.. bu sekilde tek tek yazmanin bir anlami yok......
+        //BESTPRACTISE---BU SEKILDE YAP..TEK TEK YAZMA...FOR DONGUSU ILE DONDUR VE DE += ILE BIRBIRI ARDINCA EKLE....VE ONU DEGSKENE ATA KI += I YAPABILESIN....BUNU NOT ALLLLLL
+       // let html = '';
+        // for (let i = 0; i < 9; i++) {
+        //         let first = i % 3 == 0 ? 'first' : '';
+        //         html += `<div onclick="setX(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;
+        //     }
+        //     boardDiv.innerHTML = html;
+            //EGER BIR ELEMENT I DINAMIK YAPACAKSAK ONU BIR DEGISKENE ATAYIP ICERISINE DINAMIK VARIABLE LAR VEREREK KULLANIRIZ....VE ONU NORMAL ELEMENTLERIN ICINE DEGISKEN OLARAK YAZARIZ VE ISTEDGIMIZ GIBI KONTROL EDEBILIRIZ....
+let html='';
+            for (let i=0; i<9; i++){
+                let first=i % 3 == 0 ? "first" : '';
+                html+=`<div onclick="setX(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;
+            }
+            document.body.innerHTML=html;
+    //     document.body.innerHTML=`
+    //     <div onclick="setX(this,0)" class="first div">${board[0]}</div>
+    // <div onclick="setX(this,1)" class="div">${board[1]}</div>
+    // <div onclick="setX(this,2)" class="div">${board[2]}</div>
+
+    // <div onclick="setX(this,3)" class="first div">${board[3]}</div>
+    // <div onclick="setX(this,4)" class="div">${board[4]}</div>
+    // <div onclick="setX(this,5)" class="div">${board[5]}</div>
+
+    // <div onclick="setX(this,6)" class="first div">${board[6]}</div>
+    // <div onclick="setX(this,7)" class="div">${board[7]}</div>
+    // <div onclick="setX(this,8)" class="div">${board[8]}</div>
+    
+    // <h2>Winner:  ${winner}</h2>
+    //     `;
+        
+    }
+
+//uzerine tiklanan kutu da x veya o varsa hicbirsey yapmiyor x veya o yok ise o zaman o kutu divinin innerHTml ine x ya da o getiriyor ama biri x biri de o olmali bunlar tilfeldig olabilir ama biri x digeri o olmali....
+        function setX(divElement,index) {
+            if(winner == "x" || winner=="o"){
+      console.log("buraya girerse return calismali......");
+
+        return
+    }
+          
+console.log("setXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+console.log("index",index);
+let items;
+//1-elimdeki data uzerinden hareket edecegim ve her zaman bu dataya erisecek index olur, id olur, baska birsey olur bunu parametreden gelen veri uzeirinde erisip data ya dinamik erismeyi saglayip data degistiginde user interface imde degisecek sekilde olaya bakmaliyim....yani uniq bir veri almam gerekiyor her zaman parametreden ki arrayi icinde aradigmiz elemana dogrudan erisebileyimm...bu index olabilir veya id de olabilir vs vs
+
+//Bunu if ile kontrol et eger bos bir indexe gelirse x yapsin...
+
+//2 kez kutularin bos olup olmadigini kontrol et kutu bos ise x yap
+items=Array.from(board.map((item,index)=>item==="" ? index : null ));
+
+
+if(items.includes(index)){
+    let result=setRandom(xo);
+    console.log("result: ",result);
+    board[index]=result;
+    
+    checkWinning();
+    showBoard();
+    console.log("winner: ",winner);
+  
+    
+ 
+    //emtyItems her tiklamada board dizisi icinden kalan elemanlardan bos bir dizi olusturacak....
+//Ama bizze assil lazim olan su biz, random index uretmeliyiz nerden, board icindeki bos elementlerin index lerini alip onlar arasinda random sayi uretmeliyim...
+items=Array.from(board.map((item,index)=>item==="" ? index : null ));
+let restOfIndexes=items.filter(item=>item!==null);
+if(restOfIndexes.length>=0){
+   //Bu dizi icindeki index ler board icinde bos olan elementlere ait.....
+let randomIndex=Math.floor(Math.random()*restOfIndexes.length);
+let randomEmptyIndexInBoard=setRandom(restOfIndexes);
+if(result=="x"){
+    board[randomEmptyIndexInBoard]="o";
+   
+    checkWinning();
+    showBoard();
+    console.log("winner: ",winner);
+
+   
+
+
+}else{
+    board[randomEmptyIndexInBoard]="x";
+    checkWinning();
+    showBoard();
+   
+    console.log("winner: ",winner);
+   
+
+
+}
+
+}
+
+
+
+console.log("board: ",board);
+console.log("board: ",board[8]);
+console.log("board: ",board[0]);
+}
+
+
+showBoard();
+           
+        }
+
+
+//Kazanma kriterleri-her eklenen x den sonra arama yap, her eklenen o dan sonra arama yap...
+//0-1-2  /  3-4-5 / 6-7-8 / 0-3-6 /1-4-7 / 2-5-8 / 0-4-8 /2-4-6   birlikte x ise x o ise o
+
+function checkWinning(){
+    console.log("BOARDDDD:",board)
+    if((board[0]=="x" && board[1]=="x" && board[2]=="x")
+    ||  (board[3]=="x" && board[4]=="x" && board[5]=="x") 
+    || (board[6]=="x" && board[7]=="x" && board[8]=="x")
+    || (board[0]=="x" && board[3]=="x" && board[6]=="x")
+    || (board[1]=="x" && board[4]=="x" && board[7]=="x")
+    || (board[2]=="x" && board[5]=="x" && board[8]=="x")
+    || (board[0]=="x" && board[4]=="x" && board[8]=="x")
+    || (board[2]=="x" && board[4]=="x" && board[6]=="x") )
+
+    {
+winner="x";
+return;
+    }else if((board[0]=="x" && board[1]=="x" && board[2]=="x")
+    ||  (board[3]=="o" && board[4]=="o" && board[5]=="o") 
+    || (board[6]=="o" && board[7]=="o" && board[8]=="o")
+    || (board[0]=="o" && board[3]=="o" && board[6]=="o")
+    || (board[1]=="o" && board[4]=="o" && board[7]=="o")
+    || (board[2]=="o" && board[5]=="o" && board[8]=="o")
+    || (board[0]=="o" && board[4]=="o" && board[8]=="o")
+    || (board[2]=="o" && board[4]=="o" && board[6]=="o")){
+        winner="o";
+    }else{
+        winner="Ingen vant"
+    }
+}
+
+function finishFunction(){
+    if(winner == "x" || winner=="o"){
+        return
+    }
+}
+
+//arr dizisi icerisinden random element donduren fonks
+      function setRandom(arr){
+          let index=Math.floor(Math.random()*arr.length);
+          return arr[index];
+
+      }
+    </script>
+</body>
+</html>
+
+<!-- 
+// var divs1 = document.getElementsByTagName('div');
+// var divs2 = new Array();
+// for (var i = 0; i < divs1.length; i++) {
+//     if (divs1[i].innerHTML !== 'x' && divs1[i].innerHTML !== 'o') {//Kutu da x ve y yok ise,Bos rote ise yani bos kutu ise yeni olustrdugumuz dizimize, div i bos kutulari ekleriz.... 
+//         divs2.push(divs1[i]);
+//     }
+// }
+
+// if (divs2.length > 0) {//bos kutular icin olusturdugmz dizi 0 dan buyuk ise, bu dizinin uzunlugu kadar sayi uret, sonra da uretilen tilfeldig sayi bos kutularimizdan hangisine denk gleiyorsa onun icine o yaz... ve mavi renkli yap....
+//     var index = Math.floor(Math.random() * divs2.length);
+//     divs2[index].innerHTML = 'o';
+//     divs2[index].style.color = 'blue';
+// } -->
+
+<!-- 
+let  restenAvDivs=document.body.children;
+console.log("restenAvDiv: ",restenAvDivs);
+let divArray=[];
+ 
+ for(let i=0; i<restenAvDivs.length; i++){
+     let element=restenAvDivs[i];
+     if(element.className.includes("div")){
+         divArray.push(element);
+     }
+ }
+
+//Ico bos kalan divimiz...
+ divArray=divArray.filter(div=>div.innerHTML=="");
+ //Burasi ici bos olan kalan divler
+  console.log("divARrray:  ",divArray);
+  if(divArray.length>0) {
+    // let index=Math.floor(Math.random()*divArray.length);
+     let randomEmptyDiv=setRandom(divArray);
+   if(randomEmptyDiv){
+      
+     randomEmptyDiv.innerHTML="o";
+   }
+     
+  } -->

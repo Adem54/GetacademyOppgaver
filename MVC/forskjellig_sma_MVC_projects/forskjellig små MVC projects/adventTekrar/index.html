@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .candle{
+            height: 300px;
+            width: 50px;
+            background-color: blueviolet;
+            float:left;
+            margin: 5px;
+        }
+        .unlitCandle{
+         width: 5px;
+         height: 15px;
+         background-color: black;
+         float:left;
+         margin-left: 27px;
+         margin-right: 25px;
+        }
+
+        .litCandle{
+         width: 10px;
+         height: 15px;
+         background-color: orangered;
+         float:left;
+         margin-left: 25px;
+         margin-right: 25px;
+        }
+
+        #output{
+            float:left;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        let outputDiv=document.getElementById("output");
+        let candlesArray = [
+    {name: "candle1",
+     litState: "unlitCandle"
+    },
+    {name: "candle2",
+    litState: "unlitCandle"
+    },
+    {name: "candle3",
+    litState: "unlitCandle"
+    },
+    {name: "candle4",
+    litState: "unlitCandle"
+    }
+];
+
+   
+showCandles();
+    function showCandles(){
+
+        let wiks=``;
+        let candles=`<br>`;
+
+//div i her geleen arkasina eklenecek sekilde donderip dizi icindeki obje icinde class atmasi yapiyoruz...
+//class icine degisken nasil yazilir burasi onemli....
+
+//For ile donerken her dondugunde bir div olustururuz ve onclick oolayi koyariz icine ve  o fonksiyona da parmetre olarak dondugumz verinin indexini dinamik olarak koyarsak bizim olusturacagimzi fonks  da parametreye hangi obkje de isek onun indexi gelmis olur bu da bizim bu fonks u olustururken dizininn index i uzerinden obje icindeki properties lerde degisiklik yapabilecegimiz anlamina gelir..
+        for(let candleIndex=0; candleIndex<candlesArray.length; candleIndex++){
+            wiks+=`<div class='${candlesArray[candleIndex].litState}'></div>`;
+            candles+=`<div class='candle'   onclick=lightCandle("${candleIndex}")></div>`;
+            
+        }
+        candles+=`<br><div>Click the candle to Light it!</div>`;
+        outputDiv.innerHTML=wiks+ candles;
+    }
+
+//onClick icin yazdigmiz fonksiyona parametre icinde string icinde yazmamiz gerekiyor ki degisken olsa bile tirnak icinde yaziyoruz karistirmayalimm...
+//Tirnak icinde degisken anlamlaniyor class icinde ve herhangi bir fonksiyon parametresinde.....
+
+function lightCandle(selectedCandleIndex){
+    candlesArray[selectedCandleIndex].litState="litCandle";
+showCandles();
+}
+    </script>
+</body>
+</html>
+
+
+
+<!--
+    1-Dongu ile her donmede arkasina eklemek icin degisken olusturuyoruz ki += kullanarak ekleme yapabilelim...
+    2-Dizimizi dongu ile dondererek her donmede bir div olusturyoruz arka arkaya ve dizi icinden bir class name i olusturdugumuz dizi icine className olarak veririrz....className in karsisina biz dinamik bir veri atiyoruz yazima cok dikkat classname="" boyle tirnak icine yazilir bizde tirnak acip icine degisken yazaacagiz ama nasil tabi ki ${} bu sekilde...Ama en bastan `` template literals a almamiz gerekir tum divi.
+    3-Burda olusturdgumz candle a tiklayinca candle i yakacagimiz icin onun da icinde bir onClick fonksiyonu olusturuz ama dikkat edelim parametresine dinamik bir sekilde dongunun indexini gondeririz...ve biz hangi candle a tiklarsak onun indexi fonksiyonda paremtre olarak calismis olur...onClick fonks paremtresine de yine dinamik bir veri ataycagiz onunda mantiii class gibi ayni.. onClick="${}" ama sadece
+    4-Yapilan is sudur, candle divin class ini direk dizi iciindeki obje icinde bulunan bir properties e bagliyor ve daha sonra click olayi ile o dizi icindeki o objenin hangi elemenanina tiklarsa onun class ismini degistiriyor ve o class ta candle larin ustunde duran siyah kutu old icin onun class i degisiyuor yani stili degismis oluyor...
+-->  

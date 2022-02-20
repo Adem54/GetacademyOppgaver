@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammenligne to Tekster - MVC style</title>
+</head>
+<body>
+    <input type="text" oninput="txt1 = this.value, findFirst()" /><br />
+    <input type="text" oninput="txt2 = this.value, findFirst()" /><br />
+    <input type="text" oninput="txt3 = this.value, findFirst()" /><br />
+    <div id="app"></div>
+
+    
+<script>
+//hjelpevariabel
+var app = document.getElementById('app');
+
+
+//model
+var txt1 = "";
+var txt2 = "";
+var txt3 = "";
+
+var tekst1og2 = 'Tekst 1 og 2 er like<br/>';
+var tekst2og3 = 'Tekst 2 og 3 er like<br/>';
+var tekst3og1 = 'Tekst 1 og 3 er like<br/>';
+
+var theFirstTxt = "";
+
+
+//view
+showSorting();
+function showSorting(){
+    var html = `
+    ${tekst1og2} <br>
+    ${tekst2og3} <br>
+    ${tekst3og1} <br>
+    Om vi sorterer de tre tekstene, er denne den første:<br/>
+    ${theFirstTxt} <br>
+    `;
+    app.innerHTML = html
+    
+}
+
+
+//controller
+function findFirst(){
+app.innerHTML = ""
+if (txt1 == txt2) tekst1og2 = 'Tekst 1 og 2 er like<br/>';
+if (txt1 != txt2) tekst1og2 = '<del>Tekst 1 og 2 er like</del><br/>';
+if (txt1 == txt3) tekst3og1 = 'Tekst 1 og 3 er like<br/>';
+if (txt1 != txt3) tekst3og1 = '<del>Tekst 1 og 3 er like</del><br/>';
+if (txt3 == txt2) tekst2og3 = 'Tekst 2 og 3 er like<br/>';
+if (txt3 != txt2) tekst2og3 = '<del>Tekst 2 og 3 er like</del><br/>';
+
+app.innerHTML += 'Om vi sorterer de tre tekstene, er denne den første:<br/>';
+
+if (txt1 <= txt2) {
+   if (txt3 <= txt1) theFirstTxt = txt3;
+   else theFirstTxt = txt1;
+} 
+else {
+    if (txt3 <= txt2) theFirstTxt = txt3;
+    else theFirstTxt = txt2;
+}
+showSorting();
+}
+
+</script>
+
+</body>
+</html>

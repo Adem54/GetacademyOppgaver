@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="text()">
+    <div id="div1"></div>
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name"  onkeydown="myInputText(event)" />
+    <label for="lastName">Name</label>
+    <input id="lastName" type="text" name="lastName" onChange="myInputText(event)"  />
+    <label for="city">City</label>
+    <input id="city" type="text" name="city" oninput="myInputText(event)"  />
+    <p id="pText1" onmouseover="changeColor(this)" onmouseout="changeFontSize(this)" ondblclick="message(this)" oncontextmenu="consoleMessage(this)" >Teksti buraya yaz-Text1</p>
+    <p id="pText2" onmouseover="changeColor(this)" onmouseout="changeFontSize(this)" ondblclick="message(this)" oncontextmenu="consoleMessage(this)" >Teksti buraya yaz-Text2</p>
+    <p id="pText3" onmouseover="changeColor(this)" onmouseout="changeFontSize(this)" ondblclick="message(this)" oncontextmenu="consoleMessage(this)" >Teksti buraya yaz-Text3</p>
+<script>
+    function text(){
+let div1=document.getElementById("div1");
+        div1.innerHTML="Yuklendi!";
+        setTimeout(()=>{
+            div1.remove()   
+        },2000)
+    }
+let pText1=document.getElementById("pText1");
+let pText2=document.getElementById("pText2");
+let pText3=document.getElementById("pText3");
+function myInputText(e){
+    pText1.innerHTML=document.getElementById("name").value;
+    pText2.innerHTML=document.getElementById("lastName").value;
+    pText3.innerHTML=document.getElementById("city").value;
+}   
+
+function changeColor(selectedText){
+    selectedText.style.fontSize="16px";
+   if(!selectedText.style.backgroundColor){
+    selectedText.style.backgroundColor="red";
+   }else{
+    selectedText.style.backgroundColor="";
+   }
+}
+function changeFontSize(selectedText){
+    selectedText.style.fontSize="20px";
+}
+
+function message(selectedText){
+    console.log("selectedTExt: ",selectedText);
+    alert(selectedText.id)
+}
+function consoleMessage(selectedText){
+    console.log(selectedText.innerHTML)
+}
+</script>
+</body>
+
+</html>

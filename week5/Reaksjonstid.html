@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            padding: 5% 10%;
+        }
+        div{
+            
+            background-color: aqua;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            float: left;
+
+        }
+
+        .linje {
+            clear: left;
+        }
+        .light {
+            border: 1px solid;
+        }
+        .lightOn{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+
+<script>
+let selectedLampIndex;//her calistirmada random bir index verecek ve  o indexin lamapasini yakacak ve index i dinamik olarak burda tutacagiz... ve burasi true olan index imiz class olarak lightOn i almis olacaak.....
+
+var startTime;
+updateView();
+    function updateView(){
+      let html="";
+      for(let i=0; i<25; i++){
+          ligthIndex=selectedLampIndex  === i;
+    //     console.log("lightindex: ",ligthIndex);
+       // console.log("i:  ",i);
+       // console.log("selctedLampIdnex: ",selectedLampIndex);
+        let lightOn=selectedLampIndex=== i ? "lightOn" : "";
+          let linje=i % 5 == 0 ? "linje" :""; //class i bir sarta bagli olarak vererek dinamik bir sekilde div ler i olustuyoruz
+          html+=`<div class="div ${linje} ${lightOn}" onclick="${ligthIndex ? 'lightOn()' : "" }"></div>`;
+        
+
+      }      
+
+      document.body.innerHTML=html;
+      startTime = new Date().getTime();
+      console.log("startTime_: ",startTime);
+
+    }
+    var spentMilliseconds; 
+var spentSeconds;
+    var finishTime;
+lightOn();
+//Burda gelen random sayi kaca denk gelirse o yanacak...
+    function lightOn(){
+         finishTime = new Date().getTime();
+         selectedLampIndex=Math.floor(Math.random()*25);
+         var spentMilliseconds = Math.floor(finishTime - startTime);
+var spentSeconds = spentMilliseconds / 1000;
+console.log("spentSeconds: ",spentSeconds);
+       
+        updateView();
+     
+    }
+
+
+
+    //ligthOn u calistiracagimiz zaman once mathrandom ile sayi uretsin ondan sonra da update view i uygulasin
+</script>
+</html>

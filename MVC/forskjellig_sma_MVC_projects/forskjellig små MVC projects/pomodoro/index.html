@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">new ouput</div>
+
+</body>
+
+<script>
+    const output=document.getElementById("output");
+    let minutes=19;
+    let seconds=59;
+
+    makeHTML();
+
+    function makeHTML(){
+        console.log("minutes: ", minutes);
+        console.log("seconds: ", seconds);
+        output.innerHTML=`
+        <button onclick=startTimer()>Start Timer</button></br>
+        <p>Minutes left ${minutes} </p>
+        <p>Seconds left ${seconds} </p>
+        `
+    }
+//20 den geri ye dogru sayacak....
+
+
+function countMinAndSeconds(){
+    
+            if(seconds>0 && minutes>0 || minutes==0 && seconds>0 ){
+                seconds--;
+            }else if(seconds==0 && minutes>0){
+                minutes--
+                seconds=59;
+            }else if(minutes==0 && seconds==0){
+                 minutes=0;
+                 seconds=0;
+                 console.log("Burda alert calisacak")
+                 alert("PAUSE");
+                  minutes=19;
+                  seconds=59;
+                  clearInterval(oneSecondInterval);
+                  return;
+               
+            }
+         makeHTML();
+          
+        
+}
+
+    function startTimer(){
+      let oneSecondInterval=  setInterval(countMinAndSeconds,1000)
+    
+    }
+
+</script>
+</html>

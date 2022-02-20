@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    let object={}
+    object.name="adem";
+    object.lastName="Erbas";
+    console.log("object :", object)
+
+
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+
+       show=this.name+ this.age;
+        
+    }
+
+
+    let person1=new Person("Adem",33);
+    console.log("person1: ",person1);
+    person1.city="Skien";
+    console.log("person1: ",person1);
+   
+
+</script>
+</html>

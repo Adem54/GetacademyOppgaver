@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Those Colors!</title>
+</head>
+<body>
+    <div id="dropdowns"></div>
+    <div id="main"></div>
+
+
+    <script>
+        const main = document.getElementById('main')
+        const dropdowns = document.getElementById('dropdowns')
+
+        let backgroundColor = 'black';
+        let txtColor = 'white';
+        let borderColor = "lightpink"
+
+        showDrops();
+        function showDrops(){
+            let html = `
+            <select onchange="backgroundColor=this.value, showColorDiv()">
+                <option value="black">Black</option>
+                <option value="lightpink">Pink</option>
+                <option value="navy">Blue</option>
+                <option value="lightyellow">Yellow</option>
+            </select>
+           
+            `;
+            dropdowns.innerHTML = html;
+        }
+        showColorDiv()
+        function showColorDiv(){
+            let html = `
+                <div style="height:200px;width:200px;background-color:${backgroundColor};color:${txtColor}">  
+                    Here's LE TEXT!! BASK IN IT'S GLORY!
+                </div>
+            `;
+
+            main.innerHTML = html;
+        }
+
+
+    </script>
+</body>
+</html>

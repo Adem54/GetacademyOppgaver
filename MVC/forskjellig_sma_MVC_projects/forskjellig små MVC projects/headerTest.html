@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+    const outputDiv = document.createElement("div");
+    document.body.appendChild(outputDiv);
+    let htmlFromController = `<h1 onclick="increaseHeaderSize()">Shrink Text By Clicking</h1>`;
+    let headerSize = 1;
+    makeHTML();
+
+    function makeHTML(){
+        outputDiv.innerHTML = htmlFromController;
+    }  
+
+    function increaseHeaderSize(){
+        headerSize++;
+        htmlFromController = `<h${headerSize} onclick="increaseHeaderSize()">Shrink Text By Clicking</h${headerSize} >`;
+        makeHTML();
+    }  
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetStyles MVC</title>
+    <style>
+        .bkg{
+            background-color: blueviolet;
+        }
+        .font{
+            color: red;
+            background-color: yellow;
+        }
+        .padding{
+            padding: 100px;
+        }
+        .border{
+            border: 2px dotted hotpink;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="checkboxes"></div>
+    <div id="divs"></div>
+    <!-- <div id="app"></div> -->
+
+    <script>
+        const checkboxes = document.getElementById('checkboxes');
+        const divs = document.getElementById('divs');
+        let model = {
+            div1 : {
+                bkg: false,
+                font: false,
+                padding: false,
+                border: false,
+                isSelected: false
+            },
+            div2 : {
+                bkg: false,
+                font: false,
+                padding: false,
+                border: false,
+                isSelected: true
+            },
+            selectedDiv: 1
+            
+        }
+        checkboxesView()
+       function checkboxesView(){
+            let chkHTML = `
+            <input type="checkbox" onclick="addStyle('bkg')" 
+            ${model.selectedDiv == 1 && model.div1.isSelected && model.div1.bkg 
+                || model.selectedDiv == 2 && model.div2.isSelected && model.div2.bkg
+                ? "checked" : "" }> BKG     <br>
+            <input type="checkbox" onclick="addStyle('font')"> FONT    <br>
+            <input type="checkbox" onclick="addStyle('padding')"> PADDING <br>
+            <input type="checkbox" onclick="addStyle('border')"> BORDER  <br>
+            `;
+
+        checkboxes.innerHTML = chkHTML;
+       }
+
+       divView()
+       function divView(){
+        let checkClass=()=>{ return `  ${model.div1.bkg ? "bkg" : ""}
+            ${model.div1.font ? "font" : ""}
+            ${model.div1.padding ? "padding" : ""}
+            ${model.div1.border ? "border" : ""}`};
+            let divHTML = `;
+
+
+            <div style="
+            ${model.div1.isSelected ? "border:1px solid lightskyblue;" : "border:1px solid black;"} 
+            height:150px; width:150px;"
+            class=" 
+           ${checkClass()}
+            "
+            onclick="selectDiv('1')"
+            > DIV 1 </div>
+
+            <div style="${model.div2.isSelected ? "border:1px solid lightskyblue;" : "border:1px solid black;"} 
+            height:150px; width:150px;"
+            class=" 
+            ${checkClass()}
+            "
+            onclick="selectDiv('2')"
+            > DIV 2 </div>
+            `;
+
+            divs.innerHTML = divHTML;
+       }
+
+
+       function selectDiv(clickedDiv){
+        if(clickedDiv == "1"){model.div1.isSelected = true; model.div2.isSelected = false; model.selectedDiv = 1}
+        if(clickedDiv == "2"){model.div1.isSelected = false; model.div2.isSelected = true; model.selectedDiv = 2}
+        divView()
+        checkboxesView()
+       }
+
+       function addStyle(addedStyle){
+
+        divView()
+       }
+    </script>
+</body>
+</html>

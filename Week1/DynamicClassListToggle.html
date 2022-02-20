@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html5 lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .class1 {
+            background-color: red; }
+        .class2 {
+            color: red;
+        }.class3 {
+            border: 2px solid pink;
+        }.class4 {
+            padding: 10px;
+            width: 50px;
+            background-color: sandybrown;
+        } .class5 {
+            border: 2px solid rgb(110, 2, 114);
+            width: 20%;
+            border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div id="div1" class="div">div1</div>
+    <div id="div2" class="div">div2</div>
+    <div id="div3" class="div">div3</div>
+    <div id="div4" class="div">div4</div>
+    <div id="div5" class="div">div5</div>
+    <input type="checkbox" name="div1"   class="checkbox" id="myCheck1" value="Yes, I'm a web developer">  
+    <input type="checkbox" name="div2"   class="checkbox" id="myCheck2" value="Yes, I'm a web developer">  
+    <input type="checkbox" name="div3"   class="checkbox" id="myCheck3" value="Yes, I'm a web developer">  
+    <input type="checkbox" name="div4"   class="checkbox" id="myCheck4" value="Yes, I'm a web developer">  
+    <input type="checkbox" name="div5"   class="checkbox" id="myCheck5" value="Yes, I'm a web developer">  
+<script>
+const myCheck1=document.getElementById("myCheck1");    
+const checkBoxes=document.querySelectorAll(".checkbox");
+console.log(checkBoxes);
+   
+    for(let i=0; i< checkBoxes.length; i++){
+    const checkbox=checkBoxes[i];
+    console.log("checkbox: ",checkbox);
+    checkbox.addEventListener("click", function(){
+   document.getElementById(checkbox.name).classList.toggle(`class${i+1}`)
+    })}
+
+
+
+</script>
+</body>
+</html5>
+
+

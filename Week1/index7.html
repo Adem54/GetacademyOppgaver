@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="sizeSlider" type="range" min="1" max="100" step="10" " oninput="showChange()" />
+    <input id="sizeSlider2" type="range" min="1" max="25" step="2" " oninput="showChange()" />
+    <select  name="color" id="color" onchange="showChange()">
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+        <option value="red" >Red</option>
+        <option value="black">Black</option>
+        <option></option>
+    </select>
+    <div id="div1"  style=" width: 200px; height: 200px; border:1px solid; border-radius: 4px; margin: 20px; background-color: antiquewhite;"></div>
+    
+    <script>
+        const color=document.getElementById("color");
+        const sizeSlider=document.getElementById("sizeSlider");
+        const sizeSlider2=document.getElementById("sizeSlider2");
+        const resultat=document.getElementById("div1");
+        console.log(color.value);
+       
+
+
+        function showChange(){
+            let colorValue=color.value;
+            console.log(colorValue);
+            let sizeBorderRadius=sizeSlider.value;
+            let sizeBorder=sizeSlider2.value;
+            console.log(sizeBorderRadius);
+            let newClass=resultat.setAttribute("class","result");
+            resultat.style.borderRadius=sizeBorderRadius+"px";
+            resultat.style.border=sizeBorder+"px dotted";
+            console.log("sizeborder: ",sizeBorder);
+            
+            resultat.style.backgroundColor=colorValue;
+            console.log(resultat)
+          
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+
+ color.addEventListener("change", function(){
+            let colorValue=color.value;
+
+           
+           
+            
+        })
+
+        sizeSlider.addEventListener("input", function(){
+            let sizeBorderRadius=sizeSlider.value;
+            console.log(sizeBorderRadius);
+
+        })
+
+ -->

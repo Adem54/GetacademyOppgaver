@@ -1,0 +1,49 @@
+<html>
+
+<head>
+        <meta charset="utf-8" />
+
+</head>
+
+<body>
+    <!-- Her har jeg begynt på å lage en "to-do" liste, 
+    if setningen i inputet gjør at man kan trykke på enter for å "submitte" todoen - ikke tenk over den ;)
+    Oppgaven er som følger: prøv å få til at man kan skrive inn flere to-do'er 
+            - nå er det slik at det nye man skriver overskriver det gamle, det er ikke så kjekt, så prøv å  fa til en liste!
+             -->
+    <input id="todoInput" type="text" onkeydown=" if(event.keyCode === 13)addTodo(this)">
+    
+    <div id="outputDiv"></div>
+
+    <script>
+        let output = document.getElementById('outputDiv');
+        let input = document.getElementById('todoInput');
+
+        //Model -lagrer data (variabler, arrays, objects osv)
+        let todoItem = ' ';
+
+
+        makeHTML();
+        //View - det man ser
+        function makeHTML() {
+            output.innerHTML = `
+                <p> Her er din inntastede Todo: </p>
+               ${todoItem} !
+                `;
+        }
+
+
+
+
+        //Controller  - "behandler/oppdaterer" data i modellen
+        function addTodo(newTodoFromInput) {
+
+            todoItem = newTodoFromInput.value;
+            
+            makeHTML(); //viewet kjøres på nytt ett hver "oppdatering" i modellen - dvs etter en controller funskjon er kjørt
+        }
+
+    </script>
+</body>
+
+</html>

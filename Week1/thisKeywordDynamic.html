@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+           float:left;
+            border: 1px solid black;
+            padding: 50px;
+            margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box1" onClick="changeBgColor(this,'red')">Hei</div>
+    <div class="box" id="box2" onClick="changeBgColor(this,'yellow')">Hello</div>
+    <div class="box" id="box3" onClick="selectABox(this)"></div>
+    <div class="box" id="box4" onClick="selectABox(this)"></div>
+    <div class="box" id="box5" onClick="selectABox(this)"></div>
+    <div class="box" style="background-color: hotpink;"         onclick="setColor('hotpink')">Hotpink</div>
+    <div class="box" style="background-color: purple;" onclick="setColor('purple')">Purple</div>
+    <script>
+      let selectedBox="";
+      //document.getElementById("box1").addEventListener
+      function changeBgColor(clickedBox,color){
+        clickedBox.style.backgroundColor=color;
+      }
+      function selectABox(selectBox){
+        selectedBox=selectBox;
+        if(selectedBox.style?.backgroundColor){
+          selectedBox.style.backgroundColor=""
+        }else {
+          console.log("selectedBox=", selectBox);      
+        }
+      }
+      function setColor(selectedColor){
+        selectedBox.style.backgroundColor=selectedColor;
+      }
+    </script>
+  </body>
+</html>
+
+
+
+
+
+<!--
+  let selectedBox="";
+//Bir kutu sec, ayni id uzerinden secer gibi, tek fonksiyon ile dinamik bir sekilde this uzerinden kutu yu bir degiskene atamak
+function selectABox(clickedBox){
+  console.log("choosebox:", clickedBox);
+  selectedBox=clickedBox;//document.getElementById() ile secer gibi tikladigimiz elemani secmemizi sagliyor tabi bu fonksiyonu kullananlar icin gecerli
+  //SelectedBox ile herhangi bir box sectikten sonra simdide sectigimiz box in rengini diger kutulardan alalalim
+}
+//tikladigimiz kutuyu degiskene atadiktan sonra da renkli kutulara tiklayarak onlarin rengini sectimiz kutuya atamak...Bu normal bir fonksiyon...
+function setColor(selectedColor){
+     selectedBox.style.backgroundColor=selectedColor;
+}
+//Burda da tek fonksiyon ile hangi kutuda paremetre olarak hangi rengi kullanirsak kutunun o rengi almasini saglamis olduk...
+      function changeBgColor(clickedBox,color){
+        clickedBox.style.backgroundColor=color;
+      }
+-->

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            background-color: green;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+</body>
+
+<script>
+
+    let mainDiv=document.getElementById("main");
+    let index=32;//Ama eger biz fonksiyon degisken ismi olarak local deki bir fonksiyonu template literal da verirsek o zaman o o fonksiyonu aliyor ama gelip global de ariyor onu
+
+let foo=()=>{//Functoin i gelip global scope ta ariyor, hvis den ikke finner den funksjonen i global scope får den feil
+    let index=112;
+    return index;
+}
+
+let fooGlobalScope=foo;
+
+let obj={
+    name:"milos"
+}
+let arr=[6,8,12,45]
+
+let fooLocalScope;
+show();
+    function show(){
+        let index=12;
+        let obj={//'${obj.name}' eger obje icindeki bir property valuesini gondermek istersek bu sekilde gondermeliyiz direk bir variable gibi gonderirsen onu variable olarak okumaya calisacak ama bulamayacakk show function scope icinde...
+        //${obj} bu sekilde hata aliriz okuyamiyor cunku bu objeyi aliyor ama global de bulmaya calisiyor ve bulamiyor, ayni isimde obje olsa bile global de onunla bu ayni degil farkli adres ler ondan dolayi, javascript ama bu sekilde '${obj}' bir obje olarak okuyor....
+            name:"adem"
+        }
+        let arr=[1,2,4];
+   let foo=()=>{
+            return index;
+        }
+        //OBJECT
+        //Eger biz ${obj.name} bu sekilde onclick icine gonderirsek yaninda string ler oldugu icin javascript bu objey i stringe cevirmeye calisir ve biz e  [object Object] boyle bir sonuc doner
+        //Ama biz '${obj.name}' bu sekilde gonderirsek o zaman obj.name string oldugu icin, javascript onu string olarak okuyacak...Ayrica biz onu tekrar '' icine aldigimiz icin javascript onclick icinde ki elementleri bu sekilde calistiriyor.....
+    fooLocalScope  =foo;
+        mainDiv.innerHTML=`
+        <div class="div" onclick="run(this
+        ,${foo},[${arr}],arr,obj, '${obj.name}')"></div>
+        `//template literal olmadan yazdigimz obje,array, func bunlari global scope ta dogrudan ariyor ama ornegin localscope ta  oolsturdugumz bir fonksiyon ismini gonderirsek o zaman da onu fonksiyon olarak aldigi icin, onu fonksiyon olarak alir ve sen onu calistirdigin zaman global scope ta calistiriyor onu,
+    }//foo seklinde template literal olmadan gonderirsek globalscope da foo adinda bir sey arar bulgudu yrede de onu kullanir eger biz onu run fonks icinde invoke edersek
+
+    function run(clickedElement,foo1,arr1,arr2,objUtenTmpLtr,objTmpLtr){
+
+        if(foo1===fooGlobalScope){
+            console.log("foo2 equal fooGlobalScope ")
+        }else if(foo1===fooLocalScope){
+            console.log("foo2 equal fooLocalScope ")
+        }
+
+        console.log("foo1 ",foo1());
+       // console.log("foo2 ",foo2());
+        console.log("arr1 ",arr1);
+        console.log("arr2 ",arr2);
+        console.log("objTmpLtr ",objTmpLtr);
+       console.log("arobjUtenTmpLtrr2 ",objUtenTmpLtr);
+      
+        show()
+
+//BURASI COOOK ONEMLI......STRING + OBJECT=>[object Object]-JAVASCRIPT TYPE COERCION-CASTING
+        let myObj={name:"John"}
+        console.log( (`Hello  ${myObj}`))//Burda string ile objeyi concetenate yaparsak javasccript bunu seu sekilde yapmaya calisiyor myObj.toString() ve de objeyi stringe cevirerek sana geri gonderiyor ama suna dikkat normal stirng degil javascriptin objeyi stringe cevirmesi ile Hello  [object Object] bu sekilde sonuc donderir...
+    }
+    var obj = {};
+console.log(obj.toString());  // "[object Object]"
+
+//JAVASCRIPT IMPLICIT VE EXPLICIT TYPE COERCION-CASTING
+// Biz herhangi bir sayi veya stringimizi ya da null u condition larda true false yerine kullanabiliyoruz ki biz bu verileri dogrudan true veya false olarak da atyabilriz mesela eger biz bir sayinin 0 ise false 0 degilse true gelmesini ister ve sonucuuda baska bir degiskene atamak istersek o zaman sun  yapariz..
+// let sayi=0;   let isCheck=!sayi =>Suna dikkat edelim burda ! isareti basina koyunca javascript bu veriyi implicit olarak number dan boolean a ceviriyor
+// !(Boolean(sayi)) bu ise explicit olara boolean a cevirmektir
+
+</script>
+</html>

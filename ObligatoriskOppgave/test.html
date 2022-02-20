@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //Dizi icinde sarta tum elemanlar true olursa true gelir aksi halde false gelir
+         let styles=[{id:7,border:false},{id:3,border:false},{id:1,border:false},{id:5,border:false},{id:8,border:false}] 
+
+         let result1=styles.every(style=>style.border===false);
+         console.log("result1: ",result1);
+
+//Some dizi icnde sarta uyan 1 tane bile eleman varsa true gelir
+         let result2=styles.some(style=>style.border===true);
+         console.log("result2: ",result2);
+
+
+         let numbers = [7, 3, 1, 5, 8];
+         console.log("result3: ",numbers.includes(9) );
+
+
+         let cities=["Skien","Ski","Porsgrunn","Stavenger"];
+        cities.splice(2,1);//index numarasi 2 olan elemandan baslayarak 2.parametre sayisi kadar element sil
+        console.log("cities: ",cities);
+
+
+
+        let addElementInArray=(arr,element)=>{
+  let result=[...arr,element];
+  return result;
+}
+
+addElementInArray(numbers,8);
+console.log("result4:...",addElementInArray(numbers,8))
+console.log("result5:...",addElementInArray(styles,{id:12,border:false}))
+
+console.log("numbers: ",numbers);
+let result6=numbers.filter((item,index)=>index!==4);
+console.log("result6: ",result6);
+    </script>
+</body>
+</html>

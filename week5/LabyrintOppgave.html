@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+       
+
+table {
+    border-spacing: 0;
+}
+
+td {
+    background-color: white;
+    padding: 0;
+}
+
+td.room {
+    width: 40px;
+    height: 40px;
+}
+
+td.wall {
+    background-color: black;
+}
+
+td.noWall {
+    background-color: white;
+}
+
+td.small {
+    width: 10px;
+}
+
+td.wide {
+    width: 40px;
+}
+
+td.high {
+    height: 40px;
+}
+
+td.low {
+    height: 10px;
+}
+    </style>
+  </head>
+  <body>
+ <div id="id"></div>
+    <script>
+      //Ilk olarak model imizi ve icine olusturacagimiz veriyi olusturmak ile baslayalim
+
+//MODEL AYARLARKEN-BIR UYGULAMA YAPARKEN ONCE UYGULAMA NASIL CALISIYOR HANGI EVENTLER DE NE TUR TEPKILER VERILIYOR VE SEN BU UYGULAMADAKI DINAMIK BIR SEKKILDE DEGISEN ISLEVLERI HANGI VERI TURU ILE NASIL KONTROL EDEBILIRSIN VE UYGULAYABILIRISIN?......
+//UYGULAMA YAZARKEN BURAYA COK DIKKAT ETMELIYIZ....        
+//Model ayarlama ve datayi kurgulama basli basina onemli bir istir ve burda dikkat edelim...Labirent oyunu yapilacak ve bircok kare var ama kimisi yukseklik olarak yuksek kimisi de en olarak genis ya da oda dediklerimiz ise hem enlemesine hem de uzunlamasina uzundur ama bunlarin uzunluguna gore veya genisligine gore bunlara css stili vermek icin ne yapiyuoruz buna cok dikkkat edelim...Daha dogrusu programi kontrol altinda tutabilmek dinamiklestirmek ve de kullanici herhangi bir kare mize veya labirentimizin herhangi bir parcasina tikladigi zman neler olacak ve hangi farkli boyuttaki parcalar tiklaninca ne tur tepkiler veriyorlar bunlari iste kontrol altina alabilmek icin ne yapiyoruz bu parcalarin boyutlarina gore onlara variable lar atamasi  yapiyoruz isHigh,isWide gibi isOpen gibi....
+      var mazeModel = {
+        size: 2,
+        rows: [ 
+          [
+            { isHigh: false, isWide: false, isOpen: false },
+            { isHigh: false, isWide: true, isOpen: false },
+            { isHigh: false, isWide: false, isOpen: false },
+            { isHigh: false, isWide: true, isOpen: false },
+            { isHigh: false, isWide: false, isOpen: false },
+          ],
+          [
+            { isHigh: true, isWide: false, isOpen: false },
+            { isHigh: true, isWide: true },
+            { isHigh: true, isWide: false, isOpen: false },
+            { isHigh: true, isWide: true },
+            { isHigh: true, isWide: false, isOpen: false },
+          ],
+          [
+            { isHigh: false, isWide: false, isOpen: false },
+            { isHigh: false, isWide: true, isOpen: false },
+            { isHigh: false, isWide: false, isOpen: false },
+            { isHigh: false, isWide: true, isOpen: false },
+            { isHigh: false, isWide: false, isOpen: false },
+          ],
+          [
+            { isHigh: true, isWide: false, isOpen: false },
+            { isHigh: true, isWide: true },
+            { isHigh: true, isWide: false, isOpen: false },
+            { isHigh: true, isWide: true },
+            { isHigh: true, isWide: false, isOpen: false },
+          ],
+          [
+            { isHigh: false, isWide: false, isOpen: false },
+            { isHigh: false, isWide: true, isOpen: false },
+            { isHigh: false, isWide: false, isOpen: false },
+            { isHigh: false, isWide: true, isOpen: false },
+            { isHigh: false, isWide: false, isOpen: false },
+          ],
+        ],
+      };
+
+//updateVoew-leser modellen og lager HTML for en tabell
+
+//Template literal icinde ${} bu sekilde js kodu yaziyoruz ardinda ise, bu kodun icine tekrardan eger string yazacaksak ve o string icinde de yine variable kullancaksak o zaman bir template literal dha kullaniriz onun icinde...
+updateView();
+      function updateView(){
+    document.getElementById("app").innerHTML=`
+        <table>
+        ${mazeModel.rows.map((row,rowIndex)=>`
+        <tr>
+        ${row.map((col,colIndex)=>`
+        <td onclick"toggle(${rowIndex},${colIndex})"  class="${getCssClass(col)}">  </td>
+        
+        `).join('')}
+        
+        </tr>
+        
+        
+        `).join()}
+        
+        </table>
+    `
+      }
+
+      //Burasi harika bestpractise.....CLASS I ILE ILGILI 4-5 TANE FARKLI IF CONDITION DURUMUNU BIR FONKSIYON ICINDE YAZIP O FONKSIYONU TD ICINDE KULLANMAK!!!!BESTPRACTISE....
+     function getCssClass(square){
+         //isHigh ve isWide true ise yani boy ve genislik olarak yuksek ise o odadir ve odalarin isOpen degeri zaten yok ve oda ise de digerlerine gerek yok ya oda dir ya da digerlerinden biridir oda degil ise o zaman da 
+         if(square.isHigh && square.isWide) return 'room';
+         const highLow=square.isHigh ? "high" : "low";
+         const wideSmall=square.isWide ?  "wide"  : "small";
+         const wall=square.isOpen ? "noWall" : "wall";
+         return highLow + wideSmall + wall;
+     }
+
+
+function initModel(size){
+    mazeModel.rows=[];
+    for(let rowIndex=0; rowIndex<size; rowIndex++){
+        mazeModel
+    }
+}
+
+
+//row lari donduruyor, ve de index ini aldigin cell yani tikladigin cell in isOpen i false yapiyor...yani kapatiyor....
+function closeRow(index){
+    const row=mazeModel.rows[index];//Hangi row oldugunu buluyor
+    for(let cell of row){//Sonra da row lar icindeki cell lerin isOpen ise false yapyor...Acik olan cell i kapatiyor bu sekilde
+        cell.isOpen=false;
+    }
+}
+
+function closeColumn(index){
+    for(let row of mazeModel.rows){
+        row[index].isOpen=false;//row icinden kolonlardan acik olani kapatiyor index uzerinden row icindeki hangi kolon oldugunu buluyor...
+    }
+}
+
+
+//Satir olusturma fonksiyonu , kac satir olacak size dan alacagiz, yuksekligi true mu false mu bir de ona ihtiyacimiz var
+//Her bir satir bir row dur ve her bir row colonlardan olusur yani bir row dizi ise col o dizini elemanlari dir gibi dusunebiliriiz....zaten bunu en usttek dizimizde de goruyourz..
+//Simdi bizim toplam 4 rowumuz var ve ilk 3 satirimiz bir isWide:false ve isWide:true olan cell,hucrelerden  olusuyor... ve en altta da bir tane daha row var isWide false olan..Ayni satirdaki hucrelerin hepsinin isHigh lari ayni oluyor yani ya hepsinin ki false ya da hepsininki true oluyor...
+function createRow(size,isHigh){
+    const row=[];
+    for(let colIndex=0; colIndex<size; colIndex++){
+        row.push(createCell(isHigh,false));
+        row.push(createCell(isHigh,true));
+    }
+    row.push(createCell(isHigh,false));
+    return row;
+}
+
+
+function createCell(isHigh,isWide){
+    //Eger rom ise yani isHigh ve isWide birbirine esit ise o zaman sadece isHigh ve isWide i don cunku isOpen yok rom da...
+    if(isHigh===isWide) return {isHigh,isWide};
+
+    const isOpen=Math.random() < 0.5;//burda aciklik ve kapaliligi random olarak almak icin bu sekilde yapiyor.Math.random() 0-1 arasi random deger uretiyor.
+    return {isHigh,isWide,isOpen}
+}
+
+    </script>
+  </body>
+</html>
+
+<!--
+    Bir proje yaparken ve verimizi html taglari icinde dondeririken ve oraya bir event hanlding function yazarken
+    Bu tarz durumlarda kendine su soruyu sor ben, burda yapmam gerken islevi yapabilmek icin dataya dinamik bir sekilde erisecek ne tur veriyi burdan gondermeliyim.....bu soruyu sor kendine...
+    1-Dinamik bir sekilde map kullanarak td ve tr leri olusturyoruz ve de index leri aliyoruz ve ne yapiyoruz her bir td nin icine gonderiyoruz cunku neden rowIndex ve colIndex uzerinden biz datamizi dinamik bir sekilde degistirme imkaninin elde etmis oluyoruz.....
+
+-->
