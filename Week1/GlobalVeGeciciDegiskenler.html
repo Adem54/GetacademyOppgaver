@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="div1">
+    <button  class="button" id="button1">1</button>
+        <button class="button" id="button2">2</button>
+        <button class="button" id="button3">3</button >
+        <button class="button" id="button4">4</button>
+        <button class="button" id="button5">5</button>
+        <button class="button" id="button6">6</button>
+        <button class="button" id="button7">7</button>
+        <button class="button" id="button8">8</button>
+        <button class="button" id="button9">9</button>
+     
+    </div>
+    <p id="text">Sifre buraya gelecek!</p>
+  </body>
+  <script>
+   //Lag en “kodelås” med 9 knapper. Vi tenker oss at for å låse opp må man trykke på knapp 3, så knapp 8, så knapp 1 og så knapp 2. 
+//Vi får ikke gjort dette helt ferdig ennå, for vi har ikke lært if-setninger, men vis i en egen div alle tallene som er trykket på så langt. Det vil si at om man har trykket først 1, så 2 og så 3, skal teksten "1-2-3" vises i en div på skjermen. 
+let button1=document.getElementById("button1");
+let button2=document.querySelector("#button2");
+let button3=document.getElementById("button3");
+let button4=document.getElementById("button4");
+let button5=document.getElementById("button5");
+let button6=document.getElementById("button6");
+let button7=document.getElementById("button7");
+let button8=document.getElementById("button8");
+let button9=document.getElementById("button9");
+let div1=document.querySelector(".div1");
+let buttons=div1.querySelectorAll(".button")
+console.log("buttons: ",buttons);
+
+let text=document.getElementById("text");
+
+
+let buttonValue="";
+// function showButton(){
+//    buttonValue=button2.textContent;
+//     text.textContent=buttonValue;
+//     }
+
+    //button1.addEventListener("click",showButton);
+let sayac=0;
+for(let i=0; i<buttons.length; i++){
+    const button=buttons[i];
+   // console.log("button: ",button);
+    //button.addEvenListener("click",showButton);
+    button.addEventListener("click",function(){
+        sayac++
+        console.log("sayac: ",sayac)
+        console.log("tikladigm button: ",button.innerHTML);
+        buttonValue=buttonValue+button.textContent;
+        text.textContent=buttonValue;
+    })
+
+}
+
+
+
+
+
+
+  </script>
+</html>
+
+<!-- 
+     Global olarak tanimladigimiz degiskenler sayfa calistikca hafiza da durmaya devam ediyorlar
+    Ama fonskiyon icerisinde olusturdugumuz degiskenler ise sadece o fonksiyon calisirken var olurlar, cok kisa sure varliklarini surdurur fonksiyon calisma esnasinda, fonks bitince onlar da hafizadan silinirler
+    let a = 12;
+    var b = 10;
+
+    if (a == 12) {
+      let a = 22;
+      var b = 55;
+
+      console.log("let ", a, "Var ", b);
+    }
+    console.log(a + b);
+ -->

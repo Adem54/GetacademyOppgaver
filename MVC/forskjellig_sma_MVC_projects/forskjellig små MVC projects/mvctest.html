@@ -1,0 +1,80 @@
+<html>
+
+<head>
+        <meta charset="utf-8" />
+    <style>
+        .todoDone{
+            text-decoration: line-through;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <input id="todoInput" type="text" onkeydown=" if(event.keyCode === 13)addTodo(this)">
+    <div id="outputDiv"></div>
+
+    <script>
+
+        //Model
+        let output = document.getElementById('outputDiv');
+        let input = document.getElementById('todoInput');
+        let todoItem = ' ';
+        let todoArray = ["tst", "33", "heisann"];
+        //let isTodoDone = false;
+
+        makeHTML();
+
+
+        //View
+        function makeHTML() {
+            output.innerHTML = `
+                <p> Her er din nyeste Todo: </p>
+               ${todoItem} !
+                <p> Her er alle dine todo's: </p>
+                <ul>
+                    
+                     ${todoArray.map((todo, i) => `
+                   
+                      <li id="${i}"> 
+                      Todo # ${i}:  ${todo} <button onclick="isDone(${i})"> DONE </button> 
+                      </li> 
+                        `).join('')}
+                </ul>
+                `;
+        }
+
+     // style="textDecoration: isTodoDone ? 'line-through' : 'none'}"
+
+
+
+        //Controller
+        function addTodo(newTodoFromInput) {
+
+            todoItem = newTodoFromInput.value;
+            todoArray.push(newTodoFromInput.value);
+            
+            makeHTML();
+        }
+
+        function isDone(todoIndex){
+           // isTodoDone = true;
+            let currentElement = document.getElementById(todoIndex);
+            currentElement.classList.add('todoDone');
+            
+
+            console.log(currentElement.classList);
+            makeHTML();
+
+
+           
+        }
+
+       
+
+
+    </script>
+</body>
+
+</html>

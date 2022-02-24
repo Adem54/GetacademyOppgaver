@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Søke Start IT</title>
+    <style>
+      div {
+        color: blue;
+        background-color: azure;
+        padding: 10px;
+        margin: 10px;
+        border: solid cornflowerblue 5px;
+        width: 20px;
+        height: 20px;
+        float: left;
+      }
+
+      div.førstPåLinja {
+        clear: left;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <script>
+        let index = [1,2,3,3,4,6,8]
+      let numbers = [7, 1, 2, 5, "", 3, 8, 4, 6];
+   
+
+      let count=0;
+    
+     
+      showPusliSpill();
+      function showPusliSpill() {
+        let html = "";
+        for (let i = 0; i < 9; i++) {
+          let førstPåLinja = i % 3 == 0  ? "førstPåLinja" : "";
+          //Burda switch case kullan
+   let index;
+      switch (i) {
+          case 0:
+               index=[1,3]
+               break
+              case 1:
+               index=[0,2,4]
+               break
+              case 2:
+               index=[1,5]
+               break
+              case 3:
+               index=[0,4,6]
+               break
+              case 4:
+               index=[1,3,5,7]
+               break
+              case 5:
+               index=[2,4,8]
+              break
+              case 6:
+              index=[3,7]
+              break
+              case 7:
+             index=[4,6,8]
+             break
+              case 8:
+             index=[7,5];
+             break
+          default:
+              break;
+      }
+   
+       
+       
+      
+          let id =
+            i < 3
+              ? `r1k${i + 1}`
+              : i < 6
+              ? `r2k${i - 2}`
+              : i < 9
+              ? `r3k${i - 5}`
+              : "";
+
+          
+
+
+        //foo in onclick skal lages på nytt i global scope
+          html += `<div id='${id}' class="${førstPåLinja} ${index}"   onclick="trykk(this, [${index}],${i})">${numbers[i]}</div>`;
+        }
+        
+        document.body.innerHTML =html + `<h1>${count}</h1>`  ;
+      }
+
+
+//
+      function trykk(tagElement, indexBoxes,i) {
+          count++;
+        let arr = indexBoxes;
+        let index1=indexBoxes[0];
+        let index2=indexBoxes[1];
+        let index3=indexBoxes.length>2 ? indexBoxes[2] : "";
+        let index4=indexBoxes.length>3 ? indexBoxes[3] : "";
+        if(!numbers[index1]){
+            numbers[index1]=numbers[i];
+            numbers[i]="";
+
+        }
+        if(!numbers[index2]){
+            numbers[index2]=numbers[i];
+            numbers[i]="";
+        }
+      if(index3 && !numbers[index3]){
+          numbers[index3]=numbers[i];
+          numbers[i]="";
+
+      }
+    if(index4 && !numbers[index4]){
+          numbers[index4]=numbers[i];
+          numbers[i]="";
+
+      }
+   
+        showPusliSpill();
+        
+      }
+    </script>
+  </body>
+</html>
+
+<!--
+
+       let index =
+            i === 0
+              ? [1, 3]
+              : i === 1
+              ? [0, 2, 4]
+              : i === 2
+              ? [1, 5]
+              : i === 3
+              ? [0, 4, 6]
+              : i === 4
+              ? [1, 3, 5, 7]
+              : i === 5
+              ? [2, 4, 8]
+              : i === 6
+              ? [3, 7]
+              : i === 7
+              ? [4, 6, 8]
+              : i === 8
+              ? [7, 5]
+              : "";
+
+     // document.body.innerHTML=`
+    // <div id="r1k1" onclick="trykk(this, 'r2k1', 'r1k2', '_', '_')">7</div>
+    //     <div id="r1k2" onclick="trykk(this, 'r1k1', 'r2k2','r1k3')">1</div>
+    //     <div id="r1k3" onclick="trykk(this, 'r1k2', 'r2k3')">2</div>
+    //     <div id="r2k1" class="førstPåLinja" onclick="trykk(this, 'r2k2', 'r1k1', 'r3k1')">5</div>
+    //     <div id="r2k2" onclick="trykk(this, 'r2k1','r1k2','r2k3','r3k2')"></div>
+    //     <div id="r2k3" onclick="trykk(this, 'r1k3','r2k2','r3k3')">3</div>
+    //     <div id="r3k1" class="førstPåLinja" onclick="trykk(this, 'r2k1','r3k2' )">8</div>
+    //     <div id="r3k2" onclick="trykk(this, 'r3k1', 'r2k2', 'r3k3')">4</div>
+    //     <div id="r3k3" onclick="trykk(this, 'r3k2', 'r2k3' )">6</div>
+    
+    // `;
+
+
+
+
+
+
+
+     // if (document.getElementById(alt1).innerHTML == '') {
+            //     document.getElementById(alt1).innerHTML = tagElement.innerHTML;
+            //     tagElement.innerHTML = '';
+
+            // }
+            // if (document.getElementById(alt2).innerHTML == '') {
+            //     document.getElementById(alt2).innerHTML = tagElement.innerHTML;
+            //     tagElement.innerHTML = '';
+            // }
+
+            // if (document.getElementById(alt3).innerHTML == '') {
+            //     document.getElementById(alt3).innerHTML = tagElement.innerHTML;
+            //     tagElement.innerHTML = '';
+            // }
+            // if (document.getElementById(alt4).innerHTML == '') {
+            //     document.getElementById(alt4).innerHTML = tagElement.innerHTML;
+            //     tagElement.innerHTML = '';
+            // }
+     // document.body.innerHTML=`
+    // <div id="r1k1" onclick="trykk(this, 'r2k1', 'r1k2', '_', '_')">7</div>
+    //     <div id="r1k2" onclick="trykk(this, 'r1k1', 'r2k2','r1k3')">1</div>
+    //     <div id="r1k3" onclick="trykk(this, 'r1k2', 'r2k3')">2</div>
+    //     <div id="r2k1" class="førstPåLinja" onclick="trykk(this, 'r2k2', 'r1k1', 'r3k1')">5</div>
+    //     <div id="r2k2" onclick="trykk(this, 'r2k1','r1k2','r2k3','r3k2')"></div>
+    //     <div id="r2k3" onclick="trykk(this, 'r1k3','r2k2','r3k3')">3</div>
+    //     <div id="r3k1" class="førstPåLinja" onclick="trykk(this, 'r2k1','r3k2' )">8</div>
+    //     <div id="r3k2" onclick="trykk(this, 'r3k1', 'r2k2', 'r3k3')">4</div>
+    //     <div id="r3k3" onclick="trykk(this, 'r3k2', 'r2k3' )">6</div>
+    
+    // `;
+-->
+<!-- function a (t,y,u) {
+
+}
+
+let arr = [1,2,3,4,5,6];
+a(...arr); -->

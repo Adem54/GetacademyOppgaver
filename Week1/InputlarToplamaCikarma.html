@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="sayi1">Sayi1</label>
+<input class="input" id="sayi1" type="text"  />
+<br>
+<br>
+<br>
+<label for="lastName">Sayi2</label>
+<input class="input" id="sayi2" type="text" >
+<br>
+<p id="p"></p>
+
+    <script>
+
+ const inputs=document.querySelectorAll(".input");  
+let sayi1=document.getElementById("sayi1");
+let sayi2=document.getElementById("sayi2");
+let p=document.getElementById("p");
+
+for(let i=0;i<inputs.length; i++){
+    let input=inputs[i];
+    input.addEventListener('change', function(e){
+
+      p.innerHTML=(parseInt(sayi1.value) || 0)+(parseInt(sayi2.value) || 0);
+   // p.innerHTML=(sayi1.value-sayi2.value)
+    } );
+}
+
+
+    </script>
+</body>
+</html>
+<!-- Toplama islemi yaparken parseInt ile sayiya ceviriyoruz ama ckarma isleminde degerler string olsa bile cikarma islmeini yapiyorlar cunku cikarma isleminin tek bir islevi var, toplam islemi ise hem matematiksel toplama hem de stringleri yanyana getirmeye yaradigi icin ilk is olarak stringleri yanyana getirme islemi yapiyor eger sayi string ise ondan dolyi sayyi parseInt ile cevirmek gerekiyor -->

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADVENT</title>
+    <style>
+        .candle{
+            height: 300px;
+            width: 50px;
+            background-color: blueviolet;
+            float:left;
+            margin: 5px;
+        }
+        .unlitCandle{
+         width: 5px;
+         height: 15px;
+         background-color: black;
+         float:left;
+         margin-left: 27px;
+         margin-right: 25px;
+        }
+
+        .litCandle{
+         width: 10px;
+         height: 15px;
+         background-color: orangered;
+         float:left;
+         margin-left: 25px;
+         margin-right: 25px;
+        }
+
+        #output{
+            float:left;
+        }
+
+    </style>
+  </head>
+  <body>
+
+<div id="output"></div>
+
+    <script>
+const outputDiv = document.getElementById("output");
+let candlesArray = [
+    {name: "candle1",
+     litState: "unlitCandle"
+    },
+    {name: "candle2",
+    litState: "unlitCandle"
+    },
+    {name: "candle3",
+    litState: "unlitCandle"
+    },
+    {name: "candle4",
+    litState: "unlitCandle"
+    }
+];
+
+showCandles()
+    function showCandles(){
+        let wiks = ``;
+        let candles = `<br>`;//Mor olanlar
+//For ile dondererek hangi kandle a tiklarsan onun indexini aliyor ve onun class ini degistirmis oluyor bu sekilde...
+       for(let candleIndex = 0; candleIndex < candlesArray.length; candleIndex++){
+           wiks += `<div class='${candlesArray[candleIndex].litState}'></div>`;//kandle divlerini de for icinde sifirdan olusturuyor ve burda class olarak unlitCandle veriyor..
+           candles += `
+           <div class='candle' onclick='lightCandle("${candleIndex}")'></div>
+          
+           `;
+       } 
+       candles += `<br> <div>Click the Candle to Light it!</div>`;
+       outputDiv.innerHTML =   wiks+ candles;
+    }   
+    
+//Her tikladigi kandle in class ini degistiriyor....Direk array icindeki class ismini degisitiyor yani ana veriyi degistiriyor...ki bizim kandle imiz zaten class i ordan aliyordu bu sekilde stili de degismis oluyor...
+    function lightCandle(selectedCandleIndex) {
+        candlesArray[selectedCandleIndex].litState = "litCandle";
+        showCandles();
+    }
+    </script>
+  </body>
+</html>

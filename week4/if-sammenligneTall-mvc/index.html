@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script>
+        //Model
+        //Model de html icinde degistirilecek olan ve kullanilacak olan,veriyi degiskene atiyoruz...o degisken model de ataniyor..ve contrller da degistiriliyor fonks click fonks u html icine inlin olarak yazilir, ama fonksiyonun kendisi, controller da bulunur..., ve kontroller da ki her degisiklikte update ile view yenilenir...
+     let guessNumber;
+     let secretNumber;
+
+        //view
+        updateView();
+        function updateView(){
+           
+            const guessText=guessNumber==null ? "" : `<b>Du tippet ${guessNumber} <br/>`;
+                console.log("guessText: ",guessText);
+         
+            let isCorrectOrNotText;
+            if(guessNumber==null){
+                isCorrectOrNotText='Skrivv inn tallet du vil tippe i feltet under og trykk på knappen "Tipp"';
+            }else if(guessNumber==secretNumber){
+                isCorrectOrNotText='<b>Du har tippet riktig!</b>';
+            }else if(guessNumber<secretNumber) {
+                isCorrectOrNotText='Du har tippet for lavt';
+           
+            } else{
+                    isCorrectOrNotText='Du har tippet for høyt';
+
+                }
+            document.getElementById("app").innerHTML=`
+            <h2>Tipp-tallet-spillet</h2>
+   ${guessText}
+    ${isCorrectOrNotText}
+
+    <input type="text"  oninput="guessNumber=parseInt(this.value)"  /> 
+    <button onClick="guess()">Tipp</button>
+    <button onClick="startGame()">Start på nytt </button>
+
+            `;
+        }
+
+
+        //controller
+        startGame();34
+        function startGame(){
+            guessNumber=null;
+            secretNumber=Math.ceil(Math.random()*100);
+            updateView();
+        }
+
+        function guess(){
+            updateView();
+        }
+    </script>
+</body>
+</html>

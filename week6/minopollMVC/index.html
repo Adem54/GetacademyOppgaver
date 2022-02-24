@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Herzaman en ustte model onlmalidir -->
+    <script src="./js/model.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/optionsPageView.js"></script>
+    <script src="./js/optionsPageController.js"></script>
+    <script src="./js/votePageView.js"></script>
+    <script src="./js/votePageController.js"></script>
+
+</head>
+<body>
+    <div id="app"></div>
+<script>
+    updateView();
+    function updateView(){
+        const {currentPage}=model.app;
+        
+            switch (currentPage) {
+                case "vote":
+                    return updateViewVotePage();
+                case "options":
+                    return updateViewOptionsPage();
+                default:
+                    break;
+            }
+    }
+</script>
+</body>
+</html>
+
+<!--
+    ONEMLI.....SAYFALANDIRMA!!!
+    Bizim burda 2 sayfamiz vardi, optionsPageView ve votePageView sayfamiz var ama biz buraya resultView diye bir sayfada ekleyebilirz hatta eklemeliyiz...
+    stemmegivninger=>oylama...
+-->

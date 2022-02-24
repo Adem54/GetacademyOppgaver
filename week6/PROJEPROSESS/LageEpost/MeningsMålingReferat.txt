@@ -1,0 +1,36 @@
+Hei takk for et hyggelig møte. 
+
+Jeg laget en oppsummering tekst ut fra det du har fortalt, og vil gjerne få tilbakemelding fra deg. 
+
+Du vil ha en meningsmålings applikasjon hvor du kan legge til nye spørsmål, og sende noen en lenke på mail. 
+
+Du vil ha en applikasjon der det er mulig å ha flere meningsmålinger samtidig. 
+
+Du vil ha svarene med tid og dato.
+
+Du angir forskjellige alternativer. 
+
+Brukere skal ha mulighet til å legge til egne alternativer inn en tekstboks. 
+
+Resultatene på undersøkelsen kan være anonyme.  
+
+Resultatene på undersøkelsen skal være i form av prosent og antall deltakere. 
+
+Det er du som kunne stoppe undersøkelsen når den er ferdig.  
+
+Du vil kunne lagre resultatene på undersøkelsen i form av en liste som består av  tall og prosenter. 
+
+Det skal finnes en side hvor alle meningsmålingene er, og det er ikke så viktig at brukere ser resultatene.  
+
+Det er noe som jeg er litt usikker på og, lurte på om du kunne klargjort?
+
+Skal brukere har mulighet til å la svarene på spørsmålene stå tomme?
+
+Skal spørsmålene være i form av single choice eller multiple choice?
+
+Skal brukere har mulighet til å legge til nye spørsmål eller nye forslag?
+
+ 
+
+
+ 

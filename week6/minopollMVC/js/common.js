@@ -1,0 +1,5 @@
+function createMenuHtml(){
+    return `
+
+    `;
+}

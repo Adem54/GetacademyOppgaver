@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="todoInput" type="text" onkeydown="if(event.keyCode===13)addTodo(this)">
+    <div id="outputDiv"></div>
+<script>
+
+    const input=document.getElementById("todoInput");
+    const output=document.getElementById("outputDiv");
+
+//Model-lagrer data(variabler,arrays,object osv...)
+    let todoItem='';
+
+    //View
+    makeHTML();
+    function makeHTML(){
+
+        
+        output.innerHTML=`
+        <p>Her er din inntastede Todo: </p>
+        ${todoItem} !
+        `;
+    }
+
+    //Controller
+    function addTodo(todoInput){
+        todoItem=todoInput.value;
+        console.log("todoItem: ",todoItem);
+        makeHTML();
+    }
+</script>
+</body>
+
+</html>

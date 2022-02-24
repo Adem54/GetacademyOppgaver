@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+const numbers=[1,5,7,1,23,4,45,23];
+let index=numbers.splice(3,1);
+console.log("index: ",index);//index i 3 olan elementi numbers icinden siler ve biz bu islemi bir degiskene atarsak da o degisken bize silmek istedigimiz elementi bir dizi icinde doner....
+
+console.log("numbers[index]: ",numbers[index]);
+//console.log("numbersindex: ",numbersindex);
+console.log("numbers[[3]] ",numbers[[3]]);
+//
+console.log("numbers[[3]] ",numbers[[3]]);
+console.log("numbers[3] ",numbers[3]);
+console.log("numbers[[[3]]] ",numbers[[[3]]]);
+
+
+const people=[
+    {id:1,name:"Adem"},
+    {id:1,name:"Zehra"},
+    {id:1,name:"Zeynep"},
+];
+//
+const result=people.map(person=>person.name);
+console.log("result: ",result);
+
+
+
+    </script>
+</body>
+</html>

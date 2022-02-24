@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+const utterances = [
+  ["how are you", "how is life", "how are things"], //0
+  ["hi", "hey", "hello", "good morning", "good afternoon"], //1
+  ["what are you doing", "what is going on", "what is up"], //2
+  ["how old are you"], //3
+  ["who are you", "are you human", "are you bot", "are you human or bot"], //4
+];
+
+// Possible responses corresponding to triggers
+const answers = [
+  [
+    "Fine... how about you?",
+    "Pretty well, what about you?",
+    "Fantastic, And you?",
+  ], //0
+  ["Hello!", "Hi!", "Hey!", "Hi there!", "Howdy"], //1
+  [
+    "Nothing much",
+    "About to go to sleep",
+    "Can you guess?",
+    "I don't know actually",
+  ], //2
+  ["I am infinite"], //3
+  ["I am just a bot", "I am a bot. What are you?"], //4
+];
+
+// let item;
+//   for (let index = 0; index<utterances.length; index++) {
+//     //   Cek et cunku index geliyor ama uttarncesArray in ilk elemaninin 3.elemenai yok undefined
+//     for (let uttarence of utterances[index] || [] ) { 
+//       console.log("utterance: ",uttarence);
+//         console.log("index:",index);
+//         console.log("answers[index]: ",answers[index]);
+//         const answer = answers[index] || []; //bunu yapmazsak undefined aliriz
+//         item = answer[Math.floor(Math.random() * answer.length)];
+      
+//     }
+//   }
+
+
+let person={
+    name:"Adem",
+    surname:"Erbas"
+}
+
+person.city="Skien";
+
+console.log(person.city);
+
+
+
+console.log(person.name);
+console.log(person["surname"]);
+person.age=33;//prototyping- constructor icindeki bu ifade ile ayni sey ikisi de prototyping  this.age=age
+console.log(person.age);
+
+
+console.log("------------------------------------------");
+
+
+//Bir array listesinden filtreleme veya arama bu sekilde yapilir...
+const users=[{id:1,name:"Adem"},{id:1,name:"Ademin"},{id:1,name:"Ademlerin"},{id:1,name:"Mehmet"}]
+let text="Adem";
+let result=users.filter(user=>user.name.toLowerCase().includes(text.toLowerCase()));
+console.log("result: ",result);
+
+//return user.name.toLowerCase().includes(search.toLowerCase());
+
+let items=[{title:"go to school",completed:false},{title:"go to course",completed:true},{title:"to do homework",completed:true}]
+
+let x=2;
+let y=2;
+const result2=items.filter(item=>x===2 ? item.completed : !item.completed);
+console.log("result2: ",result2);
+
+</script>
+</html>

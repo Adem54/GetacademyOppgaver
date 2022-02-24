@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat bot</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 100px;
+    }
+
+    #app {
+      width: 300px;
+    }
+    .chat-box {
+      clear: both;
+      float: left;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid gray;
+    }
+
+    .user-text, #btn {
+      float: right;
+    }
+
+  </style>
+
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script>
+      // Root element
+      const app = document.getElementById('app');
+
+      // Initiate app
+      init();
+
+      // Model
+      let chatContainer = '';
+      let response = '';
+
+      function addUserInputToChatContainer(userInput) {
+        //Burasi cok guzel bir bestpractise-bunu kesinlikle iyi anla kullanmak icin ihtiyac olabilir....Dinamik bir sekilde her eklenen en ustte kaliyor
+        //chatContainer bizim gelen girilen input umuzu ve ona gelen responsu her seferinde div icine yazdirkam ve total de de her olusturlan divin sonuna total mevcut divi sabit bir sekilde ekleyerek orayi dinamik hale getiriyoruz...
+        chatContainer = `<div class="chat-box user-text">${userInput}</div>${chatContainer}`;
+      }
+
+      function choseBotResponse(userInput) {
+        userInput = userInput.toLowerCase();
+
+        switch(userInput) {
+          case 'hello':
+            response = 'Hello there!';
+            break;
+          case 'goodbye':
+            response = 'Talk to you later';
+            break;
+          case 'rock':
+            response = 'paper';
+            break;
+          case 'paper':
+            response = 'scissors';
+            break;
+          case 'scissors':
+            response = 'rock';
+            break;
+          default:
+            response = 'Try asking something else!';
+        }
+      }
+      
+      function addBotResponseToChatContainer(userInput) {
+        choseBotResponse(userInput);
+        chatContainer = `<div class="chat-box bot-text">${response}</div>${chatContainer}`;
+      }
+
+      // View
+      function getUserInput() {
+        return document.getElementById('input').value;
+      } 
+
+      function updateView(chat) {
+        app.innerHTML = `<div><input id="input" type="text" placeholder="Chat with me..."><button onclick="startChat()" id="btn">Send</button></div><div class="container">${chat}</div>`
+      }
+
+      // Controler
+      function startChat() {
+        let userInput = getUserInput();
+        addUserInputToChatContainer(userInput);
+        updateView(chatContainer);
+        setTimeout(() => { 
+          addBotResponseToChatContainer(userInput);
+          updateView(chatContainer);
+         }, 1000);
+      }
+
+      function init() {
+        updateView('');
+      }
+    </script>
+</body>
+</html>

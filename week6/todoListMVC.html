@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr,td,th {
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+        }
+
+        td,th {
+            padding: 4px;
+        }
+
+        th {
+            background-color: darkblue;
+            color: white;
+        }
+
+        tr:nth-child(even){
+            background-color:"antiquewhite";
+        }
+    </style>
+</head>
+<body>
+    <table id="tasksTable">
+        
+    </table>
+    <div>
+        <input  id="taskDescription" type="text">
+        <button onclick="addTask()">Legg til oppgave</button> 
+    </div>
+
+    <script>
+
+    //Ornegin bir is bittigi zaman ona tiklayip onu silmek istiyorsak ornegin veya onun uzerinde bir degisklik veya ona bir css class i uzerinde ustunu de cizebiliriz ama butun bunlarin biz ana olarak model deki veri degismeli ve ona baggli olarak gitmeli sistem...yani sen olayi kontrol altina tutmalisin,,dolayisi ile de bu onemli....Biz kontrolu model imiz uzerinden saglayacagiz yani dinamik olan hersey bbizim modelimiz uzerindeki veriler  yolu ile olacak....
+//MODEL
+var tasks=[
+    {description:'Handle til middag', isDone:true},
+    {description:'Lage middag', isDone:false}]
+
+//View
+let tasksTable=document.getElementById("tasksTable");
+show();
+function show(){
+
+    //Her bir innerHTML i set ettigimizde netleseren, tarayici html olarak parse edecek html olarak ayristiracak,tolker....yani artik tag olarak ayristiracak ve dom objesine donusturecek ondan dolayi direk innerHTML den cagirmak tan ziyade biz once bir degiskene atariz daha sonra innherHTML e yazariz ki her calistiginda innerHTML e bu sekilde ayristirmaya calismasin 1 kere yapsin, ondan dolayi biz dinamik olacak olan html elementimizi string icinde degiskene atayarak olustururuz
+
+    //Simdi mantigimiz su olacak, biz yeni eleman eklerken yeni eleman i kullanici girecek addTask a bunu biz parametre olarak gonderecegiz...ve de controller da ki fonkisyonumz icinde biz bir obje olusturup bu objeyi ana verrimiz icine push edecegiz.....
+    //Input check islemi icinde input checkbox a tiklaninca yani onchange olunca ise bizim html icinde bir onchange fonksiyonu icine hangi task in isDone i true ise false , false ise true olacagini bilemiz icin, bizim ordan id gondermemiz gerekir.....ki fonksiyomuz icnde biz parametre olarak id alalim ve gidp ana veriden o id uzerinden erisip gidip ana veriden onu degistiebilelim......
+
+    //Farkli acidan da dusunecek olursak eger id diye birsey yok ise o zaman da ne  yapariz for dongusu icinden index kullanarak indexi onchange fonksiyonu icine parametre olarak gondeririz ve de o index uzerinden tasks dizisi icindeki elemenetimize erisiriz
+
+    //update,delete islemlerinde de bize index veya id lazim ya da baska uniq verileri bulmamiz gerekrir.... 
+   let html=`  <tr>
+            <th>Oppgave</th>
+            <th>Gjort</th>
+            <th></th>
+        </tr>
+        `;
+       
+        for(let i=0; i<tasks.length; i++){
+            let task=tasks[i];
+            
+     
+            html+=createHtmlRow(task,i);
+        }
+
+        //BEST PRACTISE......
+//herhangi bir attribute de yapilacak degisiklikleri biz datamizdaki verilere bagli olarak yapmamiz gerekir, bu mesela bir class da verebiliri bu sekilde css ozellikelrini bir  datamiziin icindeki verileri kullanicinin view daki verilerle iligi yapacaklari degisiklige gore bir event funciton a baglayarak o verinin durumna gore o class attribute eklensin veya eklenmesin seklinde dusunebiliriz.......
+        tasksTable.innerHTML=html;
+        
+        
+}
+
+//BESTPRACTISE.....REFACTORING.......
+//Biz show fonksiyonunun icini cok karmakarisik bir hale getirdik iyi anlasilmaz oluyor onu derleyip toparlamamiz gerekiyor yani ne yapalim o zaman html icine olusturudugmz ne var ne yoksa alip disarda bir fonksiyon yapalim ve ismine de createHtmlRow diyelim.....
+
+function createHtmlRow(task,i){
+
+    const {description}=task;
+    const checkedHtml=task.isDone ? "checked" : "";
+    //Eger task ediMode da degil ise o zaman don
+     if(!task.editMode)   return `
+        <tr>
+            <td>${description}</td>
+            <td><input onchange="changeIsDone(this,${i})" type="checkbox" ${checkedHtml}/></td> 
+            <td><button  onclick="deleteTask(${i})" >RemoveTask</button>
+                <button  onclick="editTask(${i})" >Rediger</button>
+            </td>
+            
+        </tr>
+        
+        `
+
+        return `
+        <tr>
+            <td ><input id="editDescription${i}" type="text" value="${description}"/></td>
+            <td><input onchange="changeIsDone(this,${i})" type="checkbox" ${checkedHtml}/></td> 
+            <td><button  onclick="updateTask(${i})" >updateTask</button>
+              
+            </td>
+            
+        </tr>
+        
+        `
+      
+      
+}
+
+
+//Controller
+
+//Burda biz taskDescription icin hem view a hem de controller a ait olabilir veya ortak olabilir cok da problem degil
+let taskDescription=document.getElementById("taskDescription");
+console.log("taskDescription: ",taskDescription);
+
+
+
+        function addTask(){
+            console.log("value: ",taskDescription.value)
+            let task={description:taskDescription.value, isDone:false}
+               tasks.push(task); 
+               console.log("tasks: ",tasks)
+               show();
+               taskDescription.value="";
+        }
+
+        function changeIsDone(clickedInput,index){
+            console.log("task: ",index);
+            const isDone=clickedInput.checked;
+            //TUYOLAR-BESTPRACTISE-FARKLI BIRSEY.....
+            //Burda farkli birsaey yapiyoruz buna dikkat edelim bu da guzel bir cozum direk bizim tiklamamiza batgli olarak degisen tiklaidigmiz inputun checked ina bagliyourz yani biz bir tikliyoruz checked false oluyor bir tikliyoruz checked true oluyor yani zaten checked kendinde bir toggle var biz onu kullniyoruz bu 1.yontem
+            //Sunu da yapabilirdik dogrudan elimizdeki veri tasks in icindeki hangi veriye tiklandigni index uzerinde bulunp direk onu her tiklandiginda tersini yap da diyebilirdikk.......
+            console.log("value: ",isDone)
+            tasks[index].isDone=isDone;
+            show();
+        
+
+        }
+
+        function deleteTask(index){
+                tasks.splice(index,1);
+                show();
+                console.log("tasksss: ",tasks);
+        }
+
+        //UPDATE ISLEMI ILE ILGILI YENI BIR YONTEM COOOK IYI YENI GORDUM BUNU----BESTPRACTISE......
+//Soyle bir mantik izleyecegiz edit taska tiklarsa kullanici, editTask diye normalde datamizda olmayan ama editTaska tiklandigi zaman direk prototyping yontemi ile editTask icinde olusturdugumuz task objesi icinde bir property dir ve edittaska tiklanirsa true oluyr ve de biz datamizin gosterilemsinde eger editTask true ise sen datayi gosterme onun yerine ...update yapacagin td icindeki veriyi td icinde bir input koy ve td nin text degeri olarak verdigin description i da update durumunda koydguun input a value olarak ver ki artik sen update dedgin zaman orasi bir andas input texte dondsun ve text olarak da senin su an uzerinde olup degistirmek istedign text olsun orda. ve edit durumu true iken ki ekrana html olarak buttonlardan da normalde update olan butonu edit durumunda lagre, veya saveChanging gibi birseyle degistirebilriz, ve edit durumudna artik delete butonunu da kaldirebilriiz, ve bu butona tilkandiginda inputa girilen yeni veri ana data icinde degistirilir ve show invoke edeilir tekrardan ve de burda veri icinde degisiklik yapildiktan sonra da show invoke edilmeden once edit durmunu da false ile degstirebilriz..........
+//Ayrica html olsturudugmuz createHtml fonksiyonun da edit durumun icinde iken tr ye dinamik uniq id ler veririz
+//   <td ><input id="editDescription${i}" type="text" value="${description}"/></td>
+//inputa girilen degere de erismek icin bu id yi kullanirz
+
+function editTask(index){
+       //Dikkat edelim farkli bir is yapiyoruz-BESTPRCTISE-FARKLI BIR SEY......
+       //PROTOTYPING I ETKILI BIR SEKILDE KULLANMA.......COOOK IYI SUUUUUPEEERR..ANA DATAMIZA SONRADAN BIRSEY EKLEMEYE UGRASMADAN ISJMIZI NASIL DA KOLAYLASTIRIYOR.,.....EFSANE......
+      // herseyi de gidip direk data icine yeni bir data vs eklemiize gerek yok zaten javascript cok fleksibel..direk prototyping ile edit durmunu kendimiz yeni bir property olusturarak yapaibliriz
+        tasks[index].editMode=true;
+        show();
+}
+
+//BESTPRACTISE.....BU NASIL OLACAK DEDIGIN SEYLERDE HEMEN SUNU DUSUN...KI OZELLIKLE DE VIEW ILE ILGILI HTML ILE ILGILI VEYA CSS I ILE ILGILI HERSEYI BIZ DEGISTIRMEK ISTEDIGIMIZ DURUMLARI YENI BOOLEAN DATA LAR UZERINDEN KONTROL EDEBILRIZ AYNI REACT MANTIGI YA BIRSEYI HAYAL ET DUSUN VE OTUR ONU KONTROL EDECK YENI BIR DATA OLUSTUR VE HEP YENI SEYLER HAYAL ET VE NASIL YAPARIM DIYE ADIM AT VE DENEME YAP.......BU ALTIN KURALLLLLL
+//AYNI REACT TAKI MANTIK YENI BIRSEY MI DUSUNDUN HEMEN ONUN ICIN YENI BIR STATE OLUSTUR VE O DUSUNDUGN SEYI O SATE TE OLUSTURACAGIN VERI TIPI ILE KONTROL ET.......
+        function updateTask(index){
+         
+            //Biz input un id sini burda baska bir seklde aliyoruz ve de dikkat edelim id uzerinden input valuesini erisiyoruz...parametrede o veriyi almadan id sini kendimiz olusturuoyruz id nin dinamik kismi bizde var sabit kismini zaten elle bir krerlik yazariz.....
+            const id=`editDescription${index}`;
+            const inputTag=document.getElementById(id);
+            tasks[index].description=inputTag.value;
+            tasks[index].editMode=false;
+            show();
+        }
+
+    
+    </script>
+
+</body>
+</html>
+
+<!--
+
+    MVC MANTIGI...
+    Biz istiyoruz ki Model- da data miz ve dinamik olarak View icinde degisecek olan degiskenlerimizi tutalim sonra, View i model imiz icinde ki dataya gore dinamik olarak sekillendirelim...
+    View da ise her zaman sabit olarak surekli duracak olan html kismini yazarken dinamik olacak olan html kismini ise baska bir degiskende tutup sonra for dongusu ile dondurerek veya map,foreach ile dondurerek goruntuleme islmeini yapariz...Yani dinamik olan html kismi yani kullanici interaktif olarak etkilesimde bulundukca eklenecek kismi dinamik yapacagiz....
+    Degiskenlerimizi hangi datalari dinamik yapacaksak ona gore belirliyoruz... ve de dinamik olacak olan datalarimiz i view a yerlestiriyoruz....
+   
+-->

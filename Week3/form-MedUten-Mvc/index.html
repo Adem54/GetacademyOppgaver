@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<form id="form">
+    <label for="name">Name:</label>
+    <input class="input" type="text" name="div1"   id="name" >
+    <br/><br/>
+    <label for="lastName">LastName:</label>
+    <input class="input" type="text"  name="div2" id="lastName">
+    <br/><br/>
+    <label for="email">Email:</label>
+    <input class="input" type="email"  name="div3" id="email">
+    <br/><br/>
+    <button id="btn" class="btn">Submit</button>
+</form>
+<hr>
+<div id="div1" class="div"></div>
+<div id="div2" class="div"></div>
+<div id="div3" class="div"></div>
+
+<script>
+    let name=document.getElementById("name");
+    console.log("name:; ",name);
+    let lastName=document.getElementById("lastName");
+    let email=document.getElementById("email");
+    let btn=document.getElementById("btn");
+let form=document.getElementById("form");
+
+//Javascript form islemleri-1
+    // form.addEventListener("input",function(){
+
+    //    document.getElementById("div1").innerHTML=name.value;
+    //     document.getElementById("div2").innerHTML=lastName.value;
+    //     document.getElementById("div3").innerHTML=email.value;
+    // })
+
+   
+//btn.addEventListener("click", getFormInputsValue);
+//Javascript form islemleri-2
+// function getFormInputsValue(event){
+//     event.preventDefault();
+//     document.getElementById("div1").innerHTML=name.value;
+//         document.getElementById("div2").innerHTML=lastName.value;
+//         document.getElementById("div3").innerHTML=email.value;
+// }
+
+const allDiv=document.getElementsByClassName("div");
+console.log("allDiv: ", allDiv.length);
+
+
+//Javascript form islemleri-3-Dynamic-Eventcapturing-Name attribute
+//Event capturing ve name attributunu kullanarak cok pratik bir sekilde islem yapiyoruz
+form.addEventListener("input", function(e){
+    console.log("name:_--- ", e.target.name);  
+     document.getElementById(e.target.name).innerHTML=e.target.value;
+       
+})
+
+
+//Javascript form islemleri-4-Dynamic-For-loop-Name
+let input=document.querySelectorAll(".input");
+console.log("input: ",input);
+for(let index=0; index<input.length; index++){
+    let inputItem=input[index];
+
+    inputItem.addEventListener("input", function(e){
+        document.getElementById(e.target.name).innerHTML=e.target.value;
+    })
+}
+//
+</script>
+</body>
+</html>

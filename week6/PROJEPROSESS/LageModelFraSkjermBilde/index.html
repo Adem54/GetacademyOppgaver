@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="./js/model.js"  ></script>
+    <script src="./js/opprettmeningsmålController.js"></script>
+    <script src="./js/opprettmeningsmålView.js"></script>
+    <script src="./js/meningsmålsController.js"></script>
+    <script src="./js/meningsmålsView.js"></script>
+    <script src="./js/showMeningsmålController.js"></script>
+    <script src="./js/showMeningsmålView.js"></script>
+    <script src="./js/showMeningsmålResultatController.js"></script>
+    <script src="./js//showMeningsmålResultatView.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+ 
+updateView();
+function updateView(){
+    const {currentPage}=model.app;
+
+    switch (currentPage) {
+      
+        case 'opprettMeningsmål':
+            return updateOpprettMeningsmål();
+        case 'meningsmåls':
+            return updateMeningsmåls();
+         case 'showMeningsmål':
+             return showMeningsmål();
+         case 'meningsmålResultat':
+             return showMeningsmålResultat();           
+    
+        default:
+            break;
+    }
+}    
+
+
+
+</script>
+</html>
+

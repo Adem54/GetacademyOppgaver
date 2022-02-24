@@ -1,0 +1,83 @@
+//Components
+//Alip baska bir yerde de kullanmayi dusundugumuz yapilar
+//site_log,title,btn,carosel,slider,hazir yapilar olup da tekrar tekrar kullanabilecegimiz yapilardir
+
+.avatar {
+   @include flexCenter();
+}
+
+.avatar img {
+    margin-left: 1rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 3rem;
+}
+
+.icon-cancel:before {
+    content: "\e901";
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+.response {//common class for user and bot
+    width: 50%;
+    border-top-right-radius:1.2rem;
+border-top-left-radius:1.2rem ;
+border-bottom-left-radius:1.2rem ;
+text-align: left;
+
+}
+
+.user{
+min-height:3rem ;
+margin-right:1rem;
+background-color:#333333;
+color: $secondary-font-color;
+padding: 1rem;
+margin-bottom: .5rem;
+margin-top: .5rem;
+float: right;
+}
+
+.bot{
+min-height:2rem ;
+margin-left:1rem;
+background-color:$secondary-font-color;
+padding: .8rem;
+clear: both;
+margin-bottom: 1rem;
+margin-top: .5rem;
+}
+
+
+.container input[type=text] {
+    width: 70%;
+    padding: .8rem;
+    padding-left: 1rem;
+    border-radius: .4rem;
+    resize: vertical;
+    border: 1px solid #ccc;
+    //primary-color-dark
+    background-color: $primary-color;
+    /*  border: 1px solid lightgray;*/
+    outline: none;
+    font-size: 1.7rem;
+}
+
+.container input[type=text]:focus {
+    //primary-color-light
+    background-color: $primary-color-light;
+    transition: width 0.4s ease-in-out;
+    width: 100%;
+}
+
+.icon-send:before {
+    content: "\e900";
+    position: absolute;
+    right: 5%;
+    bottom: 35%;
+}

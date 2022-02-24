@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat bot</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 100px;
+    }
+
+    #app {
+      width: 300px;
+    }
+    .chat-box {
+      clear: both;
+      float: left;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid gray;
+    }
+
+    .user-text, #btn {
+      float: right;
+    }
+
+  </style>
+
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body>
+    <div id="app"></div>
+    
+    <script>
+      // Root element
+      const app = document.getElementById('app');
+
+      // Initiate app
+      init();
+
+      // Model 
+      let chatHTMLStringContainer = '';
+      let responseData = {
+        hello: 'Hello there',
+        goodbye: 'Talk to you later',
+        rock: 'paper',
+        paper: 'scissors',
+        scossors: 'rock',
+        default: 'Try asking something else'
+      }
+      function addUserInputToChatContainer(userInput) {
+        chatHTMLStringContainer= `<div class="chat-box user-text">${userInput}</div>${chatHTMLStringContainer}`;
+      }
+      
+      function addBotResponseToChatContainer(userInput) {
+        let input = userInput.toLowerCase();
+        let response = responseData[userInput] ? responseData[input] : responseData['default'];
+        chatHTMLStringContainer = `<div class="chat-box bot-text">${response}</div>${chatHTMLStringContainer}`;
+      }
+
+      // View
+      function getUserInput() {
+        return document.getElementById('input').value;
+      } 
+
+      function updateView(chat) {
+        app.innerHTML = `
+        <div>
+          <input id="input" type="text" placeholder="Chat with me...">
+          <button onclick="startChat()" id="btn">Send</button>
+        </div>
+        <div class="container">${chat}</div>
+        `
+      }
+
+      // Controler
+      function startChat() {
+        let userInput = getUserInput();
+        addUserInputToChatContainer(userInput);
+        updateView(chatHTMLStringContainer);
+        setTimeout(() => { 
+          addBotResponseToChatContainer(userInput);
+          updateView(chatHTMLStringContainer);
+         }, 1000);
+      }
+
+      function init() {
+        updateView('');
+      }
+    </script>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d9c3abe3e3c1ca8',m:'ByJrlYpZBANdIY6ochBSNn.J_nH3tPf_Yn5unJFtP.k-1644232831-0-AXKiKbApOtWTGduA6O2Vk8mUcrVkkO7bJwEaD1XIvJctQ0dqt+pgNwdDMwJUzVWGKX0+Laqt4khvwFQ/Px8D0EcwSAZ050sHSI2LoIdIhl6ZL7EHTBkL4hoFK/ttIi2gJUZ8ScU25ic/5jaep+JZAbj/g5hyeBWvio7qGyiu7PWPid6Fe/HpG05fOYb0WBJCpw==',s:[0x96e07457d8,0xeb78cf8128],}})();</script></body>
+</html> 

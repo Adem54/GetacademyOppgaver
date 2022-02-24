@@ -1,0 +1,44 @@
+:root {
+    --btn-color: rgb(221, 224, 59);
+  }
+
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    margin:5rem auto;
+    text-align: center;
+    height: 8rem;
+}
+
+img {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12rem;
+    align-content: space-between;
+}
+
+.container div {
+    margin: 0.5rem 0;
+}
+
+.btn {
+    padding: 16px 8px;
+    border: 2px solid var(--btn-color);
+    color: var(--btn-color);
+    background-color: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 1.4rem;
+  }
+  
+  .btn:hover {
+    color: white;
+    background-color: var(--btn-color);
+  }
+  

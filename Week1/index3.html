@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table id="table1">
+      <tbody>
+        <tr id="rad1">
+          <td>o</td>
+          <td>o</td>
+        </tr>
+        <tr id="rad2">
+          <td>o</td>
+          <td>o</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button onclick="growTable()">Button</button>
+
+    <script>
+      console.log(document.getElementById("table1"));
+      function growTable() {
+        let table1 = document.getElementById("table1");
+        console.log("table1; ", table1);
+        let newTr;
+
+        let newTd1 = document.createElement("td");
+        let newTd2 = document.createElement("td");
+        let newTd3 = document.createElement("td");
+
+        newTd1.innerHTML = "o";
+        newTd2.innerHTML = "o";
+        newTd3.innerHTML = "o";
+        console.log("newTr: ", newTr);
+        console.log("newTd: ", newTd1);
+
+        newTr = document.createElement("tr");
+        let lasttdId =
+          table1.firstElementChild.lastElementChild.getAttribute("id");
+        let index = lasttdId[lasttdId.length - 1];
+        console.log(index);
+
+        newTr.setAttribute("id", `rad${parseInt(index) + 1}`);
+
+        for (let i = 0; i < parseInt(index) + 1; i++) {}
+
+        table1.appendChild(table1.firstElementChild);
+        console.log("newTr: ", newTr);
+        table1.firstElementChild.appendChild(newTr);
+        let rad1 = document.getElementById("rad1");
+        let rad2 = document.getElementById("rad2");
+        let rad3 = document.getElementById("rad3");
+        rad1.appendChild(newTd1);
+        rad2.appendChild(newTd2);
+        rad3.appendChild(newTd3);
+
+        console.log("table1; ", table1);
+      }
+    </script>
+  </body>
+</html>

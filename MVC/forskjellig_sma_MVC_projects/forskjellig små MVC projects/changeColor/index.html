@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dropdowns"></div>
+    <div id="main"></div>
+    <script>
+        const main=document.getElementById("main");
+        const dropdowns=document.getElementById("dropdowns");
+
+        let backgroundColor="black";
+        let txtColor="white";
+        let borderColor="lightpink";
+showDrops();
+        function showDrops(){
+            let html=`
+            <select onchange="backgroundColor=this.value, showColorDiv()">
+                <option value="black">Black</option>
+                <option value="lightpink">Pink</option>
+                <option value="navy">Blue</option>
+                <option value="lightyellow">Yellow</option>
+            </select>
+            `;
+            console.log()
+            dropdowns.innerHTML=html;
+        }
+
+showColorDiv();
+        function showColorDiv(){
+            let html=`
+            <div style="height:200px; width:200px;background-color:${backgroundColor}; color:${txtColor}" >Here is a text!Bask in the glor!</div>
+            `;
+            main.innerHTML=html;
+        }
+    </script>
+</body>
+</html>

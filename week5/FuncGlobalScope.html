@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+   <div id="main"></div>
+</form>
+    <script>
+
+let index=34;
+let x=28;
+let arr=[5,6];
+
+let y=82;
+let name="ZEHRA"
+function foo(){
+    return y;
+}
+
+
+let myObj={
+name:name,
+surname:"erbas"
+}
+let test2=myObj;
+let test1;
+
+show();
+        function show(){
+
+            let mainDiv=document.getElementById("main");
+            let arr=[1,2];
+
+let name="ADEM";
+let myObj={
+name:name,
+surname:"erbas"
+}
+
+test1=myObj;
+
+console.log("test: ",typeof  myObj["name"]);
+let x=8;
+let index=12;
+function foo(){
+    return x;
+}
+
+//ONCLICK OLAYI DOCUMENT.OBJECT ARACILIIGI ILE GLOBAL SCOPE DA DINLIYOR CLICK OLAYLARINI.....
+console.log("typeoffooo: ",typeof foo())
+//1-Biz innerHTML icine string olarak yazdiigmiz bir div in dom da javascirpt tarafindan okunma surecine bakalim
+//2-Oncelikle javascript stringi okur ve ona bakar ki eger innerHTML icinde gecerli tabi, eger html element taglari varsa anlar ki bu bir html tagi ve div ise o div olusturur onClick elementine gelince onun da icerisinde parametredeki elementlere bakar eger direk deger donduren bir ifade var ise icinde bulundugu scope yani fonksiyonda uretilmis ve gonderilmis primimitive type olan direk deger veren ifadeler gonderilmis ise o zamn sunu yapar,Orneign biz onclick event.handlerinin  da olusturulurken icinde bulundugu func blogunda bir fonksiyon olusturup o fonksiyonu biz bir primitive type return eder ve bu fonskiyonu onclick parametresi icinde invoke edersem o zaman
+//Onclick icine gonderdigimz ifadeler de
+//1-Degerleri direk yazar, deger old icin
+//2-Eger local da olsturulan bir fonksiyonun ismini yzarak invoke etmeden direk fonksiyonu gonderirsek o zaman bir bir fonksiyondur yani referans type dir yani javascript bunu okurken bir fonksiyon referanas type okuyacak ne yapacak bunu stringden normal bir fonksiyona donusturmek icin o fonksiyonu artik olusturmus olacak nerde global scope da yani document.objesinin altinda yeniden olusturdugu zaman o zaman da bu fonksiyon tabi ki local deki foo fonksiyonu ile ayni fonksiyon degil tabi ki,,yani referanslari farkli ondan dolayisi ile de bizim parametreye gonderidigmiz fonksiyon click islemiinde invoke edildigi click icinde parmetre olarak girilen foo fonksiyonu   tiklamadan sonra global scope da oldugu icin global scope da index arayacaK ve buldugu ilk index i alip return olarak dondurecek... , javascript bunu okudugu zaman document.object model uzerinden okudugu icin, bu rasi window altinda bir scope tur dolayisi ile global scope tur...
+//Eger biz bir obje nin propertysini yani string bir name olarak donen bir objecpropertysini verirsek eger o zaman problem yasamayiz cunku dogrudan primitive type gonderiyoruz....
+//Ama biz eger direk show function scopu icinde olusturtulan bir obje gonderirsek ve ayni objeden global scope da da olusturursak o zaman onClick olayina tiklandigi zaman bu olay, globalScope da gerceklesiyor ondan dolayi,cunku document.object model uzerinden manupule ediyor javascript ondan dolayi global scope da calisiyor ve de gidip global scope da ariyor o objeyi bulamazsa o zaman undefined verir....Ama
+            mainDiv.innerHTML=`<div class="div" onclick="run(this,index,${index},arr,[${arr}],${foo()},${foo},foo, {name:'memet'},myObj)" ></div>   `
+        }
+
+        
+function run(clickedDiv, index,arr2, arr, foo1,foo2,func, obj,myObj,myObj2){
+    //global scope da arr isminde bir degisken arayacak-template literal kullanmadan arr isminde bir parametre gonderdik
+    console.log("arr2: ",arr2);//Burda da yine arr isminde bir degisken arayacak global scope ta ve buldugu degiskenin degerini verecek....Direk yaziyoruz arr parametreye template literal olmadn
+    //Template literal ile show func scopundaki arrayi gondermeye calisiyoruz
+    console.log("arr: ",arr);//Eger array koseli parantezi icinde gonderirsek func show scopu icindeki arrayimizi o zaman onu aliriz ama biz arr arrayimizi onclick icinde eger templeta literal ile direk gonderirsek o zaman, bu onu destruct ederek onun saginda verilen parmtrelere de onu icindeki degerleri dagitir ve onlarin kendi degerlerini yok sayar, biz bu durumdna kurutulmak icin eger dizi gonderirsek dizi icinde gonderecegiz yani soyle dusunelim biz arr yaziyoruz ama o arrayin icndeki leri dagitior destruct ediyor biz de yine dizi icinde alalim diye bir dizi parantezi daha koyarak dizi icindeki elementlerimizi yine dizi icinde muhafaza etmis oluyoruz ve diger paramtrelerinde degerleri ile gelmesini sagliyoruz...
+    console.log("clickedDiv: ",clickedDiv);
+    console.log("index: ",index);
+
+    console.log("foo1: ",  foo1);//show func scopundaki x degerini dondurur...
+    console.log("funccccccccccc: ", func());
+  //  console.log("foo2, ", foo2())//globalscope daki x degerini dondurur 28.Cunku bu fonksiyonu okuyor javascript ve global de ariyor bu dondurdugu degeri, global de var ise o fonksiyonu aliyor...
+    console.log("obj: ",obj);
+  //  console.log("name_ ",myObj);//Biz myObj isminde hem show func scopunda hem de global scope da olan bir obje ismini olusturduk ve parametreye de bu ismi gonderdik 
+
+    console.log("myObj2Utentemplateliteral", myObj2);
+    if(test2===myObj2){
+        console.log("myObj test2 e esittir");
+    }else{
+        console.log("myObj test1 e esit degildir")
+    }
+
+    //Bir istisna function var burda function da icindeki degiskeni global de ariyor...kendisi bambaska bir function old icin zaten diger bir ayni islevi yapsa bile o function ile ayanidir diyemeyiz, ama obje verdguunuz zaman eger objeyi 
+
+//COOOK ONEMLI.......
+    //Eger direk yazarsak template literal olmadan onclick paramtresine direk gonderdigmiz isimleri gidip global scope ta ariyor oncelikle bulmaya calisyor ama biz eger gidip de ornegin myObj ti template literal a alip da parametreye gonderirsek bu sefer, biz show func scopunda olan bir elemnti paramtreye gondermis oluyoruz ama bu parametreye gonderilen degerler global scope da calistiriliyor ve show func scopu icinde olan objeyi global scope icinde bulamiyor ve undefined veriyor..........
+
+
+    show();
+}
+
+    </script>
+</body>
+</html>

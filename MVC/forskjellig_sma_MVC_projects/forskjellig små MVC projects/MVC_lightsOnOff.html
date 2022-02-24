@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIGHTS OFF PLEASE!</title>
+    <style>
+        div.lamp {
+            height: 30px;
+            width: 30px;
+            float: left;
+            background: linear-gradient(to top left, #ff3355 0%, #ffaf02 100%);
+            border-radius: 50%;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 5px;
+            
+        }
+    
+        div.first {
+            clear: left;
+            
+        }
+    
+        div.lightOn {
+            background: yellow;
+            border: solid 2px black;
+        }
+        
+        </style>
+</head>
+<body>
+    
+    <div id="output"></div>
+
+    <script>
+        const ouputDiv = document.getElementById('output');
+        let allLamps = ['','','','','', '','','','','', '','','','','', '','','','','',] //20 læmps
+        let info = '';
+       let startTime = new Date().getTime();
+       console.log("startTime: ",startTime);
+        let randomIndex =  turnOnRandom();
+
+        view();
+        function view(){ //en lampe i hver div -loop array
+        let html = `<div>${info}</div>`;
+        for(let i = 0; i < allLamps.length; i++){
+        let first = i % 5 == 0 ? 'first' : '';  //first i class olarak kullanacak ve 5 in bolumunden 0 kalan.Her 5 kutudan sonra clear left uygulayarak asagai atmak icin kullaniyor...Yani 5 erli siralar halinde durmasini istedgimiz icin...
+        console.log("first: ",first);
+        let isTurnedOn = i == randomIndex ? 'lightOn' : '';  
+        //dizi icinde tek tek donerek div uretirken urettgimiz random index  bu dizinin hangi indexine geliyorsa ona bir class vererek o yuvarlagin yanmasini saglamis oluyoruz...
+        console.log("isTurnedOn: ",isTurnedOn);
+        console.log("i:", i);
+        console.log("random in view: " , randomIndex)
+        
+            html += `
+                <div class="lamp ${first} ${isTurnedOn}" onclick="turnOff(this)">${allLamps[i]}</div>
+            `;
+            console.log("html:  ",html);
+        }
+        ouputDiv.innerHTML = html;
+        }
+
+        // turnOnRandom();
+        function turnOnRandom(){
+            return Math.floor(Math.random() * allLamps.length); 
+           // console.log("random: " , randomIndex)
+        }
+
+        function turnOff(){
+            console.log("Turns Off.");
+
+        }
+
+
+    </script>
+</body>
+</html>

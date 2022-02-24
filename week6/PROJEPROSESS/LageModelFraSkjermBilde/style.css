@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+}
+input{
+    width: 200px;
+}
+.popUp{
+    width: 400px;
+    height: 400px;
+    background-color: red;
+    position: absolute;
+    left:20%;
+    top:50px;
+    transition:all;
+    transition-delay: 2s;
+    display: flex;
+    flex-direction: column;
+    padding: 5% 3%;
+ 
+
+    
+}
+
+.btn {
+    width: 30%;
+    margin-left:1rem;
+}
+
+button:hover{
+cursor: pointer;
+
+}
+
+.createMeninsmålBtn{
+    background-color: aqua;
+}
+
+.createNewQuestion{
+    width: 400px;
+    height: 400px;
+    background-color: red;
+    position: absolute;
+    left:20%;
+    top:50px;
+    transition:all;
+    transition-delay: 2s;
+    display: flex;
+    flex-direction: column;
+    padding:5% 3%;
+    background-color: yellow;
+}

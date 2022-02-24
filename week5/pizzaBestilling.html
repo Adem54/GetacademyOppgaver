@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <div id="main"></div>
+    <p>
+      Ferdighet 9f - Valgsetninger - Sammenligne flere ting på en gang (og og
+      eller sammen)
+    </p>
+    <h3>Pizza-bestilling</h3>
+
+    <script>
+      // var btnBestill = document.getElementById('bestill');
+      // var infoDiv = document.getElementById('info');
+      // var bunnTykk = document.getElementById('tykkBunn');
+      // var bunnTynn = document.getElementById('tynnBunn');
+      // var fyllTaco = document.getElementById('fyllTaco');
+      // var fyllKylling = document.getElementById('fyllKylling');
+      // var fyllPepperoni = document.getElementById('fyllPepperoni');
+      // var strStor = document.getElementById('stor');
+      // var strMiddels = document.getElementById('middels');
+      // var strLiten = document.getElementById('liten');
+
+      let pizzaStoff = {
+        bunn: [
+          { id: "tykkBunn", isDisabled: false },
+          { id: "tynnBunn", isDisabled: false },
+        ],
+        fyll: [
+          { id: "fyllTaco", isDisabled: false },
+          { id: "fyllKylling", isDisabled: false },
+          { id: "fyllPepperoni", isDisabled: false },
+        ],
+        størrelse: [
+          { id: "størrelseStor", isDisabled: false },
+          { id: "størrelseMiddels", isDisabled: false },
+          { id: "størrelseLiten", isDisabled: false },
+        ],
+        name: "hello"
+      };
+
+      let bunn = pizzaStoff.bunn;
+      let fyll = pizzaStoff.fyll;
+      let størrelse = pizzaStoff.størrelse;
+
+      //View
+      update();
+      function update() {
+        console.log("PIZZASTOFF: ", pizzaStoff);
+        //${bunn[0]['tykk']=${bunn[0].tykk
+        console.log("test: ", bunn[0].isDisabled);
+        const mainDiv = document.getElementById("main");
+        let tykk = pizzaStoff.bunn[0]["isDisabled"];
+        let tynn = pizzaStoff.bunn[1]["isDisabled"];
+        let taco = pizzaStoff.fyll[0]["isDisabled"];
+        let kylling = pizzaStoff.fyll[1]["isDisabled"];
+        let pepperoni = pizzaStoff.fyll[2]["isDisabled"];
+        let stor = pizzaStoff.størrelse[0]["isDisabled"];
+        let middels = pizzaStoff.størrelse[1]["isDisabled"];
+        let liten = pizzaStoff.størrelse[2]["isDisabled"];
+        console.log("tykkkk:  ", tykk);
+
+        let isAllValgt =
+          (tykk || tynn) &&
+          (taco || kylling || pepperoni) &&
+          (stor || middels || liten)
+            ? true
+            : false;
+
+        mainDiv.innerHTML = `
+  <div id="info" style="padding-bottom: 20px;">
+  ${
+    isAllValgt
+      ? "Du har fylt ut alt og er klar til å bestille!"
+      : "Du har ikke valgt:"
+  }
+
+  </div>
+${!tykk && !tynn ? "  <li>bunn</li>" : ""}
+${!taco && !kylling && !pepperoni ? "  <li>fyll</li>" : ""}
+${!stor && !middels && !liten ? "  <li>størrelse</li>" : ""}
+
+    Bunn: <input ${
+      tykk && "checked"
+    } id="tykkBunn" type="radio" name="bunn" onclick="info(this,'tykk')" />Tykk
+    <input ${
+      tynn && "checked"
+    }  id="tynnBunn" type="radio" name="bunn" onclick="info(this,'tynn')" />Tynn <br />
+
+    Fyll: <input ${
+      taco && "checked"
+    } id="fyllTaco" type="radio" name="fyll" onchange="info(this,'taco')" />Taco
+    <input ${
+      kylling && "checked"
+    } id="fyllKylling" type="radio" name="fyll" onchange="info(this,'kylling')" />Kylling
+    <input ${
+      pepperoni && "checked"
+    } id="fyllPepperoni" type="radio" name="fyll" onchange="info(this,'pepperoni')" />Pepperoni<br />
+
+    Størrelse: <input ${
+      stor && "checked"
+    } id="størrelseStor" type="radio" name="størrelse" onchange="info(this,'stor')" />Stor
+    <input ${
+      middels && "checked"
+    } id="størrelseMiddels" type="radio" name="størrelse" onchange="info(this,'middels')" />Middels
+    <input ${
+      liten && "checked"
+    }  id="størrelseLiten" type="radio" name="størrelse" onchange="info(this,'liten')" />Liten<br />
+
+    <button ${
+      !isAllValgt && "disabled"
+    } id="bestill"  onclick="alert('Bestilt!');">Bestill</button>
+    <ul>
+        <li>Oppgave: Legg til et fyll til</li>
+        <li>Oppgave: Legg til en ting til i pizza-bestillingen, for eksempel firkantet eller rund pizza</li>
+    </ul>
+  `;
+      }
+
+      function info(checkedInput, pizzaType) {
+        //Parametreden gelecek veriler uzerinden
+        let pType = pizzaType;
+        const name = checkedInput.name;
+        const id = checkedInput.id;
+        //name string 
+        //BURAYI COKKK IYI ANLAMALISIN......
+        pizzaStoff[name] = pizzaStoff[name].map((item) =>
+          item.id === id ? { id: item.id, isDisabled: !item.isDisabled } : item
+        );
+        console.log("pizzaStoff:",pizzaStoff);
+        update();
+      }
+    </script>
+  </body>
+</html>
+© 2022 GitHub, Inc. Terms Privacy

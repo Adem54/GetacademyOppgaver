@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+      
+<script>
+//Modal-form inputlarinda baslangic deger i verilmek zorundandir
+
+//let name=null;
+let personName=null;
+let email=null;
+let lastName=null;
+
+
+updateView();
+    function updateView(){
+        // let nameText=name  ?`Benim adim ${name}`: `Lutfen isminizi girin`;
+       
+        let lastNameText=lastName  ? `Benim soyismim ${lastName}` : `Lutfen soyisminizi girin`;
+        let emailText=email ? `Mail adresim: ${email}` : `Mail adresinizi girin`;
+        let nameTxt=personName  ?`Benim adresim ${personName}`: `Lutfen isminizi girin`;
+        document.getElementById("app").innerHTML=`
+   
+  
+    <br/><br/>
+   
+    <label for="lastName">LastName:</label>
+    <input class="input" type="text"  name="div2" id="lastName"
+    oninput="lastName=this.value;" value="${lastName || ''}" 
+    
+    >
+    <br/><br/>
+
+    <label for="email">Email:</label>
+    <input class="input" type="email"  name="div3" id="email"
+    oninput="email=this.value;" value="${email || ''}" 
+    >
+    <br/><br/>
+    <label for="adress">Name:</label>
+    <input class="input" type="text"  name="div4" id="name"
+    oninput="name=this.value;" value="${personName || ''}" 
+    
+    >
+    <br/><br/>
+    <button id="btn" class="btn"  onclick="register()">Submit</button>
+
+<hr>
+
+<div id="div2" class="div">${lastNameText} </div>
+<div id="div3" class="div">${emailText}</div>;
+<div id="div4" class="div">${nameTxt}</div>`;
+    }
+
+    function register(){
+       console.log("name:", name);
+       console.log("name:", lastName);
+       console.log("name:", email);
+       alert("name-lastName-email ", name, lastName, email);
+        updateView();
+    }
+</script>
+</body>
+</html>
+<!--
+
+ <label for="name">Name:</label>
+    <input class="input" type="text" id="name" 
+    oninput="name=this.value;" value="${name || ''}" 
+    >
+<div id="div1" class="div"> ${nameText} </div>
+-->

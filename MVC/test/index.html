@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+const main=document.getElementById("main");
+const ul=document.createElement("ul");
+ul.className="ul";
+ul.id="ul";
+const li1=document.createElement("li");
+li1.className="li";
+li1.id="li1";
+const li2=document.createElement("li");
+li2.className="li";
+li2.id="li2";
+const li3=document.createElement("li");
+li3.className="li";
+li3.id="li3";
+ul.append(li1,li2,li3);
+main.append(ul);
+console.log("main: ",main);
+console.log("ul: ",ul.firstElementChild);
+
+
+console.log("TESSTTTTTTTTT")
+
+let people=[
+        {id:1,name:'Per', email:'per@mail.com'},
+        {id:2,name:'Pål', email:'pål@hotmail.com'},
+        {id:3,name:'Espen', email:'espen@getacademy.com'},
+    ]
+
+people.splice(1,1,{id:4,name:'Adem', email:'adem@mail.com'})
+
+console.log("person: ",people);
+    </script>
+</body>
+</html>

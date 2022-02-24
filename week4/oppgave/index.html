@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    body {
+
+        font-family: 'Roboto', sans-serif;
+    }
+    button{
+        display: block;
+        margin: 1rem;
+    }
+  
+    .animalArea{
+        width: 100%;
+        border: 1px solid;
+        height: 20rem;
+        overflow: hidden;
+      background-repeat: repeat;
+     background-position:top center ;
+  background-color: white;
+  background-size: cover;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .container {
+        margin: 5rem;
+        width: 50%;
+        height: 20rem;
+    
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+    }
+    section{
+      
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+ h3 {
+     width: 8rem;
+     padding: 1rem 0;
+     background-color: yellow;
+border-radius:.2rem;
+     text-align: center;
+     margin-bottom: -.2rem;
+     border: 1px solid;
+ }
+    
+.btn {
+    border: none;
+        border-radius: .3rem;
+        padding: .5rem;
+        border: 1px solid rgba(0, 0, 0, .125);
+}
+    #btnShow{
+        background-color: orange;
+    }
+    #btnSave{
+        background-color: greenyellow;
+    }
+    #btnShowSaved {
+        background-color: aqua;
+    }
+</style>
+<body>
+<div id="main">
+</div>
+    <script>
+        //Model
+const animals=[
+    {name:"cat", url:"https://media.npr.org/assets/img/2021/08/11/gettyimages-1279899488_wide-f3860ceb0ef19643c335cb34df3fa1de166e2761-s1100-c50.jpg"},
+{name:"dog",url:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*"},
+{name:"fish",url:"https://www.newportaquarium.com/-/media/Project/HFE/NAQ/Animals/Fish_Card.jpg?h=600&iar=0&w=600"},
+{name:"bird", url:"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001/1200"},
+{name:"insect",url:"https://images.firstpost.com/fpimages/1200x800/fixed/jpg/2021/01/screencapture-c-pxhere-images-1a-c4-2cd80cbea6174a47fc8b717d18ff-1604090-jpg-d-2021-01-12-13_11_31-1.jpg"},
+{name:"monkey",url:"https://static01.nyt.com/images/2022/01/25/science/21sci-monkeylovetriangle/21sci-monkeylovetriangle-superJumbo.jpg"},
+{name:"duck",url:"https://upload.wikimedia.org/wikipedia/commons/a/a1/Mallard2.jpg"},
+{name:"tiger", url:"https://www.dyreparken.no/content/uploads/2019/02/Dyreparken_Tiger_-daniel.schjott-2970-scaled.jpg"},
+{name:"kangaroo", url:"https://ichef.bbci.co.uk/news/976/cpsprodpb/B222/production/_103320654_kangab02file.jpg"},
+{name:"rabbit", url:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/rabbit-breeds-american-white-1553635287.jpg?crop=0.976xw:0.651xh;0.0242xw,0.291xh&resize=480:*"},
+{name:"deer", url:"https://c.files.bbci.co.uk/13E6E/production/_106481518_gettyimages-172387616.jpg"}
+];
+
+let storage=[];
+
+
+
+//1-Random olarak secilen hayvan resmini belli bir alanda img icinde gosterecgiz,
+//2-Random olarak hayvanlar icinden bazi hayvanlari bos bir dizi icine kaydedecegiz
+//3-Kaydettigimiz hayvani da tahmin edecekler ve ona gore gosterecegiz 
+   
+
+update();
+function update(){
+    const mainDiv=document.getElementById("main");
+    mainDiv.innerHTML=`
+    <button class="btn" id="btnShow">showAnimalRandomly</button>
+        <button class="btn" id="btnSave">SaveAnimalRandomly</button>
+        <button class="btn" id="btnShowSaved">showSavedAnimalRandomly</button>
+    <div class="container">
+    <section>
+        <h3>AnimalName</h3>
+        <div id="showAnimal" class="animalArea"></div>
+    </section>
+    <section>
+        <h3>Storage</h3>
+        <div id="animalInStorage" class="animalArea"></div>
+    </section>
+</div>
+    `;
+}
+
+
+//View
+const animalDivArea=document.getElementById("showAnimal");
+const btnShowAnimalInAnimals=document.getElementById("btnShow");
+//Save random animals-men hvert dyr må lagres en gang
+const btnSave=document.getElementById("btnSave");
+//showSavedAnimalInStorage
+const animalInStorage=document.getElementById("animalInStorage");
+const btnShowSavedAnimal=document.getElementById("btnShowSaved");
+
+
+
+
+function generateRandomObject(array){
+    let arrayLength=array.length;
+    const randomIndex=Math.floor(Math.random()*arrayLength);
+const randomArrayObj=array[randomIndex];
+return randomArrayObj;
+}
+
+//showRandomAnimal Function-randomAnimalObj=>random olarak urteilen animal object
+function showRandomAnimal(randomAnimalObj,divArea){
+        divArea.style.backgroundImage=`url(${randomAnimalObj['url']})`;
+        divArea.previousElementSibling.textContent=randomAnimalObj.name;  
+     
+        return randomAnimalObj;         
+      
+} 
+
+btnShowAnimalInAnimals.addEventListener("click",function(event){
+    showRandomAnimal(generateRandomObject(animals),animalDivArea);
+ 
+ });
+
+//check
+function checkIsObjectExist(arrayData,randomObject){
+    const checkAnimalInStorage=arrayData.find(animal=>animal.name===randomObject.name) ? true :false;
+    return checkAnimalInStorage;
+}
+
+//Save random animals-men hvert dyr må lagres en gang
+btnSave.addEventListener("click", function(event){
+    const choosenObjectInAnimals=  showRandomAnimal(generateRandomObject(animals),animalDivArea);
+    //storage.push(randomAnimalObj);
+    const checkIsObjExistInStorage=checkIsObjectExist(storage,choosenObjectInAnimals);
+    if(!checkIsObjExistInStorage){
+        storage=[...storage,choosenObjectInAnimals];
+    }  
+    console.log("storage: ", storage);
+})
+
+//showSavedAnimalInStorage
+btnShowSavedAnimal.addEventListener("click", function(){
+  showRandomAnimal(generateRandomObject(storage),animalInStorage)
+})
+
+
+    </script>
+    
+
+</body>
+</html>
+
+
+
+

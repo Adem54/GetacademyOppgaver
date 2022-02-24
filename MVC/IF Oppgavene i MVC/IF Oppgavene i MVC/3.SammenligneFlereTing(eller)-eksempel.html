@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammenligne Flere Ting (||) - eksempelkode</title>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="info"></div>
+
+
+    <script>
+        //hjelpevariabler
+        var app = document.getElementById('app');
+        var info = document.getElementById('info');
+
+        //model
+        let Acheck = "";
+        let Bcheck = "";
+        let Ccheck = "";
+        let Dcheck = "";
+
+
+
+        //view
+        checkboxes();
+        function checkboxes(){
+            let html = `
+    <input type="checkbox" onchange="checkTheBox(this.checked, 'a')"${Acheck} />A<br />
+    <input type="checkbox" onchange="checkTheBox(this.checked, 'b')"${Bcheck} />B<br />
+    <input type="checkbox" onchange="checkTheBox(this.checked, 'c')"${Ccheck} />C<br />
+    <input type="checkbox" onchange="checkTheBox(this.checked, 'd')"${Dcheck} />D<br />
+    
+            `;
+
+            app.innerHTML = html;
+        }
+
+
+        //controller
+        function checkTheBox(isChecked, checkName){
+            if(checkName == 'a') Acheck = isChecked;
+            if(checkName == 'b') Bcheck = isChecked;
+            if(checkName == 'c') Ccheck = isChecked;
+            if(checkName == 'd') Dcheck = isChecked;
+
+            infoHTML()
+        }
+        infoHTML()
+        function infoHTML(){
+            console.log(Acheck, " <-A   B-> ", Bcheck, " ", Ccheck, " <- C  D-> ", Dcheck)
+           if(Acheck && Bcheck && Ccheck && Dcheck)  info.innerHTML = `ALLE er valgt!`;
+           else if(Acheck || Bcheck || Ccheck || Dcheck)  info.innerHTML = `Noen er valgt (minst én, men ikke alle)`;
+            else info.innerHTML = `Ingen er valgt...`;
+            
+        }
+
+
+    </script>
+</body>
+</html>

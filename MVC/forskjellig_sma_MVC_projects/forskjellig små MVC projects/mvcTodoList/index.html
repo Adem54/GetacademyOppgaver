@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .todoDone{
+            text-decoration: line-through;
+          
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="todoInput" onkeydown="if(event.keyCode==13)addTodo(this)">
+<div id="outputDiv"></div>
+<script>
+  //Model
+  let output = document.getElementById('outputDiv');
+        let input = document.getElementById('todoInput');
+        let todoItem = ' ';
+        let todoArray = ["tst", "33", "heisann"];
+        //let isTodoDone = false;
+
+        makeHTML();
+
+
+        //View
+        function makeHTML() {
+            output.innerHTML = `
+                <p> Her er din nyeste Todo: </p>
+               ${todoItem} !
+                <p> Her er alle dine todo's: </p>
+                <ul>
+                    
+                     ${todoArray.map((todo, i) => `
+                   
+                      <li id="${i}"> 
+                      Todo # ${i}:  ${todo} <button onclick="isDone(${i})"> DONE </button> 
+                      </li> 
+                        `).join('')}
+                </ul>
+                `;
+        }
+
+     // style="textDecoration: isTodoDone ? 'line-through' : 'none'}"
+
+
+
+        //Controller
+        function addTodo(newTodoFromInput) {
+
+            todoItem = newTodoFromInput.value;
+            todoArray.push(newTodoFromInput.value);
+            
+            makeHTML();
+        }
+
+        function isDone(todoIndex){
+           // isTodoDone = true;
+            let currentElement = document.getElementById(todoIndex);
+            currentElement.classList.add('todoDone');
+            
+
+            console.log(currentElement.classList);
+            makeHTML();
+
+
+           
+        }
+
+        //Burda completed in gerceklesmesi icin onun disardan bir data dan alinmasi gereklidir ve de o data array icinden gelecek ve biz o data nin index i ile dondurdugumuz li nin indexini cakistirarak tikladigmiz li nin indexine erisip o index data da da ayni old icin o index ten data icinde tiklaanan li nin kullanidgi class name veya herhangi bir style ozelligini direk data dan degistirince ne oluyhor direk tikladigin li ye ozel bir degtisiklik yapmis oluyorsun......
+</script>
+
+</body>
+
+
+</html>
+
+<!--
+    
+-->

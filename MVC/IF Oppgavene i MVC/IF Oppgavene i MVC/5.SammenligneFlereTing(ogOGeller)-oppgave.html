@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&& og || - oppgave!</title>
+</head>
+<body>
+
+    <div id="output"></div>
+
+<script>
+    //hjelpevariabel
+    const outputDiv = document.getElementById('output');
+
+
+    //model  - variabelsamling, endres av controller og vises i view
+    let selectedBunn = "";
+    let selectedTopping = "";
+    let selectedSize = "";
+    let madeWithLove = "";
+
+    let infoTekst = "";
+    let buttonDisabledOrNot = "disabled"
+
+    //view - vise fram HTML med variabeldata
+    drawHTML();
+function drawHTML(){
+    let html = `
+    <h3>Pizza-bestilling</h3>
+    <div style="padding-bottom: 20px;">Gjør ett valg på hver linje:</div>
+
+    Bunn: <input type="radio"onchange="selectBunn('tykk')" ${selectedBunn == "tykk" ? "checked" : ""}/>Tykk
+    <input type="radio" onchange="selectBunn('tynn')" ${selectedBunn == "tynn" ? "checked" : ""}/>Tynn <br />
+
+    Fyll: <input type="radio" onchange="selectTopping('taco')" ${selectedTopping == "taco" ? "checked" : ""} />Taco
+    <input type="radio" onchange="selectTopping('kylling')" ${selectedTopping == "kylling" ? "checked" : ""}/>Kylling
+    <input type="radio" onchange="selectTopping('pepperoni')" ${selectedTopping == "pepperoni" ? "checked" : ""}/>Pepperoni
+    <input type="radio" onchange="selectTopping('tyttebær')" ${selectedTopping == "tyttebær" ? "checked" : ""}/>Tyttebær<br />
+
+    Størrelse: <input type="radio" onchange="selectSize('stor')" ${selectedSize == "stor" ? "checked" : ""}/>Stor
+    <input type="radio" onchange="selectSize('middels')" ${selectedSize == "middels" ? "checked" : ""}/>Middels
+    <input type="radio" onchange="selectSize('liten')" ${selectedSize == "liten" ? "checked" : ""}/>Liten<br />
+
+    Laget m/Kjærlighet: <input type="radio" onchange="selectLove('ja')" ${madeWithLove == "ja" ? "checked" : ""}/>Ja!
+    <input type="radio" onchange="selectLove('nei')" ${madeWithLove == "nei" ? "checked" : ""}/>nei. <br>
+   
+
+    <button ${buttonDisabledOrNot} onclick="alert('Bestilt!');">Bestill</button><br>
+        Du har valgt: <br>
+        Bunn: ${selectedBunn} <br>
+        Fyll: ${selectedTopping} <br>
+        Størrelse: ${selectedSize} <br>
+        Kjærlighet?  ${madeWithLove} <br>
+
+        ${infoTekst}
+    `;
+
+
+    outputDiv.innerHTML = html;
+}
+
+    //controller - endre på variabler i modellen
+function info(){
+    infoTekst = "";
+    if(selectedBunn && selectedTopping && selectedSize && madeWithLove){
+        infoTekst = "Du har tatt alle nødvendige valg - trykk bestill!";
+        buttonDisabledOrNot = ""
+    }
+    else {
+        let deltekst = "";
+        if(!selectedBunn){deltekst += "Du må velge bunn <br>"}
+        if(!selectedTopping){deltekst += "Du må velge Topping. <br>"}
+        if(!selectedSize){deltekst += "Du må velge størrelse. <br>"}
+        if(!madeWithLove){deltekst += "Du må velge kjærleik eller ei! <br>"}
+
+        infoTekst += deltekst;
+    }
+
+drawHTML();
+}
+
+function selectBunn(selectedOption){
+   selectedBunn = selectedOption;
+   info();
+}
+
+function selectTopping(selectedOption){
+    selectedTopping = selectedOption;
+    info();
+}
+
+function selectSize(selectedOption){
+    selectedSize = selectedOption;
+    info();
+}
+
+function selectLove(selectedOption){
+    madeWithLove = selectedOption;
+    info();
+}
+</script>
+
+</body>
+</html>

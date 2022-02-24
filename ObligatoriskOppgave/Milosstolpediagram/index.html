@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Et stolpediagram</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .rect,
+        button {
+            cursor: pointer;
+        }
+
+        .rect.active {
+            stroke-width: 1px;
+            stroke: rgb(0, 0, 0);
+        }
+
+        .error {
+            display: none;
+            width: 500px;
+            padding: 10px;
+            border: 2px solid red;
+            border-radius: 10px;
+            color: red;
+            margin-top: 20px;
+        }
+
+        .error.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content"></div>
+
+    <script>
+        // hjelpevariabler for både view og controller
+        var contentDiv = document.getElementById("content");
+
+        // model
+        let numbers = [7, 3, 1, 5, 8];
+        let chosenBar = 0; // Variabel for hvilken stolpe som er valgt
+        let inputValue; // Variabel for hva som er skrevet i input-feltet
+        let isDisabled = true; // Check if change and delete button are disabled
+        let err = false; // check if there is an error
+
+        // view
+        show();
+        function show() {
+            let svgInnerHtml = "";
+            for (let i = 0; i < numbers.length; i++) {
+                svgInnerHtml += createBar(numbers[i], i + 1);
+            }
+            contentDiv.innerHTML = `
+              <svg id="chart" width="1500" height="500" viewBox="0 0 309 103">
+                  ${svgInnerHtml}
+              </svg><br/>
+              Valgt stolpe: <i>${chosenBar ? chosenBar : "ingen"}</i>
+              <br />
+              Verdi:
+              <input type="number" min="1" max="10" oninput="inputValue = parseInt(this.value)" />
+              <button onclick="addBar()">Legg til stolpe</button>
+              <button id="change-btn" onclick="changeBarValue()" ${isDisabled ? "disabled" : ""
+                }>Endre valgt stolpe</button>
+              <button id="delete-btn" onclick="deleteBar()" ${isDisabled ? "disabled" : ""
+                }>Fjerne valgt stolpe</button>
+              <div class="error ${err ? 'active' : ''}">Du må velge en verdi mellom 1 og 10.</div>
+              `;
+        }
+
+        function createBar(number, barNo) {
+            const width = 8;
+            const spacing = 4;
+            let x = (barNo - 1) * (width + spacing);
+            let height = number * 10;
+            let y = 102 - height;
+            let color = calcColor(1, 10, barNo);
+            console.log("barNo: ",barNo);
+        
+            return `<rect data-id="${barNo}" class="rect ${barNo === chosenBar ? "active" : ""
+                }" width="${width}" height="${height}" x="${x + spacing
+                }" y="${y}" fill="${color}" onclick="selectBar(parseInt(this.dataset.id))"></rect>`;
+        }
+//div icindeki id yi data-id diye birsey ile aliyor ve onu da this.dataset.id olarak kullaniyor, dataset bir obje olarak data- seklidne kullanilan tum attribute leri icinde topluyor..
+        function calcColor(min, max, val) {
+            var minHue = 240,
+                maxHue = 0;
+            var curPercent = (val - min) / (max - min);
+            var colString = `hsl(${curPercent * (maxHue - minHue) + minHue
+                },100%,50%)`;
+            return colString;
+        }
+
+        // controller
+
+        function selectBar(selectedBarID) {
+            console.log("selectedBar",selectedBarID);
+            //choosen bar  ise index numbers icinde secilen stolpe nin index numarasini veriyor...
+            console.log("chosenBar: ",chosenBar);
+            chosenBar = chosenBar === selectedBarID ? null : selectedBarID;
+            console.log("chosenBarEtter: ",chosenBar);//SelectedBar a esit olmadii zaman selectedBar yap diyorsun onu, ben neye tiklarsam ona esitle diyorsun ve bunu yaparak cunku sen stolpeye tiklayinca chosenBar i burda sadece bir kez degistiryorsun, ve bu artik show icinde o deger esit oluyor.,,
+            isDisabled = !chosenBar;//Burda chosenBar 0 dan baska bir sayi olursa yani secili ise o zaman false olacak ve butonlar aktif hale gelecek, ama true olursa yani chosenBar 0 ise  o zaman isDisabled true olacak ve butonlar passif hale gelecek
+            console.log("isDisabled: ",isDisabled);
+            err = false; //err false..
+            show();
+        }
+
+        function addBar() {
+            validateInputAndShowUI(() => numbers.push(inputValue));
+        }
+
+        function changeBarValue() {
+            validateInputAndShowUI(() => numbers.splice(chosenBar - 1, 1, inputValue));//chosenBar i 1 eksilterek indexini buluyor ve index teki elementi siliyor ve  yerine inputValue ye ne yazarsa onu ekliyor,,
+        }
+      
+        function deleteBar() {
+            numbers.splice(chosenBar - 1, 1);
+            chosenBar = null;
+            isDisabled = true;
+            show(); 
+        }
+
+        function validateInputAndShowUI(callback) {
+            if (inputValue >= 1 && inputValue <= 10) {
+                callback();
+                err = false;
+            } else {
+                err = true;
+            }  
+            inputValue = 0;
+            show();
+        }
+
+
+
+    </script>
+</body>
+
+</html>

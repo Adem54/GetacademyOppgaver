@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td,th {
+
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Hva</th>
+            <th>Liste av "scalar"</th>
+            <th>Liste av objekter</th>
+           
+        </tr>
+        <tr>
+            <td>Lage tom</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lage en med gitte verdier</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lagre verdier</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lese verdier</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Søke bestemte verdier</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Søke kriterier</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Sortere</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Filtrere</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Statistikk-frekvenstabell</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+    <script>
+const cities=["Skien","Porsgrunn","Larvik","Tønsberg"];
+const numbers=[1,5,8,12,3,55,6];
+
+
+let result1=cities.sort();
+console.log("result1; ",result1);
+console.log(cities.reverse());//tersten siralar
+console.log(numbers.sort())//Javascript sayilari alfabetik olarak siralamaya caliisiyor ondan dolayi normal sayi verdgimizde sacma sapan bir sorun ortaya cikiyor...yani sayilari da A dan Z ye mantigi ile dusunyor onda dolayi, 1=>"A" 2=>"B" 3=>"C" dusunerek alfabetik siraliyor 12 yazdiginda "AB" diye goruyor 
+
+//Sort fonksiyonu
+//array.sort(function(firstValue,secondValue));
+
+//Sort methoudnun sayilari da string gibi degerlerndirmesinden cozum ise karsilastirma fonkisiyonudur...
+//Sayisal degerleri artan veya azalan duzende siralamak icin, siralama kriterini belirleyen bir fonksiyon kullanmaniz gerekir
+//function(a,b) {return a - b};
+//Sort methodu iki degeri karsilastirdiginda degerleri karsilastirma fonksiyonuna gonderiyor ve dondurulen degere gore siralar
+//Sonuc negatif ise a, b den once siralanir.Sonuc negatif ise a b den kucuktur, dolayisi ile sort fonks a yi b den daha once siralar
+//Sonuc pozitif ise a, b den sonra siralanir.Sonuc pozitif ise a b den buyuktur dolayisi ile sort fonksiyonu default olarak kucukten buyuge siralar ondan dolayi a  b  den sonra siralanacaktir
+//Sonuc 0 olur ise o zaman da siralam aynen kalir hicbirsey degismez cunku a b ye esittir.... 
+
+let result2=numbers.sort((a,b)=>a-b);//Kucukten buyuge
+result2=numbers.sort((a,b)=>b-a);//Buyukten kucuge
+console.log("result2; ",result2);
+
+	
+var o = [
+    {name: 'Per', age: 18},
+    {name: 'Pål', age: 17},
+    {name: 'Espen', age: 16},
+];
+
+
+//SORT FONKSIYONU ICERISINDE SONUCU 1,-1 VEYA O DONDUREN BIR FONSKIYON ILE GELIR VE ONA GORE SIRALAR KI BIZ DE KARSILASTIRMAK ISTEIGIMIZ FARKLI KRITERLER VAR ISE O ZAMAN RETURN ILE -1 KUCUKTEN BUYUGE A DAN Z YE 0 ESIT, 1 ISE BUYUKTEN KUCUGE Z DEN A YA SIRALAMADIR....
+// Når vi sorterer en liste av objekter, er det umulig for Javascript å vite hva den skal sortere etter. Da må du sende med en såkalt sammenligningsfunksjon (Compare function) Sammenligningsfunksjonen skal ta to parametre og svare 0 hvis de er like, positivt tall hvis den første er sist - og negativt tall hvis den andre er sist. Eksemplet under sorterer etter alder: o.sort(function (a, b){return a.age - b.age}) Eksemplet under sorterer etter navn:
+o.sort(
+    function (a, b) {//Biz eger ki text stringleri srialamak istersek o zaman return ile 0,1,-1 sonuclarini dondermemiz gerekir ki oyle yaparsak yani pozitif donerse sonuc parametreye ilk yazilan ikinci yazilandan daha sonra gelecektir siralmada yani , buyukten kucuge dogru Z den A ya dogru demek ama -1 gelirse tam tersi olur ilk parametre ikinci parametreden once gelecektir
+        if(a.name == b.name) return 0;
+        if(a.name > b.name) return 1;
+        else return -1;
+    })
+
+    console.log("ooo: ",o);
+    </script>
+</body>
+</html>

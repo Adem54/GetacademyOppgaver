@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammenligne med eller</title>
+</head>
+<body>
+  
+<div id="output"></div>
+
+    <script>
+//hjelpevariabler
+const outputDiv = document.getElementById('output');
+
+//model
+let selectedBKGcolor = "";
+let txtColor = "";
+
+//view
+drawHTML();
+function drawHTML(){
+    let html = `
+    <select onchange="setBKGColor(this.value)">
+        <option value=""></option>
+        <option value="black">Svart</option>
+        <option value="navy">Mørkeblå</option>
+        <option value="lightgray">Lysegrå</option>
+        <option value="lightgreen">Lysegrønn</option>
+        <option value="hotpink">Hotpink.</option>
+    </select>
+    <div style="background-color:${selectedBKGcolor}; color:${txtColor}; height:150px; width:150px; border: 2px solid black">Heisann Sveisann! Her byttes fargene ja!</div>
+    `;
+
+    outputDiv.innerHTML = html;
+
+}
+
+//controller
+
+function setBKGColor(selectedColor){
+selectedBKGcolor = selectedColor;
+setTXTcolor();
+
+drawHTML();
+}
+
+function setTXTcolor(){
+    console.log(selectedBKGcolor, "selectedBKGcolor")
+    if(selectedBKGcolor == "black" || selectedBKGcolor == "navy"){
+        txtColor = "white";
+    }
+    else {
+        txtColor = "black";
+    }
+    console.log(txtColor)
+}
+
+    </script>
+</body>
+</html>

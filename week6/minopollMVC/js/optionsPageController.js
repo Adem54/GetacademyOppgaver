@@ -1,0 +1,19 @@
+function goToVotePage(){
+    model.app.currentPage='vote';
+     updateView();
+}
+
+
+function addOption(){
+
+    model.options.push({text:model.inputs.optionsPage.newOption,color:"darkgray"});
+    model.inputs.optionsPage.newOption="";//Bu sekilde inputu temizlemis oluruz ama ne zaman dizi icine kelndikten sonra.,....BESTPRACTISE...
+
+updateView();
+}
+//Burda input a girilen option u alip model icerisinde ortak datamiz olan options dizisi icerisine bir obje olarak ekleyecegiz dolayisi ilede icerisinde text ve color olan bir obje olusturacagiz ki zaten texti input a girilen degerden aliyoruz bir de farge color olusturacagiz ve de model.options dizisine ekleyecegiz.....
+//BEST PRACTISE.....
+//Buraya cok dikkat edelim....Biz options page controller da options ortak data miz icerisine yeni bir option ekledgimiz zaman bizim stemmeside yani votePateView da verilerini ortak datamiz olan options dan aldigi icin orasi otomatik olarak guncellenmis oluyor.....
+//BESTPRACTISE....
+//Burda yapmadik ama biz javascript in prototyping ozelligi sayesinde istedigmiz zaman objelerimiz icinde, functional constructor larimiz icerisinde veya class larimiz icerisinde prototyping yolu ile yeni degiskenler uretip kullanabiliriz ihtiyacimiza gore ki bazen cok harika isler goruyor...bu fleksibel ozellik....
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+/* 
+* Hvilke data må vi ha i modellen for å kunne tegne opp dette skjermbildet? Bu ekrani yazabilmem icin, hangi tur datalara ihtiyacim var, model icinde..QUERY...SPØRRING.HENTE DATA...
+* Sayfamizda hangi degiskenler dinamiktir ve her yeni urun geldiginde degisen degiskenler nelerdir, dinamik verilerimiz hangileridir, hangi veriler sabittir...
+* Oncelikle evet bu sayfayi olusturabilmem icin hangi datalarim olmali model de ve nasil tutmaliyim
+* Disardan girilecek verileri inputs objesi icinde ne tur degiskenler ile nasil tutmaliyim...
+* Eger uygulamamiza giris  yapacak kullanicilar mevcut ise kullanici listesi ni data da tutmaliyiz...
+* Alle inputfelter trenger et eget felt i modellen..
+*/
+ const model={
+            //tilstand app:Hangi kullanici logg in oldu, ve biz su an hangi sayfada oldugumuzu tuttugumuz yerdir
+
+            app:{
+                currentPage:"productPage",
+            //    currentUser:null,//Mesela bizim logg in olan kullanicilarimiz olacak ise ve su anda hic kullanici log in degil ise bu sekilde yazariz...
+                currentUser:"per",//currentUser per ise onu data icindeki user lardan aliriz ve de web sayfamizda sag ustte per ismi gozukecek...
+            },
+       
+       //Input felter til hver side
+inputs:{//Hani input alanlari var sitemizde-1-søke felt, 2-input postnummber()
+//Inputa disardan kullanici tarafindna girilecek veriler module kaydedilecek ama burda veri girisindeki muhatap inputs icindeki degiskendir bu inputs icindeki degisken ana datmiz ile irtiabata gececek eger bu girilen data ana datmaiz icinde dinamik olarak degismesi gereken bir data ise ya da burdan girerken searchText diye giriliyor ama bu hangi islevi gerceklestirecek mesela bu arama yapacak iste neye gore arama yapacak buna bakmamiz gerekiyuor.....
+//Her sayfanin bir state durumu olacak, håndtering av tilstand.
+//BESTPRACTISE-----COOOOK ONEMLI BIR NOKTA VAR BURDA.......BU MANTIGI IYI KAVRA.....************************************************
+//Sammenligning butonu var ve biz o butona tikladigmiz zaman o buton border cerceveli hale geliyor ve de ayni zamaanda urun sayfasinin hemen ustune sammenligning butonu ve onun yanina urun geliyor...Yani biz sayfayi bir sammenlikning oldugu zaman bir de sammelignin olmadigi zaman diye durumunu ikiye ayirmisiz ve bizim sammenlign isminde bir butonumuz var demekki bu ne yapiyor biz ona tiklayinca sayfanin durumun sammenlikn true veya sammenlign false seklinde ayarliyor ondan doolayi bu mantigi cok iyi bilmeliyiz...Ayni mantik bir todo projesi yaparken herhangi bir todo nun update veya edit butonun a bastigi zaman biz normal liste halindeki todolari kaldirip todolarin input icinde yazili oldugu bir design gelsin diyoruz onun icinde edit butonuna tiklaninca editState veya editTilstand:true olup todo lar input icinde oldugu sayfayi getiriyoruz.....
+//Bir sayfa icinde herhangi bir bolum o sayfa icindeku bir butona basinca degisecek ve o yeni gelen sayfa ile prosess devam ediyorsa o zaman bu tarz durumlar icin biz durum degiskligi state changing or tilstand diyoruz ki bunu cokkk iyi anlayalim bu advance seviye bir durumdur.......
+//ONEMLI.....BESTPRACTISE.....COOOOK ONEMLI.......BURAYI COK IYI ANLA.....
+//Inputs icinde sadece inputlar bulunmuyor simdi burayi iyi anlamaliyiz, bizim herhangi bir sayfamizda dinamik olan veriler mesela
+//BESTPRACTISE.....HERZAMAN INDEX NUMARALARI UZERINDEN HAREKET EDELIM O ZAMAN SORUN  YASAMAYIZ CUNKU BIR ELEMENTE ID YI BAZ ALDIGIMIZ ZAMAN ID LER HER URUNUN KENDINE HASDIR MESELA O URUN SILINDIGI ZAMAN ID LER ARASINDKAI HIYEARSI DENGE KAYBOLUUYOR ORNEGIN   ID:1,ID:2,ID:5,ID:7 GIBI MESELA AMA SUNU UNUTMA INDEX LER HERZAMAN AYNI SIRADADIR....INDEX LERI KULLANMAMIZ GEREKEN YERLERDE COOOK ISIMIZE YARIYOR....
+
+//BESTPRACTISE...BIZ SU ANDA HANGI URUN UZERINDE CALISIYORUZ ONU DA BILMEMIZ GEREKIYOR...URUN DETAY SAYFASINDA IKEN 
+
+productPage:{
+    //Uzerinde calistigimz id yi herzaman hatirlamaliyiz....inputs da bizim dinamik ve surekli kullanicinin interaktifligine gore degisebilen datalar olmalidir.....
+    
+    //Burasi cook onemli....Brukeren velger indirekte ved å klikke på noen menyer
+    productId:1,//Su an uzerinde oldugumuz product in id si, cunku biz baska sayfalara gittik ama tekrar bu sayfaya gelmek istioruz o zaman burda currentPage yani kullanici hangi urune tikladi ise oraya gelebilmeli dolayisi ile de bu da dinamik ve kullaninin tikladigi urun un id si herzaman gelecek....
+    searchText:"",
+    postNo:"",
+    isCompare:false,//ornegin bir butonumuz var compare isimli ona tiklrsak sayfaya compare kismi getiriyor gibi baska bir butona tiklrsak da bunu kaldiriyor
+    imageIndex:2,
+    //Burda da suna dikkat edelim, burda index numarsini yaziyoruz sayfa da belki bu 1,2,3 diye gidiyordur ama biz index numarasini almaliyiz dizi de index numarasi 0 ile baslar.....
+    //Biz product detail sayfasini gosterirken slider ile bircok farkli resim olarak gosterme gibi bir sansimiz var ve biz mesela 2.resimi sectik ve basks islemlerle ugrastik geldik ve urunumuz hangi resim de kaldi ise onda gostermek istersek meesela bu sekilde onu da burda almaliyiz..Aslinda kisacasi sayfamizda dinamik olup da kullanicinin degistirecegi input olark girecegi tiklayarak secebilecegi, ve sayfa durumunu degistiebilecegi, yani kullanicinin interaktif olacagi dinamik olan hersey burda olacaktir ondan dolayi isimden dolayi burayi sadece input girislerinij oldugu dersek yanlis olur ve anlamini cok daraltmis oluruz...
+    colorIndex:0,//Bu da yine productDetails de kullanici hangi rengi secerek product i gorecekse burda onu tutmaliyiz burasi interaktif oolarak sayfamizda kulllanici tarafindan tiklanarak yapilacak her islevi kontrol etmelidiri.....Ve yine soyleyelim ki.. biz index  numaralari uzerinden gideriz.....
+}
+
+},
+        //data-fellesData:Tum sayfalarin kullanacagi datadir bu
+            //Eger bir nettbutikk i incelersek, products, siparisler(ordre),kunder,kategoriler
+
+           users:[
+               {name:"per",pwd:"123",},
+               {name:"markus",pwd:"123",},
+           ],
+                //Biz datalarimza her zaman id ler uzerinden erisecegiz dolayisi ile id ler bizim en onemli yapilarimizdan bir tanesidir...Backendde relasjonal database islemlerinde de zaten hep id ler uzerinden isimizi goturuyoruz.....
+//Eger kullanici herhangi bir urun veya urunler satin alirsa o zaman alisveris sepetinden siparse dusecektir...
+orders:[
+    {
+        customer:"per",//o anda giris yapmis olan logged inn olan kullanici bilgisini alir burda da
+        orderLines:[
+        {productId:1,count:3,}, 
+        {productId:2,count:4,}, 
+        ]
+    }
+],
+//BESTPRACTISE...BURAYI DA COOK IYI ANLAMALISIN........!!!!!!!!!!!!!!!!Sadece productId uzerinden tutuyoruz listeyi.......
+//Sepete ekle butununa tikladigmmmzda ne oluyr ve bunu modelimizde nasil gosteririz,
+//Toplam siparis sayisini da reduce ile hesaplariz onu da kaydetmemize gerek yok.....
+            shoppingCart:[//Burda prdodct bilgilerini tekrardan almaiza gerek yok sadece product saysi 
+              {productId:1,count:1,},  
+              {productId:2,count:2,},  
+            ],
+//shopping cart products in icinde olmayacak tamamen ayri bir listedir karistirmayhalim ve de icerisinde sadece, id ve sayi si olacak biz productId uzerinden product in diger verilreine erisiriz...slå opp gjennom javascript products feltene.Siparis sepeti sayfasina gelgimiz zaman productin id sini
+                products:[
+                    {
+                        id:1,
+                        title:"Sony tradløse hodetelefon",
+                        description:"Støyreduksjon med Dual Noise Sensor + 35 timers batterileveretid",
+                        productNo:113995,
+                        //Burda sag ustte o urune ait farkli renk lerde gormek icin farkli renk alternatifleri mevcut ki bu da bir dizidir.Listeler halinde gordugmuz hersey dizidir bunu unutmayalim..... Ayrica urun resimlerini slider da ceviriyoruz burda da urune ait farkli resimlerini bir resmi donduruluyor dolayisi ile icerisinde urune ait farkli resimlerin bulundugu bir listemiz daha var
+                        colors:[{colorText:"sort", code:"black"},{colorText:"hvite", code:"white"}],
+                        brandLogo:"https://www.komplett.no/mfglogo/SAMSUNG.gif",
+                        productPictures:["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"],
+                        unitsInStock:12,
+                        categoryId:1,
+                        rating:{//*****(30) bu sekilde rating durumunu boyl giriyhoruz cunku yildizlar 4-5 arasinda bulunuyor
+                        //Bu sekilde direk statik oldu data, ama biz bunu dinamik yapacaksak o zaman kendi listesini almaliyiz...her
+                            rating:4.5,//selve rating
+                            count:30,//Vi kan også ha egen liste over ratingene 
+                            //hvis vi skal lagre en og en rating, faktisk programmere folk legge til en rating,endre rating,slette rating, så er det lurt å ha egen liste
+                        
+                    } }
+                ],
+                categories:[
+                    {name:"TV, lyd & bilde", id:1},
+                    {name:"Hodetelefoner, lyd & bilde", id:2,parentId:1},
+                    {name:"TV, lyd & bilde", id:3, parentId:2},
+                ]
+            }
+            //Bir tane netbutikk,online butikk magazasi uzerinden orneklendirecegiz, bir tane urun seciyoruz komplett.no dan ve bu sayfada ne tur veriler var onlari ayirt edip modelini olusturalim.....
+//Bu sitede dikkat edersek biz urun detay sayfasini inceliyoruz ve bu urun bir kategori altinda listeleniyor bunu hemn urunun ustunde bir hiyerarji seklinde gorebiliyoruz....
+//Her er du:
+//Forsiden > Datautstyr > Skjermer > Skjermer Samsung 27" LED Curved C27F396-
+//Ornegin bu urun un kategorisi skjermer ve bu urun skjerm kategorisi altinda yerini almistir...
+        
+    </script>
+</body>
+</html>
+
+<!--
+* Bu cok harika bir exersize, yani hernagi bir web sitesini ac ve burda hangi veriler kullanilmis onlarin modelini yazmaya calis....bu cook onemli.....cunku eger bunu  yapabilirsen kendi hazirlayacagin uygulamalari cok kolaylik ile yapabilirsin....Ve bir uygulamanda hangi verilerin kullanilacagini netlestirdi isen eger o zaman bundan sonrasi cok daha kolaylasacaktir ve projeye baslayabilirsin kolaylikla ki tabi ki eksiklerin olabilir arada gozden kacanlar, bunlari yol boyunca, aklina geldikce tamamlarsin.....
+
+https://www.komplett.no/product/1183881/mobiler-klokker/mobiltelefoner/galaxy-s20-fe-4g-128gb-marineblaa
+
+Biz bir ekrandi olusturabilmek iicn o ekran da olmasi gereken datayi modelimizde olusturmamiz gerekiyor daha dogrusu model designimizi ona gore ayarlamamiz gerekiyor.....
+
+
+-->
