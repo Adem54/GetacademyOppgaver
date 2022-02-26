@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <input id="url" type="text"/>
+    <button onclick="go()">pushState</button>
+    <hr>
+    <button id="btn">Click</button>
+    <script>
+        function go() {
+            const page = document.getElementById('url').value;
+            history.pushState(null, null, page);
+        }
+        //input a girdigimiz degeri sayfamizin adres cubuguna ekliyor..Bu islemleri cokca kullanacagiz bunlar coook onemli......
+        //  history.pushState(null, null, page); bunun sayesinde uzerinde bulundugumuz mevcut adres cubugunda biz 3.parametreye page i yazdigimiz yere ne yazarsak onu ekliyor oraya ki bu resmen redirect yapiyor....Bizim onceden hazdirladimgiz bir sayfamiza yonlendirmek istersek o zaman bu sekilde islem yapariz....
+
+//Tum click islemlerinde calisacaktir
+window.onclick=function(){
+    console.log("Click islemi")
+}
+    
+    </script>
+</body>
+</html>

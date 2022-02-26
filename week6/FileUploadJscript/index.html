@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    
+    <!--
+    Koden under viser hvordan man kan lese et bilde fra en file upload  - og få det som en byte array. Denne kan lagres i modellen (eller en backend/database) - og hentes tilbake. Funksjonen showImage() viser hvordan man kan vise denne byte arrayen som et bilde via en img-tag:
+
+    -->
+
+    <input type="file" onchange="readFile(this)" />
+    <img id="myImage" />
+
+    <script>
+//The ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer. It is an array of bytes, often referred to in other languages as a "byte array".
+ //Create a 16byte buffer
+ var buffer = new ArrayBuffer(16);//byteLength: 16
+ console.log("buffer; ",buffer);
+
+        async function readFile(fileInput) {
+            console.log("fileInput.files: ",fileInput.files);
+            //readFile inputuna tiklayip resim yukledigmiz zaman parametreden gelen input elemnti icerisinde o dosya ile ilgili verilerin oldugu files objesi vardir
+            //
+            console.log("arrayBuffer(): ", fileInput.files[0].arrayBuffer());
+            // byteArray er verdien du kan lagre i modellen - og lese tilbake
+            //.arrayBuffer() returns an ArrayBuffer that contains the blob’s data in binary form.Bytearrray tipinde donebilmesi icin arrayBuffer() methodunun calistirimasi gerekir
+            const byteArray = await fileInput.files[0].arrayBuffer();//arrayBuffer promise donmesni sagliyor...
+           //The arrayBuffer() method in the Blob interface returns a Promise that resolves with the contents of the blob as binary data contained in an ArrayBuffer.
+            showImage('myImage', byteArray);
+        }
+    
+        function showImage(imageId, imageBytes) {
+            const blob = new Blob([imageBytes], {
+                type: "image/jpeg"
+            });
+            const urlCreator = window.URL || window.webkitURL;
+            const imageUrl = urlCreator.createObjectURL(blob);
+            document.getElementById(imageId).src = imageUrl;
+        }
+    </script>
+    
+  </body>
+</html>
+<!--
+    The browser has additional high-level objects. Among them is the Blob. The Blob object visualizes a blob that is a file-like object of immutable. The Blob is a raw data: you can read it both as binary data or text. It consists of an optional string type, blobParts, strings, as well as BufferSource.
+    new Blob(blobParts, options);
+
+  create Blob from string
+let blob = new Blob(["<html>…</html>"], {
+	type: 'text/html'
+});
+ important: the first argument must be an array [...]
+
+ create Blob from a typed array and strings
+let welcome = new Uint8Array([89, 101, 108, 99, 111, 109, 101]); // "Welcome" in binary form
+let blob = new Blob([welcome, ' to ', 'W3Docs'], {type: 'text/plain'});
+
+Blob as URL
+The Blob is flexible: you can, also, use it as URL for <img>, <a>, and other tags. The Blob objects can also be downloaded and uploaded with the help of type. It naturally transforms into Content-Type for network requests.
+
+    Image to Blob
+    t is possible to generate Blob of an image part, a whole image, or take a page screenshot. It is, particularly, useful for uploading it somewhere. Image operations are carried out through the <canvas> element.
+
+
+ To ArrayBuffer
+The Blob constructor helps to generate a blob from anything, including BufferSource.
+
+As you know, ArrayBuffer, BufferSource, and Uint8Array are considered binary data. A Blob is a binary data with type. Therefore, Blob is quite convenient for downloading and uploading operations, common in the browser.
+
+Web-request methods such as fetch, XMLHttpRequest, and more can natively operate with Blob.
+
+Also, Blob can be converted to low-binary data types.
+A blob object is simply a group of bytes that holds the data stored in a file. It may seem like that a blob is a reference to the actual file but actually it is not. A blob has its size and MIME just like that of a simple file. The blob data is stored in the memory or filesystem of a user depending on the browser features and size of the blob. A simple blob can be used anywhere we wish just like files.
+The content of the blob can easily be read as ArrayBuffer which makes blobs very convenient to store the binary data.
+
+Syntax for creating a Blob:
+
+var abc = new Blob(["Blob Content"], 
+    {type: Blob Property containing MIME property})
+
+
+    Once you have a Blob object, you can access its 2 properties:
+size returns the length in bytes of the content of the blob
+type the MIME type associated with it
+
+Blobs are very useful while working with binary remote files.
+A blob can be very large i.e., can contain audio and video data too. They can be created dynamically and using blob URLs can be used as files. You can use them in many different ways to make them more useful.
+
+Browser - Javascript - Binary large object (BLOB)
+
+Web Browsers implement a Blob object, which is responsible for holding data.
+Blob means “Binary Large Object” and it’s an opaque representation of a chunk of bytes.
+-->

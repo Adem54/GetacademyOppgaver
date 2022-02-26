@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    id: <input id="id" type="text" /><br />
+    <button onclick="showA(parseInt(document.getElementById('id').value))">A</button>
+    <button onclick="showB(parseInt(document.getElementById('id').value))">B</button>
+    <button onclick="showC(parseInt(document.getElementById('id').value))">C</button>
+    <button onclick="showD(parseInt(document.getElementById('id').value))">D</button>
+
+    <div id="content"></div>
+
+    <script>
+        let myDiv = document.getElementById('content');
+
+        const pageToFunctionMap = {
+            a: showA,
+            b: showB,
+            c: showC,
+            d: showD
+        };
+//A popstate event is dispatched to the window each time the active history entry changes between two history entries for the same document. If the activated history entry was created by a call to history.pushState(), or was affected by a call to history.replaceState(), the popstate event's state property contains a copy of the history entry's state object.
+//onpopstate geri veya iler i oklarin tiklaninca tetiklenir ve de window.onpopstate normalde biz window uzerinden diger eventleri de cagirabilirz...Daha dogrusu eger history objesinde degisklik oluyorsa ileri ver geri tuslari tiklayinca iste o zaman calisir....
+
+//ONEMLI....
+//geriye geldgimiz zaman bir onceki adres cubunda gosterme islemini tarayci yapiyor location.hash uzesrinden cek edebiliriz.... 
+        window.onpopstate = function (event) {
+            console.log("event ",event);
+//location.hash=>adres cubugunun sonuna eklenen adresi verir..Adresi bizim alabilemiz icin localhash ile adresin sonuna eklenen textin # sembol basinda olmasi gerekir...zaten html link islemlerinde de aderse bu sekilde geliyor text.....
+            const value = location.hash.substr(1); // eks: c/105
+            console.log("location.hash: ", location.hash);
+            const parts = value.split('/');
+            const page = parts[0];
+            const id = parseInt(parts[1]);
+            console.log("event.state: ",event.state, page, id);
+
+//LOCALHASH---KULLANIMIZ BIZIM COK ISIMIZE YARAYACAK....
+//EN ONEMLI KISIM BURASI...Geri ok isareti tiklandigi zaman eger adres cubugunun sonunda herhangi bir text var ise ki bunu da l location.hash ile cek edebiliriz...
+
+//Yani ornegin biz her butona tiklaidimgzda bu history icindeki state objesi icine biz hangi sayfaya geldigimzi ve id sini history icindeki state objesi icinde tutuyoruz yani 
+//Ayrica burda da her geri gelmede eger adres cubugunda birsey var ise yani bu su demektir artik geri gidecek birsey kalmayana kadar en basa dondu isen ilkk sayfaya giridgin noktaya o zaman da showA() gostercek default olarak.....Geri veya ileri gidildigi zaman daha dogrusu geri ileri ok a basildigi zaman bu onpop eventi calisacak ve burdan adresi alacagiz  zaten ve adreste birsey olup olmadigin kontrol etmis olacagiz yani sonra da adres cubugunda adres varsa degil eklenmis bir adres var ise #2 boyle birsey var ise yani.... o zaman sayfayi da degistirebilemk icin ama sadece sayfayi yazsin degtistirsin ama gidip onu 
+            let func = pageToFunctionMap[page];
+            if (func) {
+                console.log("Eger adres cubugunda birseyler var ise o zaman da buraya gonderilen func calisacak...ve paremtre olarak id ve false alacak ",id, func)
+               console.log("page: ",page);
+                func(id,false);
+                //false oldguuz zmaan addPageToHistory islemini tekrar yaptirmamis oluyoruz cunku zaten adrese bir onceki adres geliyor biz tekrar onu yazdirirsak bu sefer calismaz.....
+            } else {
+              console.log("Eger adres cubugunda birsey yoksa  o zaman showA() calisacak...")
+                showA();//Adrestte eklenmis birsey kalmamis ise o zaman A yi calistir adrese default olarak A gelsin demektir bu...
+            }
+            //if (page == 'a') showA(id);
+            //else if (page == 'b') showB(id);
+            //else if (page == 'c') showC(id);
+            //else if (page == 'd') showD(id);
+
+        }
+
+        function showA(id, addToHistory = true) {
+            console.log("url: ", location.hash)
+            myDiv.innerHTML = 'Side A ' + id;
+            if(addToHistory) addPageToHistory('a', id);
+        }
+        function showB(id, addToHistory = true) {
+            console.log("url: ", location.hash)
+            myDiv.innerHTML = 'Side B ' + id;
+            if(addToHistory) addPageToHistory('b', id);
+        }
+        function showC(id, addToHistory = true) {
+            console.log("Burasi sayfaC url: ", location.hash)
+            myDiv.innerHTML = 'Side C ' + id;
+            if(addToHistory) addPageToHistory('c', id);
+        }
+        function showD(id, addToHistory = true) {
+            console.log("url: ", location.hash)
+            myDiv.innerHTML = 'Side D ' + id;
+            if(addToHistory) addPageToHistory('d', id);
+        }
+        function addPageToHistory(page, id) {
+           console.log("addPageToHistory=>url: ", location.hash)
+            console.log("history: ", history);
+            history.pushState({ page, id }, null, `#${page}/${id}`)
+//  //  history.pushState(null, null, page); bunun sayesinde uzerinde bulundugumuz mevcut adres cubugunda biz 3.parametreye page i yazdigimiz yere ne yazarsak onu ekliyor oraya ki bu resmen redirect yapiyor....Bizim onceden hazdirladimgiz bir sayfamiza yonlendirmek istersek o zaman bu sekilde islem yapariz....
+
+        }
+        function go(delta) {
+        }
+    </script>
+</body>
+</html>

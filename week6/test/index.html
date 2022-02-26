@@ -31,7 +31,17 @@ const people=[
 const result=people.map(person=>person.name);
 console.log("result: ",result);
 
+const todos=[{id:1,title:"homework",completed:false},{id:1,title:"food",completed:true},{id:1,title:"book",completed:false}]
 
+let activeFilter="active";
+
+const result2=todos.filter(todo=>activeFilter==="active" ? !todo.completed  :todo.completed);
+console.log("result2: ",result2);
+
+const todos2=[{id:1,title:"homework",completed:false},{id:1,title:"food",completed:true},{id:1,title:"book",completed:false}]
+const result3=todos2.filter((todo)=>activeFilter==='active' ? todo.completed===false && todo: todo.completed===true && todo,);  
+
+console.log("result3: ",result3);
 
     </script>
 </body>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+    
+      }
+      table {
+        border: 2px solid black;
+        border-collapse: collapse;
+        /* margin: 20px; */
+      }
+
+      tr,
+      td,
+      th {
+        border: 1px solid black;
+        border-collapse: collapse;
+        min-width: 50px;
+        padding: 4px;
+        height: 18px;
+      }
+
+      tr.underline {
+        border-bottom: 2px solid black;
+      }
+
+      td.label {
+        min-width: 100px;
+      }
+
+      td.bold {
+        font-weight: bold;
+      }
+
+      .test {
+          background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scoreboard"></div>
+
+    <script>
+      showBoard();
+      function showBoard() {
+        //Dizi icine 1 tane bosluk birakiyourz ki table in en ustteki satirina 2 tane hucre, kolan olustursun bos bir sekilde diye....
+
+        //Simdi de biz enere den baslayarak seksereye kadar olan satirdan sonra seksere nin alti kalin cizgi ile cizili ve de yatzy nin altindaki cizgi de kalin cizgi onlari cizmeye bakalim onlari yapabilmek icin orda olan herseyi data icindekki bir veriye baglamamiz gerekir...
+        let data = [
+          {
+            label: { txt: "", underline: "underline" },
+            score: ["Per", "Pål", "Espen"],
+          },
+          { label: { txt: "Enere" } },
+          { label: { txt: "Toere" } },
+          { label: { txt: "Treere" } },
+          { label: { txt: "Firere" } },
+          { label: { txt: "Femere" } },
+          { label: { txt: "Seksere", underline: "underline" } },
+          { label: { txt: "Sum" } },
+          { label: { txt: "Bonus" } },
+          { label: { txt: "1 par" } },
+          { label: { txt: "2 par" } },
+          { label: { txt: "3 like" } },
+          { label: { txt: "4 like" } },
+          { label: { txt: "Liten straight" } },
+          { label: { txt: "Stor straight" } },
+          { label: { txt: "Hus" } },
+          { label: { txt: "Sjanse" } },
+          { label: { txt: "Yatzy", underline: "underline", bold: "bold" } },
+          { label: { txt: "Totalsum" } },
+        ];
+
+        //BESTPRACTISE....MODEL HAZIRLARKEN....
+        //Bir uygulama yaparken user interface deki her turlu dinamiklik ve her turlu interaktifligi biz ona karsilik tutacagimiz dataya bagli olarak yonetmeliyiz...bu en onemli dikkat edecegimiz noktalardan biridir yani eger ki ekranimizdaki data belli kriterlere gore bir gruplandirilmaya tabi tutulmus ise bunun data daki karsiligi da ona gore olmalidir ve ona gore bir model hazirlanmalidir....bu coook onemlidiri.....
+
+        //DIZILER ICIN ONEMLI NOKTA....BURAYI ES GECMEYELIM ONEMLI NOKTA.....
+        //ICINDE ELEMAN OLACAK AMA BOS ELEMAN OLACKA YANI NULL OLACAK DOLAYISI ILE BIR DIZI ICINE BIZ MESELA 5 TANE NULL YERLESTIRIRSEK BU DIZI 5 ELEMANLI BIR DIZIDIR VE DE BU 5 ELEMANIN HERHANGI BIR CAGRILDIGINDA UNDEFINED DEGIL NULL GETIRIR...BUNU BILMEK ONEMLI....
+        //VE BIZ BUNU 2 SEKILDE YAPARIZ YAN BOS BIR DZI ACIP ELLE NULL GIRERIZ YA DA new Array(3) function constrctor i ile yapariz.....
+        //Isimlere de prototyping yapmasin diye biz index i 1 den baslatiriz....
+        //PROTOYPING ILE DINMAIK BIR SEKILDE OBJEYE VERI EKLEME.....
+        for (let i = 1; i < data.length; i++) {
+          // data[i].score=["null","null","null"];
+          data[i].score = new Array(3);
+          console.log("score: ", data[i].score.length);
+        }
+
+        data[11].score[2] = 18;
+        data[15].score[1] = 18;
+        //BESTPRACTISE....
+        //HTML DEGISKENININ NASIL FLEKSIBEL VE EFFEKTIV KULLANILDIGINI BURAYI INCELEYEREK GOREBILIRIZI BURAYI COK IYI INCELE......TABLE ICINDEKI TR VE TD LERIN HER BIRINDE AYRI AYRI FOR LØKKE KULLANARAK TEK BIR DEGISKEN ILE NASIL YAPABILDIGMIZI INCELE....
+
+        //BESTPRACTISE...ON YUZDEKI HERHANGI BIR MOUSE TIKLAMASI ILE GERCEKLESEN HERHANGI BIR CSS KODU ORNEGIN BIZ TIKLAYINCA KENARLIK GELMESI, VEYA BUNUN GIBI OZELLIKLER,I DATAMIZ ICERISINDEKI BIR DEGER UZERINDEN DINAMIK BIR SEKILDE KULLANABILIRIZ ORNEGIN....BIZ DIZIMIZ ICINDEKI ELEMNTLERI YAZDIRMAK ICIN ONLARI FOR DONGUSU ICINDE DONDURURUZ VE DE HER BIR DONGUDE BIR TR SATIRI ICERSINDE DE TD LERI DONDUREREK TD LER ICINE VERIMIZI GIRERIZ....VE DE ORNEGIN EGER DATAMIZ ICINDEKI TIKLAMA ILE CSS KODUNU DEGISTIRECEK OLAN VERIMIZ VAR ISE TRUE ISE VS NE ISE ARTIK BIR CSS CLASS I KULLANSIN DERIZ--ornekte gibi  <td class="label ${row.label.bold} ${row.label.underline} "> KI BU TIKLADIGMIZDA ISTEDGIMIZ ISLEMLERI YERINE GETIRIR YA DA ONUN YERINE DATAMIZDA DIREK CSS KODLARI BULUNABILIIR MESELA ARKAPLAN RENGI, GIBI DEGERLER OLUR VE DOGRUDAN INLINE STYLE A DINAMIK BIR SEKILDE YAZABILIRIZ......
+        let html = `<table >`;
+        for (let i = 0; i < data.length; i++) {
+          const row = data[i]; //Burda her bir satiri aliyoru oncelikle...
+          console.log("i: ", i, "--", row.label.underline);
+
+          const score = row.score;
+          html += `<tr class="${row.label.underline || ''}    test">
+                        <td class="label ${row.label.bold} ">
+                        ${row.label.txt}
+                        </td> `;
+          for (let index = 0; index < score.length; index++) {
+            html += ` <td>${score[index] || ""}</td>`;
+          }
+          html += `</tr>`;
+        }
+        html += `</table>`;
+        document.getElementById("scoreboard").innerHTML = html;
+      }
+    </script>
+  </body>
+</html>
+
+<!--
+
+    Bestpractise.--Eger bir diziyi donduruyoruz ve icinde atanmayan degerler var ise onlar undefined donecektir bunun aynisini objeler icinde dusunebiliriz olmayan bir propertyi cagirirsak undefined gelir iste biz eger sadece degerler gelsin undefined olunca bos gelsin istersek o zaman bestpractise olarak ${label || ""} bunu kullaniriz...
+
+        -BIZIM ELIMIZDE BIR TABLO VAR VE BU TABLONUN HER BIR KOLONUNA DIZIMIZ ICINDEKI VERILERI YERLESTIRMEYE CALISIRKEN FOR DONGUSUNU NASIL KULLANACAGIZ ONA BAKALIM---ONCLELIKLE BURDA BILMEMIZ GEREKE SEY BIZIM TABLOMUZDAKI KOLONLAR AYNI LENGDE YANI TOTAL DE YUKARDAN ASAGI HUCRE SAYISI AYNI OLDUGU ICIN KOLONLARDA BIZ ORNEGIN LABELS DIZIZI TUM KOLON KADAR ELEMNTI VAR ONU FOR DONGUSUNDE .LENGTHINI KULLANIRIZ VE DE AYNI FOR DONGUSU ICINDE DIGER KOLONLARA YERLESTIRECEGIMIZ VERILER ICIN ISE LABELS ILE KULLANIDIIGMZ FORELØKKE NIN INDEXINKI KULLANARAK AYNI FORELØKKE ICINDE DIGER DIZINI ELEMENTLERINI DE 2.KOLONA  YERLESTIREBILRIIZ.....
+        KESINLIKLE EZBERE IS YAPMA SADECE SESLI DUSUNUP SENIN NEYE IHTIYACIN VAR VE ELINDEKI YAPILAN ISLEMLER ILE SENIN IHTIYACIN OLAN SEYE BAGLANTI KURMAYA CALIS...
+        Ama biz burda bu cozumu daha iyilestirecek olursak su sekilde dusunebilliriz biz neden her bir kolon icin ayri bir dizi olusturuyoruz onun yreine en bastaki dizimiz olan labels icerisindeki her bir elmeenti obje icerisinde yazip, sonrasinda kolonlara eklenecek olan her bir satir I da o obje icinde  property olarak dizi seklinde eklersek her bir kolon icin ayri bir dizi kullanmaktan kurtulmus olluruzz……ve de sonrasinda eklenecek her bir elemnt icinde
+        
+    1-
+    ILK ADIM.....HMTL KODUMUZ DINAMIK OLARAK YAZMAK...
+    html listesini veya tablosunu veya herhangi sirali bir html den bir tane ornek prototyp olusturup onu for dongusu ile dondurerek her donmeden degiskenin sonuna dondurdugmuz elementten bir tane daha eklemek icine de bize verilen dizi icinddeki veriyi yazdirmak......
+    Eger karsimizda bir liste varsa her zaman yapacagimiz is sudur o listeden 1 tane ornek almak ve bir degisken tanimalmak ornegin let html="" gibi ve de  onu bir dongu icinde dondurerek html+= yaparak her donmeden donderdigmiz li veya tr td satirinin sonuna ekleyerek gitmesini saglamak
+HTML mizi javascript ile hazirlarken her zaman dinamik olacak olan html kismini yani kullanici kullanirken interaktif bir sekilde etkilesimde bulunacagi kismi dinamik olarak javascript icinde yazacagiz ama hicbirzaman degismeyen her zaman sabit olacak olan kismi ise direk html icine de yazabilirz veya yine javascript icindeki .innerHTML kismina template literal icinde direk html olarak da yazabiliriz...
+Eger biz bir ana html elementi icine ornegin bir listgeyi yerlestireceksek yani bir table var ve biz bu table icerisinde sadece 1 satiri dondurmek istiyoruz peki bunu nasil olacak da o table icine alacagiz...Su sekilde yapariz table in acilis html elementini aliyouruz ve onu bir degiskene atiyoruz nereye kadar sabit 1 kere yazilacak olan html kodlarini o sekilde yazdiktan sonra dongu ile alacagimiz kisma gelip bir html degisknine atariz sonra o html degiskenine bir dongu ile elkimizdeki dizi iicndeki elementleri  tr ve td den olusan 1 satir 2 kolon u dizi icindeki eleman sayisi kadar dondurerek html+= degiskenini de bu sekilde yazarak her donmeden yeni bir tr td satiri olusturarak icerisine de dinamik bir sekilde dizi icindeki elementlerimiz yazilir dongu sileminde sonra ise table kapnma etiketitmiz i tek satirda html+='</table>' seklinde yazariz.....
+2-Bize verilen tablo da listeli elementler goruyoruz ve tablo icinde belli alanlarin kalin cizgi icerisinde alindigini goruyoruz ve gruplanmis kalin cizgiler icinde bulunuyorlar bu da bize sunu gosteriyor demekki bizim bir listeli elementlerimiz gruplanmis ve gruplar icinde listeler var yani en basta dizi icerisinde objekterimiz var ve o objektler icinde de diziler mevcut gibi dusunebiliriz....
+
+3-BESTPRACTISE-TRIKSS....
+Eger karsimiza gelen projede biz ekran da bir liste ama yanyana gelmis birden fazla informasjon goruyorsak bu su demektir hemn bunu anlamaliyiz bir dizi var donen ve dizinin her bir satirinda bir den fazla informasjon var bu nasil mumkun olur bu ancak bir dizi ve icerisinde objelerle mumkun olacaktir....ve bu sekilde her bir satirda birden fazla veriyi ekrana basmis oluruz.....
+4-BESTPRACTISE.
+Obje ve dizi kullaniminda suna dikkat edelim...dizi icerisine biz ayni kategori ve birbirinin farkli versiyonu olan ayni  kategoriye sahip olan degerlleri dizi icinde tutariz ayni bir  liste seklinde yukardan asagi dogru isimler var ise bunlar yani kategoridir ve dizi icerisine koyulur..
+Ama mesela ornegin hem yanyana hem de alt alta bir degerlerin oldugu bir tablo var ise ve 1.kolon basliklardan olusuyor diger kolonlarda katilimcilardan olusuyor ve katilimcilrin puanlari basliklara karsilik gelecek sekilde yerlestiriliyorsa o zaman burda 1 tane dizi icinde her bir satiri obje icinde yazariz ve her obje icinde de 1 tane baslik ve o basligini yaninda baska bir property olarak dizi icine de katilmcilari yerlestiririz...
+Biz satirlardaki veri turlerinin birbiri ile iliskisine ve ayni kategori mi degil mi ona cok dikkat etmeliyiz....
+4---COK ONEMLI BUNA DIKKAT...
+Bir dizi iceriisne yerlestirecegimiz objelerin propertiesleri ayni olmaldiri buna cok dikkat edelim modellerimizi ona gore olusturalim....Eger dizi icindeki objelerimzin proeprty isimleri ayni olmaz ise onu yonetemeyiz....burasi coook onemlidir.....
+
+BESTPRACTISE.......
+BU ISLEME DIKKAT BIZ data dizisi icindeki score parametresini kendimiz de sonradan prototyping yontemi ile ekleyebiliriz....
+        let data = [
+          { label: "",score:["Per","Pål","Espen"] },
+          { label: "Enere", score:[3] },
+          { label: "Toere", score:[null,6] },
+          { label: "Treere", score:[null,null,9] },
+          { label: "Firere", score:[] },
+          { label: "Femere", score:[] },
+          { label: "Seksere", score:[] },
+          { label: "Sum", score:[] },
+          { label: "Bonus", score:[] },
+          { label: "1 par", score:[] },
+          { label: "2 par", score:[] },
+          { label: "3 like", score:[] },
+          { label: "4 like", score:[] },
+          { label: "Liten straight", score:[] },
+          { label: "Stor straight", score:[] },
+          { label: "Hus", score:[] },
+          { label: "Sjanse", score:[] },
+          { label: "Yatzy", score:[] },
+          { label: "Totalsum", score:[] },
+        ];
+
+
+    score dizilerini hepsini siliyoruz ve sonra score dizisini asagidaki gibi ekliyoruz tekrardan.....
+    PROTOYPING ILE DINMAIK BIR SEKILDE OBJEYE VERI EKLEME.....
+for(let i=1; i<data.length; i++){
+ data[i].score=["null","null","null"];
+    data[i].score=new Array(3);
+    console.log("score: ", data[i].score.length);
+}
+
+       data[11].score[2]=18;
+       data[15].score[1]=21;
+-->

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="date" id="dateInput" />
+    <div id="dateOutput"></div>
+    <br /><br />
+    <hr />
+    <div id="main-date"></div>
+
+    <script>
+      let dateIn = document.getElementById("dateInput");
+      let dateOut = document.getElementById("dateOutput");
+      let d = new Date();
+
+      console.log("getFullYear: ", d.getFullYear());
+      console.log("getDay: ", d.getDay());
+      console.log("getMonth: ", d.getMonth());
+      console.log("toLocaleDateString: ", d.toLocaleDateString()); //2/26/2022
+      console.log("toLocaleDateString: ", d.toLocaleDateString("nb-no")); //26.2.2022
+      console.log("d.toISOString: ", d.toISOString().substr(0, 10));
+      console.log("dateIn.value: ", dateIn.value);
+      //Bu sekilde de inputtaki datamizin formatini degistirebilriiz
+      dateIn.value = d.toLocaleDateString("nb-no");
+      console.log("unixtimestampt: ", d.getTime()); //Bi bize mili saniye
+
+      //JAVASCRIPT TARIH FONKSIYONLARI ILE ILGILI BILMEMIZ GEREKENLER
+      //1-Temel olarak herşey javascriptin Date() fonksiyonu ile yapılıyor. Date() fonksiyonuna bir tarih verirsek o tarihin formatlanmış halini bize verir, tarih vermezsek ise o anın tarihini verir.
+      var date1 = new Date("10/29/2023");
+      document.getElementById("main-date").innerHTML = date1;
+      var date1 = new Date();
+      document.getElementById("main-date").innerHTML = date1;
+      //Örnekte de görüldüğü gibi herhangi bir giriş değeri verilmezse bize o anın tarihini ve saatini verecektir.
+      //İşte yapacağımz temel işlemde verilen tarihten o anın tarihi çıkarmak. Böylece aradaki farkı bulabiliriz.
+      //Tabi bu tarihlerin ekrana yazıldığı şekliyle farkını almak mümkün değil. Bunun için JavaScript'in getTime() fonksiyonundan faydalanıyoruz. getTime() fonksiyonu, verilen tarihin integer karşılığını üretir. Bu integer sayıların farkını alarak iki tarih arasındaki farkını bulabiliriz. Şöyleki;
+      //Bu kod ile, o anki tarihin integer karşılığını öğrenebiliriz.
+      var date2 = new Date();
+      document.getElementById("main-date").innerHTML = date2.getTime();
+      //Ekran çıktısı: 1470902338506
+
+      //Şimdi gelelim tarihlerin farkını alıp ekrana yazdırmaya;
+
+      //Burada öncelikle verdiğimiz tarihin ve anlık tarihin formatlanmış hallerini birer değişkene atadık. Daha sonra bu değişkenlerdeki tarihlerin integer karşılıklarını alıp farkını hesapladık. Çıkan sonuç milisaniye cinsindedir. Bu yüzden bunu 1000'e bölerek saniye karşılığını bulduk. Ancak her 60 saniye bir dakikaya tekabül ettiğinden (ekranda "14874 saniye" gibi bir ifade yazmaması için) bu ifadenin de 60 ile modülasyonunu aldık ve ekrana bastırdık.
+      //1 saniye=1000 milisaniye
+
+      var date1 = new Date("10/29/2023"); //Verilen tarih
+      var date2 = new Date(); //Anlık zaman
+       //İki tarihin integer farkı
+      //abs() metodu, kendisine verilen sayı değerinin mutlak sayı değerini bulur. Math.abs(); şeklinde kullanılır. Javascript ile mutlak sayı değeri bulmak istersek abs() metodunu kullanabiliriz.
+      
+      //ceil() metodu, verilen ondalıklı sayıyı yukarı yuvarlar. Math.ceil(sayidegeri); şeklinde kullanılır. Sayının ondalık değeri ne olursa olsun yuvarlama işlemini yapar.
+ 
+      //iki tarih arasındaki saat farkını hesaplamak için aşağıdaki yöntemi kullanabiliriz.
+         // Date fonksiyonu  aa/gg/yyyy formatında zamanı almaktadır.
+         var tarih1 = new Date("9/14/2018");
+            var tarih2 = new Date("11/21/2018");
+            var zamanFark = Math.abs(tarih2.getTime() - tarih1.getTime());
+      //zamanFark değişkeni ile elde edilen saati güne çevirmek için aşağıdaki yöntem kullanılabilir.
+      var yilFark = Math.ceil(zamanFark / (1000 * 3600 * 24* 30 * 12));
+      var ayFark = Math.ceil(zamanFark / (1000 * 3600 * 24* 30));
+      var gunFark = Math.ceil(zamanFark / (1000 * 3600 * 24));
+      var saatFark = Math.ceil(zamanFark / (1000 * 3600 ));
+
+      //Saat farki icin
+console.log("yilfark: ",yilFark);      
+console.log("Ayfark: ",ayFark);      
+console.log("Gunfark:", gunFark);
+console.log("Saatfark:", saatFark);
+//      window.alert(gunFark);
+      
+//Biz tarihi new Date() ile olusturarak ordan toLocaleString e cevirebiliriz
+//ordan  toISO format ile yil basa gelecek sekilde cevirebiliriz...
+
+
+//PEKI MODEL DE BIZ DATE FORMATI ILE NASIL CALISABILRIZ....
+//Model de toLocaleString formati ile calismamaliyiz onun yerine bu formati View da kullanmaliyiz model new Date formatini tutmaliyiz....
+
+//Datebase de eger integer olarak tutarasak yani milisaniye o zaman onu fra tall to date e ceviririz su sekilde ornegin let t=157454545; new Date(t); ya da eger biz tarihi toISO formatinda tutuyorsak o zaman da yine tarihi bir degiskene atadiktan sonra let date=2022-02-26  new Date(date) bu sekilde cevirebilirz tekrardan...
+let test=new Date(1645893730834);//
+console.log(test);
+let test2=new Date(2022-02-26);
+console.log("test2: ",test2);
+//Ekranda gostercegimiz zaman....
+//Når vi går viser fram... for visning..
+//Yani sonuc olarak gosterme formatindan tarih formatina dogru gitmek isleminden uzak durmaliyiz once new Date uzerinden gidip sonra hangi formatta istersek o formata cevirebilriiz......
+//Direk tek bir formatta tarihi model deki bir degiskenimize atamayalim onumn yerine new Date() i model de bir degiskene atayip sonrasinda visning view da hangi formatta istersek o formatta gosterelim
+    </script>
+  </body>
+</html>

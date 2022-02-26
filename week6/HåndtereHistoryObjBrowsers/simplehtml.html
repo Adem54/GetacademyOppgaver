@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <button onclick="go(-1)">Back</button><!--back() fonksiyonu calistirir..history objesi altinda-->
+    <button onclick="go(1)">Forward</button>
+    <button onclick="showA()">A</button>
+    <button onclick="showB()">B</button>
+    <button onclick="showC()">C</button>
+    <button onclick="showD()">D</button>
+   <div id="content"></div>
+    <script>
+     
+     let myDiv=document.getElementById("content");
+     let model={
+         history:[]
+     }
+
+     function showA(){
+         myDiv.innerHTML="Side A";
+         addPageToHistory("showA()");
+     }
+     function showB(){
+         myDiv.innerHTML="Side B";
+         addPageToHistory("showB()");
+     }
+     function showC(){
+         myDiv.innerHTML="Side C";
+         addPageToHistory("showC()");
+     }
+     function showD(id) {
+            myDiv.innerHTML = 'Side D';
+            addPageToHistory(`showD(${id})`);
+        }
+        function addPageToHistory(pageJS) {
+            model.history.push(pageJS);
+            console.log("history:_", model.history);
+
+        }
+        //Gerii gitme islevi history dizisi icerisine uzerinde gezinilen sayfalari ekliyor her geri geldiginde de en son ustunde oldugun sayfayi history den siliyor dolayisi ile de history dizinin length i 0 olunca artik demekki geri gelecek sayfa kalmamis onun icinde go function calismasina gerek yok demektir...
+        function go(delta) {
+            if (delta == -1 && model.history.length > 0) {
+                model.history.pop();//Bir geri gelince en son uzerinde oldugumuz sayfayi siler
+                console.log("history1:_", model.history);
+                //Bir geri gelindiignde uzerinde olunan sayfa siliniyor ama bir onceki sayfa nin da calistirilmsi gerekir ama bir onceki sayfa history de oldugu icin zaten eger biz o onceki sayfayi da silmeden isleme devam edersek o zaman normal clikclemde uzerinde bulunan sayfa history dizisine eklenecegi icin uzerinde olunan sayfa 2 kez history de bulunmus olacakki o zaman ileri-geri islemleri yanlis calisir ondan dolayi biz geri gelme isleminde once geri gelmeden once hangi sayfada isek o silinir pop ile daha sonra geri gelince uzerine gelecegimiz sayfa pop ile silinir ve de ayni zamanda silinen geri denilince uzerine gelinen sayfayi degiskne atariz ve o degisken uzerinden o sayfayi getirecek fonsiyonu eval ile calstiririz ve bu sekilde geri geldigmiz zaaman biz geri geldgimiz sayfanin uzerinde olmus oluruz ve de biz tekrardan sildigmiz sayfayi calistirdigimz icinde show fonksiyonu ile calisan sayfa tekrar history ye eklenmis oluyor....Ama silmeden eklese idik 2 kez eklenmis olurdu....
+                let destinationPageJs = model.history.pop();//Geri kalan sayflardan da yine uzesrinde oldugumuz sayfayi 
+                console.log("history2:_", model.history);
+
+                eval(destinationPageJs);
+                console.log("history3:_", model.history);
+
+                
+            }
+        }
+     
+      
+    </script>
+  </body>
+</html>
+
+<!-- Browser-nettleseren-tarayici daki url kisminin sol tarafinda bulunan iler geri oklarini yaptigi islevler tarayici icinde olusturulmus fonksiyonlar araciligi ile gerceklesir bu fonksiyon da history fonksiyonudur... -->
