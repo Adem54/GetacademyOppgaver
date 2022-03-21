@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text] {
+  width: 150px;
+  display: block;
+  margin-bottom: 10px;
+  background-color: yellow;
+}
+
+input[type=button] {
+  width: 120px;
+  margin-left: 35px;
+  display: block;
+}
+
+
+a[target] {
+  background-color: yellow;}
+
+
+  [title~=flower] {
+  border: 5px solid yellow;
+}
+</style>
+</head>
+<body>
+    <h1>Bu konu cok detayli ve effektif kullanisli bunu ogrenelim...bir html in herhangi bir attributu uzerinden giderek css i degistirebiliyuoruz ayni attribute leri javascriptte dinamik isler icinde kullaniyoruz her iki yonden de cok efektif isler yapabilirz....</h1>
+<h1>https://www.w3schools.com/css/css_attribute_selectors.asp</h1>
+<h2>Styling Forms</h2>
+
+<form name="input" action="" method="get">
+  Firstname:<input type="text" name="Name" value="Peter" size="20">
+  Lastname:<input type="text" name="Name" value="Griffin" size="20">
+  <input type="button" value="Example Button">
+</form>
+<br><br><br>
+<hr>
+
+<h2>CSS [attribute] Selector</h2>
+<p>The links with a target attribute gets a yellow background:</p>
+
+<a href="https://www.w3schools.com">w3schools.com</a>
+<a href="http://www.disney.com" target="_blank">disney.com</a>
+<a href="http://www.wikipedia.org" target="_top">wikipedia.org</a><br><br><br>
+
+<hr>
+
+<!--
+
+    CSS [attribute~="value"] Selector
+The [attribute~="value"] selector is used to select elements with an attribute value containing a specified word.
+
+The following example selects all elements with a title attribute that contains a space-separated list of words, one of which is "flower":
+-->
+<h2>CSS [attribute~="value"] Selector</h2>
+<p>All images with the title attribute containing the word "flower" get a yellow border.</p>
+
+<img src="klematis.jpg" title="klematis flower" width="150" height="113">
+<img src="img_flwr.gif" title="flower" width="224" height="162">
+<img src="img_tree.gif" title="tree" width="200" height="358">
+</body>
+</html>
+

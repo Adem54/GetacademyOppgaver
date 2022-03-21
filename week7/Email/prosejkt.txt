@@ -1,0 +1,455 @@
+Hei takk for hyggelig møte.   
+
+Jeg laget en oppsummering tekst ut fra det du har fortalt, og vil gjerne få tilbakemelding fra deg.   
+
+Vi skal lage en applikasjon som viser hva slags muligheter eller aktiviteter finnes rund omkring som butikk, restaurant, hotell   for de som eier eller leier hytta som ligger i Hemsedal.  
+
+Det skal være to sider hvor vi lager en side for de som har hytta i Hemsedal og ser på muligheter og aktiviteter i rund Hemsedal, og de andre brukere som får lov til å legge til muligheter og aktiviteter applikasjonen.   
+
+Brukstilfeller  
+
+BrukerenType1:Enkelte brukere. For de som ser på aktiviteter og muligheter i rund omkring Hemsedal.  
+
+Applikasjonen skal gi anledning til å se på alle aktiviteter og muligheter som er sortert fra nærmeste dato til borteste  med tekst, bilde og dato i form av liste til de som har hytta i Hemsedal. Datoene må ligges som startdato, sluttdato og time. De vanlige brukere skal ha mulighet til å velge kategori og ser på aktiviteter av den kategorien man velger i form av liste. Aktiviteter består av gratis, betalt og ekstrabetalt. De som er ekstrabetalte aktiviteter skal vises i øverst og med forskjellige design. Og de som er betalte aktiviteter skal vises med en spesielt ikon slik at brukere kunne forstå at den er betalt. Hvis brukere ønsker å se på litt mer informasjon med aktiviteter som ligger i lista, må gis dem en mulighet til å trykke på en knapp hvor viser mer informasjon om den vedrørende aktiviteten. Aktiviteter som skal vises til vanlige brukere og tar slutt , må fjernes automatisk. Vanlige brukere skal ikke se på aktiviteter som har utgåtte datoer. 
+
+ 
+
+BrukerenType2:  
+
+Den brukeren som har anledning til å legge til nye aktiviteter med kategori som består av gratis, betalte og ekstrabetalte aktiviteter  og muligheter, skal være en selger som eier butikk, restaurant, hotell og de som arrangerer andre aktiviteter som ligger i rund Hemsedal.  Den aktiviteten som skal legges til består av et overskrift, beskrivelse, et bilde(valgfritt), startdato, sluttdato og time.  De må lages også en validasjon regler slik at den type brukeren ikke får lov til å legge til en ny aktivitet som er utgått dato. 
+
+Når det gjelder design har vi mulighet til å lage egen versjon og , anbefales å følge med user-friendly experience desing hvor vi kan studere nærmere noen nettsider som er relevant oppgaven og kan få inspirasjon av dem. Brukere som bruker mobiltelefon, nettbrett og en pc skal ha mulighet til å se applikasjonen ordentlig. 
+
+Jeg lurer på om noen ekstra ting og vil gjerne få svar fra dere.  
+
+Skal vi lage en søkefelt for vanlige brukere slik at de finner lettere den som de leter etter? 
+
+
+
+//Når en adminbruker kommer in adminside ser de noen overskrifter som butikk,restaurant,konsert,
+og de skal velge en av dem som passer dem og trykker på den kategorien de velger for å legge til
+en ny aktivitet. Admin kullanicisi dedigimiz kullaniciyi biz tedarikci-leverandør gibi dusunelim
+Bu admin kullanicilari kendi admin sayfalarina geldikleri zaman onlari ornegin sol side barda yukardan
+asagi bir kategori listesi karsilamali bunlar ornegin market,restorant,konser gibi Hemsedal da hitta
+si olanlari ilgilendiren etkinlik tiplerinin oldugu liste. Ve bu admin kullanicisi bu kategorilerden
+hangisi kendisinin organizasyonu veya butigine uyuyorsa ona tiklayarak yeni bir tane etkinlik ekle modal
+penceresini acmis olacak ve orda 1 ekleyecegi etkinligi ekleyecek ayrica da etkinligini eklerken baslik,
+resim,textarea detayli aciklama etkinligin kategorisi olarak da ucretsiz,ucretli, ve ekstra ucretli
+seklinde 3 kategoriyi dropdown liste de otomatik olarak getirebilliriz...Ayrica da ucretli kullanicilar
+icin ozel bir icon olacakti bunu biz tabi on yuzde kullanicilara gostermek icin ekleyecektik ve
+ ekstra ucretliler de kullanicinin ilgisini cekecek sekilde en ustte olacakti bu ikisi icin yapmayi dusndugumuz
+farkli design lari biz on tarafta listelenecek olan aktivitelerin kategorileri model de tutacagimiz icin¨
+on tarafta biz sadece sunu yapariz eger aktivite tipi ornegin ekstra betalt ise bu class i ver eger aktivite
+tipi betalt ise iconu kullansin degilse kullanmasin gibi if vaya ternary ler ile on yuzde kontrol edebilriz
+
+//Ayrica normal kullanici icin ise kullanici aktivite ve Hemsedal da gerceklesen etkinlikleri gorebilecegi
+bir liste gelecek ama tabi bunu biz css ve html ile cok goze hos gelen kullanici dostu bir kullanici
+tasarimi haline getirecegiz ve de sidebarda klasik bir alisveris sitesi gibi, kategoriler bulunmalidir ve
+kullanici bu kategorilerden hangisine tiklarsa tbi burdan ayni anda birden fazla kategori secekcek sekilde
+checkbox ayarlayacagiz ve tikladigi etkinliklerin listesini gorebilecek...
+
+//Anahtar kelimeler vinterturisme i Norge, kendini bir hitta sahibi veya kiralayan birisi gibi 
+dusun ve sen hittana geldin ve o cevrede hicbirsey bilmiyorsun ilk once ne yaparsin neye ihtiyacin olur
+Soyle bir uygulama olsa idi o uygulamada civardaki imkanlari nasil gormek isterdin nasil olsa id
+senin icin cok iyi olurdu ve sen cok memnun kalirdin bunu dusun ve buna odaklan ve buna benzer siteleri
+arastir....Hazir pizza isteyeceksin ornegin, butik ihtiyacin var kayak organizasyonu hangi gunler arasinda
+bunu ogrenmek istiyorsun mesela veya ucretsiz bir pølse grill etkinligi veya tur etkinlikleri var bunlari
+ogrenmek istemez misin veya nasil gormek istersin....
+//Buna benzer bir websitesi gorebilmek icin oncelikle normal alisveris siteleri incelenebilir ayrica da
+finn.no da ilan ekleme kismina gidip ilan eklemeye calisarak prosedurleri gorebilirz ve de listelenen 
+ilanlari da bir inceleyelim, ucretsiz, ucretli vs diye ve de anahtar kelime olarak annonser...i 
+ozellikle arastiralim....
+
+Uygulama ile ilgili ekstra neler ogrendik....
+Kullanici sayfasinda etkinlikler listelenmeli ve scroll ile asagi inerek kullanici gorebilmeli ve de
+etkinlikler arasinda kullanicilar like atabilmeli ve en cok like alan 5 aktivite gosterilmeli mesela...
+Etkinlik ve imkanlari kullanicilara sunarken bazi adminler yani butik sahipleri, pizza restorant
+sahipleri, vs reklam koyabilmeli ucretli ve ekstra ucretli olan kampanyalari ile ilgili
+
+-Parali etkinlik,reklami olan etkinlik ve parasiz etkinlik ucretsiz etkinlik ve de ekstra ucreti olan
+etkinlik diye etkinlikleri ayiracagiz...
+***************BURASI COOK ONEMLI BIR NOKTA...
+-Burda ozellikle kullanicilara etkinliklerin baslangic tarihleri bitis tarihleri ve de etkinlik 
+varighet yani ne kadar surecegi ile ilgili bilginin dogru bir sekilde verilmesi coook onemlidir
+Ve dolayisi ile de admin sayfasinda buna gore eklenmelidir yeni bir aktivite
+Ayrica satis yapan adminlerden ornegin bir restorant sahibi belli tarihler arasi eger bir 
+pizza indirimi koymus ise o zaman onu da ekleyebilecek yeni bir kampmanya, tilbud olarak
+
+Resim ekleme islemi, icin isteyen ekleyebilsin istemeyen eklemeyecek sekilde ayarlanabilmelidir..
+Verileri bir array datasi icerisinde tutacagiz herhangi bir database kullanmayagiz..
+Kullaniciya gosterilecek olan etkinlikler en yakin tarihten en uzak tarihe gore siralanmalidir.
+Admin sayfasinda resim yuklenebilmelidir...veya da url girilerek de resim eklemelerine izin verilebilir
+Ama suna dikkat edelim hem admin kullanicsinin hem de normal kullanicilarin minimum sekilde it
+bilgisi gerekecek bir uygulama olmali yani onlar uygulamaya baktiklari zaman cok kolay birsekilde
+anlayabilmeliler....
+Admin sayfasinda yeni aktiviteler ekleyen saticilarin kendi ekledigi kampanyalari da yine sagda
+bir sidebar ayarlayip orda otomatik goruntuleyebiliriiz ve de o admin kullanicisina onceden ekledigi
+etkinlikleri silme,duzenleme imkani da verebiliriz...
+
+Admin sayfasina gelen admin kullanicisi butikk,restorant,konser, olaylar(happenings) gibi kategori
+basliklarini hazir gormeli.....Happenings veya hendelser veya hva skjer i Hemsedal gibi orda gerceklesen
+etkinliklerin organizasyon sahipleri ve satiicilar tarafindan kolay bir sekilde anlasilip eklenebilecegi
+bir etkinlik uygulamasi olusturacagiz...
+//*****
+Admin kullanicisi sayfaya nasil giris yapmali bunu dusunelim....Bununla alakali...uzerine dusunelim..
+Ama onun yerine...
+Finn.no da olay su sekilde gerceklesiyor
+//Coook onemli.....
+En basta finn.no yu ve sahibinden.com u inceleyerek baslayabilriiz ki turk siteleri
+ ve norvecli siteleri ozellikle ayrica incelemeye
+alarak oralardaki sitelerden cok iyi bir sekilde faydalanabiliriz.....
+Udemy yi de inceleyelim....
+
+//ADMIN SAYFASI VE BUTONU NASIL OLMALI??????????
+Adamlar amazon da veya diger alisveris sitelerinden hep ayni seyi yapmislar...Once sell,addNyAnnonse
+gibi butonlar var onlara tiklayinca karsimiza sisteme giris yapmak icin bir pencere geliyor...
+Sonra giris yapiyoruz veya once kayit yapip sonra giris yapiyoruz ve ardindan da bizi kategoriler
+karsiliyor ve  o kategoriler den birini tiklayarak eleman ekleyecegiz....
+Uygulamaya arama butonu koyacakmiyiz
+Ayrıca admin dedigimiz kullaniciya ait bir tane ana sayfada en ustte buton olacak ve 
+yani aktivite olustur isminde ve tiklayinca admin sayfasina goturecek bizi....Burayi normalde 
+yeni aktivite olustur deyince, bir model karsilasin onu ve ona sisteme kaydol penceresi acilsin
+popup ve o sisteme kaydoldugu zaman karsina yine ana sayfa gelsin ve giris yapmis oldugu icin artik
+yine o ana sayfadaki createnewEvent deyince, bu sefer artik ona admin sayfasi getirsin ve onune hazir bir takim
+categoriler gelmeli o o kategoriler icinden hangi tur urun eklyecegini secebilmeli.....
+Finn.no yu takip et nasil bir urun ekleyebilirsin orda goreceksin.....bu onemli......
+
+
+//Hytte aktivite siteleri
+finn.no yu oncelikle bir incele....
+https://www.lillehammer.com/reisemal/fjellomrader/sjusjoen?gclid=CjwKCAiAgvKQBhBbEiwAaPQw3LfL7fIgl4vE3NQ8y1BpOnYW9-ADyR49GSgAtwhadLUY_qaLgOSUQxoCwHcQAvD_BwE
+https://www.visitnorway.no/
+https://www.booking.com/hotel/no/trysil-hyttegrend.no.html
+https://www.myrkdalen.no/no/bestill/se-og-gjore?filter=c%3D42555%3Bsorting%3Dst%3Da%3Bso%3Da
+https://topcamp.no/nb/hallingdal/opplevelser
+https://www.hafjell.no/sommer/gondolen
+https://www.visitoslo.com/no/
+https://www.visitoslo.com/no/aktiviteter-og-attraksjoner/aktiviteter/?tlp=3064303&name=The-Well&show=openinghours
+
+Kullaniciya gosterilen resimlerin uzerine gelince resimler buyumeli
+Birde ek olarak yakinlarda gezebilecekleri dogal guzellikleri de gorebilecekleri bir menu yapabiliriz
+galeri altinda veya 
+Ayrica kullaniciya gosterecegimiz resimlerde link olmali id...ama o linkler tiklayinca ne getirecek o kismini cek etmemiz gerekiyor...
+
+Admin sayfasinda her admin,leverandør veya seller in urununu veya tilbudunu ekledikten sonra
+kayitlarini sayfanin sag tarafinda bir alanda gosterebiliriz veya da bir buton ayarlariz
+o butona tiklayinca kayitlarini gorebilir liste halinde ve de o liste uzerinde
+
+silme,guncelleme vs islemleri yapabilmelidir....
+
+
+Bir sorum var 1.si en basta admin sayfasinda bir selger girdigi zaman onu belli kategoriler
+karsilayacak satici, leverandør bu kategorilerden birini tiklayarak bu kategoriye ait
+bir aktivite ekleyecek tabi bu kategoriler altindaki her aktivite de ayrica 3 alt
+kategorisi var ucretsiz, odemeli ve ekstra odemeli olarak ve de kullanici sayfasinda
+ekstra ucretili sayfalar en ustte siralanacak onun altinda da normal siralama ile 
+ucretsiz ve ucretli aktiviteler bulunacak tabi bunlar en yakin tarihten baslayarak 
+yukardan asagi siralanacak
+Ayrica sol sidebar tarafinda kategoriler olacak ve kullanici hangi kategoriye tiklarise
+o kategoriye ait kampanyalari gorecegiz.....Peki bu kategoriler ile ilgili herahngi birsey olacak
+mi aktiviteler listelenirken...
+
+Mobil versiyonlarda hamburger menu yaparken kullanici birden fazla kategori secebilsin
+diye kulanici once kategorileri secer sonra da altta bir tane tiklaycagi ve tiklayarak
+megamenuyu yukari alabilecegi bir icon yapilir, ama tek secenek olsa idi
+o zaman direk kategoriye tikladigi anda megamenuyu yukari alabilirdik
+
+Ates ve anons iconlari parali, reklam urunlerine icon olarak konuyor genellikle
+
+//Bir urun listelenme olayi yukardan asagi dogru urunlerimiz listelensin dedigi zaman 
+illaki her satirda bir urunun link seklinde yukardan asagi dogru her satirda 1 tane
+urun siralanacak diye dusunmeye gerek yok her sirada 3 erli 2serliveya 4 erli siralana
+cak sekilde de urunler listelenebiliyor ki zaten masaustunde 3 erli olur buyuk ekran
+da 4 er li olur tablette 2 serli mobilde de 1 erli sekilde listeleyebiliriz
+
+ONEMLI!!
+Projede ekstra betalt olan aktiviteler surekli gerceklesmeyen ve kampanyali olan aktivitelerdir¨
+Mesela bir butik veya pizza satisi bunlar normal betalttir ama ornegin yilda 1 kez ger
+ceklesen skikonkurranse gibi spesifik aktiviteler ekstrabetalte tabidir
+Ayrica bunlari nettbutikk ecommercielle sitelerinde online alisveris lerde en ustte bazi kampanyali
+urunler gozukur onlarin en ustte gozukmesinin sebebi diger kullanicilar tarafindan cok rate almis oolmasi degildir
+Sadece ekstra kampanyali bir urun olmasidir ve ayrica google da biz birsey ararken anonse ler
+en ustte gelecektir advertisement olarak, aslinda reklam yapmis oluyoruz...bir manada.....Burayi iyi anlayalim 
+
+//Bir eticaret sitesini bir yoneteni vardir ve bu yoneten hem bu siteye
+urun ekleyecekler icin hem de urunleri normal insanlarin orda gorup almalari icin bir 
+websitesi yaparlar ve bu siteye urun ekleyip satmak isteyen insanlar icin belli kurallar
+getirirler yani herkes oraya kafasina gore istedigi sayida urun ekleyemez
+Ve de kullanicilara, musterilere gosterilecek sayfada eger urununun ozel kampaynali ve surekli enustte veya
+farkli dizayn ile ona gore ustte veya dikkat cekici olmasini isterlerse o zaman
+ona gore urun eklerken bir kategori veya bir spesifik ozellik secerler urunleri 
+diger urunlere gore daha dikkat cekici olarak listelenir ve tabi ki
+bunun icin siteyi yoneten site sahiplerine para odeme karsiliginda bu yapilacaktir
+Yani biz burdan sunu anliyoruz leverandørler tedarikciler once urunlerini eklerler ama 
+onlar ekler eklemez urun kullanici sayfasinda listelenmez once bir web sitesi sahibinin
+onaynindan geciyor olablir cunku adam cok alakasiz seyler girmis de olabilir
+
+
+//Surayi da iyi anlayalim...Bir e-ticaret sitesine urun eklemek isteyen bir tedarikci
+leverandør,supplier olarak urun ekleyebilmen icin login olman gerekiyor yani leverandør
+tedarikcinin ile normal urunu goren kullanici arasindaki fark su, sen bir kullanici
+olarak listelenen urunleri giris yapmadan da gorebiliyorsun ama sadece urunleri gorebili
+yorsun onun disinda eger bir urun satmak istiyorsan siteye urun eklemek
+icin once register sonra da sign in olman gerekiyor ama tutup da giris yapmadan admin
+yani urun eklenen sayfaya gidersen seni otomaik olarak sign in sayfasina yonlendirir
+ya da giris yapmadan urun ekle butonuna basarsan da seni sign in sayfasina atacak otomatik
+senin giris li olup olmadigin arkada sorguluyor...Ayrica giris yaptgin zaman kendi ne
+ait sayfanda bir tanim isllemler yapaibliyorsun, bir urun ile ilgili
+urun sahibi ile mesajlasabiliyorsun , bir urunu begenebiliyorsun,kendine ait annonslairni
+gorebiliyorsun, bazi arama filterelerini otomatiklestirip onu kaydedip tutuyorsun ve 
+senin aramana dusen her yeni urun de de finn.no da sana mesaj olarak dusuyor gibi
+Satin aldigin urunlere yorum yapabiliyorsun, satin aldigin kisi ile ilgili
+ayrica normal nettbutiklerde urunu rate, rating yapabiliyorsun 5 uzerinden yildiz veriyorsun
+gibi...
+
+BURASI ONEMLI-BUNLARA DIKKAT ET!
+mobile.de sitesini incele en ustte daha buyuk anons koyulmus altta normal anonslar ve 
+arada bir de normal anonslar geliyor bunlara dikkat et...
+En ustte duran anonslar o annonsu ekleyen tedarikci tarafindan ekstra para odenerek 
+eklenen anonslardir bunu unutma
+E-ticaret sitesi mantigni su sekilde tam olarak anlayalim ki bu e-ticaret sitesini
+hazirlayan bu sitenin sahibi bir firma vardir ve bu firma bu siteyi hazirlarken
+Urunlerini bu web-sitesini kullanarak satmak isteyen tedarikcilerin urunlerini satma
+da onlara aracilik ediyorlar ve de bu site den ilk ekledikleri belli sayidaki urunlere
+veya ilk 2 ay ki ornegin satacaklari urunler icin belki de para almiyorlar ama
+belli limitlerden sonra tabi ki o urunu satan tedarikcilerden para aliyorlar
+Ayrica da reklam gelirleri var tabi ki cunku birsuru farkli tedarikci firma orda urunleri
+ni pazarliyor peki hangi tedarikcinin urunu neye gore en ustte daha conconlu
+¨daha gosterisli duracak ve musterinin daha cok ilgisini cekecek, iste burda tedarikciler
+supplier,leverandør ler urunlerinin en ustte durmasi veya reklam olacak sekilde gosterilmesi
+icin web sitesi yoneticisi olan sirkete para oduyorlar hem ekstra bu sekilde reklamlar icin
+hem de ayrica,belli urun sayisindan daha fazla koyan butik market veya ticaret icn
+siteyi kullanan insanlardan para kazaniyorlar ayrica bu e-ticaret sitesinin
+tedarikcilere bakan yonleri ile ilgili kurallari da yine, web-sitesi sahipleri belirliyorlar
+
+
+Insanlar genellikle bir websitesine bakarken sol tarafa odaklandiklari icin
+kategori sidebar ini sola degil de sag tarafa koysak daha mantikli olacaktir ki zaten
+kategori listesi web versiyonda direk koyulabilir ama mobil de ustte hamburger 
+menuden tiklayinca tum ekrani kaplayan ve yukardan asagi dogru siralanan bir liste halinde
+gelmelidir
+Her aktivite kategorisine gore ozel bir rengi ve ikonu ile belli edilmelidir listelenirken
+Aktivitelerin tarihlerini kullanici hangi gunler kendine uygun diye gorebilecegi
+cok uygun bir tasarim dusunelim amacimiz kullanici siteyi actiginda aktivite tarihlerini
+detayli bir sekilde gorebilmesi...
+Kullanici ana sayfada erismesi gereken veya bizim kullanicin gormesini istedigmiz veri
+leri kullaniciya gosterirken mumkun oldugu kadar kullaniciya az clik yaptirarak 
+kullandirmamiz gerekir cunku herkesini o kadar zamani olmayabilir ve herkes
+o sekilde click yapmakla ugrasmayabilir ve de anlamayabilir.....
+Web sitesini hazirlerken adim adim bir kullanici burda hangi sayfalara gecmek istyebilir
+ve nasil bir davranis sergiler bunlari detayli dusunerek belki benzer bircok site incele
+yerek kullanici davranislarina gore kullanici dostu bir web sitesi ona gore buton,droqdownlist gibi
+seyler ayarlamaliyiz....
+Bir web sitesini yaparken amaci cok iyi anlamaliyiz ki ona gore cozum uretelim
+Amac ornegin bir kullanici Hemsedal bolgesinde hangi aktiviteler var ve hangi aktivitelere
+bir kullanici katilabilir onun icin o aktivitelerin tarihlerini
+kullaniciya zaman dilimleri ile birlikte nasil daha acik, anlasilir ve detayli
+ama duzgun de bir design dusunecek sekilde gosterebilirz buna odaklanalim....
+
+Tarihler detayli gosterme ile ilgili bu sitede guzel bir cozum uretilmis
+arrangementer med kalender seklinde arama da ayapbiliriz
+https://www.visitoslo.com/no/hva-skjer/kalender/konserter/?FromDate=2022-05-05&ToDate=2022-05-05
+
+https://www.visitbergen.com/hva-skjer
+https://www.grieghallen.no/arrangementer/?from=2022-03-22&to=2022-03-26
+//Kategorileri kulanaibliriz.Aryica bu sitenin kalender kismi da gayet guzel duruyor
+https://www.eventim.no/city/bergen-vestlandet-moere-romsdal-1908/
+
+//Bu sitenin de tasrimina ve tarihi nasil gostermis onu inceleyebilirz
+
+
+Bu siteyi de iyi incele yeni aktivite ekleyebiliyorsun admin sayfasina gidip
+https://trdevents.no/
+
+//TArihe gore aktviite siralanmis bu da incelenebilir
+https://visittrondheim.no/events/
+
+//Tarihe gore yukardan asagi dogru siralanmis
+https://www.ticketmaster.no/city/trondheim/40700
+
+//Farkli bir design ile tarih gosterimi
+https://britannia.no/kulturkalender
+
+//Bu tasarim da bizim dusundugumuz tasarima benziyor..incele
+https://www.olavshallen.no/forestillinger
+
+//Bu tasarimi da dusuneibliriz 4 kutu buyuk ekranlar icin
+https://www.visitnorway.no/reisemal/ostlandet/oslo/hva-skjer/
+
+
+//Cok basit bir sekilde yukardan asagi sadece bir siralama yapmislar
+
+//Yapmayi dusunudugumuz siteye cok benziyor
+https://www.trondelag.com/hva-skjer/
+
+//Yapmayi dusunudugmuz siteye cok benziyor bunu iyi incele
+https://www.visitnorway.no/aktiviteter-og-attraksjoner/hva-skjer/?
+
+//Bu da sadece yukardan asagi farkli bir design ile siralamis ama cok da espirisi yok
+https://www.adressa.no/tema/Det_skjer/
+
+//Bu da gun gun siralamis degisikk bir tasarim olmus
+https://www.samfundet.no/arrangement
+
+//Stavenger ve tromsø ve osloya da bakalim kalender ile arrangementer nasil gosterilmis
+
+
+//https://www.rogaland-naturvern.no/kalenderen/
+Bu da dogrudan takvim koymus on sayfaya ve de ay olarak,hafta olarak ve gun olarak 
+secebiliyorsun
+
+//Bu site guzelmis bizim aradigimz ozelliklere benziyor bunu iyi ce inceleyelim
+https://detskjer.no/stavanger/#eyJxdWVyeSI6IiIsImNhdGVnb3JpZXMiOltdLCJkYXRlIjoiMjAyMi0wMy0wN1QxNDo1Mjo0Ni45NzhaIiwiZW1wdHkiOnRydWV9
+
+
+//Bu da sadece yukardan asagi tarihe gore bir siralama yapilmis...
+https://stavangers.frivilligsentraler.no/kalender
+
+Tarihe gore etkinlikler planlanmis
+//https://utsteinkloster.no/kalender
+
+//burdaki sitede tarihe gore bir siralama yapmis...bu da incelenebilir designi guzel
+https://www.stavanger-konserthus.no/program/
+
+//Burdaki listeleme designini da bir incele...
+//BIR TUYO--ONEMLI
+//Bu arada bir not: Biz gazetelerde haber okurken o haberin parali mi parasiz mi
+yani o haber aylik abone olarak okunabilecek haber mi yoksa ucretsiz mi
+onu biz arkaplani mavi yuvarlik icindeki + iconundan anliyoruz 
+PARALI AKTIVITELER
+Dikkat edelim fra deyince bir arama yapacak til derse bir arama da onun icin yapacak...
+
+Resim altina arrangement adi ve sonra da baslangic tarihi bitis tarihi ve 
+saati de ollmali tarihler icin mar5 icin belirgin yazmali
+https://www.hvaskjerioslo.net/ bunun gibi
+
+Burda da parali olup olmama ile ilgili inpsorasjoj alabiliriz
+https://www.visitgreateroslo.com/no/hva-skjer/
+
+//Tarihle ilgili kullanici icin en kolay olacak olan 
+ay ay, hafta, hafta mesela aktivite planini gosterecek bir sistem kurabiliriz...aslinda...
+
+//Ornegin listelenen urunlerin rating durumlari da her urun icinde verilebilr
+yani kullanicilardan gelen memnuniyet puani da listelenen urunlerde verilebilir
+
+//Her aktivite uzerinde fiyati bir buton gibi yazilabilir...Veya from kr500. gibi
+
+Ucretli olup olmadigini gosteren yazi var burdada
+//https://www.neredekal.com/aktivite/mugla-yapilacak-seyler-gorulecek-yerler/
+
+//Kategori, tarih ayarlanması..
+https://festivall.com.tr/iller/48/mugla-festivalleri/
+
+
+//COOOK ONEMLI BU MANTIGI DA IYI DUSUNELIM.....
+Yeni bir sey daha var proje ile ilgili
+Arrangementini ekstrabetalt feltinde tutmak isteyen dolayisi ile de ona gore para odeyecek
+olan adminler veya gratis veya betalt kategorili arrangement yuklemek isteyen adminler
+aktivitelerini aktivite gerceklesmeden kac gun once tutacaklar bunun web sitesini
+yoneten ekip tarafindan bilinmesi gerekiyor bu cok onemli cunku adamlar rekklam verenler
+den reklamlarinin ne kadar sitede kaldigini burdan anlayacaklar bu kullanici tarafindan 
+gorulecek biryer degildir....dolayisi ile de bizim aktivitenin uygulanacagi tarih periodu
+disinda birde bu aktivite ne kadar sitede kalacak yani ornegin bir konser 15 subat ile 
+15 mart arasinda sitede gozukecek ama sitede su sekilde gozukecek konser 10mart ile 15 mart
+arasinda saat 14/16 arasi diye gozukecek yani konserin gerceklesme tarihi ile sitede kalma
+tarihi ikisi baska seylerdir...
+Peki bizim bu tarihe neden ihtiyacimiz var onu bir dusunelim aslinda bizim derken
+bir reklamin sitede ne kadar kalacagi bilgisi 2 kisiyi ilgilendiriyor 1 reklami verekecek
+supplier cunku reklami verecegi gun kadar para odeyecek ve urunu o gun sayisi
+kadar sitede kalacak ve ona gore de satis yapacak,
+tedarikci, leverandør ve de site yoneticilerini ilgilendiriyor cunku site yoneticileri
+bu tedarikciden urununun sitede durdugu gun sayisinca para kazaniyor para aliyor
+Simdi bir e-ticaret sitesinde bircok admin olacak ve bu adminlerin de kimisi ucretsiz urun
+ekleyeceklerdir ki bu muhtemelen sinirlidir bir kactane, kimisi 1.dereceden en alt seviyeden
+para odeyerek belli sayida urun ekleyebilecektir kimis de daha cok para odeyerek daha cok
+urun ekleme hakkini elde ediyorlardir ayrica kimisi de ekledigi urunlerin en ustte belli
+zaman araliginda durmasi karsiligiinda bellli paralar oduyorlardir ama sunu bilelim ki
+bu adminler icin back-endde ozel kurallar belirleniyor ve amdinler ona gore kontrol ediliyor
+her admin kafasina gore urun ekleyemiyor...her urun tipinden belkide 10 tane ekleyebiliyor
+
+//TASARIMI HAZIRLARKEN OZELLIKLE BU MANTIK UZERINDE DUR
+Kullanicilarin cogunlugu web sayfalarinda cok az vakit gecirirler scroll yaparlar
+ve de o kisa zamanda detaylara bakmazlar hatta bir butona tiklayim da detayi goreyim diye
+kolay kolay bakmazlar , ancak ne zaman ki birsey dikkatlerini ceker ve ilgilerini cekerse
+o zaman merak edip de bakabilirler o zaman demekki burda kullanicinin dikkatini ve 
+ilgisini en cok ne cekebilir ise onlari kullaniciya daha cok gorunur ve anlasilir
+yapmaliyiz....
+Ornegin ekstra betalt olan aktiviteler i boyut olarak diger aktivitelerle ayni
+ama ekstra betalt lara ozel bir icon ve ornegin sadece bir border ve renk olarak biraz
+daha farkli bir renk olabilir bununla alakali da tavsiye renkler arastirilabilir
+
+Ayrica su konu uzerinde tasarim yaparken durmaliyiz, kullaniciyi ekranda daha uzun sure
+tutacak tasarim nasil hazirlayabilriz...bu konuya iyi vakit ayirmaliyiz...
+Kullanici dostu bir input form nasil olmalidir ve nasil validation islemleri kullanici dos
+tu olmalidir gibi konulari dusunebiliriz
+
+Bu tur projeler hazirlarken her zaman sunu hayal et biz bu uygulamayi kim icin 
+yapiyor yani hedef kitle kim
+Eger imkanin var ise hedef kitleden bir kac kisi ile konus ve onlardan gercek hayatta
+onlarin ihtiyaclari ve problemleri neler ve ne onlarin problemin cozer bunu empati yapmaya
+da calis ama en top ideal i direk hedef kitleden birkac tane ornek insan ile bir
+gorusme yapmaktir
+Ornegin hyttadaki insanlar neye ihtiyac duyarlar
+1-Evinin onunde kar var ise bunu måke yapacak insanlara ithiyac duyabilir
+2-Hytta da ufak tefek reperasjon islerine ihtiyac duyabilir
+3-Mat levering, hazir yemek siparisi vermek isteyebilir
+4-Sarz aleti problemi yasar, powebank ihtiyaci olabilir
+5-Yemek almak isteyebilir butik ihtiyaci olabilir....
+gibi empati yapilmali ve birkac insan ile bu konuda konusulmalidir
+
+-Baska onemli bir noktaya gelelim...COOOK ONEMLI...
+Bir proje hazirlarken her zaman odaklanman gereken en onemli ozellik
+bu proje buyudugu zaman, sen kategoriye 5 tanelik yer ayarladi isen bu kategori s
+sayisi 10 olunca senin uygulaman bu degisime ayak uydurabilecek mi cunku projeler
+gercek hayat projeleri oldugu icin aslinda amac projenin gercek hayatta cok iyi islev
+gormesi ve ornegin katilmci sayilari arttigi zamanda uygulama eksiksiz calismali
+ornegin bugun aktivite sayisi 20 ama yarin talep cok oldu ve aktivite sayisi 200 oldu
+evet benim uygulamam bu degisime ayak uydurabilir mi ki her zaman bu alternatifler plan
+lanarak projeler hazirlanmalidir yoksa hickimse sirf bir uygulamayi sadece oylesine
+birkac kisi kullansin diye yazpmaz, insanlar bir uygulama ypatiriyor ise asil amac
+o uygulamanin mumkun oldugu kadar cok fazla interfaktif olmasi ve cok insana hitap etmesi
+ve icindeki urunler olur aktiviteler olabildigince cok olmasini isteyeceklerdir
+
+Yine e-ticaret site mantiginda onemli bir durum
+Normalde tedarikci dedigimz yani urun ekleme sayfasina urun ekleyecek olan veya bunu 
+diger web sitelerinde de ornegin yeni bir aktivite ekleyen insanlar yeni birsey
+eklediginde bu yayinlanmadan once site yonetiminin onayindan kontrolunden geciyor
+aynen haber siteleri veya blog sitelerindeki yorum kisimlari gibi orda da yorum yazisini
+yazdiktan sonra hemen yayinlanmaz o yorumlar once bir kontrolden gecer eger yorum icinde
+hakaret vs yok ise o zaman yayinlanir uygun gorulurse yayinlanir yoksa yayinlanmaz
+bu sitelerde de simdi site yonetimi register olan ve sonra da sign in olan herkes
+urun eklyebiliyor veya aktivite ekleyebiliyor peki adam in biri gelirde
+sacma sacma seyler yazar yanlis icerik yazar garip garip seyler yazarsa o kontrolden 
+gecmez ise site de istenmeyen icerikler olur ve bu sitenin takip edilirligine, ciddiyetine
+ve populerligine zarar verecektir ondan dolayi sunu iyi anlayalim bir yeni urun eklendigjnde
+veya yeni bir aktivite eklendiginde mutlaka bu site yonetimin kontroolunden geecmek zorundadir
+Ayrica zaten site yonetimini sirf tedarkcilere donuk belli kurallari vardir onlar da
+duzgun, dogru urun ekleyenlerde kafalarina gore urun ekleyeemezler
+
+Siteye reklam vermek icin reklam urunleri icin tedarikciler site yonetimni ile 
+gorusmeler gerceklestirirler ve onlar in urunlerini site yoneticileri ozel birsekilde
+ekleyedebilirler ya da site cok gelismis ise sitenin addNew kisminda ornegin reklam ver
+alani yapilmis ise orda zaten sartlari vs ucreti ve de odeme sistemlerinin 
+onceden ayarlanmis olmasi gerekir ki ona gore tedarikci kacgunluk reklam verecek ve
+urununu sitenin hangi bolumlerinde yerlestirecek ise ona gore orda detayli aciklaamlar
+bulunmalidir...Ya da dedigimiz gibi tedarikci dogrudan site yonetimi ile irtibata gecer ve direk urunu
+site yonetimiz kendisi de eklyebilir bilgileri tedarikciden alir ve anlstiktan sonra
+urunu kendileri de ekleyebilirler...
+
+Bizim yaptgmiz site yi soyle dusunelim bir hytta bolgesinde yasayan insanlar
+o bolgede gerceklesecek olan her turlu aktiviteyi kendileri de sirf o bolge halkina duyurmak icin 
+eklyebilecek ucretsiz bir sekilde tabi uygulama icin yillik bir ucret odeniyor ama 
+onun haricinde eklenen aktiviteler icin ekstra ucret talep edilmiyor....
+Genellikle tedarikciler bu tarz yerel uygulamalrdan haberdar olmazlar ancak bu site yonet
+imi reklam ve boyle bir uygulamanin varliginda onlari haberdar etmek icin reklam yaparak
+onlarin kampayna ve urunleri ile ilgili aktiviterei de bu ssitede yayinlayabileceklerini
+bilgilendirdikten sonra genellikle tedarikciler oraya reklam vermeyi kabul edebilir
+
+Simdi bir benzetme yapacak olrsak mesela bizim sadece turklerin kulllanacagi bir uyugulama yaptigimizi dusunelim
+Bu da cok benziyor haftalik duyurular, kampnyalar vs bircok sey eklenebilir
+Veya bir isyerinde calisan insanlar kulllanacagi bir uygulama yapilabilir....
+Bu sekilde dusunelim ortak ozellikleri olan ama isi kolaylastiracak uygulamalar yazilabilir
+
+EGER KATEGORI SAYIMIZ COK FAZLA OLURSA KULLANICI SAYFASINDA GORUNTULEMEMIZ GEREKEN OZAMAN O KESINLIKLE ALK KATEGORILERE 
+AYRILMALIDIR YOKSA O KADAR COK KATEGORIYI BIZ IYI BIR DESIGN YAPAMAYIZ ONDAN DOLAYI KATEGORILER HEP ALT KATEGORILERE
+AYRILIRLAR O SEKILDE BIR DESIGN YAPILIR BUNU UNUTMA...

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        //usestrict kullanilmadigi zaman normal de javascript icinde biz dogrudan bir degiskeni var,let,const olmadan tanimlayabiliyoruz ve bu sekilde tanimlanan degiskenler window objesinin altinda olusuyor. Ki bu aslinda hic de normal degil, ama biz usestrict kullanirsak o zaman usestrict bizi kisitliyor ve de var,let,const kullanmadnan olusturdugumuz degiskenler icin hata donuyor
+           "use strict";
+      x = 3.14; // This will not cause an error.
+      myFunction();
+      function myFunction() {
+   //   "use strict";
+        y = 3.14; // This will cause an error
+      }
+    </script>
+  </body>
+</html>

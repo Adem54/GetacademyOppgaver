@@ -1,7 +1,7 @@
-function updateViewSearch(){
-    //Burda bir de menu olacak ve bu tum view componentlerinde ortak olacak dolayisi ile biz gidip her seferinde tum view larda bu fonksiyonu tabi ki olusturmayacagiz onun yerine, commonView.js dosayasi olsuturp orda yapacagiz...
-    //Bu createMenuHtml tum sayfalarda bulunacakki biz bu butonlar sayesinde isteigtimz sayfay gidebilecegiz......yoksa ornegin legg til butonu ornegin search de var ama biz createNewView da de bu fonkksiyonu calistirmaz isek oraya gititimizde bu menuleri goremeyiz o zaman da sayfamizi degstiremeyhiz....
-    document.getElementById("app").innerHTML=/*html*/ `
+function updateViewSearch() {
+  //Burda bir de menu olacak ve bu tum view componentlerinde ortak olacak dolayisi ile biz gidip her seferinde tum view larda bu fonksiyonu tabi ki olusturmayacagiz onun yerine, commonView.js dosayasi olsuturp orda yapacagiz...
+  //Bu createMenuHtml tum sayfalarda bulunacakki biz bu butonlar sayesinde isteigtimz sayfay gidebilecegiz......yoksa ornegin legg til butonu ornegin search de var ama biz createNewView da de bu fonkksiyonu calistirmaz isek oraya gititimizde bu menuleri goremeyiz o zaman da sayfamizi degstiremeyhiz....
+  document.getElementById("app").innerHTML = /*html*/ `
     ${createMenuHtml()}
     <hr/>
     <h3>Søk</h3>
@@ -16,8 +16,7 @@ function updateViewSearch(){
     <ul>
     ${createHtmlPeople()}
     </ul>
-    `
-
+    `;
 }
 
 //BESTPRACTISE....ARTIK BU SEKILDE KULLANACAGIZ ONA GORE BURAYI COOOK IYI ANLA...FOR DONGULERIMIZI VE DATAMIZI LISTEYECEGIMIZ HTML I AYRI BIR FONKSIYON ICINDE YAZIP O FONKSIYONU OKUNUR BIR SEKILDE UPDATEVIEWSEARCH DE YAZARIZ....SIMDI BURASI SEARCH SAYFASI OLD ICIN ANA VERI BURDA ZATEN LISTELENECEK VE DE BIZIM AYRICA VERIMIZI LISTELEMEIZE GEREK YOK CUNKU VERI ARAMASI YAPILMAZSA DATANIN TAMAMINI GORECEGIZ YOK, ARAMA YAPILIRSA DA ARAMA YAPILAN DATAYI GORECEGIZ AMA BIZ YINE DE DATA MIZI LISTELEYECEK EKSTRA BIR VIEW SAYFASI DA YAPABILIRIZ ASLINDA.......
@@ -29,35 +28,33 @@ function updateViewSearch(){
 //BESTPRCTISE......-----COOOK IYI ......
 //EGER model.inputs.search.text !== "" bos degilse poepl i filtreleme yap....
 //DIKKKAT ET DIYECEGIZ KI EGER TEXT ICINDE VERI VAR ISE FILTERPEOPLE FONKSIYONUNU CALISTIR YANI O ISLEMI AYRI BIR FONKSIYON DA YAP VE BURDA SADECE CALISTIR...HER ZAMAN TEMIZ KOD VE PARCALAYABILDIGN KADAR FONKSIYONMLARI KUCUK PARCALARINA  AYIR.....
-function createHtmlPeople(){
-    let html=``;
-    let people=model.people;
-    const searchText=model.inputs.search.text;
-    if(searchText!==''){
-        people=filterPeople(searchText,people);
-    }
- return  getListOfPeople(people,html);
-} 
+function createHtmlPeople() {
+  let html = ``;
+  let people = model.people;
+  const searchText = model.inputs.search.text;
+  if (searchText !== "") {
+    people = filterPeople(searchText, people);
+  }
+  return getListOfPeople(people, html);
+}
 
-
-function getListOfPeople(people,html){
-    for(let i=0; i<people.length; i++){
-        let person=people[i];
-        const {name,email}=person;
-        html+=`
+function getListOfPeople(people, html) {
+  for (let i = 0; i < people.length; i++) {
+    let person = people[i];
+    const { name, email } = person;
+    html += `
         <li>${name} - ${email} 
         <button onclick="goToEditPage(${person.id})" >endre</button> 
         <button onclick="goToDeletePage(${person.id})" >&#10006</button> 
         </li>
         
-        `
-    }
-    return html;
+        `;
+  }
+  return html;
 }
 
 //DELETE ISLEMI.......YAPIYI IYI ANLAYALIM....
 //Her zaman ki gibi delete isleminde bize id gerekiyor veya uniq bir veri gerekiyor datamiz a erisebilecegimiz...Ama dikkat edelim biz delete islemini deleteView sayfasinda yapmaliyiz ama mecburen onclick eventini searchView da yaziyoruz...yapiya dikkat edelim biz searchView da yonlendirme yapan bir event fonksiyonu yaziyoruz ve bu fonksiyonu searchController da tutuyoruz.....Ve searchController da biz sayfayi deleteView componentine yonlendirecegiz.......
-
 
 //indexOf array icinde ve string icinde aradigmiz bir elemanin index numarasini verir ama eger o eleman icinde yok sa index numarasi -1 verir dolayisi ile biz bir textin bir string icinde var olup olmadinign indexOf ile de kontrol edebilriiz.....
 //BIR SEARCH ISLEMINI
@@ -65,29 +62,26 @@ function getListOfPeople(people,html){
 //2-indexOf ile de yapabiliriz
 //3-search methodu ile de yapabilriiz....-
 //EGER aradgimz eleman elimzde var ise o zaman bunu filteredList arrayi icine at yoksa atma
-function filterPeople(searchText,people){
-   //BUNU ILK DEFA GORDUM..PARAMETRDE GELEN ELEMENTE ASSIGN,DEKLARERER,SETTE..YANI BIR ATAMA YAPIYOR....***
-   //YAZIM SEKLINDE DIKKKAT ET..OKDUKCA TEMIZ OKUNAKLI ANLASILIR YAPILMAYA CALISILIYOR....
-   console.log("searchTexT; ",searchText);
-    searchText=searchText.toLowerCase();
-    let filteredList=[];//filtreleyip bunun icine atacgaiz...
-    for(let person of people){
-        let name=person.name.toLowerCase();
-        let email=person.email.toLowerCase();
-        if(name.indexOf(searchText)!= -1
-        || email.indexOf(searchText)!= -1
-        ){
-            filteredList.push(person);
-        }
+function filterPeople(searchText, people) {
+  //BUNU ILK DEFA GORDUM..PARAMETRDE GELEN ELEMENTE ASSIGN,DEKLARERER,SETTE..YANI BIR ATAMA YAPIYOR....***
+  //YAZIM SEKLINDE DIKKKAT ET..OKDUKCA TEMIZ OKUNAKLI ANLASILIR YAPILMAYA CALISILIYOR....
+  console.log("searchTexT; ", searchText);
+  searchText = searchText.toLowerCase();
+  let filteredList = []; //filtreleyip bunun icine atacgaiz...
+  for (let person of people) {
+    let name = person.name.toLowerCase();
+    let email = person.email.toLowerCase();
+    if (name.indexOf(searchText) != -1 || email.indexOf(searchText) != -1) {
+      filteredList.push(person);
     }
-    return filteredList;
-
+  }
+  return filteredList;
 }
 //Burda biz ne input a girecegimiz veriyi almayi bekliyoruz...
 //Biz burda model de herhangi birsey degistirmiyoruz sadece model icindeki data, people datasi icinde arama yapacagiz
 //Burda ilk isimiz inputa girilen value yi bir alalim bunu nasil alacagiz inputa veri girildiginde oninput eventi tetiklenecek
 //oninput icinde biz ne yapacagiz bizim model icinde input text imizi tutacak veriye value yi gonderecegiz....BU ISLEM HERYERDE AYNIDIR REACTTA DA AYNIDIR EVENT OLAYI ICINDE ONCE GIRILEN DEGERI BIR ALIP DEGISKENE ATAYARAK ORAYI BIR KONTROL ALTINA ALIRIZ....
-//INPUTLARI KONTROL ALTINA ALIRKEN 
+//INPUTLARI KONTROL ALTINA ALIRKEN
 //1-EVENT OLAYI ICNDE THIS.VALUE YI MODEL DA AYARLADIGMIZ DEGIKENE ATARIZ
 //2-MODEL DA AYARLADIGMIZ DEGISKENI DE ATTRIBUTE OLAN INPUT VALUE YE ATARIZ
 //3-INPUTUMUZA BIR BASLANGIC DEGERI VERMELIIYIZ KESINLIKLE YA DA BIR BESTPRACTISE KULLANIMI ILE INPUTU VALUEYE ATA AMA VALUE OLMAZSA  DIYE  BIR DEGER VERLEIM-value="${model.inputs.search.text || ''}
@@ -105,7 +99,6 @@ function filterPeople(searchText,people){
 
 //COOK ONEMLI----ARAMA SONUCLARINI NASIL AYARLARIZ....COOOOOK ONEMLI...BESTPRACTISE......
 //Simdi biz aram sonuclarini gostermek istiyoruz ne yapacagiz burda gostercegiz...BEST PRACTISE-Biz view icerisinde html kodlarini string icinde yazarken de cok temiz yazmaliyiz ornegin biz orda ne gostercegiz arama sonuclari o zaman bize arama sonuclarini getirecek bir fonksiyon lazm iste bunu burda yapabilriz ama cok temiz bir sekilde yapmaliyiz. Yani fonksiyonu bu sayfada ama html stringleri disinda olusturup invoke etme isini html stringleri arasnda koymamiz gereken yere yerlestiririz.....
-//Yani hicbir zaman direk bir ton string icinde html elementi yazma onlari degiskene veya eger bir action yapiyuorsan veya condition a gore yapoiyorsan onlari ayni react icinde kullanmaya calistimgiz gibi bir fonksiyon icinde dogru bir isimlendirme ile gosterelim....Her zaman anlasilir olmali.....
+//Yani hicbir zaman direk bir suru string icinde html elementi yazma onlari degiskene veya eger bir action yapiyuorsan veya condition a gore yapoiyorsan onlari ayni react icinde kullanmaya calistimgiz gibi bir fonksiyon icinde dogru bir isimlendirme ile gosterelim....Her zaman anlasilir olmali.....
 
 //iconlari unicode icon veya character remove , edit idye aratarak buldum
-

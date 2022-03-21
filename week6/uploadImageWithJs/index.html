@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+    <script>
+let getUrl="";
+  updateView();
+        function updateView(){
+            document.getElementById("app").innerHTML=`'
+            <p><input 
+                type="file"
+                  accept="image/*"
+                name="image"
+                 id="file"  
+                 onchange="loadFile(event)"
+                style="display: none;"></p>
+    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+    <p><img id="output" width="200" /></p>
+
+<hr>
+
+<br><br>
+<img id="img2" src="${getUrl}" alt="">
+            
+            `;
+        }
+
+
+        var loadFile = function(event) {
+            
+//	var image = document.getElementById('output');
+ //   console.log("file: ", event.target.files[0]);
+//	image.src = URL.createObjectURL(event.target.files[0])
+    console.log("imageUrl: ",URL.createObjectURL(event.target.files[0]))
+    getUrl=URL.createObjectURL(event.target.files[0])
+    console.log("getUrl: ", getUrl);
+    updateView();
+    return getUrl;
+};
+   
+
+
+    </script>
+</body>
+</html>
+
+<!--
+Buisin mantigina bakalim birde....
+<input> elements with type="file" let the user choose one or more files from their device storage. Once chosen, the files can be uploaded to a server using form submission, or manipulated using JavaScript code and the File API.
+
+Cok yararli mutlaka okunmali,....
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
+
+Dosya seçme işi için tipi file olan input gerekiyor. Ancak dosya upload işlemi için back-end taraflı bir dile ihtiyacınız var.
+
+<input> elements with type="file" let the user choose one or more files from their device storage. Once chosen, the files can be uploaded to a server using form submission, or manipulated using JavaScript code and the File API.
+
+Value
+A file input's value attribute contains a DOMString that represents the path to the selected file(s). If the user selected multiple files, the value represents the first file in the list of files they selected. The other files can be identified using the input's HTMLInputElement.files property.
+
+
+DOSYA YUKLEME SURECI
+Dosya Yükleme
+İlk olarak, bir kullanıcıdan bir dosya almak için bir <input> eleman kullanmamız gerekir :
+<form enctype="multipart/form-data" action="/upload" method="post">
+  <input id="input" type="file" />
+</form>
+
+Yüklemelerin işlenmesinde daha fazla kontrol <form>için, dosyaları göndermek için HTML yerine JavaScript kullanabilirsiniz :
+
+    let file = document.getElementById('input').files[0];
+let formData = new FormData();
+
+formData.append('file', file);
+fetch('/upload/image', {method: "POST", body: formData});
+
+
+The input type of file allows user to choose one or more files from their computer. There are 4 additional attributes available when the type of file is used:
+accept: describes file types to allow as denoted by unique file type specifiers
+capture: source to use if capturing image or video data
+files: the list of selected files
+multiple: boolean, if true allows the user to select more than one file
+
+
+ONEMLI!!!!!!!
+Uzun lafin kisasi biz image veya dosyalari input type file elementi ile front-end tarafinda sadece okuyabiliri dosya bizim yerel, local pc mizde durur ve biz saece onu input type file araciligi ile okuruz onun bilgilerini bir image etiketi icinde gosterebilecegiimz src verisini okumaya basarabiliriz yoksa o image alip da bir baska server a yukleme islemi backend ile olacak bir istir bu konuyu iyi anlayalim........
+Resimlerin dogrudan fiziki olarak yukleneme oolayi ancak bir server araciligi ile gerceklesebilir yani bir web sitesi yapacak ver resimleri biz webistesinde yayinlayacaksak bu resimlerin backend tarafinda ayarlanan bir sistem uzerinden bizim backend e yuklememiz lazm ve on yuzde datayi listelerken ordan cekmemiz lazm resim bilgilerini yoksa front-end de resmi fiziki olarak yukleme gibi bir islem yapmiyoruz ve yapamaiyoruz zaten, front-end de yaptigmiz sadece o resmi okumadan ibaretttir......
+
+
+Bu kaynakte faydali olur....
+https://yazilim.net/javascript-filereader-api-ile-dosyalari-okuma-ve-isleme-h38Wg9Ebt
+
+-->

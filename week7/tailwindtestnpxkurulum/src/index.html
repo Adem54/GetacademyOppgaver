@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/dist/output.css">
+</head>
+<body class="bg-blue-300">
+  <div class="w-1/3">
+    <input
+      type="text"
+      name="name"
+      class="w-full px-2 py-1 text-sm border border-gray-300 rounded outline-none"
+      placeholder="Enter Your Name"
+    />
+  </div>
+</body>
+</html>
+
+
+<!--
+
+
+<!--
+En basta src klasoru icinde bir tane index.html olusturuyoruz
+ardindan  terminald e  npm install -D tailwindcss
+sonra npx tailwindcss init
+Init işlemiyle proje dizinimizde içinde basit konfigürasyonların barındığı tailwind.config.js dosyası oluşturmuş oluyoruz. Farklı kurulumlara buradan ulaşabilirsiniz.
+
+tailwind.config.js
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+Burda content in iceriisnde src altindaki tum dosyalari calistir gibi bir ifade kullaniyoruz ayni zamanda html dosyasi ve js dosyasi adina ne varsa calistir demis oluyoruz
+
+Content
+Tailwind css ile geliştirme yaptığımız kaynakları belirttiğimiz kısımdır. Yani kısaca tailwind css class'larını kullandığımız dosya yollarını belirttiğimiz property'dir. Content property'sini yanlış veya eksik tanımlarsanız css çıktılarınız beklediğiniz gibi olmayacaktır.
+
+Theme
+Theme property'si tailwind css'i konfigüre ettiğimiz kısımdır. Örneğin çalıştığınız projenin ana rengi mavi ve siz tailwind css tarafında bu mavi rengi tanımlamak istiyorsanız config dosyanızda aşağıdaki değişiklikleri yapmanız yetecektir.
+
+tailwind.config.js
+
+module.exports = {
+  // ...
+  theme: {
+    extend: {
+      colors: {
+        blue: '#2d96ff'
+      }
+    },
+  },
+  // ...
+}
+
+Plugins
+Plugins kısmı da third party pluginleri eklediğimiz kısımdır. Tailwind CSS tarafından yayınlanmış offical pluginleri veya diğer geliştiricilerin yayınladığı pluginleri bu kısma ekliyoruz.
+
+tailwind.config.js
+
+module.exports = {
+  // ...
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+  ]
+}
+
+Prefix
+Prefix kısmı da tailwind css tarafından oluşturulan class'larınıza ön belirteç eklemenizi sağlıyor. Örneğin hali hazırda benzer utility class'larına sahipseniz veya kullandığınız frameworklerde bu class'lar varsa ise prefix ekleyerek css conflict'lerini önleyebilirsiniz.
+
+// tailwind.config.js
+
+module.exports = {
+  // ...
+  prefix: 'tw-', // uc-, my-, cc- vb.
+}
+
+
+Config dosyamızdaki property'leri açıkladığımıza göre kuruluma devam edebiliriz. Bir sonraki adımda da tailwind css directive'lerini ana css dosyamıza eklememiz gerekiyor. Henüz bir css dosyası oluşturmadık bir index.css dosyası oluşturalım ve içine aşağıdaki kodları yazalım.
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Tabi bu dosyanın tailwind cli tarafından build edilmesi gerekiyor. Aşağıdaki kodu terminalde çalıştırırsak dist klasöründe index.css adında build edilmiş dosyayı görebiliriz.
+
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+
+<!doctype html>
+<html>
+<head>
+
+  <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="text-3xl font-bold p-7 text-orange-900">
+    My First Tailwind CSS Project
+  </h1>
+</body>
+</html>
+
+Sonunda kurulum işlemlerini tamamladık. Projemizi tarayıcı açtığımızda tailwind css class'larının h1 elementimize uygulanmış olduğunu görebiliriz
+
+   
+Editor ayarlari
+Tailwind CSS class'larını hatırlama, otomatik tamamlama ve linting gibi işlemler için tailwind CSS intellisense extensionuna da buradan ulaşabilirsiniz. İnanın bu plugin ile proje geliştirmek daha keyifli hale geliyor.
+
+
+
+https://ysoftaoglu.com/post/tailwind-css-nedir-nasil-kurulur/ 
+
+    burayi takip ederek islemlerimizi halledebiliriz...
+Buraya kadar her şey güzel fakat bu class isimlerini nerden bulacağım nasıl aklımda tutacağım diye soruyorsanız akılda tutma diye bir durum yok alıştıkça hatırlayacaksınız class isimlerini de dökümantasyonundan bakmak durumundayız.
+
+Tailwind CSS class'larını hatırlama, otomatik tamamlama ve linting gibi işlemler için tailwind CSS intellisense extensionuna da buradan ulaşabilirsiniz. İnanın bu plugin ile proje geliştirmek daha keyifli hale geliyor.
+
+Bence bu kısma kadar birçok şey öğrendik. Bundan sonrası sizin dökümantasyonu incelemenize ve pratik yapmanıza kalıyor. Tüm özellikleri açıklamam hem gereksiz olur hem de dökümantasyonun birebir aynısı olur. O yüzden sizlerle beraber mini bir component geliştirip öğrendiklerimizi uygulamaya dökelim. Başlıkta da gördüğünüz gibi getir yemek sayfasındaki arama input'unu tailwind css kullanarak geliştireceğiz. İhtiyacımız olan iconları da material-icons kullanarak oluşturacağız.
+
+
+Tailwind CSS Just In Time Modu
+Tailwind CSS sizin tüm ihtiyaçlarınıza muhtemelen cevap verecektir. Fakat çok daha spesifik ihtiyaçlarınız için just in time (jit mode) yardımımıza koşuyor. top-[10px], w-[300px], h-[12px], p-[14px], bg-[#bd4147] gibi kullanımlarla yaparak design system'inizde veya tailwind config'inizde bulunmayan class tanımlamaları yapabilirsiniz. Bu modu aktif etmek için config dosyanıza mode: jit şeklinde bir tanımlama yapmanız yetiyor.
+
+tailwind.config.js
+
+module.exports = {
+   ...
+  mode: 'jit',
+}
+
+
+Tailwind CSS Avantajları
+Avantajları ve hayatımızı kolaylaştırdığı noktalar saymakla bitmez ama birkaçını listelemek gerekirse:
+
+Html kodunuzdan ayrılmadan istediğiniz UI'yı geliştirebilirsiniz.
+Gereksiz ve kullanmadığınız css'lerden kurtulabilirsiniz.
+Kod tekrarını ve css yazarken maruz kaldığımız angarya süreçleri önler.
+Responsive, dark mode gibi birçok web tekniğini kolayca uygulayabilirsiniz.
+
+Tailwind CSS Dezavantajları
+Karmaşık bir html layout'u ile karşılaşabilirsiniz fakat bu gibi durumları da @apply metoduyla çözüyoruz.
+Yeni başlayan ve css tecrübesi çok olmayan kişiler için başlangıçta karmaşık gelebilir. Fakat pratik yaparak kolayca adapte olabilirsiniz.
+
+Hata aldik problems de ve output ta onu da setting.json a gidip bir kod eklemesi yaptik
+unknown at rule @tailwind-
+"css.lint.unknownAtRules": "ignore",
+"css.validate": true,
+"scss.validate": true,
+-->
+
+
+
+
+-->

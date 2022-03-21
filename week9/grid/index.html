@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+
+box-sizing:border-box; 
+}
+
+
+.container div:nth-child(1n){
+ background-color:#81ecec;
+}
+
+.container div:nth-child(3n){
+
+  background-color:#a29bfe;
+}
+
+.container div:nth-child(2n){
+ background-color:#fd79a8;
+}
+
+.container div:nth-child(4n){
+ background-color:#ffeaa7;
+}
+
+.container div:nth-child(5n+1){
+ background-color:tomato;
+}
+
+        .container {
+            text-align:center;
+  font-size:2em;
+ 
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit,1fr); */
+  grid-template-rows: 200px 200px 200px;
+
+  /*  ilk gelen repeat teki row da satirda kac tane ve ne kadar buyuklukte olsun onu gosterir
+  diger 2. ise kolon da genisligi ne kadar olsun ve 1fr ise ayni olacak sekilde dinamik olarak gelirler
+  */
+  grid-template:repeat(2 , 100px) / repeat(auto-fit,minmax(500px, 1fr)
+
+  );
+  grid-gap:1rem;
+
+   /* Alttaki kod satiri satirlarimizin dinamik birsekilde artik otomatik olarak bizim belirlediimiz satir olan 2 satidan sonrasini da 100px yukseklik vermesini saglayacaktir...*/
+  grid-auto-rows:400px;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+   
+  </div>
+  </div>
+</body>
+</html>

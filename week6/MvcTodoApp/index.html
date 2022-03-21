@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <script src="/MvcTodoApp/js/model.js"></script>
+   
+    <script src="/js/common.js"></script>
+    <script src="/MvcTodoApp/js/hjemmeSideView.js"></script>
+    <script src="/MvcTodoApp/js/search/searchController.js"></script>
+    <script src="/MvcTodoApp/js/search/searchView.js"></script>
+    <script src="/MvcTodoApp/js/create/createController.js"></script>
+    <script src="/MvcTodoApp/js/create/createView.js"></script>
+    <script src="/MvcTodoApp/js/edit/editController.js"></script>
+    <script src="/MvcTodoApp/js/edit/editView.js"></script>
+    <script src="/MvcTodoApp/js/delete/deleteController.js"></script>
+    <script src="/MvcTodoApp/js/delete/deleteView.js"></script>
+
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+
+   
+    updateView();
+    function updateView() {
+      const { page } = model.app;
+     
+      switch (page) {
+        
+        case "search":
+          return updateViewSearch();
+        case "create":
+          return updateViewCreateNew();
+        case "edit":
+          return updateViewEdit();
+        case "delete":
+          return updateViewDelete();
+          case "hjem":
+            return updateViewHjemmeSide();
+        default:
+          break;
+      }
+    }
+
+    //C# da calisirken bir run fonksiyonu hazirlamistik ona bi bakip burda uygulayamaya calisalim.....BESTPRACTISE.....SRPING OLABILIR MESELA......
+  </script>
+</html>

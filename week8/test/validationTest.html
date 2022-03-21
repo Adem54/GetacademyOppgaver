@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+
+        
+    -->
+    <script>
+
+        //BUNLARI INCELE COK LAZIM OLACAK!!!!
+
+        //  ${model.inputs.adminPage.isOnInput.title && !model.inputs.adminPage.happening.title.name ? showBlurMessage() : ""} 
+
+function handleOnInput(event){
+  model.inputs.adminPage.isOnInput.title=true;
+  model.inputs.adminPage.happening.title.name=event.target.value;
+  console.log("title.name-----------; ",!model.inputs.adminPage.happening.title.name);
+  console.log("model.inputs.adminPage.isOnInput.title:   ",model.inputs.adminPage.isOnInput.title);
+  if(model.inputs.adminPage.isOnInput.title && !model.inputs.adminPage.happening.title.name){
+    console.log("Hem data bos hem de onchange olmus ise burasi calismali!!!: ");
+  }
+
+console.log("oninput tetiklendi....")
+if(event.target.value.length==0){
+  console.log("DATA BOS ISE BURAYI CALISTIR...........");
+  console.log("event.target.value-------------: ", event.target.value);
+  model.inputs.adminPage.isWarningMessage.title=true;
+  updateView();
+}
+//model.inputs.adminPage.isBlured.title=false;
+if(model.inputs.adminPage.isWarningMessage.title && model.inputs.adminPage.happening.title.name.length==1){
+  updateView();
+}
+
+}
+//Blur oldugum zaman 2 saniyelik mesaj gosterebilir miyim onu dusunmustum.....ama bir bakalim tekrardan...
+function showBlurMessage(){
+let blurMessage=``;
+blurMessage+=`
+<span class="errorValidationMessage" >Tasta inn tittel på hapening</span>
+`;
+return blurMessage;
+}
+
+// function handleBlur(){
+//   console.log("handleblur calisti!")
+//  model.inputs.adminPage.isBlured.title=true;
+//  updateView();
+// }
+    </script>
+</body>
+</html>

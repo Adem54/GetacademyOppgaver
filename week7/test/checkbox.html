@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+        let isChecked=false;
+      let colors = [{color:'red', isChecked:false},{color:'green', isChecked:false}, {color:'blue', isChecked:false}, {color:'yellow', isChecked:false}, {color:'black', isChecked:false}];
+      let app = document.getElementById("app");
+      let test;
+      updateView();
+    
+      function updateView() {
+        
+        let html = ` <p>Select your favorite colors:</p>`;
+
+        for (let i = 0; i < colors.length; i++) {
+            let mycolor="orange";
+            let myNumber=12;
+            let color=colors[i];
+            let {color:colorTitle}=color;//Normalde fonksiyona id verilecek...biz id yazmadigimiz icin boyle yaptik
+            console.log("colorTitle: ", colorTitle);
+          html += `<label for="c${i+1}"> <input type="checkbox" name="color" value="${color.color}" id="c1"
+            onclick="myFunction(this,'${colorTitle}',${i})"
+            >${color.color}</label> `;
+            //onclickten direk global deki bir veriye checked durumunu gonderebiliriz
+         //   onclick="test=this.checked"
+        }
+        //             html+=`
+        //     <label for="c1"> <input type="checkbox" name="color" value="red" id="c1">Red</label>
+        //     <label for="c2"><input type="checkbox" name="color" value="green" id="c2"> Green</label>
+        //     <label for="c3"><input type="checkbox" name="color" value="blue" id="c3">Blue</label>
+        //
+        //    `;
+
+        html += `</br></br> <button id="btn">Get Selected Colors</button> </p>`;
+
+        app.innerHTML = html;
+    
+      }
+
+
+    //   const btn = document.querySelector("#btn");
+    //   btn.addEventListener("click", (event) => {
+    //     let checkboxes = document.querySelectorAll(
+    //       'input[name="color"]:checked'
+    //     );
+    //     let values = [];
+    //     checkboxes.forEach((checkbox) => {
+    //       values.push(checkbox.value);
+    //     });
+    //     alert(values);
+    //   });
+let choosenColors=[];
+//   choosenColors.push(value);//icindeki isChecked true olursa bu kategori dizi icine atilmali
+    function myFunction(checkedElement, title, index){
+        console.log("index: ",  index);
+        console.log("title: ", title);
+   
+     //let value=checkedElement.value;
+      //console.log("checkedStatus: ", checkedElement.checked);  
+    //  isChecked=checkedElement.checked;
+     // console.log("colors: ", colors);
+     console.log("checkedElementChecked: ", checkedElement.checked);
+     if(checkedElement.checked) {
+        choosenColors.push(title);
+     }else {
+        choosenColors.splice(index,1);  
+     }
+     console.log("choosenColors: ", choosenColors);
+
+
+    }
+    </script>
+  </body>
+</html>

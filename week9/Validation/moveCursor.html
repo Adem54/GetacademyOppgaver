@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <input
+      type="text"
+      id="first_name"
+      name="first_name"
+      value="Initial value"
+    />
+
+    <button id="btn">Move cursor to beginning</button>
+
+    <script>
+        const input = document.getElementById('first_name');
+
+// ✅ Move focus to Beginning of input field
+input.setSelectionRange(0, 0);
+input.focus();
+
+// ✅ Move focus to Beginning of input field on button click
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', function handleClick() {
+  input.setSelectionRange(0, 0);
+  input.focus();
+});
+/*
+We used the setSelectionRange to set the start and end positions of the current text selection in the input element.
+
+The two parameters we passed to the setSelectionRange method are:
+
+selectionStart - a zero-based index of the first selected character.
+selectionEnd - a zero-based index of the character after the last selected character.
+The last step is to call the focus() method on the element.
+
+The focus element moves the cursor to the element the method was called on.
+*/
+
+/*
+
+Add a click event listener to a button element.
+Each time the button is clicked, call the setSelectionRange() method on the input element.
+Call the focus() method to move the cursor to the beginning of the input field.
+
+*/
+let input2 = document.getElementById('first_name');
+
+let btn2 = document.getElementById('btn');
+
+btn2.addEventListener('click', function handleClick() {
+  input2.setSelectionRange(0, 0);
+  input2.focus();
+});
+
+/*
+Every time the button is clicked, the handleClick function is invoked, where we:
+
+Set the text selection in the input field to the position before its first character.
+Focus the element.
+*/
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>

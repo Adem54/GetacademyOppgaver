@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+<script src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+    <style>
+        body {
+  background: #333;
+  color: white;
+  
+}
+
+.slider-container {
+
+  padding: 2rem 3rem;
+  background: #e6e6e6;
+  margin: 2rem auto 0 auto;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+  padding:0 4rem;
+}
+.slider-container:before {
+  content: ".slider-container";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: blue;
+}
+
+img {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+}
+
+.my-slider {
+  display: flex;
+  position: relative;
+ 
+}
+
+.slider-item {
+  background: cyan;
+  border-right: 2px solid #333;
+  padding: 2.5rem 0.75rem;
+  position: relative;
+}
+.slider-item:before {
+  content: ".slider-item";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: blue;
+}
+.slider-item:hover {
+  cursor: pointer;
+}
+
+.controls {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  left: 0;
+  background: #333;
+  width: 100%;
+  top: 50%;
+  transform: translatey(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.controls:focus {
+  outline: none;
+}
+.controls li:hover {
+  cursor: pointer;
+}
+
+.card {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 200px;
+  color: #333;
+  background: white;
+  border-radius: 5px;
+  padding-bottom: 0.75rem;
+  font-family: sans-serif;
+  overflow: hidden;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.card:before {
+  content: ".card";
+  position: absolute;
+  bottom: 0;
+  color: blue;
+}
+.card img {
+  margin-bottom: 0.25rem;
+}
+.card h2 {
+  margin: 0 0 0.25rem;
+}
+.card p {
+  margin: 0;
+  padding: 0 0.5rem;
+}
+    </style>
+</head>
+<body>
+    <h1> Tiny slider example</h1>
+<div class="slider-container">
+    <ul class="controls" id="customize-controls" aria-label="Carousel Navigation" tabindex="0">
+        <li class="prev" data-controls="prev" aria-controls="customize" tabindex="-1">
+            <i class="fas fa-angle-left fa-5x"></i>
+        </li>
+        <li class="next" data-controls="next" aria-controls="customize" tabindex="-1">
+            <i class="fas fa-angle-right fa-5x"></i>          
+        </li>
+    </ul>
+    <div class="my-slider">
+        <div class="slider-item">
+            <div class="card">                
+                <img src="https://placeimg.com/200/150/any" alt="">
+                <h2>Title 1</h2>
+                <p class="card_description">Loresm ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, voluptas!</p>
+            </div>
+        </div>
+        
+        <div class="slider-item">
+            <div class="card">                
+                <img src="https://placeimg.com/200/150/nature" alt="">                       
+                <h2>Title 2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, voluptas!</p>
+            </div>
+        </div>
+        
+        <div class="slider-item">
+            <div class="card">                
+                <img src="https://placeimg.com/200/150/nature/2" alt="">
+                <h2>Title 3</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, voluptas!</p>
+            </div>
+        </div>
+        <div class="slider-item">
+            <div class="card">                
+                <img src="https://placeimg.com/200/150/nature/3" alt="">
+                <h2>Title 4</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, voluptas!</p>
+            </div>
+        </div>
+    </div>    
+</div>
+<script>
+    
+  const slider = tns({
+   
+ container: '.my-slider',
+    loop: true,
+    items: 3,
+    slideBy: 'page',
+    nav: false,    
+    autoplay: true,
+    speed: 500,
+    autoplayButtonOutput: false,
+    mouseDrag: true,
+    lazyload: true,
+    controlsContainer: "#customize-controls",
+    responsive: {
+        640: {
+            items: 2,
+        },
+        
+        768: {
+            items: 3,
+        }
+    },
+
+  });
+
+</script>
+</body>
+</html>

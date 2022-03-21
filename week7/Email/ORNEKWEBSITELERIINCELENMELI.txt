@@ -1,0 +1,89 @@
+Google da aranabilecek anahtar kelimeler
+
+Best ecommerceplatforms
+Sell your unwanted stuff
+Best sites to sell your products online
+Best places to sell clothes free
+Second-hand shopping sites
+start selling online for free
+The world's best shopping sites
+What are the free shopping sites where I can sell any of my second-hand items?
+
+Dunya capinda ucretsiz ikinci el urun veya araba veya herhangi birsey kaydedip satabilecegin web sitelerini bul ve oralara kaydolarak
+urun ekleme, silme, duzenleme islemlerini tecrube et ve de  ekledigin urunler normal bir kullanicinin sayfasinda nasil
+gozukuyor onu da inceleyerek bu tarz sitelerde isler nasil yuruyor bunu iyice tecrube etmeliyiz....ve bir musteriden buna benzer is geldigi
+zamanm kafamizda birden fazla alternatifli cozumler isiklar yanmali ve hemen musteriye farkli alternatifler teklif edebilmeliyiz...
+
+Ayriaca da dunyanin en basarili ve meshur alisveris sitelerine girip detayli incelemeler yapip yaklasimlarin nasil olduguna bakabilriz
+patika sitesinde react bolumunde en son yapilan websitesini inceleyebiliriz...
+
+//Coook onemli.....
+En basta finn.no yu ve sahibinden.com u inceleyerek baslayabilriiz ki turk siteleri ve norvecli siteleri ozellikle ayrica incelemeye
+alarak oralardaki sitelerden cok iyi bir sekilde faydalanabiliriz.....
+
+udemycourse taki kullanim ozelliklerini takip et....
+
+En İyi İkinci El Siteleri
+Sahibinden.com.
+Nadir Kitap.
+Dekopasaj.
+GittiGidiyor.
+Letgo.
+Gardrops.
+Modacruz.
+Dolap.
+
+//Bu sitelere fake hesap olusturup urun eklemeye calis ve oralari incele...
+Trendyol
+https://help.shopify.com/en
+
+
+https://smartmarked.no/
+
+MUSTERIDEN BIR IS ALIRKEN BIR MUSTERIGORUSMESI YAPARKEN NE TUR SORULAR SORULABILIR BUNA DA CALISALIM
+Tabi bunu calistigimiz isverene soracagiz
+degiskenleri ingilizce kullanabilir miyiz?
+Ana sayfada listeledigimz urunleri neye gore siralayacagiz, begenilme oranlarina gore siralayacak miyiz
+Gidip ornek websiteleri onceden incele ve kafanda kabataslak bir e-ticaret sitesinde neler oluyor bunlar olmali ki
+bunlardan hangi ozelliklerin olmasini musteri istiyor diye netlestirelim....
+Kullanicinin gorecegi sayfada herhangi bir filtreleme olacak mi yani kulllanici filtreleme yapabilecek
+ mi neye gore yapabilecek
+Listelenen kullanicilar ile ilgili ne gibi sinirlandirmalar olacak ornegn tarihi 1 aya kadar
+olan kampanyalari goster veya ilk 10 product gorunur olsun ve guncelden eskiye dogru gibi
+Form zero to ekspert projelerde once yol haritasi nasil olmali bunu cikarmis bu cok faydali
+bu tarz videolar bul basliklari youtube ye de yaz ve tavsiyeleri oku...
+PROJECT PLANNING
+How To Create A Website Project Plan: A Step-by-Step Guide
+The Ultimate Guide to Planning your Website Project
+Planning a website project from start to finish
+How to Write an Email to a Client after the Meeting
+6 Tips to Attract Your Ideal Web Development Clients
+Understanding your
+client’s business and needs
+How to Make Website Development Clear for the Client
+How can I improve sales of my web development company?
+Web Design and Development: Everything You Need To Know
+How To Successfully Educate Your Clients On Web Development
+Questions to Ask to Choose Your Ideal Custom Web Application Development Company
+The Beginner's Guide to Website Development
+How to Run Your First Design Meeting with a Client
+100+ Questions You Must Ask When Developing A Website
+Guidelines For Successful Communication With Clients
+90 Revealing Questions to Ask to Really Understand Your Client
+The questions you need to ask before starting a product design project
+20 Crucial Questions to Ask Before Doing a Website Design
+21 questions to ask yourself before ordering and developing an e-commerce website
+6 QUESTIONS TO ASK BEFORE ANY WEB DEVELOPMENT PROJECT
+20+ Questions to Ask When Building a Website for a New Client
+15+ questions to ask your customers to know their needs and expectations
+9 essential questions you need to ask clients before starting a web design project (+ a free template!)
+
+//Prototyping-bunu arastir...
+Website prototypes are interactive demos of a website. 
+These are often used to gather feedback from project stakeholders early 
+in the project lifecycle, before the project goes into final development
+
+Eger kategorilerimiz cok fazla ise ornegin 6,10 tane ise bunlari dropdown liste
+koymak mantiklidir cok yer kapladiklari icin ama kategorilerimiz 3/4 tane ise bunlar
+radiobutton ile de hazirlayabiliriz ki bu demektir ki 1 tane secenek secebilir kullanici demektir
+Bar-pinne cubuklari nasil kullaniliyor onlara da bir bak

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+let people={
+    person1:{
+        id:1,name:"Adem"
+    },
+    person2:{
+        id:2,name:"Zeynep"
+    },
+    person3:{
+        id:3,name:"Zehra"
+    },
+    person4:{
+        id:4,name:"Hasan"
+    },
+}
+
+
+let peopleKeys=Object.keys(people);
+let peopleValues=Object.values(people);
+console.log("peopleValues: ",peopleValues);
+peopleValues=peopleValues.map((item,index)=>item.name );
+console.log("peopleValuesLast: ",peopleValues);
+let newPeople =  Object.assign.apply({}, peopleKeys.map( (v, i) => ( {[v]: peopleValues[i]} ) ) );
+
+console.log("newPeople: ", newPeople);
+
+
+    </script>
+</body>
+</html>

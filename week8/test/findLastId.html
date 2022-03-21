@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let people=[{id:1,name:"Adem"},{id:2,name:"Zehra"},{id:3,name:"Zeynep"},]
+
+
+
+        let result=people.reduce((acc,item)=>acc=acc>item.id ? acc : item.id, 0);//en sagdaki 0 accumultorun baslangic sayisidir
+        //Parametredeki ilk acc akumulator dur islemi yapar ve sonucu alir ve tekrar ilk islemi o acc degeri ile baslar her donmede, item ise dizi icinde donen degerdir...
+
+        const shots = [
+  {id: 1, amount: 2},
+  {id: 2, amount: 4},
+  {id: 3, amount: 52},
+  {id: 4, amount: 36},
+  {id: 5, amount: 13},
+  {id: 6, amount: 33}
+];
+
+shots.reduce((acc, shot) => acc = acc > shot.amount ? acc : shot.amount, 0);
+
+    </script>
+    
+</body>
+</html>

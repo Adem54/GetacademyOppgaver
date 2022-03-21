@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let myTime="Start Time";
+
+        let newString=myTime.replace(/ /g, "");
+        console.log("newString: ", newString);
+        let doLowerFirstLetter=newString[0].toLowerCase();
+        let myNewString=newString.replace(newString[0], doLowerFirstLetter);
+        console.log("result: ", myNewString);
+
+        //Iki kelimeyi birlestirip ilk harfi kucuk  yapan fonksiyonu yaz..
+
+        function removeSpacesAndDoLowerFirstLetter(text){
+            let getTextWithoutSpaces=text.replace(/ /g, "");
+           let getLowerFirstLetter=text[0].toLowerCase();
+           text=getTextWithoutSpaces.replace(text[0], getLowerFirstLetter);
+            return text;
+        }
+
+let myText="End Date";
+
+//console.log("Test: ",combineAndDoLowerFirstLetter(myText));
+
+let timePeriod="ampm";
+console.log("timePerionAM: ",timePeriod.slice(0,2));
+console.log("timePerionPM: ",timePeriod.slice(2,4));
+
+    </script>
+</body>
+</html>

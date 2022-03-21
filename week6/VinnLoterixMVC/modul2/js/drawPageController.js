@@ -24,6 +24,7 @@ function selectAllOrNone(selectAll) {
   //Toggle islemi her zaman bizim listemizi tutugumz elemntler icinde tiklanan data
   //Ve biz her tiklamada tersini  yapmasini istiyoruz ondan dolayi da bu sekilde toggle haline getiriyoruz burda....
   function togglePersonSelected(id) {
+    console.log("checkBox a tiklandi!")
     const person = findPerson(id);
     person.isSelected = !person.isSelected;
     updateView();

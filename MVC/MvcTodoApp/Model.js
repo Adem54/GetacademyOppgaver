@@ -6,7 +6,6 @@ export default class Model{
         //     {id: 1, text: 'Run a marathon', complete: false},
         //     {id: 2, text: 'Plant a garden', complete: false},
         // ]
-
     }
 //We'll make a commit private method to update the value of localStorage as well as the model state.
 //Localstorage a kaydetme islemini yapan ve sadece bu class icinde calisan bir fonksiyondur _commit

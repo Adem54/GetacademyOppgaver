@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .gradient1 {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 15px;
+
+  background: linear-gradient(45deg, red, blue);
+ /*  The syntax of a 45deg tilted linear gradient with start color red and end color blue.  */
+}
+
+.gradient2 {
+    float: left;
+            width: 200px;
+            height: 200px;
+
+            background: linear-gradient(
+    to right,
+    red 20%,
+    orange 20% 40%,
+    yellow 40% 60%,
+    green 60% 80%,
+    blue 80%
+  );
+}
+
+
+.gradi {
+    margin-top: 2rem;
+    background-image:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('/andy-holmes-3NC8zYGUuZM-unsplash.jpg');
+    width: 80%;
+    height: 400px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+}
+
+
+.gradi2 {
+    background-image: 
+    url("/taisiia-stupak-20uEDcwdVog-unsplash.jpg");
+    width: 80%;
+    height: 400px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+}
+    </style>
+</head>
+<body>
+<div class="gradi"></div>
+
+    <br><br>
+
+    <!--
+
+        background-image:linear-gradient(to right top,rgba(#00aeef, .2) ,rgba(#3be8b0,.6)), url("/images/hemsedal.jpg");
+    -->
+
+<div class="gradi2"></div>
+    <br><br>
+    <div class="gradient1"></div>
+<br><br>
+    <div class="gradient2"></div>
+
+
+
+</body>
+</html>

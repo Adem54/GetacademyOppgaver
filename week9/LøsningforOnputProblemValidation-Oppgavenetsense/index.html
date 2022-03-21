@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        let model = {
+            name: null,
+            age: null,
+            email: null,
+            isValid: false,
+            validationErrors: {
+                name: null,
+                age: null,
+                email: null,
+            },
+        }
+
+        updateView();
+        function updateView() {
+            document.getElementById('app').innerHTML = /*html*/`
+
+                Navn: 
+                <span style="color: red">${model.validationErrors.name || ''}</span><br/>
+                <input 
+                    id="nameInput"
+                    type="text"
+                    oninput="model.name = this.value; validate(this);"
+                    value="${model.name || ''}"
+                    /><br/>        
+                    
+                Alder: 
+                <span style="color: red">${model.validationErrors.age || ''}</span><br/>
+                <input 
+                    id="ageInput"
+                    type="text"
+                    oninput="model.age = parseInt(this.value); validate(this);"
+                    value="${model.age || ''}"
+                    /><br/>                      
+
+                E-post: 
+                <span style="color: red">${model.validationErrors.email || ''}</span><br/>
+                <input 
+                    id="emailInput"
+                    type="text"
+                    oninput="model.email = this.value; validate(this);"
+                    value="${model.email || ''}"
+                    /><br/>                      
+
+            `;
+        }
+
+        function validate(field) {
+            let id = field.id;
+            let selStart = field.selectionStart;
+            let selEnd = field.selectionEnd;
+
+            model.validationErrors = {
+                name: null,
+                age: null,
+                email: null,
+            };
+            if (!model.name || model.name.length < 5) {
+                model.validationErrors.name = 'Du må fylle ut navn; navn må være på minst 5 bokstaver.';
+            }
+            if (!(model.age > 0 && model.age < 100)) {
+                model.validationErrors.age = 'Alder må være mellom 0 og 100.';
+            }
+            if (!model.email || model.email.indexOf('@') == -1) {
+                model.validationErrors.email = 'Epostadresse må inneholde @.';
+            }
+            updateView();
+            field = document.getElementById(id);
+            field.selectionStart = selStart;
+            field.selectionEnd = selEnd;
+            field.focus();
+
+        }
+
+    </script>
+</body>
+
+</html>

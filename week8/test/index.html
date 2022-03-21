@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./ConfirmIcon/style.css">
+    <style>
+        .icon-checkmark:before {
+  content: "\ea11";
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+    </style>
+</head>
+<body>
+    <svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg>
+
+
+    <hr/>
+        
+    <span class="icon-checkmark2"></span>
+    <script>
+
+    
+
+        function test(value){
+            value=15;
+            console.log("value: ", value);
+        }
+
+        test(25);
+        //Burdan da gordgumuz gibi parametreye aldigimiz degeri bir degisken gibi kullanip ona geldigi degerden baska degerlerde atayabiliyoruz
+
+        const object1 = {};
+
+Object.defineProperty(object1, 'age', {
+  value: 42,
+  writable: true
+});
+
+
+console.log("object: ",object1);
+object1.age=45;
+console.log("object: ",object1);
+
+let people={
+    person1:{isCheck:true,name:"Adem"},
+    person2:{isCheck:false,name:"Zehra"},
+    person3:{isCheck:true,name:"Zeynep"},
+    person4:{isCheck:false,name:"Hasan"},
+}
+console.log("type:_", typeof people);
+console.log("peopleFirstObject: ",people);
+let peopleArrayKeys=Object.keys(people);
+let peopleArrayValues=Object.values(people);
+console.log("peopleArrayKeys: ",peopleArrayKeys);
+console.log("peopleArrayValues: ",peopleArrayValues);
+peopleArrayValues=peopleArrayValues.map(person=>person.isCheck ? {isCheck:person.isCheck,name:"Kamil"} : person);
+console.log("peopleArrayValuesChanged: ",peopleArrayValues);
+var result2 =  Object.assign.apply({}, peopleArrayKeys.map( (v, i) => ( {[v]: peopleArrayValues[i]} ) ) );
+console.log("result2: ",result2);
+
+
+//Iki ayri diziyi bir obje olarak key-value ile birlestirmek
+var keys = ['foo', 'bar', 'baz'];
+var values = [11, 22, 33]
+
+var result =  Object.assign.apply({}, keys.map( (v, i) => ( {[v]: values[i]} ) ) );
+console.log(result); //returns {"foo": 11, "bar": 22, "baz": 33}
+    </script>
+</body>
+</html>

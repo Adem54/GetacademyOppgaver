@@ -8,7 +8,21 @@
 </head>
 <body>
     
+
+
+
     <script>
+
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+    console.log("file: ", event.target.files[0]);
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+
+
+
+////////////////////////////////////////////////////
 const numbers=[1,5,7,1,23,4,45,23];
 let index=numbers.splice(3,1);
 console.log("index: ",index);//index i 3 olan elementi numbers icinden siler ve biz bu islemi bir degiskene atarsak da o degisken bize silmek istedigimiz elementi bir dizi icinde doner....
@@ -42,6 +56,48 @@ const todos2=[{id:1,title:"homework",completed:false},{id:1,title:"food",complet
 const result3=todos2.filter((todo)=>activeFilter==='active' ? todo.completed===false && todo: todo.completed===true && todo,);  
 
 console.log("result3: ",result3);
+
+
+let people2=[
+        {id:1, name:"Per", email:"per@gmail.com"},
+        {id:2, name:"Pål", email:"pål@gmail.com"},
+        {id:3, name:"Espen", email:"espen@gmail.com"},
+    ]
+
+    //Once people2 dizisini sadece id lerin oldugu diziye ceiviriyoru map ile
+let maxId=people2.map(person=>person.id).reduce((max,value)=>Math.max(max,value),-1);
+console.log("maxId: ",maxId);
+let text3="PER";
+
+let result4=people2.filter(person=>person.name.toLowerCase().includes(text3.toLowerCase()) ? person : null   );
+
+console.log("result4: ",result4);
+console.log("people2: ",people2);
+
+function filterPeopleList(){
+    
+let filteredData=people2.filter(person=>{
+  return  person.name.toLowerCase().includes(text3.toLowerCase()) ? person : null;  
+})
+
+console.log(`filterdData: `,filteredData);
+
+}
+
+filterPeopleList();
+
+
+function filterPeopleList2(){
+    
+    let filteredData=people2.filter(person=>   (person.name.toLowerCase().includes(text3.toLowerCase()) ? person : null)  )
+    
+    console.log(`filterdData2: `,filteredData);
+    
+    }
+
+    filterPeopleList2();
+
+
 
     </script>
 </body>

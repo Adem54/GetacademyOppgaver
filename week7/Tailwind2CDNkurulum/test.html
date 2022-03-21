@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--JIt i de CDN yolu ile bu sekilde kurabiiiriz-..-->
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+<!--Tailwind css i cdn ile kurarak kullanacak isek o zaman ozellestirmek icin bu sekilde kullanabiliriz...-->
+
+    <script type="tailwind-config">
+      {
+          theme: {
+              extend: {
+                  colors: {
+                      'dark-blue-800': '#0A214C',
+                      'hulk-800': '#3D42F5',
+                  }
+              }
+          }
+      }
+      </script>
+</head>
+<body>
+  <div class="p-16">
+    <div class="h-[120px] w-[120px] rounded-full border bg-dark-blue-800 hover:bg-hulk-800 cursor-pointer"></div>
+</div>
+  <hr>
+    <div class="container mx-auto mt-5 space-y-4 flex flex-col items-center justify-center ">
+
+        <div class="w-1/2">
+            <label for="Name" class="block mb-1 text-sm text-gray-600"
+              >Your Name</label
+            >
+            <input
+              type="text"
+              name="name"
+              class="w-full px-4 py-2 text-base border border-gray-300 rounded outline-none focus:ring-blue-500 focus:border-blue-500 focus:ring-1"
+              placeholder="Enter Your Name"
+            />
+          </div>
+          <div class="w-1/2">
+            <label for="description" class="block mb-1 text-sm text-gray-600"
+              >Description</label>
+            <!--<label class="block">
+      <span class="text-gray-700">Textarea</span>
+      <textarea class="form-textarea mt-1 block w-full" rows="3" placeholder="Enter some long form content."></textarea>
+    </label>-->
+            <textarea
+              type="text"
+              name="name"
+              class="w-full px-4 py-4 text-base border border-gray-300  rounded outline-none focus:ring-blue-500 focus:border-blue-500 focus:ring-1"
+              rows="5" placeholder="Enter some long form content."
+              placeholder="Description"
+            ></textarea>
+          </div>
+    
+    <div class="w-1/2">
+            <label for="image" class="block mb-1 text-sm text-gray-600"
+              >Your Name</label
+            >
+            <input
+              type="file"
+            id="image"
+    
+              class="block w-full  py-0   text-gray-900 bg-gray-50 rounded border border-gray-300 cursor-pointer light:text-gray-400 focus:outline-none focus:border-transparent light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400"
+              placeholder="Enter Your Name"
+            />
+             <!--   <div class="mt-1 text-sm text-gray-500 light:text-gray-300" id="user_avatar_help">A profile picture is useful to confirm your are logged into your account</div>
+        burayi validation icin kullanabiliriz...
+        --> 
+          </div>
+    
+    
+    
+    
+        </div>
+       
+    
+</body>
+</html>

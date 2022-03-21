@@ -5,10 +5,8 @@ function goToVotePage(){
 
 
 function addOption(){
-
     model.options.push({text:model.inputs.optionsPage.newOption,color:"darkgray"});
     model.inputs.optionsPage.newOption="";//Bu sekilde inputu temizlemis oluruz ama ne zaman dizi icine kelndikten sonra.,....BESTPRACTISE...
-
 updateView();
 }
 //Burda input a girilen option u alip model icerisinde ortak datamiz olan options dizisi icerisine bir obje olarak ekleyecegiz dolayisi ilede icerisinde text ve color olan bir obje olusturacagiz ki zaten texti input a girilen degerden aliyoruz bir de farge color olusturacagiz ve de model.options dizisine ekleyecegiz.....

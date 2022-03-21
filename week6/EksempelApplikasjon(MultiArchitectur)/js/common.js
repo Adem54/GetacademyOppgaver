@@ -8,7 +8,6 @@ function createMenuHtml(){
     }//
 
 //Burasi tum view componentlerde veya tum safyalarda ortak olacak view kismini burda tutacagiz ki DRY-DO NOT REPEAT YOURSELF PRENSIBINE UYABILELIM
-
 //button icindeki veya html elementleri icine inline olarak yazdigmiz attribute olarak yazdigmiz onclick icine yazacagimiz kodlari tarayci ayni script icine  yazilan kodlari okur gibi okuyor ondan dolayi biz eger onclick="" buraya normal degisken i yazabiliyoruz ama suna dikkat burasi global scope ta okunyor bizimn modelimiz global scope ta old icin sorun yasamiyoruz.... ve de eger burda bir string kullanacak sak o zaman cift tirnak icinde bir de tek tirnakk kullanmaliyiz....
 
 //Bu butonlar sayfa degistirmemizi sagliyorlar ve biz burda hangi butona tilkarsak bizi o sayfanin view kodlarini calstiracak cunku biz model.app.page ini degistiriyoruz...

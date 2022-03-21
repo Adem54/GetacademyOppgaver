@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #nameError {
+  display: none;
+  font-size: 0.8em;
+}
+
+#nameError.visible {
+  display: block;
+}
+
+input.invalid {
+  border-color: red;
+}
+    </style>
+</head>
+<body>
+    <form>
+        <label for="firstname"> First Name: </label>
+        <!-- <input type="text" name="firstname" required id="firstname"> -->
+        <button >Submit</button>
+        </form>
+<br><br>
+<hr>
+
+<form id="form">
+    <label for="firstname"> First Name* </label>
+    <input  type="text" name="firstname" id="firstname" />
+    <button id="submit">Submit</button>
+  
+    <span role="alert" id="nameError" aria-hidden="true">
+      Please enter First Name
+    </span>
+  </form>
+        <script>
+            const nameField = document.querySelector("input");
+
+nameField.addEventListener("input", () => {
+  nameField.setCustomValidity("");
+  nameField.checkValidity();
+  console.log(nameField.checkValidity());
+});
+
+nameField.addEventListener("invalid", () => {
+  nameField.setCustomValidity("Please fill in your First Name.");
+});
+
+//2.form
+
+const submit = document.getElementById("submit");
+
+submit.addEventListener("click", validate);
+
+function validate(e) {
+  e.preventDefault();
+
+  const firstNameField = document.getElementById("firstname");
+  let valid = true;
+
+  if (!firstNameField.value) {
+    const nameError = document.getElementById("nameError");
+    nameError.classList.add("visible");
+    firstNameField.classList.add("invalid");
+    nameError.setAttribute("aria-hidden", false);
+    nameError.setAttribute("aria-invalid", true);
+  }
+  return valid;
+}
+
+
+        </script>
+</body>
+</html>

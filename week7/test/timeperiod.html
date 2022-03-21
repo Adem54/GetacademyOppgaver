@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="dt" type="datetime-local" />
+    <br><br>
+    <hr>
+    <input id="dt2" type="date" />
+<hr>
+<br><br>
+
+<input id="dt3" type="datetime-local"
+onchange="getDateTime(this)"
+
+/>
+    <script>
+      //BURASI COK ONEMLI NORMALDE TARIHI BIZ DOGRUDAN TAKVIMDE GOSTERECEGIMIZ ZAMAN ISO STRING HALINDE GOSTRMELIYIZ VE ISOYA CEVIRINCE DE O ZAMN DA TIMEZONE KAYIYOR ONDAN DOLAYI BU ARADAKI FARKIDA BU SEKILDE COZDUKTEN SONRA BU ISLEMI YAPMAMIZ GEREKIYOR....
+      //COOK ONEMLI BURAYI IYI BIL....
+      const now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      document.getElementById("dt").value = now.toISOString().slice(0, 16);
+    //  console.log("check: :", now.toISOString().slice(0, 16))
+      document.getElementById("dt2").min = now.toISOString().slice(0, 16);
+
+function getDateTime(selectedDate){
+  
+let getDate;
+let getTime;
+console.log("checkDate: ",selectedDate.value);
+getDate=selectedDate.value.slice(0,10);
+console.log("checkDate: ",getDate);
+getTime=selectedDate.value.slice(11,16);
+console.log("checkTime: ",selectedDate.value.slice(11,16));
+
+
+}
+
+
+
+    </script>
+  </body>
+</html>

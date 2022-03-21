@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MVC JAVASCRIPT ILE PROJE HAZIRLARKEN NELERE DIKKAT ETMELIYIZ....</h1>
+    <h2>Model</h2>
+
+    Oncelikle model ana datamizi 3 e ayiririz...
+
+    <h3>app objesi</h3>
+<ul>
+    <li>model ana objesi altinda bir app objesi ve icerisinde de page prperties i bulunuyor</li>
+    <li>Burda tabi sayfa demis iken eger girilecek sayfa login yapilacak bir sayfa olsa idi  mantikli olarak burada login olan kullanicinin userName vs bilgilerini de burda tutmak mantikli olabilrdi isLoggedin diye sayfa nin durumu false true ile de tutmayi dusuneblirz...</li>
+    <li>Bu sayfa bizim sayfalar arasi gecisi model icinde yonetecegimiz sayfadir....tiklayacagimz butonlari gidecegi sayfalar hangisi ise o butonlardan sonra bu page verisi hangi sayfaya gidilecek ise degistirilir ve de ardindan view guncellenir...</li>
+    <li>
+        Yani bizim model altinda ki app objesi icerisinde page property sine biz hangi sayfaya tiklarsak value sini o sayfa yapacagiz. Bu tam olarak su demektir page aslinda state gibi dusunelim yani biz sayfa degistirirken, aslinda pagestate i degistirmis oluyoruz....Ornegin endre ye tikladigimizda, biz endre ve remove butonlarini search sayfasinda olusturuyoruz ama o butonlara tiklayinca ornegin remove butonun a tiklayinca biz oncelikle page durumunu remove yapariz page durumu ayni state durumudur aslinda, ondan sonra o sayfa ya geldikten sonra islem yapmaya baslariz....
+        Ayni mantik endre de de vardir endre butonuna tiklayinca page state durumunu degistiririz once page state i endre yapariz ve de biz endre yapinca page durumunu artik biz endre page view da hazirladigmiz view fonksiyonu calismis olacak ve page endre nin icerigi ekrana gelmis olacak...... 
+    </li>
+    <li>
+model altinda bir de inputs objesi olacak bu inputs objesi altinda hersayfaya ait bir objemiz olacak...buna dikkat ve de o objeler icerisinde biz sayalar da var olan dinamiklik ile ilgili ne kadar action event vs var ise onlari burada olusturacagimz degiskenler uzerinden dinamik olarak yonetecegiz.....
+</li>
+
+        <li>
+            Model altindaki inputs altindaki sayfalardaki dinamikligi yonetebilmek icin olusturdugumuz model alanini olustururken, sunu hatirlayalim.React redux ile actionslarimizi olustururken, actioncreater fonksiyuonloarimiza parametre gonderiyoruz ki reducer da biz state i degistirecek islemleri yani state dedimiz ana verimiz state i degistirecek islemleri biz reducer da yapiyorduk ve actionCreater daki fonksiyonolarimizin parametrelerine biz edit icerisinde ki fonksiyonlarimizda parametrelere gonderilen ve bizim onlar uzerinden edit,delete fonlkiyonlarimizi gerceklestirecegimz verilerimizi de model icinde inputs altindaki her bir sayfamiz icerisinde tutacagiz....
+        </li>
+        <li>Model altindaki inputs altindaki her bir sayfamiz icerisine yazacagimiz degisken ler bizim o sayflarda dinamikligi uygulayacak olan function larda kullanilacak verilerdir, degiskenlerdir.Dolayisi ile bizim eger 1 tane edit veya delete sayfam olacak ise ben sunu bilmeliyim, ben edit veya delete fonksiyonunu islevini yerine getirebilmesi icin benim hangi datalara ihtiyacim olacak ise o datalari iste ben inputs altindaki objelerimden birinde tutacagim.
+            Ornegin ben edit fonksiyonun da hangi elemente tiklarsam o elemente edit yapilacak ve bizim tiklayacagimiz elementin id sine ihtiyacimiz olacak ki biz o id uzerinden tiklanan veriye tiklanan objeye ulasip sonra endre sayfasinda yeni girilen veriler ile eski girilen verinin yerini detgistirebiliriz....
+        </li>
+
+        <li>
+            Ayrica da ornegin delete islemi yaparken de yine biz listelenmis datmaizdan kullanici delete iconuna basinca delete isleminin gerceklesmesi icin hangi elemente tiklandigni bulmamiz icin verinin listelendigi for dongusu icinde olusturulan fonksiyona id gonderilmesi gerekir ayrica da biz delete islemerinde bir confirm onaylama islemi gerceklestiririz burda da yine kullanici onayina ihtiyac var yine bu islemi yonetebilmek icin de 1 tane boolean degiskeni inputs objesi icindeki delete objesinde kullaniriz...
+        </li>
+
+   
+</ul>
+    <hr>
+    <h2>View</h2>
+    <ul>
+        <li>View islemleri yaparken oncelikle view larimizi sabit olacak yani degismeyecek her zaman ayni kalacak html kisimlarini ya direk html icinde yazariz ya da View icinde en ustte yazariz sonra da dinamik olacak kisimlar icin ise bir fonksiyon yazariz ornegin createSearchHtml gibi ve bunun icinde de yazacagimiz html yine degsken kullanarak daha dinamik bir sekilde yazarak o degiskeni bu fonks icinde return ederiz</li>
+        <li>
+            Burda su mantikta ilerleyecegiz bizim view daki ana fonksiyonumuz icine ornegin updateViewCreateNew fonksiyonumuz icerisinde olabildigince temiz ve sade ve anlasilir kod yazmaliyiz...bu coook onemlidir....onun icinde yazacagimiz html i de alttarafta fonksiyon icerisinde duzenleyerek ve olabildigince parcalayarak birden fazla yerde kullanilmasini saglayip tekrar tekrar ayni kodlari yazmakten kurtulabiliriz....
+        </li>
+        
+        <li>Sonra view icerisindeki input islemlerinde ilk olarak input value lerimizi kontrol altina alacagiz yani model deki dinamik olarak verileri tutmak icin ayarladiigmiz inputs altindaki degiskenlere bu input value leri baglamaliyiz ve attribute olan value ya da modeldeki dinamik olarak ayarladigmiz input value degiskeninni atamaliyiz... </li>
+        <li>View da dinamik olarak olusturacgimiz li etiketi olabilir veya ayni mantikta table, tr, td olabilir bu tur durumlarda ornegin once degiskene mesela ul nin baslangic etiket kismini atariz  sonra icinde dinamik olarak yazdiracagimz li etiketlerini degisken e ekleyerek dongu icinde html+= seklinde yazilir ve tekrardan for dongusu bittikten sonra html degiskenine ul degiskeninin bitis etiketini tekrardan degiskene atariz... Bu mantikta diger kullanacagimiz etiketleri de kullaniriz...    </li>
+        <li>
+            <strong>REFACTORING VE TUM ISLEMLERIMIZ FONKSIYONA DONUSTURME ISLEMI.....ISLEMLERIMIZI OLABILDIGINCE PARCALARA BOLME VE DOGRU ISIMLENDIRME ILE OKUNABILIRLIGI KOLAYLASTIRMA....</strong>
+            Yapacagimiz tum islemlerde her fonksiyon bir is yapmali yani fonksiyonlarin icerisine karmakarisik hale getirmemeliyiz ne oluyor ne bitiyor herseyi dogru isimlendirme ile yapmaliyiz.Ornegin bir update fonksiyonu yazarken paremtreden gelecek olan id yi kullanarak once array datamiz icinde o id hangi objeye ait onu buluruz ama bu islemi tutup da ayni fonksiyon icinde degil de gidip ayri bir tane id si verilen objeyi   dizi icinde bulan bir fonksiyon olustururuz guzel bir isimlendirme ile tek satirda o fonskiyonu calistirarak once objeyi buluruz....gibi bu mantikta yurumeliyiz...Ardindan ornegin bir validation islemi vardir bu validation fonksiyonunu da disarda olusturup kullanacagimiz yerde sadece tek satirda calistiracagiz.....Veya bir check etme islemi yapacagiz diyelim ki bunu gidip disarda bir fonksiyonda olusturup kullanacagimz yerde sadece fonksyonu invoke ederiz....Ya da ornegin localStorage a veri kaydedecegiz hemen bir tane localStorage a veri kaydetme fonksiyonu yazariz ayrica 1 tane localStorage da veri var mi onu kontrol etme fonksiyonu yazariz...gibi her turlu adimimizi her fonksiyon tek bir is yapacak sekilde ayarlariz   single responsibility ve de naming convention mantigini uygulayabilmemiz icin bu mantikta ilerlemelyiz
+            <b>
+                Olabildigince fonksiyonlarimizi kucuk parcalara ayirip fonksiyonlari birden fazla yerdek kullanarak kendimizi tekrar etmekten kurtulabiliriz....
+            </b>
+        </li>
+        <li>Bu arada view icerisinde eger biz model deki bir degiskene input un valuesini atayacaksak o zaman oninput="model.inputs.create.name=this.value" seklinde yazariz ama eger biz dogrudan modeldeki bir veriyi yazdiracaksak o zaman template literals icinde yazariz orngin input attribute values inde value="${model.inputs.create.name}" ya da ornegin bir butona ait onclick olayi icin onclick="goToEndrePage(${person.id})" bu sekilde yazariz... </li>
+        <li>
+          <b>Search islemiin ozellikle incelee.......Onemli.....</b>  
+//BESTPRACTISE...Biz html etiketlerimizi yazdigimz view icindeki fonksiyyonlar icine updateView() yazmiyoruz cunku html etiketi yazdimgiz view icindeki fonksiyonlar zaten sayfa ilk acildginda calisiyor biz gider eger onlarin icine updateView() invoke edersek o zaman kisir bir sonsuz bir donguye girecektir cunku updateView baslarken calisiyor ve onun tetikledigi fonksiyon icine tekrar updateVeiw yazinca surekli karsilikli olarak birbirini tetikleme devam ediyor ve de durmayan bir kisir donguye giriyor bu sebepten dolayi biz bir taraftan filtreme islemi yapiyoruz ama bir taraftan da filterelem islemi icerisine updateView yazamiyoruz html taglari da icinde oldugu icin ozellikle, kisir bir donguye giriyor ondan dolayi, updateView i sadece søk butonuna tiklayinca cagiriuyoruz onun disinda ki diger filtreleme fonksiyonuna kisaca sunu yazariz...Eger search inputuna veri girilmis ise ana vermiiz olan model.people i filtreleme fonksyonundan geciririz yok girilmemis ise o zaman dogrudan model.people verisini li ler icinde listeleriz iste ana mantik budur yoksa biz filtereleme fonksiyonu veya li leri dondurudgumz yerde bir kere daha updateView i calistridigimiz zaaman cikmaz bir donguuye girer
+        </li>
+        <li>
+            <b>search islemi coook onemlidir iyi anlasilmalidir....</b>
+            //BESTPRACTISE....ARTIK BU SEKILDE KULLANACAGIZ ONA GORE BURAYI COOOK IYI ANLA...FOR DONGULERIMIZI VE DATAMIZI LISTEYECEGIMIZ HTML I AYRI BIR FONKSIYON ICINDE YAZIP O FONKSIYONU OKUNUR BIR SEKILDE UPDATEVIEWSEARCH DE YAZARIZ....SIMDI BURASI SEARCH SAYFASI OLD ICIN ANA VERI BURDA ZATEN LISTELENECEK VE DE BIZIM AYRICA VERIMIZI LISTELEMEIZE GEREK YOK CUNKU VERI ARAMASI YAPILMAZSA DATANIN TAMAMINI GORECEGIZ YOK, ARAMA YAPILIRSA DA ARAMA YAPILAN DATAYI GORECEGIZ AMA BIZ YINE DE DATA MIZI LISTELEYECEK EKSTRA BIR VIEW SAYFASI DA YAPABILIRIZ ASLINDA.......
+            //ARAMA ANA DATA UZERINDE YAPILACAK ARAMA YAPILIRSA ARAMA SONUCU GELECEK YAPILMAZSA ANA VERI GELECEK...MANTIK BU SEKILDE OLACAK....BUTON UZERINDEN YAPILACAK ARAMA ISLEMI......
+            //Burda biz ne yapacagiz verimizi fon dongusu ile dondurup icinden aranan yani model.input.search.text e yazilan datayi arayacagiz....liste verimizin icinde ondan dolayi da tabiki dongu ile bu islemi yapacagiz....
+            
+            //BURAYI DA COK IYI ANLA DIKKAT ET....BESTPRACTISE....
+            //NORMALDE BUTON A TIKLAYINCA INPUT ICINE GIRILEN DEGERI ARAYACAK AMA BUTONA TIKLAMA ISINI NORMALDE BIZ CONTROLLER DA YAPARIZ BURDA FONKSIYONU YAZARI KONTROLLERDA INVOKE EDER VE ARDINDAN DA UPDATEVIEW ILE VIEW I GUNCELLERIZ AMA BURDA KI  DURUMDA BIZIM SADECE 1 KEZ VIEW I UPDATE ETMEYE IHTIYACIMIZ VAR, DOLAYISI ILE DE BIZ BUTONA TIKAYINCA SAYFAYI YENILESIN DIYECEGIZ TEKRAR CONTROLLER A GIDIP ORDA ARAMAYI  YAP VS DEN ZIYADE DIREK ARAMA  YI BURDA YAPTIRACAGIZ VE DE BUTTON ONCLIKC DE DE SADECE UPDATEVIEW I CALISTIRMASINI YANI GUNCELLEME YAPMASINI SAGLAYACAGIZ CUNKU BIZ ARAMA ISLMENI ZATTEN PEOPLE DATAMIZI LISTELEME ILE AYNI SEKILDE OLACAK BURDA CREATEHMTLPEOPLE ICINDE ARAMA YAPARIZ ARAMA SONUCU LISTEDE VARSA ONU GETIRIRI ARAMA YAPILMAZ VEYA SONUC YOK ISE DE TUM LISTEYI GETIRIR......
+            //BESTPRCTISE......-----COOOK IYI ......
+            //EGER model.inputs.search.text !== "" bos degilse poepl i filtreleme yap....
+            //DIKKKAT ET DIYECEGIZ KI EGER TEXT ICINDE VERI VAR ISE FILTERPEOPLE FONKSIYONUNU CALISTIR YANI O ISLEMI AYRI BIR FONKSIYON DA YAP VE BURDA SADECE CALISTIR...HER ZAMAN TEMIZ KOD VE PARCALAYABILDIGN KADAR FONKSIYONMLARI KUCUK PARCALARINA  AYIR.....
+
+        </li>
+        <li>
+            //Burda biz ne input a girecegimiz veriyi almayi bekliyoruz...
+//Biz burda model de herhangi birsey degistirmiyoruz sadece model icindeki data, people datasi icinde arama yapacagiz
+//Burda ilk isimiz inputa girilen value yi bir alalim bunu nasil alacagiz inputa veri girildiginde oninput eventi tetiklenecek
+//oninput icinde biz ne yapacagiz bizim model icinde input text imizi tutacak veriye value yi gonderecegiz....BU ISLEM HERYERDE AYNIDIR REACTTA DA AYNIDIR EVENT OLAYI ICINDE ONCE GIRILEN DEGERI BIR ALIP DEGISKENE ATAYARAK ORAYI BIR KONTROL ALTINA ALIRIZ....
+//INPUTLARI KONTROL ALTINA ALIRKEN
+//1-EVENT OLAYI ICNDE THIS.VALUE YI MODEL DA AYARLADIGMIZ DEGIKENE ATARIZ
+//2-MODEL DA AYARLADIGMIZ DEGISKENI DE ATTRIBUTE OLAN INPUT VALUE YE ATARIZ
+//3-INPUTUMUZA BIR BASLANGIC DEGERI VERMELIIYIZ KESINLIKLE YA DA BIR BESTPRACTISE KULLANIMI ILE INPUTU VALUEYE ATA AMA VALUE OLMAZSA  DIYE  BIR DEGER VERLEIM-value="${model.inputs.search.text || ''}
+//BIZ BASLANGIC DEGERINI MODEL DE VERDIGMIZ ICIN BIZIM BU PRACTISI YAPMAMIZA GEREK YOK......
+//AYNI MANTIK REACTTA DA BOYLE-STATE E ONCE GIRILEN VALUE YI ATARIZ SONRA DA O STATE I ATTRIBUTE OLAN VALUE YE ATARIZ...
+//BESTPRACTISE----BURAYI COOOOK IYI ANLAMALISIN.........!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//NETTLESEREN-TARAYICI NASIL PARSE-TOLKE AYRISTIRIYOR KODUMUZU BAKALIM
+//oninput="model.inputs.search.text=this.value" ONIPUT ICINDE DOGRUDAN YAZDIGIMIZ DEGSKENLERI GLOBAL DE AYNI JAVASCIPT GIBI AYRISTIRIP ONLARIN NEYE KARSILIK GELDIKTLERINE BAKIYOR COOOK ONEMLI BURAYI IYI ANLA YANI BUNU BIZ CONSOLE DAKI ELEMNTS MENUSUNDEN INCELERSEK, BURAYI STRING GIBI YAZIYOR ORAYA
+//AMA value="${model.inputs.search.text || ''} BURDA ISE  ONCLICK ICINE YAZDIGIMZ SEY ILE AYNI SEYI YAZIYORUZ AMA NE YAPIYOR GIDIP MODEL DEKI TEXT VERMIZI BURAYA ATIYOR.....YANI MODEL ICINE GIDIP BIZIM BU YAZDIGIMIZ VERIYI ARIYOR.....
+//DIKKAT EDELIM BIZ INPUTA YAZDIGMIZ VERIYI ALMAK ICIN ANA VIEW OLAN UPDATEVIEW FONKS UNUN INVOKE EDILMESI GEREKIR KI BIZ BUNU CONSOLE.LOG DA YAPARAK DENEYEBILIRIZ SONUCU....
+//Burda da inputa girilen veriyi modelimiz icindeki verizme atadigmizi kontrol etmek icin console a module yazariz ve sonucu iki kez entera tikalriz inputa veri girdikten sonra....
+        </li>
+    </ul>
+    <hr>
+    <h2>Controller</h2>
+
+
+</body>
+</html>
