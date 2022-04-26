@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="filterBar-container">
+    <div class="filterBar-container-div">
+  
+        <div class="filterBar-container__item">
+          <div class="start-date-title date-title">
+            <span>Start dato</span>
+          </div>
+            
+            <div class="ui calendar start-date" id="start-date">
+              <div class="ui  ">
+                <i class="calendar icon"></i>
+                <input 
+               
+                >
+               </div>
+             </div>
+          
+        </div>
+       
+    
+        <div class="filterBar-container__item">
+        <div class="end-date-title date-title">
+          <span>Slutt dato</span>
+        </div>
+          
+          <div class="ui calendar end-date" id="end-date">
+            <div class="ui">
+              <i class="calendar icon"></i>
+              <input
+             
+              
+              >
+            </div>
+          </div>
+      </div>
+      </div>
+
+
+        <hr>
+
+
+   
+
+
+<div class="category-container">
+    <div class="filterBar-container__item  category_filter">
+     <span class="category_label date-title"> Kategori</span>
+      <div class="filterBar-container__item-category  category_field_selectBtn  calendar"  >     
+    <a for="kategori" onclick="model.inputs.userPage.isCategoryBtnClicked=!model.inputs.userPage.isCategoryBtnClicked; updateView() " >
+    <input type="text" >
+ </a> 
+   <span>
+   
+      </span>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  
+  <hr>
+  
+<div class="search-happening-btn "><button>Søk Happening &nbsp &nbsp<i class="fa-solid fa-play"></i></button></div>
+
+    </section>
+        
+      
+    <br><br><br><br><br>
+    <hr>
+
+
+    <div class="filterBar-container__item">
+      <div class="start-date-title date-title">
+        <span>Start dato</span>
+      </div>
+      <div class="ui calendar start-date" id="start-date">
+        <div class="ui">
+          <i class="calendar icon"></i>
+          <input 
+        
+          >
+         </div>
+      </div>
+    </div>
+
+    <br><br><br><br><br><br>
+    <hr>
+
+
+  <section>
+    <div class="modal-wrapper">
+       <div class="modal-image">
+          <section class="modal-date"> 
+            <div class="modal-date__day">${day}</div>
+            <div class="modal-date__mon-year"></div>
+          </section>
+
+      </div>
+      <div class="modal-description">
+        <div class="cancel-icon"><a   onclick="cancelModal()
+        " > 
+          <span class="icon-cross"></span>
+        </a>
+        </div>
+        <div class="modal-description__title">
+        <h1></h1>
+        </div>
+        
+        <div class="small-info">
+          <div>
+              <span>
+                Sted: Hemsedal
+              </span>
+          </div>
+        </div>
+       <div class="modal-description__text"> </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

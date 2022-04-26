@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getDayName(date = new Date(), locale = 'en-US') {
+  return date.toLocaleDateString(locale, {weekday: 'long'});
+}
+
+function getMonthName(date=new Date(), locale='en-US'){
+    return date.toLocaleDateString(locale,{month:"short"})
+}
+
+
+
+// ✅ Get name of current day
+console.log(getDayName()); // 👉️ Tuesday
+
+// ✅ Get day name for specific date
+console.log(getDayName(new Date('2022-03-21'))); // 👉️ Monday
+console.log("getMonth Name: ",getMonthName(new Date('2022-03-21'), 'no-NO')); // 👉️ Monday
+
+// ✅ Get day name in different locale // 👇️ Samstag
+console.log("Norweigan format: ",getDayName(new Date('2022-03-21'), 'no-NO'));
+
+
+const today = new Date()
+today.toLocaleString('default', { month: 'long' })
+
+today.toLocaleString('default', { month: 'short' })
+
+
+//Year
+let getYear=new Date("2022/03/21").getFullYear();
+console.log("getYear: ", getYear);
+
+let getCurrentMonth=new Date().getMonth()+1;//ay degerini 0-11 arasinda donduruyor buna dikkat et..
+console.log("getMonth: ", getCurrentMonth);
+
+
+
+
+  //BURASI COK ONEMLI NORMALDE TARIHI BIZ DOGRUDAN TAKVIMDE GOSTERECEGIMIZ ZAMAN ISO STRING HALINDE GOSTRMELIYIZ VE ISOYA CEVIRINCE DE O ZAMN DA TIMEZONE KAYIYOR ONDAN DOLAYI BU ARADAKI FARKIDA BU SEKILDE COZDUKTEN SONRA BU ISLEMI YAPMAMIZ GEREKIYOR....
+      //COOK ONEMLI BURAYI IYI BIL....
+      const now = new Date("2022/04/14");//Boyle alirsan simdiki date i eger paranteze belli bir tarih yazarsan da yazdigin tarihi alrisin
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      console.log("wholedate: ", now.toISOString().slice(0, 10));
+      let dateIsoFormat=now.toISOString().slice(0, 10);
+      console.log("now: ", now.toISOString().slice(0, 10));
+      console.log("year: ", now.toISOString().slice(0, 4));
+      console.log("month: ", now.toISOString().slice(5, 7));
+      console.log("month: ", now.toISOString().slice(8, 10));
+
+
+
+    //
+
+    console.log("----------------------------------------");
+
+    function getDateAllFormats(dateIsoStringFormat){
+//1-day number-short-long
+//2-Month number-name-short-long
+//3-year-long
+//let date=new Date("")
+
+}
+
+let myNewDate=new Date("2022-04-09");
+console.log("string version of date: ",myNewDate.toISOString().slice(0,10));
+
+//3-year-long
+console.log("myNewDateFullYear: ", myNewDate.getFullYear());
+console.log("fullYear: ", myNewDate.toISOString().slice(0,4))
+//month short version-tekbasamak
+console.log("myNewDateMonth: ", myNewDate.getMonth()+1);//4
+//month long version
+console.log("month two digit number: ", myNewDate.toISOString().slice(5,7));//04
+
+//Month name----
+console.log("myNewDateMonthName: ", myNewDate.toLocaleString("default",{month:'long'}));//April
+
+console.log("string version of date: ",myNewDate.toISOString().slice(0,10));
+//2022-04-14
+
+console.log("dayNumber: ", myNewDate.toISOString().slice(8,10));//1
+
+
+//DIKKAT EDILMESI GEREKENLER--
+console.log("myNewDateMonth: ", myNewDate.getMonth()+1);//4
+//1-getMonth formatinda javascript 1-11 arasi degerlendirdigi icin incinde bulundugmzu aydan veya verdigmiz belirli tarihin aynindan 1 ay geride hesaplayacaktir onun icin 1 ekleriz
+let myDate=new Date('2020-09-30')
+// Output: Tue Sep 29 2020 20:00:00 GMT-0400 (Eastern Daylight Time)
+//
+console.log("myDate; ", myDate.toDateString());
+console.log("myDateMonth; ", myDate.toLocaleString().getMonth());
+console.log("myDateDay; ", myDate.toDateString().getDay());
+
+
+
+
+console.log("myDate; ", myDate.toISOString());
+console.log("myDateisoFormat; ", myDate.toISOString().slice(0,10));
+
+
+function getMyAllDateFormats(date){
+    //month-04
+    let monthByToDigit=new Date(date).toISOString().slice(5,7);
+    //month-4
+    let monthByOneDigit=new Date(date).getMonth()+1;
+    //month-April-long
+    let monthByLongText=new Date(date).toLocaleString("default",{month:'long'});
+    let monthByShortText=new Date(date).toLocaleString("default",{month:'short'});
+    //day-9
+    let day=new Date(date).toISOString().slice(8,10);
+    //year.
+   // let getYear=new Date(date).getFullYear();
+    let year=new Date(date).toISOString().slice(0,4);
+
+    return {
+        monthByToDigit,
+        monthByOneDigit,
+        monthByLongText,
+        monthByShortText,
+        day,
+        year
+
+    }
+}
+    </script>
+</body>
+</html>

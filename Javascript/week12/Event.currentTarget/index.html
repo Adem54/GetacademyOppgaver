@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+  padding: 30px;
+  border: 1px solid #fff;
+  max-width: 450px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 26px;
+  text-align: center;
+}
+
+.outer {
+  background-color: #3977ad;
+  margin-bottom: 30px;
+}
+
+.middle {
+  background-color: #fe3266;
+}
+
+.inner {
+  background-color: #1f2531;
+}
+    </style>
+</head>
+<body>
+    <div class="outer box">
+        <div class="middle box">
+          <div class="inner box">Click me</div>
+        </div>
+      </div>
+      
+      <ul>
+        <li><code>event.target</code> is the element that we actually interacted with and that triggered the event. In this case, even though the event listener is bound to the outer box, event.target will be whichever box we click on.</li>
+        <li><code>event.currentTarget</code> is the element we attached the event listener to. In this case, we are only listening to click events on the outer box.</li>
+        <li>Within the event handler, <code>event.currentTarget = this</code></li>
+        <li>Clicking on the inner box will cause the click event to bubble up, hence being captured by our outer box and running the <code>onClick</code> event handler.</li>
+      </ul>
+      
+
+      <script>
+          console.clear();
+
+var onClick = function (e) {
+  console.clear();
+  console.log('target', e.target.className);
+  console.log('currentTarget', e.currentTarget.className);
+  console.log('this', this.className);
+}
+
+document
+  .querySelector('.outer')
+  .addEventListener('click', onClick);
+//COK ONEMLI BILGI-BESTPRACTISE
+//Event.currentTarget=>event.currentTarget özelliği, olay akışı sırasında, içinde bulunduğu Olay dinleyicisinin kayıtlı olduğu elementin referansını verir.														
+//event.currentTarget is where the event is attached to.
+//event.target is where the exact event happened.					
+																		
+  //Burdaki olayda dikkat edersek evetn.target biz tam olarak hangi dive tiklarsak onu veriyor yani icerdeki dive tiklrsak onu verir ortadakki dive tiklarsak onu verir, en distaki dive tiklarsak da onu verecektir yani eger tikladgimiz yer hem child icin hem de parent icin gecerli ise yani  event capturing olayi gibi dusunelim kapsayici parenta bir onclick olayi veriliyor dolayisi ile bu kapsayici div icinde de child divler var o zaman biz icerdeki div lere tikladimiz zaman aslinda hem parent dive hemde child dive tiklamis olluyoruz bu durumlarda event.target tam olarak tikldiimiz yer neresi ise, yani hem child div hem de parent div olsa bile child div i alacak ve even.target tam olarak tikadlimiz yer child div olarak kime ait ise onu verir ancak event.currentTarget ise biz nereye tikilarsak tiklayalim ana div icinde tikadigmiz her yerde bize event.currentTarget en kapasyici divi verecektir this de en kapsayici divi verecektir her zaman
+      </script>
+</body>
+</html>

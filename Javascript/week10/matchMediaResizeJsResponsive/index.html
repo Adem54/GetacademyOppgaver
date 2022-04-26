@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  background-color: red;
+  color: white;
+}
+@media (min-width: 768px) {
+  body {
+    background-color: white;
+    color: red;
+  }
+}
+    </style>
+</head>
+<body>
+ 
+
+        
+    <script>
+        /*
+        matchMedia() Kullanımı
+        Yukarıdaki css örneğimizde yer alan “min-width: 768px” kuralını matchMedia fonksiyonuna parametre olarak geçerek javascript tarafında media query sorgusunu tanımlamış olursunuz. Altta örneğini görebilirsiniz.
+        */
+        // media query sorgusunu js'de tanımlama.
+const mediaQuery = window.matchMedia('(min-width: 768px)')
+
+// Peki sorgumuzu tanımladık ama sorgunun nasıl çalıştığını ve ekran çözünürlüğü değişimlerinden nasıl haberdar olacağız.🤔 Şöyle ki eğer sorgunuzun sonucunu hemen almak istiyorsanız alttaki gibi matches özelliğinden media query sorgumuzun kurala uyup uymadığını tek seferlik kontrol edebiliyoruz. Altta tek seferlik kontrol için kod örneğine göz atabilirsin.
+
+// En az 768px çözünürlüğünde olan ekran kontrolünü yapmak için sorgumuzu matchMedia fonksiyonuna parametre olarak geçiyoruz.
+const mediaQuery2 = window.matchMedia('(min-width: 768px)')
+// Sorgu sonunucu kontrol etmek ve eşleşmenin sağlanıp sağlanmadığını kontrol etmek için matches özelliğini kullanıyoruz.
+if (mediaQuery2.matches) {
+    //min-width:768 in aynisi css icinde yazilmis ise o zaman true yoksa false gelir
+  // Eğer sorgu sonucu olumlu ise işlemlerinizi burada yapabilirsiniz.
+  alert('Media Query Eşleşti!')
+ // document.body.style.backgroundColor="green";
+}
+  /*
+  Tek seferlik kontrol ihtiyacını karşılamıyorsa yada çözünürlük değişimlerini sürekli takip etmek ve çözünürlük değişimi sonrası sadece kurala uyulduğunda ilgili fonksiyonunuzun tetiklenmesini istiyorsanız addEventListener fonksiyonundan faydalanıp çözünürlük değişimi eğer kuralınız ile eşleşirse belirlediğiniz fonksiyonun çalışması sağlanır. Alttaki kod örneğinde tam olarak bu event listener konusuna cevap bulacaksınız.
+
+
+  */
+
+
+  // Eğer viewport 768px ve üstü olduğunda handleTableChange adlı fonksiyonun çalışmasını sağlıyoruz.
+const mediaQuery3 = window.matchMedia('(min-width: 768px)')
+ 
+ function tabletDegisiminiAlgila(e) {
+   // Kural kontrolünü yapıyoruz
+   if (e.matches) {
+     // Eğer kuralımız olumlu ile yapacağımız işlemleri burada yapıyoruz.
+     console.log('Media Query Kuralımız Eşleşti!')
+   }
+ }
+  
+ // Ekran çözünürlüğü değişimlerini dinlemek için addListener fonksiyonu ile register işlemini yapıyoruz.
+ mediaQuery3.addListener(tabletDegisiminiAlgila)
+  
+ // İlk kontrolü manual yapıyoruz
+//  tabletDegisiminiAlgila(mediaQuery)
+//  Peki şimdi aklımızda bir soru vardır herhalde. O soru da matchMedia olmadan javascript tarafında ihtiyacı nasıl karşılıyorduk yani ekran çözünürlüğü değişimlerini nasıl algılıyorduk. Aslında her web geliştiricinin farklı sebeplerden ihtiyaç duyduğu yöntemlerden biri olan window.resize olayının dinlenmesi ve en ufak pixel değişiminde bile tetiklenmesi sonucu işlemlerimizi bu resize olayı içerisinde yapıyorduk. Bu işlemde eğer belli kontroller sağlamadığınızda ciddi performans sorununa ve hatta yaptığınız işlemin boyutuna göre tarayıcının kilitlenmesine ve cevap vermemesine kadar sorunlara yol açabiliyoruz. Sorunun ortaya çıkış sebebini özetlersek pencere boyutunda her bir pixel değişimi sonrası resize olayı tetiklendiğinden tarayıcı genişliğinden 200px bir küçültme sağladığınızda 200 defa resize olayının tetiklenmesini sağlıyorsunuz. Peki resize olayını nasıl kullanıyorduk hemen ona göz atalım.
+ 
+ function resizeKontrolu() {
+   // Eğer window genişliği 768px üstü ise kurala uyguduğunu varsayıyoruz.
+   if (window.innerWidth > 768) {
+     // Kurala uyduktan sonra yapacağımız işlemler
+     console.log('Kural sağlandı!')
+   }
+ }
+  
+ // window nesnesi yani pencerede yaşanacak boyut değişikliklerinin diinlenmesini sağlıyoruz
+ window.addEventListener('resize', resizeKontrolu);
+
+ /*
+ Bu fazladan tetiklenme sorunu matchMedia ile kullandığımızda bir sorun teşkil etmiyor mu? Hayır sorun teşkil etmiyor çünkü belirttiğimiz fonksiyonun sadece kurala uyduğunda 1 defa çalışmasını sağlıyor. Tekrar çalışması ancak kural dışına çıkıp sonrasında kurala uyması için gerekli çözünürlük değişimini yaptığınızda mümkün oluyor. resize olayı ve matchMedia konusunu gif olarak altta canlı canlı sonucunu görebilirsiniz. Her iki örnekte de console çıktısına dikkat edin lütfen.
+ */
+
+
+ /*
+ Her iki demo sonucunda da görüldüğü üzere matchMedia örneğinde belirlediğimiz fonksiyonun 1 defa çalıştığını ama resize olayında 112px büyütme ve küçültme işlemlerimiz sonucu ilgili fonksiyonun çalışması sağlandı aslında 112 değil belki 300-400 defa çalıştı fakat if kontrolü ile 768px ve üstünde ilgili kodlarımız çalışsın dediğimiz için ben 112 sayısını dikkate alıyorum ama bir if kontrolümüz olmasaydı ve her resize değişiminde ilgili kodlarımız çalışsaydı 300-400 defa çalışacaktı. Bu durum da ciddi performans sorunlarına yol açacaktır. Resize kullanmadan önce bir daha düşünün
+ 
+ */
+    </script>
+    
+</body>
+</html>

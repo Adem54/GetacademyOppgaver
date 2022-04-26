@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MainStaticMethodArgs": {
+      "commandName": "Project",
+      "commandLineArgs": "hei på deg"
+    }
+  }
+}

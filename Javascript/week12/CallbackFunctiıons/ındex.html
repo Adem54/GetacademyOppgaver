@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+    Callback Fonksiyon Nedir ?
+Bir fonksiyon çalışmasını tamamladıktan sonra başka bir fonksiyonun çalışmasını sağlayan fonksiyonlara callback fonksiyon denir. Şöyle düşünün bir web sitesi yapıyorsunuz varsayın. Önce front end developerlar çalışmasını bitirir ardından back end developerlar çalışmaya başlar. Bu bir callback işlemidir.
+
+Javascript Callback Fonksiyon Kullanımı
+Callback fonksiyonlar bir fonksiyona parametre olarak gönderilirler. Ve bu parametre bir değişkendir. Bunu örnekle açıklamak daha mantıklı olacak.
+<p id="demo"></p>
+<script>
+function ekranaYaz(deger) {
+  document.getElementById("demo").innerHTML = deger;
+}
+function hesapla(num1, num2, callback) {
+  let toplam= num1 + num2;
+  callback(toplam);
+}
+hesapla(5, 5, ekranaYaz);
+</script>
+</body>
+</html>

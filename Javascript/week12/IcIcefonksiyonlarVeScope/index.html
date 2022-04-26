@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let name = "Emre";
+
+      function greet() {
+        console.log("Hello, ", name);
+      }
+
+      function welcome() {
+        let name = "Unknown Guest";
+        greet();
+      }
+
+//Fonksiyonun içinde kullanılan değişkenler öncelikle fonksiyonun kendi contexti içerisinde aranır. greet() fonksiyonunun Execution Context’inde name değişkeni bulunamadığından dolayı greet() fonksiyonun bağlı olduğu bir üst context olan Global Context’te olup olmadığı kontrol edilir. Bu örnekte greet() fonksiyonunun welcome() fonksiyonun içinden çağırıldığı için eğer ekrana ‘Unknown Guest’ yazdırılacağını düşündüyseniz maalesef yanıldınız.
+      welcome();
+    </script>
+  </body>
+</html>

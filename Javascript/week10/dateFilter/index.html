@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let  happenings=[{
+            id:1,
+            title:"Pølsefest",
+            description:" Pølser tilberedes og spises over hele verden, i et uvisst antall varianter. Teknikken med å fylle pølseskinn med krydret, oppmalt kjøtt er så gammel at vi kan lese om at grekerne spiste pølse i den tretusen år gamle Odysseen. Konservering og smaksetting varierer rundt om i verden, alt etter hvilke krydder som dominerer den lokale gastronomien. ",
+            imageUrl:"https://images.prismic.io/govegan-no/0563de89-6f60-4d31-923d-601de225a288_1sq.png?auto=compress,format&w=800",
+            categoryId:1,
+            paymentTypeId:1,
+            happeningStartDate:"2022-04-15",
+            happeningStartTime:"11:55",
+            happeningEndDate:"2022-04-18",
+            happeningEndTime:"15:55",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"09:00",
+            announcementEndDate:"2022-04-18",
+            announcementEndTime:"15:55",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },{
+            id:2,
+            title:"Spennende innendørsaktivitet for barn",
+            description:" Klar, ferdig lek! På eventyrfabrikken kan alle barn springe, hoppe, rope, rote og kose seg så mye de vil. Eventyrfabrikken er Skandinavias største lekefabrikk!",
+            imageUrl:"https://tellusdmsmedia.newmindmedia.com/wsimgs/237234823_4576573625727427_7642383865876437128_n_255055228.jpg",
+            categoryId:2,
+            paymentTypeId:2,
+            happeningStartDate:"2022-04-13",
+            happeningStartTime:"15:00",
+            happeningEndDate:"2022-04-17",
+            happeningEndTime:"15:55",
+            announcementStartDate:"2022-04-11",
+            announcementStartTime:"09:00",
+            announcementEndDate:"2022-04-17",
+            announcementEndTime:"15:55",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },{
+            id:3,
+            title:"Borealis - en festival for eksperimentell musikk",
+            description:"Borealis er en festival for sjangerkryssende musikk og kunst som finner sted i mars hvert år, i Bergen.Festivalen gir deg konserter, installasjoner, verksteder, samtaler og filmer på mange av byens små og store konsertscener, kunstgallerier, kulturarenaer og andre rare steder du kanskje ikke har vært før.",
+            imageUrl:"",
+            categoryId:3,
+            paymentTypeId:3,
+            happeningStartDate:"2022-05-25",
+            happeningStartTime:"09:00",
+            happeningEndDate:"2022-05-27",
+            happeningEndTime:"15:00",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"",
+            announcementEndDate:"2022-04-22",
+            announcementEndTime:"",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },{
+            id:4,
+            title:"Oslo Internasjonale Kirkemusikkfestival",
+            description:"Oslo Internasjonale Kirkemusikkfestival har siden starten i 2001 befestet seg som en nasjonal og internasjonal leverandør av kunstneriske prosjekter av høy kvalitet. Som kulturformidler er det festivalens viktigste oppgave å formidle kunst og musikk som berører, og som skaper rom for fordypning og innlevelse for alle, uansett tro og kirkelig tilhørighet.",
+            imageUrl:"https://assets.simpleviewcms.com/simpleview/image/fetch/c_limit,f_jpg,q_64,w_1200/https://media.newmindmedia.com/TellUs/image/%3Ffile%3DOslo_Internasjonale_Kirkemusikkfestival_343704660.jpg%26dh%3D533%26dw%3D800%26cropX%3D384%26cropY%3D0%26cropH%3D1104%26cropW%3D1657%26t%3D4&.jpg",
+            categoryId:3,
+            paymentTypeId:2,
+            happeningStartDate:"2022-03-27",
+            happeningStartTime:"11:55",
+            happeningEndDate:"2022-04-04",
+            happeningEndTime:"15:00",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"09:00",
+            announcementEndDate:"2022-04-18",
+            announcementEndTime:"",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },{
+            id:5,
+            title:"Lady T Band",
+            description:" It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            imageUrl:"https://i.ytimg.com/vi/CN8-Uf2yrqA/maxresdefault.jpg",
+            categoryId:5,
+            paymentTypeId:1,
+            happeningStartDate:"2022-04-12",
+            happeningStartTime:"20:00",
+            happeningEndDate:"2022-04-15",
+            happeningEndTime:"23:55",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"",
+            announcementEndDate:"2022-04-18",
+            announcementEndTime:"",
+            webSiteUrl:"",
+        },{
+            id:6,
+            title:"Utstillingen 'Byen og laget' på Bryggens Museum",
+            description:"Nå kan du oppleve stadionstemningen på Bryggens Museum! Gjennom en aktiv og spennende utstilling presenteres byen og lagets utvikling gjennom de siste hundre årene. Opplev Bergens og Branns historiske.",
+            imageUrl:"https://assets.simpleviewcms.com/simpleview/image/fetch/c_limit,f_jpg,q_64,w_587/https://media.newmindmedia.com/TellUs/image/%3Ffile%3DBryggens_Museum_fra_Clarion_1778912763.jpg%26dh%3D307%26dw%3D800%26cropX%3D0%26cropY%3D848%26cropH%3D1153%26cropW%3D3000%26t%3D4",
+            categoryId:6,
+            paymentTypeId:1,
+            happeningStartDate:"2022-04-26",
+            happeningStartTime:"11:00",
+            happeningEndDate:"2022-04-26",
+            happeningEndTime:"14:00",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"",
+            announcementEndDate:"2022-04-18",
+            announcementEndTime:"",
+            webSiteUrl:"",
+        },{
+            id:7,
+            title:"Transøsterdalen 3 Dager MTB",
+            description:" Vi inviterer til 3-dagers terrengsykkelritt!1.etappe 53 km.   2.etappe 73 km.   3.etappe 40 km.HVORDAN OPPLEVES TRANSØSTERDALEN? Mange som ikke har deltatt ennå, undrer seg  på hvordan de tre dagene oppleves. Alle tre etappene morsomme og har sine særpreg.Fredag med rolig start på grus og man kjører seg varm i motbakkene før gras og sti tar en inn i flotte naturopplevelser ved Savalen.",
+            imageUrl:"https://www.transosterdalen.no/wp-content/uploads/2022/02/stisyklister.jpg",
+            categoryId:4,
+            paymentTypeId:1,
+            happeningStartDate:"2022-04-12",
+            happeningStartTime:"13:00",
+            happeningEndDate:"2022-04-15",
+            happeningEndTime:"16:30",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"",
+            announcementEndDate:"2022-04-18",
+            announcementEndTime:"",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },{
+            id:8,
+            title:"Henrik Mestad - Alle fantastiske ting",
+            description:" Kan du nevne hundre ting som gjør livet fantastisk? Tusen? Hva med en million? Mamma er på sykehus. Pappa sier at hun har «gjort noe dumt». Så jeg lager en liste. En liste over alle fantastiske ting i verden. Ting som gjør livet verdt å leve.",
+            imageUrl:"https://premium.vgc.no/v2/images/96cfb043-35c7-4d03-9e33-b439232cabeb?fit=crop&format=auto&h=1536&tight=true&w=2048&s=aab28fd0a8749e715daff885b9c44998a4c3bd19",
+            categoryId:7,
+            paymentTypeId:3,
+            happeningStartDate:"2022-04-23",
+            happeningStartTime:"16:00",
+            happeningEndDate:"2022-04-25",
+            happeningEndTime:"19:30",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"",
+            announcementEndDate:"2022-04-18",
+            announcementEndTime:"",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },{
+            id:9,
+            title:"Mio, Min Mio",
+            description:" Den elleve år gamle eventyrlystne Bo legger ut på en lang og farefull ferd for å bekjempe ondskap og befri uskyldige barn. På veien finner han både vennskap og måter å håndtere de vanskelige tingene i livet.",
+            imageUrl:"https://upload.wikimedia.org/wikipedia/commons/2/21/Mio_min_Mio.jpg",
+            categoryId:1,
+            paymentTypeId:1,
+            happeningStartDate:"2022-04-19",
+            happeningStartTime:"09:00",
+            happeningEndDate:"2022-04-29",
+            happeningEndTime:"15:55",
+            announcementStartDate:"2022-04-01",
+            announcementStartTime:"",
+            announcementEndDate:"2022-04-01",
+            announcementEndTime:"",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },{
+            id:10,
+            title:"Håkon Kornstad/Frode Haltli",
+            description:"Håkon Kornstad, sang, saxofon  Frode Haltli, trekkspill.En gyllen anledning for å nysgjerrige lyttere til å utfordre egne forestillinger om hva jazz og klassisk sang egentlig er.Repertoaret består fortsatt av klassiske sanger og operaarier preget av improvisasjon og sterkt samspill. Denne duoen har imidlertid en åpenhet og tilstedeværelse som gjør at den skiller seg ut fra resten av Kornstads prosjekter.",
+            imageUrl:"https://g.acdn.no/obscura/API/dynamic/r1/nadp/tr_1000_2000_s_f/0000/2019/08/01/3423822639/1/original/8554188.jpg?chk=B57795",
+            categoryId:5,
+            paymentTypeId:3,
+            happeningStartDate:"2022-04-17",
+            happeningStartTime:"20:00",
+            happeningEndDate:"2022-04-17",
+            happeningEndTime:"22:30",
+            announcementStartDate:"2022-04-02",
+            announcementStartTime:"",
+            announcementEndDate:"2022-04-18",
+            announcementEndTime:"",
+            webSiteUrl:"https://blogg.millsproffpartner.no/slik-lager-du-p%C3%B8lsefesten-ingen-glemmer",
+        },
+    
+    ]
+
+
+    console.log("happenings: ", happenings);
+
+    console.log("Hello")
+    let chosenDateFrom= '2022-04-15T05:36';
+    console.log(chosenDateFrom.slice(0,10))
+
+
+
+    let chosenDateFromToIsoString=chosenDateFrom.slice(0,10);
+    let chosenDateTo= '2022-04-19T00:36';
+
+    //1-Belli bir tarihten sonraki tarihleri filtreleme
+    let result1=happenings.filter(happening=>{
+        return happening.happeningStartDate>=chosenDateFromToIsoString;
+    });
+    console.log("result1: ", result1);
+
+    let result5=happenings.filter(happening=>compareYearMonthDayLessAndEqual(chosenDateFrom,happening.happeningStartDate))
+    console.log("result5= ", result5);
+
+    //1-Belli bir tarihten onceki tarihleri filtreleme
+let chosenDateToToIsoString=chosenDateTo.slice(0,10);
+console.log("chosenDateToToIsoString: ",chosenDateToToIsoString);
+let result2=happenings.filter(happening=>happening.happeningStartDate<=chosenDateFromToIsoString);
+
+console.log("result2: ", result2);
+console.log("happenings id:6 startDate: ",happenings[5].happeningStartDate)
+console.log(happenings[5].happeningStartDate<=chosenDateFromToIsoString)
+
+let year=chosenDateToToIsoString.slice(0,4);
+let month=chosenDateToToIsoString.slice(5,7);
+let day=chosenDateToToIsoString.slice(8,10);
+console.log("year: ", year);
+console.log("month: ", month);
+console.log("day: ", day);
+
+
+//Gun gun ay ay ve yil olarak karsilastirma
+//Bu islemi yaparken suna dikkat edelim, mesela biz bir tarihten oncesini alacaksak o tarihin hem yil, hem ay hem de gun olarak ayri ayri karsilastirma yapacagiz
+//Yil=>Eger yil kucuk ve esit ise
+//Month=>Eger yil kucuk ve esit VE ay da kucuk ve esit ise
+//Day=>Eger yil kucuk ve esit ise   VE ay kucuk ve esit ise burda su onemli eger dizi icindeki ay ornegin bizim elimzdeki tarihten kucuk ise artik gun karsilastirmanin bir onemi yok,yani array deki tarih bizim elimzdeki tarihin gerisinde ama biz gidip de  VE elimizdeki gun de arraydeki gunden kucuk ise dersek o zaman yanlis tarihi aliriz cunku ay olarak geridedir ama gun olarak ilerde olabilir...Aynisinin yil icinde gecerli oldugu icin sorguyu buna gore yapalim....
+let result3=happenings.filter(happening=>{
+    return compareYearMonthDayLessAndEqual(happening.happeningStartDate,chosenDateTo)
+})
+
+console.log("result3: ", result3);
+let id4HappeningStartDate=happenings[3].happeningStartDate;
+console.log("id si 4 olan happeningStartDate: ",id4HappeningStartDate)
+console.log("year comparing: ",id4HappeningStartDate.slice(0,4)<=year);
+console.log("month comparing: ",id4HappeningStartDate.slice(5,7)<=month);
+
+function compareYearMonthDayLessAndEqual(arrayDate,chosenDate){
+    let arrayDateYear=arrayDate.slice(0,4);
+    let arrayDateMonth=arrayDate.slice(5,7);
+    let arrayDateDay=arrayDate.slice(8,10);
+    let chosenDateYear=chosenDate.slice(0,4);
+    let chosenDateMonth=chosenDate.slice(5,7);
+    let chosenDateDay=chosenDate.slice(8,10);
+   
+if(arrayDateYear<chosenDateYear){//Eger yil kucuk ise digerlerine bakmaya gerek yok
+    return true;
+}else if(arrayDateYear==chosenDateYear && arrayDateMonth < chosenDateMonth ){
+    return true;
+}else if(arrayDateYear==chosenDateYear && arrayDateMonth == chosenDateMonth && arrayDateDay<=chosenDateDay){
+    return true;
+}else{
+    return false;
+}    
+
+}
+console.log("id si 4 olan happeningStartDate: ",id4HappeningStartDate)
+console.log("chosenDateTo: ",chosenDateToToIsoString);
+console.log("Result4: ",compareYearMonthDayLessAndEqual(id4HappeningStartDate,chosenDateTo));
+
+
+
+function compareYearMonthDay(date1,date2){
+    let date1Year=date1.slice(0,4);
+    let date1Month=date1.slice(5,7);
+    let date1Day=date1.slice(8,10);
+    let date2Year=date2.slice(0,4);
+    let date2Month=date2.slice(5,7);
+    let date2Day=date2.slice(8,10);
+   
+if(date1Year<date2Year){//Eger yil kucuk ise digerlerine bakmaya gerek yok
+    return true;
+}else if(date1Year==date2Year && date1Month < date2Month ){
+    return true;
+}else if(date1Year==date2Year && date1Month == date2Month && date1Day<=date2Day){
+    return true;
+}else{
+    return false;
+}    
+
+}
+
+
+function getDateFromStartDate(happenings,startDate){
+    let result=happenings.filter(happening=>compareYearMonthDay(startDate,happening.happeningStartDate));
+    return result;
+}
+
+
+function getDateToEndDate(happenings, endDate){
+    let result=happenings.filter(happening=>compareYearMonthDay(happening.happeningStartDate,endDate));
+    return result;
+}
+
+function getDateBetweenTwoDates(happenings,startDate,endDate){
+    let result=happenings.filter(happening=>{
+        return compareYearMonthDay(startDate,happening.happeningStartDate) && compareYearMonthDay(happening.happeningStartDate,endDate)
+    })
+
+    console.log("getDateBetweenTwoDates: ",result);
+}
+
+getDateBetweenTwoDates(happenings,"2022-04-25","2022-05-25");
+
+
+
+
+let categories=[{id:1,title:"Familie og moro", isSelected:false,icon:"icon-family-svgrepo-com"},{id:2,title:"Barn og familie", isSelected:false,icon:"icon-two-childs-playing-silhouettes-svgrepo-com"},{id:3,title:"Festival", isSelected:false,icon:"icon-party-svgrepo-com"},{id:4,title:"Sport", isSelected:false,icon:"icon-sports_baseball"},{id:5,title:"Konsert", isSelected:true,icon:"icon-music"},{id:6,title:"Utstilling", isSelected:true,icon:"icon-presentation-exhibition-svgrepo-com"},{id:7,title:"Teater", isSelected:false, icon:"icon-theater-svgrepo-com"}]
+
+console.log("categories: ", categories);
+//Simdi de secilen kategoriye gore listeleme islemine bakalim
+
+
+let getCheckedCategories=categories.filter(category=>category.isSelected);
+console.log("getCheckedCategories: ",getCheckedCategories);
+
+//EFSANE YONTEM ARRAY ICINDE ARRAY ARAMA....ONCE FILTER YAP ILK ARRAY SONRA ICINE GIR VE IKINCI ARRAYI DE FIND YAPIYOR KI FIND BULDUGU ILK ELEMANI GETIRIR BIRDEN FAZLA OLSA BILE AMA ID ARAMALARI ICIN FIND BIREBIRDIR CUNKU ID UNIQ DIR ZATEN...2.SI OLAMAZ...ILK ARRAY FILTER ILE DONMYE BASLAR VE HER BIR ILK ARRAY ELEMANINI FIND ILE DIGER ARRAYIN ICINDEKI ELEMANLA KARSILASTIRIR VE BULURSA SONUC FALSE YA DA TRUE OLARAK DONECEK VE DE FILTER DA DA ZATEN TRUE ISE O ANKI DIZININ ELEMANINI ALIR DEGILSE ALMAZ....
+let result7=happenings.filter(happening=>{
+    return getCheckedCategories.find(category=>happening.id==category.id); 
+})
+
+console.log("result7: ",result7);
+
+
+let nowDate=new Date();
+console.log("myNewDate:" ,nowDate);
+let getDateToIsoString=nowDate.toISOString();
+console.log("getDateToIsoString_ ", getDateToIsoString);
+let getYear=getDateToIsoString.slice(0,4);
+console.log("getYear: ",getYear);
+let getMonth=getDateToIsoString.slice(5,7);
+console.log("getMonth: ", getMonth);
+let getDay=getDateToIsoString.slice(8,10);
+console.log("getDay: ",getDay);
+
+// function getNowDate(){
+ 
+
+    // getNowDate();
+// }
+
+
+
+function getOneMonthFarther(){
+    let myNowDate=new Date();
+console.log("myNewDate:" ,myNowDate);
+let getDateToIsoString=myNowDate.toISOString();
+console.log("Test: ",myNowDate.getMonth()+2);
+let date=getDateToIsoString.slice(0,10);
+console.log("date: ",date);
+let getYear=date.slice(0,4);
+let getMonth=date.slice(5,7);
+let getDay=date.slice(8,10);
+let getOneMonthLater=parseInt(getMonth)+1;
+console.log("getOneMOnthLater_ ",getOneMonthLater);
+
+
+}
+
+getOneMonthFarther();
+let myNowDate=new Date();
+console.log("myNowDate: ",myNowDate);
+let myFutureDate=myNowDate.setMonth(myNowDate.getMonth()+1);
+console.log("myFutureDate: ",new Date(myFutureDate).toISOString().slice(0,10));
+
+
+
+    </script>
+</body>
+</html>

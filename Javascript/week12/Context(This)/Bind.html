@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person = {
+    name: 'John',
+    getName: function() {
+        console.log("result: ",this.name);
+    },
+
+};
+
+window.setTimeout(person.getName, 1000);
+//It does not print the name “John”. Instead, it prints undefined.
+//To understand why this happens, let’s re-write the last line in another equivalent way:
+let func = person.getName;
+window.setTimeout(func, 1000);
+//Burda setTimeout window objesine ait bir nesnedir ve onun icerisinde biz person objesinin icindeki bir fonksiiyonu cagiriyoruz ancak soyle bir problem oluyor, scope degistigi icin, windows u artik this olarak aldigi icin yani context degistigi icin func normalde person objesi icinde iken this olarak person objesini taniyordu ama simdi person objesini taniyamadigi icin, bu func artik person icinden gelen person.getName fonksiyonu degil onu alamaiyor.Peki burda biz bu baglantiyi nasil kuracagiz....tabi ki bind ile kuracagiz bu baglantiyi
+//Biz eger sen her ortamda bundan sonra personu i this olarak taniyacaksin dersek o zaman artik problemimiz cozulmus olacaktir
+let func2=person.getName.bind(person);
+window.setTimeout(func2, 1000);
+
+
+    </script>
+</body>
+</html>

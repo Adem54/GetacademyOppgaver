@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\bin\Debug\net5.0\DateTimeCSharp.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\bin\Debug\net5.0\DateTimeCSharp.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\bin\Debug\net5.0\DateTimeCSharp.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\bin\Debug\net5.0\DateTimeCSharp.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\bin\Debug\net5.0\DateTimeCSharp.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\bin\Debug\net5.0\DateTimeCSharp.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\refint\DateTimeCSharp.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\DateTimeCSharp.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\Week-2\DateTimeCSharp\DateTimeCSharp\obj\Debug\net5.0\ref\DateTimeCSharp.dll

@@ -1,0 +1,13 @@
+C:\Users\Data\source\repos\Test2\Test2\bin\Debug\netcoreapp3.1\StringFormatInterpolation.exe
+C:\Users\Data\source\repos\Test2\Test2\bin\Debug\netcoreapp3.1\StringFormatInterpolation.deps.json
+C:\Users\Data\source\repos\Test2\Test2\bin\Debug\netcoreapp3.1\StringFormatInterpolation.runtimeconfig.json
+C:\Users\Data\source\repos\Test2\Test2\bin\Debug\netcoreapp3.1\StringFormatInterpolation.runtimeconfig.dev.json
+C:\Users\Data\source\repos\Test2\Test2\bin\Debug\netcoreapp3.1\StringFormatInterpolation.dll
+C:\Users\Data\source\repos\Test2\Test2\bin\Debug\netcoreapp3.1\StringFormatInterpolation.pdb
+C:\Users\Data\source\repos\Test2\Test2\obj\Debug\netcoreapp3.1\StringFormatInterpolation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Data\source\repos\Test2\Test2\obj\Debug\netcoreapp3.1\StringFormatInterpolation.AssemblyInfoInputs.cache
+C:\Users\Data\source\repos\Test2\Test2\obj\Debug\netcoreapp3.1\StringFormatInterpolation.AssemblyInfo.cs
+C:\Users\Data\source\repos\Test2\Test2\obj\Debug\netcoreapp3.1\StringFormatInterpolation.csproj.CoreCompileInputs.cache
+C:\Users\Data\source\repos\Test2\Test2\obj\Debug\netcoreapp3.1\StringFormatInterpolation.dll
+C:\Users\Data\source\repos\Test2\Test2\obj\Debug\netcoreapp3.1\StringFormatInterpolation.pdb
+C:\Users\Data\source\repos\Test2\Test2\obj\Debug\netcoreapp3.1\StringFormatInterpolation.genruntimeconfig.cache

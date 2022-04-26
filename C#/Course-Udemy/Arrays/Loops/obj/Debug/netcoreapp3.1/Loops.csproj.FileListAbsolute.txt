@@ -1,0 +1,14 @@
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\bin\Debug\netcoreapp3.1\Loops.exe
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\bin\Debug\netcoreapp3.1\Loops.deps.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\bin\Debug\netcoreapp3.1\Loops.runtimeconfig.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\bin\Debug\netcoreapp3.1\Loops.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\bin\Debug\netcoreapp3.1\Loops.dll
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\bin\Debug\netcoreapp3.1\Loops.pdb
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.dll
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.pdb
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Loops\obj\Debug\netcoreapp3.1\Loops.csproj.AssemblyReference.cache

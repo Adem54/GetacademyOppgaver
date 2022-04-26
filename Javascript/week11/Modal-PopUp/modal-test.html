@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+.modal {
+    display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+
+}
+/* //ReadMoreModal larina modal1,modal2 class lari da verdikki farkli css ozellikleri vererk ikisini de kontrol altinda tutabilelim.... */
+
+.modal-wrapper {
+    margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  border: 1px solid;
+}
+.modal-image {
+  width: 40%;
+  height: 100%;
+  background-color: orange;
+  background-image: url("https://source.unsplash.com/random/?event,arrangement,natur,child,social");
+  box-sizing: border-box;
+  padding: 1rem;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+
+  /* background-image: url("konsert.jfif"); */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  position: relative;
+}
+
+.modal-date {
+  position: absolute;
+  width: 7rem;
+  height: 7rem;
+  background-color: red;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+
+
+}
+
+.modal-description {
+  width: 60%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+  border: 1px;
+  font-size: 0.9rem;
+  background-color: #fff;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.modal-wrapper, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+    </style>
+</head>
+<body>
+
+    <section
+id="modal"
+  
+  class="modal modal1">
+  <div class="modal-wrapper">
+  <div class="modal-image"
+  style="
+background-color: red;
+"
+  >  
+  <section class="modal-date"> 
+  <div class="modal-date__day">24</div>
+  <div class="modal-date__mon-year">
+ MAY-2022
+  </div>
+  </section>
+  </div>
+  <div class="modal-description">
+      <div class="cancel-icon"><a href="#"  onclick="cancelModal()
+      " > 
+      <span class="icon-cross"></span>
+      </a></div>
+
+      <div class="modal-description__title">
+      <h1>
+      KONSERT</div>
+      </h1>
+      <div class="small-info">
+      <div> <span> Type:Konsert</span></div>
+    
+      <div><span>Start dato:
+      </span></div>
+<div> <span>Slutt dato:</span></div>     
+<div><span>Sted: Hemsedal</span></div>
+</div>
+      <div class="modal-description__text">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nisi omnis amet ratione velit doloremque eligendi exercitationem eius. Vero ea ullam assumenda, est labore quia molestiae praesentium fuga qui nihil.      
+    </div>
+      
+  </div>
+</div>
+</section>
+    
+<br><hr>
+<button onclick="myFunction()">Read more</button>
+
+<script>
+    function myFunction(){
+        document.getElementById("modal").style.display="block";
+    }
+</script>
+</body>
+</html>

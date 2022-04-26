@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\bin\Debug\net5.0\OppgaveFriendFaceApp.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\bin\Debug\net5.0\OppgaveFriendFaceApp.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\bin\Debug\net5.0\OppgaveFriendFaceApp.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\bin\Debug\net5.0\OppgaveFriendFaceApp.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\bin\Debug\net5.0\OppgaveFriendFaceApp.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\bin\Debug\net5.0\OppgaveFriendFaceApp.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\refint\OppgaveFriendFaceApp.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\OppgaveFriendFaceApp.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaveFriendFaceApp\obj\Debug\net5.0\ref\OppgaveFriendFaceApp.dll

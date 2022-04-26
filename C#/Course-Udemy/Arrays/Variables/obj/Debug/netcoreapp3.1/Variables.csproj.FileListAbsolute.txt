@@ -1,0 +1,14 @@
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\bin\Debug\netcoreapp3.1\Variables.exe
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\bin\Debug\netcoreapp3.1\Variables.deps.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\bin\Debug\netcoreapp3.1\Variables.runtimeconfig.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\bin\Debug\netcoreapp3.1\Variables.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\bin\Debug\netcoreapp3.1\Variables.dll
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\bin\Debug\netcoreapp3.1\Variables.pdb
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.dll
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.pdb
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Variables\obj\Debug\netcoreapp3.1\Variables.csproj.AssemblyReference.cache

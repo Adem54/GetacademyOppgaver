@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function translateCategoryTitleToEnglish(title = "event") {
+  switch (title) {
+    case "Familie og moro":
+      return "family,fun,happy";
+    case "Barn og familie":
+      return "child,familiy,kid";
+    case "Festival":
+      return "festival";
+    case "Sports":
+      return "sport";
+    case "Konsert":
+      return "concert";
+    case "Teater":
+      return "theater";
+    case "Utstilling":
+      return "exhibition";
+    default:
+      break;
+  }
+}
+
+
+let result1=translateCategoryTitleToEnglish("Sports");
+console.log("result1: ", result1);
+
+
+//Bu Json ile yapmamiz gerekiyor cunku normal obje gibi yapar isek eger key kismina kelimeleri cumle seklinde araya bosluk birakarak yazamayiz....
+//Dolayisi ile yukardaki gibi switch case ile yazmak yerine bu sekilde daha kolay bir sekilde bu islemi yapabiliriz....
+        let categories={
+            "Familie og moro":"family,fun,happy",
+            "Barn og familie":"child,familiy,kid",
+            "Festival":"festival",
+            "Sports":"sport",
+            "Konsert":"concert",
+            "Teater":"theater",
+            "Utstilling":"exhibition",
+        }
+
+      
+
+let result2=categories["Festival"];
+console.log("result2: ", result2);
+
+
+        let key= "Festival";
+          //Not: in ile obje icindeki key i sorgulayabiliyoruz
+          if(key in categories){
+              console.log()
+          }
+
+    </script>
+</body>
+</html>

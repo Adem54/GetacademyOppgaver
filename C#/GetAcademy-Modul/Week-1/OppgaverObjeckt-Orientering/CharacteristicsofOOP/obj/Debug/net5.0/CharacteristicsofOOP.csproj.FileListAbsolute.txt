@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\bin\Debug\net5.0\CharacteristicsofOOP.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\bin\Debug\net5.0\CharacteristicsofOOP.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\bin\Debug\net5.0\CharacteristicsofOOP.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\bin\Debug\net5.0\CharacteristicsofOOP.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\bin\Debug\net5.0\CharacteristicsofOOP.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\bin\Debug\net5.0\CharacteristicsofOOP.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\refint\CharacteristicsofOOP.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\CharacteristicsofOOP.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\CharacteristicsofOOP\obj\Debug\net5.0\ref\CharacteristicsofOOP.dll

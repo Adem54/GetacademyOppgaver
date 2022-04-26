@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="run()">
+    <div id="app">
+        
+    </div>
+    <script>
+        let count=0;
+updateView();
+        function updateView(){
+            document.getElementById("app").innerHTML=`
+            <div id="container" class="container">
+            <p id="p-1">P-1</p>
+            <p id="p-2"
+            onload="run(this)"
+            
+            >P-2</p>
+            <p id="p-3">P-3</p>
+            <button onclick="count=count+1; updateView()">Click</button>
+            <hr>
+            <h3>${count}</h3>
+    </div>
+            
+            `;    
+        }
+
+        function run(){
+            console.log("element; ");
+        }
+
+        // if(document.body.onload)
+    </script>
+</body>
+</html>

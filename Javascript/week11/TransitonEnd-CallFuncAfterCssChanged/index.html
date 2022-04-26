@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .app {
+            width: 100px;
+            height: 100px;
+            transform: scale(1);
+            background-color: red;
+            transition: transform 2s;
+            /* transition: width 2s; */
+        }
+/*  
+The transition effect will start when the specified CSS property (width) changes value.
+
+Now, let us specify a new value for the width property when a user mouses over the <div> element:
+*/
+        .app:hover {
+           /* width: 300px; */
+           transform: scale(1.5);
+           
+
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="app"></div>
+<hr>
+<button onclick="stopTransiton()">Stop transition event</button>
+    <script>
+        /*
+        The transitionend event is fired when a CSS transition has completed. In the case where a transition is removed before completion, such as if the transition-property is removed or display is set to none, then the event will not be generated.
+        */
+//Transition calistigi surece event calisacaktir ama onu eger removeEventListener ile silersek o zaman artik transiton calistiginda silinmeyecektir...
+        document.getElementById("app").addEventListener("transitionend",()=>{
+            console.log("Transition basladiktan sonra bu rasi caliscak...")
+        })
+
+        function stopTransiton(){
+          this.removeEventListener("transitonend",()=>{
+                console.log("transitonend eventi durdururlacak")
+            })
+        }
+
+    </script>
+</body>
+</html>

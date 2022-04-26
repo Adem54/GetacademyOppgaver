@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //BURAYI COOK IYI ANLAMALIYIZ....
+window.Name  = "Window";
+var JsJeep = {
+    Name  : "Javascript Jeep 🚙 🚗",
+    greet : function() {
+  
+          console.log(" 👋  from " + this.Name);
+    }
+}
+
+//When we call the function greet with the JsJeep object:
+JsJeep.greet(); //  👋from Javascript Jeep 🚙 🚗
+//What if we store the function ina other variable and call the function:
+var greet = JsJeep.greet;
+greet(); //  👋 from Window.
+let greet2=JsJeep;
+console.log("greet2_:", greet2.Name);
+console.log("greet2_:", greet2.greet);//Fonksiyonun kendisini aliyorsun ama calistiramiyorsun cunku fonksiyonlarda bu scope olayi tamamen farkli isliyor ve de fonksiyomnlarin javascript arka plan da calismasi tamamen farkli bir olaydir onu anlamak gerekiyor.....
+//Biz window scopundan  gidip local bir JsJeep scopunda olusturulmus bir fonksiyonu cagirmaya calisiyoruz ama olmuyor o sekilde cunku o fonksiyon window scopunda invoke edilmeye calisiliyor ancak bu fonksiyon ancak icinde bulundugu obje uzerinden invoke edilebilir....
+//Burayi cok iyi anlamak gerekiyor.....
+//Eger biz dogrudan JsJeep.greet() dersek JsJeep icindeki fonksiyon direk calisir ama, biz eger ki  JsJeep.greet i fonksiyon olarak global scope ta tanimlanmis bir degiskene atayip o degiskeni invok ederske isler degisiyor cunku, biz bu fonksiyonu atadgimiz greet degiskeni global scope 
+
+//PROBLEMI NASIL COZERIZ....BIND KULLANARAK
+//The this points to "Window" because this inside the greet function is global window object, so we need to tell the browser specifically use JsJeep object that it should refer to. This is when bind is used.
+
+//Let’s see another example, then we understand the bind. When we do the same inside a setTimeout:
+//Simdi buraya dikkat edelim
+
+//BEST PRACTISE....COK IYI ANLAMAK GEREKIYOR...
+//Biz bu fonksiyonu bind ederek kendi global scope ta atadgimiz degisken de iken de kendi objesine bind etmeliyiz global scope ta o zaman iste problem cozulmus olur ve biz artik JsJeep objesi icindeki hali ile bu fonksiyonun return sonucunu gorebiliriz.....
+let greet3=JsJeep.greet.bind(JsJeep);
+greet3();
+
+//Benzer seyi setTimeOut da da gorururz
+setTimeout(JsJeep.greet,0);//From window
+
+/*
+Inside the setTimeout function the value of this will again be window because we are passing the reference of greet function to setTimeout, and the window object is executing the greet function call after 0 milliseconds.
+*/
+//The above setTimeout code is equivalent to
+
+var func = JsJeep.greet;
+setTimeout(func, 0); // which is similar to above case.
+//To solve the above problem, we use the bind function which allows us to specify the value of this inside a function.
+
+//Syntax
+// functionToBind.bind(ourCustomThisObject, argumentsToFunction) → the additional arguments are optional.
+
+var fun2 = JsJeep.greet;
+var newFun = fun2.bind(JsJeep);
+newFun(); //  👋 from Javascript Jeep 🚙 🚗
+setTimeout(newFun, 0); //  👋from Javascript Jeep 🚙 🚗
+
+//So we got solved the problem.
+
+//1. What will happen when we pass null instead of JsJeep object
+var fun3 = JsJeep.greet;
+ var newFun2 = fun3.bind(null); // then we are binding nothing
+ /*
+ There are two cases if we use strict mode then the this will be null .
+If we are in non-strict mode then the this will be window object.
+ */
+
+ //2. We can’t change the this value once the bind is done .
+ var fun4 = JsJeep.greet;
+var bindFun= fun4.bind( {Name: "Balaji"} );
+ 
+bindFun = bindFun.bind( {name: "Raju"} );
+bindFun(); //  👋 from Balaji
+
+// The reason is that the bindFun has fixed this after the first invocation, and we can’t change that afterward.
+//log(JsJeep.greet.name) // greet
+var fun5 = JsJeep.greet;
+var bindFun2= fun5.bind( JsJeep );
+log(bindFun2.name); // bound greet
+
+//4. If a property of the object is updated then the value of the property is also updated inside the bind function.
+
+
+var JsJeep2 = {
+    Name  : "Javascript Jeep 🚙 🚗",
+    greet : function() {
+  
+          console.log(" 👋  from " + this.Name);
+   }
+}
+var fun6 = JsJeep2.greet;
+var bindFun3= fun6.bind( JsJeep );
+JsJeep2.Name = "New Jeep 🚘 "; //updating the property.
+bindFun3(); //   👋  from New Jeep 🚘
+    </script>
+</body>
+</html>

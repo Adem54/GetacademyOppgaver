@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\bin\Debug\net5.0\WarriorFightGameExample.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\bin\Debug\net5.0\WarriorFightGameExample.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\bin\Debug\net5.0\WarriorFightGameExample.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\bin\Debug\net5.0\WarriorFightGameExample.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\bin\Debug\net5.0\WarriorFightGameExample.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\bin\Debug\net5.0\WarriorFightGameExample.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\refint\WarriorFightGameExample.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\WarriorFightGameExample.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\WarriorFightGameExample\obj\Debug\net5.0\ref\WarriorFightGameExample.dll

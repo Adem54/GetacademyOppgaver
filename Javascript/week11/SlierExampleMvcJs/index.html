@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://kit.fontawesome.com/05902d1e0f.js" crossorigin="anonymous"></script>
+    <style>
+        *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  
+  
+  
+  
+  .carousel {
+    position: relative;
+    width: 70%;
+    height: 150px; 
+    margin: 0 auto;
+  }
+  
+  .carousel-content {
+    position: relative;
+    overflow: hidden;
+    transition: width .4s;
+    height: 100%;
+  }
+  
+  .slide {
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    transition: left .4s cubic-bezier(.47,.13,.15,.89);
+    padding: 1rem;
+  }
+
+  .slide-1{
+      background-color: pink;
+      margin-left: 0;
+  }
+  
+  .slide-2 {
+    background-color: green;
+    margin-left: 0.4rem;
+
+  }
+  
+  .slide-3 {
+    background-color: red;
+    margin-left: 0.8rem;
+
+  }
+  
+  .slide-4 {
+    background-color: purple;
+   
+
+  }
+  
+  .slide-5 {
+    background-color: yellow;
+  }
+  
+  .nav {
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    background-color: rgba(150,150,150,.3);
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: white;
+    -webkit-user-select: none;
+  }
+  
+  .nav-left {
+    left: -25px;
+  }
+  
+  .nav-right {
+    right: -25px;
+  }
+  
+  .carousel-arrow-icon-left {
+    margin-left: 5px;
+    margin-top: 2px;
+  }
+  
+  .carousel-arrow-icon-right {
+    margin-left: 7px;
+    margin-top: 2px;
+  }
+
+  .fa-solid {
+      color: black;
+  }
+     </style>
+  </head>
+  <body onload="myFunction()"> 
+    <div id="app"></div>
+
+
+    <script>
+function myFunction(){
+    console.log("on load calisiyor")
+}
+
+
+        function createMySlider(){
+
+            let html = `
+    <div class="container">
+    
+    <div class="carousel">
+          <div class="nav nav-left">
+            <div class="icon-chevron-left carousel-arrow-icon-left">  
+                <i class="fa-solid fa-angle-right"></i>
+                </div>
+          </div>
+    
+            <div class="carousel-content">
+    `;
+    
+            for (let i = 0; i < animals.length; i++) {
+              const animal = animals[i];
+    
+              html += `
+        <div 
+        onmouseover=" myStopFunction()" onmouseout="updateView()"
+        class="slide slide-${i+1}">
+                      <div>${animal}</div>
+                    </div>
+        
+        `;
+            }
+    
+            html += `
+    </div>
+          
+          <div class="nav nav-right">
+            <div class="icon-chevron-left carousel-arrow-icon-left">  
+                <i class="fa-solid fa-angle-right"></i>
+                </div>
+           
+          </div>
+        </div>
+        
+    </div>
+    
+    `;
+    return html;
+        }
+    
+    </script>
+
+
+<script>
+    function handleSetInterval(){
+        myStopFunction();
+         updateView();
+    }
+
+    function createButton(){
+
+        let btn=`
+        <br/>
+        <br/>
+        <br/>
+        </hr>
+        <button onclick="animal='elephant';  handleSetInterval();  ">Change Animal</button>
+        
+        `;
+        return btn;
+    }
+</script>
+
+<script>
+
+function test(){
+
+
+var carousel = document.querySelector('.carousel');
+var carouselContent = document.querySelector('.carousel-content');
+var slides = document.querySelectorAll('.slide');
+console.log("slides: ", slides)
+//Burda tum slide elementlerini dizi icine aliyor ayni querySelectorAll gibi yani bir ustte yapilan islem ile ayni islemi yapmis aslinda...
+var arrayOfSlides = Array.prototype.slice.call(slides);
+console.log("arrayOfSlides: ", arrayOfSlides)
+
+//Bunlari model de kullanabiliriz...
+var carouselDisplaying;
+var screenSize;
+setScreenSize();
+var lengthOfSlide;
+
+
+
+//Biz bu islemlerin hepsini gidip html icinde yapacagiz....
+/*
+style.left px li bir deger verilmelidir...burda html elementi position almalidir ki left kullanalim ve aldigi position a gore 0 noktasi parente a gore yaparsak left onu verir  yok body ye gore yaparsa da left onu verir.
+The left property sets or returns the left position of a positioned element.
+This property specifies the left position of the element including padding, scrollbar, border and margin.
+Tip: A positioned element is an element with the position property set to: relative, absolute, or fixed.
+Tip: To set or return the right position of a positioned element, use the right property.
+*/
+//Son elementi en basa ekleyen fonksiyon bunu da 
+function addClone() {
+var lastSlide = carouselContent.lastElementChild.cloneNode(true);
+console.log("lastSlide: ", lastSlide);
+//Slides lardan son slides i getiriyor
+//cloneNode true dedigi elementi alip baska biryerde kullanabiliyor ve ekleyebiliyor...
+//Carosel i kapsayan content tin sol cocugunu burda lastSlide degiskenine aliyor
+console.log("lastSlide.style.left: ",lastSlide.style.left)
+lastSlide.style.left = (-lengthOfSlide) + "px";//Sonra da o degiskene atadigi son slide in left ozelligine negatif atama yaparak sola dogru en basa cekiyor onu diger elementlerin basina cekiyor...
+console.log("carouselContent: ",carouselContent);
+carouselContent.insertBefore(lastSlide, carouselContent.firstChild);
+//carouselContentin icindeki slide elementlerinden en basindakine ekliyor bu seferde....ve left posizyonu ayarlanmis bir sekilde ekliyor...
+
+//Carosel contentin icinde lastSlide i saga dogru ittiginden dolayi alanini bosaltmis oluyor ve de alanina yeni eleman ekliyor
+}
+// addClone();
+
+function removeClone() {
+var firstSlide = carouselContent.firstElementChild;
+firstSlide.parentNode.removeChild(firstSlide);
+}
+
+//forEach dongusunun her donmesinde her bir slide i sola dogru slide uzunlugu kadar ittiriyor...Ve en son da son elemani basa ekliyor
+function moveSlidesRight() {
+    console.log("lengthOfSlide modeSlidesRight: ",lengthOfSlide)
+var slides = document.querySelectorAll('.slide');
+var slidesArray = Array.prototype.slice.call(slides);
+var width = 0;
+slidesArray.forEach(function(el, i){
+    console.log("width: ", width);
+el.style.left = width + "px";
+width += lengthOfSlide;
+});
+addClone();
+}
+moveSlidesRight();
+
+function moveSlidesLeft() {
+    console.log("moveSlidesLeft baslangic");
+var slides = document.querySelectorAll('.slide');
+
+var slidesArray = Array.prototype.slice.call(slides);
+slidesArray = slidesArray.reverse();
+
+var maxWidth = (slidesArray.length - 1) * lengthOfSlide ;
+
+slidesArray.forEach(function(el, i){
+maxWidth -= lengthOfSlide;
+
+el.style.left = maxWidth + "px";
+});
+console.log("moveSlidesLeft son");
+
+}
+
+
+
+window.addEventListener('resize', setScreenSize);
+
+function setScreenSize() {
+if ( window.innerWidth >= 500 ) {
+carouselDisplaying = 3;
+} else if ( window.innerWidth >= 300 ) {
+carouselDisplaying = 2;
+} else {
+carouselDisplaying = 1;
+}
+getScreenSize();
+}
+
+function getScreenSize() {
+var slides = document.querySelectorAll('.slide');
+var slidesArray = Array.prototype.slice.call(slides);
+lengthOfSlide = ( carousel.offsetWidth  / carouselDisplaying );
+var initialWidth = -lengthOfSlide;
+slidesArray.forEach(function(el) {
+el.style.width = lengthOfSlide + "px";
+el.style.left = initialWidth + "px";
+initialWidth += lengthOfSlide;
+});
+}
+
+
+var rightNav = document.querySelector('.nav-right');
+rightNav.addEventListener('click', moveLeft);
+
+var moving = true;
+function moveRight() {
+if ( moving ) {
+moving = false;
+var lastSlide = carouselContent.lastElementChild;
+lastSlide.parentNode.removeChild(lastSlide);
+carouselContent.insertBefore(lastSlide, carouselContent.firstChild);
+removeClone();
+var firstSlide = carouselContent.firstElementChild;
+firstSlide.addEventListener('transitionend', activateAgain);
+moveSlidesRight();
+}
+}
+
+function activateAgain() {
+var firstSlide = carouselContent.firstElementChild;
+moving = true;
+//transition efekti bittigi zaman calisan bir fonksiyondur...
+firstSlide.removeEventListener('transitionend', activateAgain);
+}
+
+var leftNav = document.querySelector('.nav-left');
+leftNav.addEventListener('click', moveRight);
+
+// var moveLeftAgain = true;
+
+function moveLeft() {
+    console.log("moveLeft calisiyor mu baslangic")
+if ( moving ) {
+moving = false;
+removeClone();
+var firstSlide = carouselContent.firstElementChild;
+firstSlide.addEventListener('transitionend', replaceToEnd);
+console.log("moveLeft calisiyor mu son")
+
+moveSlidesLeft();
+}
+}
+
+//Her update isleminde setInterval i durdurman lazmm...
+
+
+
+
+// Otomatik yapmak icin bu kodu calistiririz......
+//  myInterval=setInterval(()=>{
+//     console.log("auto play")
+//   moveLeft();
+// },2000)
+
+// console.log("animal_ ", animal);
+// if(animal){
+//     console.log("stop setInterval")
+//     myStopFunction()
+// }
+
+//  myStopFunction=()=> {
+//   clearInterval(myInterval);
+// }
+
+
+
+function replaceToEnd() {
+var firstSlide = carouselContent.firstElementChild;
+firstSlide.parentNode.removeChild(firstSlide);
+carouselContent.appendChild(firstSlide);
+firstSlide.style.left = ( (arrayOfSlides.length -1) * lengthOfSlide) + "px";
+addClone();
+moving = true;
+firstSlide.removeEventListener('transitionend', replaceToEnd);
+}
+
+
+
+
+carouselContent.addEventListener('mousedown', seeMovement);
+
+var initialX;
+var initialPos;
+function seeMovement(e) {
+initialX = e.clientX;
+getInitialPos();
+carouselContent.addEventListener('mousemove', slightMove);
+document.addEventListener('mouseup', moveBasedOnMouse);
+}
+
+function slightMove(e) {
+if ( moving ) {
+var movingX = e.clientX;
+var difference = initialX - movingX;
+if ( Math.abs(difference) < (lengthOfSlide/4) ) {
+  slightMoveSlides(difference);
+}  
+}
+}
+
+function getInitialPos() {
+var slides = document.querySelectorAll('.slide');
+var slidesArray = Array.prototype.slice.call(slides);
+initialPos = [];
+slidesArray.forEach(function(el){
+var left = Math.floor( parseInt( el.style.left.slice(0, -2 ) ) ); 
+initialPos.push( left );
+});
+}
+
+function slightMoveSlides(newX) {
+var slides = document.querySelectorAll('.slide');
+var slidesArray = Array.prototype.slice.call(slides);
+slidesArray.forEach(function(el, i){
+var oldLeft = initialPos[i];
+el.style.left = (oldLeft + newX) + "px";
+});
+}
+
+
+function moveBasedOnMouse(e) { 
+var finalX = e.clientX;
+if ( initialX - finalX > 0) {
+moveRight();
+} else if ( initialX - finalX < 0 ) {
+moveLeft();
+}
+document.removeEventListener('mouseup', moveBasedOnMouse);
+carouselContent.removeEventListener('mousemove', slightMove);
+}
+
+}
+
+
+
+</script>
+
+
+    <script>
+        let counter=0;
+let animal="";
+      let animals = ["cat", "dog", "mouse", "hen", "bug"];
+
+      updateView();
+
+      function updateView() {
+          counter++;
+      
+       
+        document.getElementById("app").innerHTML = `
+        ${createMySlider()}
+        ${createButton()}
+        
+        `;
+        test();
+     
+      
+      }
+
+
+
+    </script>
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./icons/createHappeningIcon/style.css">
+    <script src="https://kit.fontawesome.com/05902d1e0f.js" crossorigin="anonymous"></script>
+ 
+ <style>
+        
+
+
+.fullscreen-header {
+    height: 85vh;
+
+    /*3be8b0    00aeef*/
+    background-image:linear-gradient(to right top,rgba(#3be8b0, .4) ,rgba(#000,.5)), url("./images/hemsedal.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 90%;
+    background-position-y: bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+
+  .nav-top {
+    background-color: #18375a;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;  
+    font-size: 1rem;
+
+  }
+
+.fa-bars {
+    color: #fff;
+    display: none;
+}
+  
+/*Burayi ekledik.asagi...*/
+  @media screen and (max-width: 600px) {
+
+    .fa-bars {
+    color: #fff;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+}
+    .fullscreen-header {
+    
+
+    /*3be8b0    00aeef*/
+  }
+
+  .nav-top {
+    background-color:cadetblue;
+    padding: 2rem;
+  position:fixed ;
+ 
+
+  }
+
+  .nav__list>li {
+   
+  display: none;
+  }
+
+  .nav-top>figure {
+  display: none;
+
+  }
+  /*Burasi sadece ekran mobil boyutunda iken calisacak...*/
+.responsive {
+position: relative;
+display: flex;
+z-index: 3;
+flex-direction: column;
+}
+
+
+  }
+/*Burayi ekledik yukari...*/
+
+  @media only screen and (min-width:1700px) {
+    .nav-top {
+      font-size: 1.4rem;
+    }
+
+  }
+
+  .nav__list {
+    margin-block-end: 0;
+    margin-block-start: 0;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+
+
+  .header__title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-family: 'Lemonada', cursive;
+}
+
+.nav__list-item {
+    height: 3rem;/*Navbar in bu boyutu en buyuk ekran icin olacak*/
+    text-decoration: none;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    margin-left: 1rem;
+    
+  }
+/*1700 px or larger*/
+@media only screen and (min-width:1700px) {
+  .nav__list-item {
+      height: 4.5rem;/*Navbar in bu boyutu en buyuk ekran icin olacak*/
+      padding: 1rem 0;
+      margin-left: 1.5rem;
+    }
+}
+
+  .nav__list-item::before {
+    content: "";
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 0.1rem;
+    left: 0;
+    bottom: 1.5rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .1s ease-in-out;
+    transform-origin: center;
+    
+
+  }
+  .nav__list-item:hover {
+  
+    color: #fff;
+  }
+  .nav__list-item:hover::before {
+    
+    transition: 0.7s ease-in-out;
+    transform-origin: left;
+    transform: scaleX(1);
+   
+  }
+
+  .icon-plus:before {
+    content: "\e900";
+    font-size: 1.6rem;
+  
+  }
+
+  /*1700 px or larger*/
+  @media only screen and (min-width:1700px) {
+    .icon-plus:before {
+    font-size: 2rem;
+  
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header class="fullscreen-header">
+        <nav id="nav-top" class="nav nav-top">
+          <figure class="nav__list">
+            <a href="" class="nav__list-item"  > Hemsedal-logo</a>
+          </figure>
+          <ul class="nav__list">
+              <!--Bunu ekledik....-->
+              <a onclick="myFunction()"><i class="fa-solid fa-bars"></i></a>
+              <!--Bunu ekledik....-->
+
+            <li><a class="nav__list-item" href="">Hjem</a></li>
+            <li>
+              <a class="nav__list-item create-happening-btn " 
+              >
+                <span class="icon-plus"> </span>
+                <span>Oprett ny happening</span></a>
+            </li>
+            <li><a class="nav__list-item" href="">Logg in</a></li>
+          </ul>
+        </nav>
+        <h1 class="header__title">HVA SKJER I HEMSEDAL!</h1>
+     
+      </header>
+
+      <script>
+          function myFunction(){
+              let nav=document.getElementById("nav-top");
+              nav.classList.add("responsive");
+              console.log("nav attribute: ", nav);
+          }
+      </script>
+</body>
+</html>

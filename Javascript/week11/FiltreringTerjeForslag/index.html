@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const model = {
+    things: [
+        { id: 1, year: 2020, categoryId: 1, type: 5, text: 'a' },
+        { id: 2, year: 2021, categoryId: 3, type: 1, text: 'b' },
+        { id: 3, year: 2022, categoryId: 2, type: 1, text: 'c' },
+        { id: 4, year: 2019, categoryId: 2, type: 5, text: 'd' },
+        { id: 5, year: 2020, categoryId: 3, type: 2, text: 'e' },
+    ],
+};
+console.table(filter({year: 2020, categoryId: 3})); // gir kun id=5
+console.table(filter({year: 2020})); // gir id=5 og id=1
+
+function filter(searchObj) {
+    //Hemen duzeltelim, searchObj sudur tam olarak bir objedir icinde ana data dan filtreledimgiz verileri tutan objedir, yani biz filterlem ana basliklarini  objeler halinde objelerin icinde de kullanici tarafindan secilen data olacak sekilde tutariz ve asagidaki fonksiyon gibi, de her bir filtreleme objemizi parametreye gondererek ana datamiz icinde gonderdigimiz,data var mi ona bakariz....
+    //FILTERME ILE ILGILI BESTPRACTISE.....
+    //model deki data arrayini filter methodu ile dondurerek, her donmede once searchObje dedigmiz objenin icinde, array icindeki donen objenin propertiesleri searchObj icinde kriter var mi onu sorguluyor-searchObj.year === undefined eger yoksa zaten filtrelemye gerek yok arrray icinde o datayi direk alabilirz ondan dolayi VEYA diyoruz eger array icinde objenin o property si kriter olarak searObj sinde bulunuyorsa o zamanda karsilastirma yapariz (searchObj.year === undefined || obj.year === searchObj.year) ve o kriter uyuyor mu array in o an icin donen obje proertisine ona bakilir herhangi birinin dogru olmasi durumunda o data nin o satiri alinacaktir.....
+    return model
+        .things
+        .filter(obj =>
+            (searchObj.year === undefined || obj.year === searchObj.year)
+            && (searchObj.categoryId === undefined || obj.categoryId === searchObj.categoryId)
+            && (searchObj.type === undefined || obj.type === searchObj.type)
+        );
+}
+
+//Logikken er at du filtrerer på "alt", men hvert filter sier ta med raden hvis det ikke er filtering på dette feltet eller det er filtrering og verdien er riktig. (edited)
+//Filtremee ile ilgili biz filtrelem durumlarini ve filtreleme datalarini model de ayri bir data icinde tutabiliriz....
+function filter2(searchObj){
+    return model
+          .things
+          .filter(obj=>
+          obj.year===searchObj.year
+          )  
+}
+    </script>
+</body>
+</html>

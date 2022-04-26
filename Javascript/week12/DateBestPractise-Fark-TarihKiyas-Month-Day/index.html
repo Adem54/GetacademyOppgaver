@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let date1=new Date();
+        console.log("date1: ", date1);
+        let date2=new Date("2022-10-14");
+        let date3=new Date("2022-08-19");
+        console.log("date2: ", date2);
+        let date1Year=date1.getFullYear();
+        console.log("date1Year: ", date1Year);
+        let date2Year=date2.getFullYear();
+        console.log("date2Year: ", date2Year);
+        let date2Month=date2.getMonth();
+        //Ayi 1 eksik aliyor ondan dolayi buraya dikkat...
+        console.log("date2Month: ", date2Month+1);
+        let date3Month=date3.getMonth();
+        console.log("date3Month: ", date3Month+1);
+        let monthByLongText=date2.toLocaleDateString("no-no",{
+            month:"long",
+        })
+        let monthByShortText=date2.toLocaleDateString("no-no",{
+            month:"short",
+        })
+        console.log("monthByLongTexT: ", monthByLongText);
+        console.log("monthByShortText: ", monthByShortText);
+//Get month i to digit format
+        let date4=new Date().toLocaleString("en-US", { day: "2-digit" });
+        console.log("date4: ", date4);
+
+        //BURASI COOK ONEMLI-TARIH HESAPLAMALARINI BIZ getTime uzerinden yapacagiz...
+        //Oncelikle getTime fonksiyonu araciligi ile internal milisecond degerini alacagiz.
+            console.log("getTime: ",date2.getTime());
+
+            //Simdi gelecekte yazacagimiz bir tarihe bugunden itibaren kac gun, kac,saat, kac dakika ve kac saniye var bunu hesaplayalim....
+            //Normalde 2 tarih arasindaki farki bulurken once her iki tarih te getTime fonksiyonu ile milisecond formatina cevrilir
+            let now=new Date().getTime();
+            console.log("now internal milisecond: ", now);
+            let date5=new Date("2022-05-29").getTime();
+            console.log("date5 internal milisecond: ", date5);
+            //Her iki tarihi de internal miliseconda cevirdikten sonra ise ilerde olan tarihten geri de olan tarihi cikarabiliriz artik, yani aralarinda normal cikarma islemi yapabiliriz artik
+            //NOT:BU IKI TARIH ARASINDA BUYUKLUK KUCUKLUGU BURDAN DA OLCEBILIRDIK ASLINDA......
+            let difference=date5-now;
+            console.log("difference: ", difference);
+            //Iste bu fark her iki tarih arasinda kac gun, kac saat, kac dakka ve kac saniye var bize verecek
+            //Simdi bu farki alip gun,saat,dakika ve saniyeye cevirebiliriz...
+            //KAC GUNE DENK GELIYOR
+        //ONCELIKLE SUNU BILELIM INTERNAL MILISECONDA CEVRILIRKEN 1000 ILE CARPILIYOR YANI BIZIM TEKRAR NORMAL TARIHE CEVIRIRKEN DE 1000 E BOLECEGIZ...ONEMLI....
+       //1 SANIYE 1000 MILISANIYE....
+        let s=1000;
+        let minute=s*60;
+        let hour=minute*60;
+        let day=hour*24;
+        let month=day*30;
+        let year=day*365;
+
+        //Simdi elimizdeki internal milisecond tarihini artik hangi birime cevirecek isek ona bolecegiz sadece...
+        //MILISECOND TURUNDEKI TARIHI GUNE CEVIRIRKEN...
+        console.log("Day: ", Math.floor(difference/day));
+        //MILISECOND TURUNDEKI TARIHI SAATE CEVIRELIM
+        //SAATE CEVIRMEK TE ASLINDA NERDEYSE AYNI ISLEMI YAPIYORUZ...
+        console.log("Kac-Saate denk geliyor tum milisecond fark: ", Math.floor(difference / hour))
+
+        //BURDA ISE SUNU YAPIYORUZ ONCE ELIMIZDEKI MILISECOND TARIHININ GUNE BOLUMUNDEN KALANI BULUYORUZ VE ONU DA SAATE BOLUYORUZ KI KAC GUN OLDUGUNU BULDUK YA SIMDI DE O ARADAKI KUSURAT SAAT KAC ONU BULALIM....
+        console.log("Gunu bulduktan sonra arada 1 gun etmeyen ama arada kalan saati buluruz...: ", Math.floor((difference % day)/hour))
+
+
+        //TOTAL KAC DAKIKA YA DENK GELIYOR ONU ALMAK ICIN ISE
+        console.log("Total kac dakikaya denk geliyor_ ", Math.floor(difference/minute));
+        //KAC DAKKI VAR ONU DA BULALIM-MILISECONDIN SAATE BOLUMUNDEN KALANI ALIYORRUZ..DIREK....
+        console.log("Simdi de kac dakika kalmis onu bulalim",
+        Math.floor((difference % hour)/minute)
+        );
+
+        //KAC SANIYE KALDIGINI ALMAK ICINDE 
+        //1 dakika 1000 milisaniye
+        console.log("Arada kac saniye kalmis onu bulalim: ", Math.floor(
+            (difference%minute)/s
+        ) )
+
+
+
+
+    </script>
+</body>
+</html>

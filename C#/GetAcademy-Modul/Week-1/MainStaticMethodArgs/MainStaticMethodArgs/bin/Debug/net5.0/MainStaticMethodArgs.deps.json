@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "MainStaticMethodArgs/1.0.0": {
+        "runtime": {
+          "MainStaticMethodArgs.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MainStaticMethodArgs/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

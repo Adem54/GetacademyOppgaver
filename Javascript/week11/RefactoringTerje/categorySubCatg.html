@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const model = {
+            categories: [
+                { id: 1, name: 'Mat' },
+                { id: 2, name: 'Redskaper' },
+                { id: 3, name: 'Matredskaper', parent: 2 },
+                { id: 4, name: 'Snekkeredskaper', parent: 2 },
+                { id: 5, name: 'Hammere', parent: 4 },
+                { id: 6, name: 'Store hammere', parent: 5 },
+                { id: 7, name: 'Røde store hammere', parent: 6 },
+            ],
+
+            things: [
+                { id: 1, name: 'Sjokolade', category: 1 },
+                { id: 2, name: 'Kniv', category: 3 },
+                { id: 3, name: 'Hammer', category: 4 },
+                { id: 4, name: 'Gressklipper', category: 2 },
+            ]
+
+
+        };
+
+        function getSubCategories(categoryId){
+            let subCategories = [];
+            for (let category of model.categories) {
+                if(category.parent === categoryId){
+                    subCategories.push(category);
+                }
+            }
+            let subCategoriesCopy = [...subCategories];
+            for(let subCategory of subCategoriesCopy){
+                subCategories.push(...getSubCategories(subCategory.id));
+            }
+            return subCategories;
+        }
+
+        function getCategories(categoryId) {
+            let categories = [];
+            for (let category of model.categories) {
+                if(category.parent === categoryId){
+                    categories.push(category);
+                }
+            }
+            return categories;
+        }
+
+    </script>
+</body>
+
+</html>

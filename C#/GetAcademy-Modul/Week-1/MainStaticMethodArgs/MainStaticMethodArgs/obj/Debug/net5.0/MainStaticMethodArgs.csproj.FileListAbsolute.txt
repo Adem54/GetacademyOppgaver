@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\bin\Debug\net5.0\MainStaticMethodArgs.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\bin\Debug\net5.0\MainStaticMethodArgs.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\bin\Debug\net5.0\MainStaticMethodArgs.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\bin\Debug\net5.0\MainStaticMethodArgs.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\bin\Debug\net5.0\MainStaticMethodArgs.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\bin\Debug\net5.0\MainStaticMethodArgs.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\refint\MainStaticMethodArgs.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\MainStaticMethodArgs.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\MainStaticMethodArgs\MainStaticMethodArgs\obj\Debug\net5.0\ref\MainStaticMethodArgs.dll

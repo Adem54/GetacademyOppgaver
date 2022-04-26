@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background-color: aqua;
+            left: 354px;
+            top: 100px;
+        }
+        .box{
+ width: 200px;
+ height: 200px;
+ background-color: red;
+ position: absolute;
+ bottom: 10rem;
+ left: 200px;   
+ 
+}
+    </style>
+    
+</head>
+<body>
+<div class="container">
+    <div id="box" class="box"></div>
+</div>
+    <script>
+        const box=document.getElementById("box");
+        console.log("width: ", box.offsetWidth)
+        console.log("heigt   : ", box.offsetHeight)
+        console.log("placeLeft   : ", box.offsetLeft)
+        console.log("placeRight   : ", box.offsetTop)
+    </script>
+</body>
+</html>

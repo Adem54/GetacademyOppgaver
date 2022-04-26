@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Managing data attributes with the dataset property in vanilla JavaScript</h3>
+
+    <h5>An example element #
+        Let’s imagine you have an element with a handful of data attributes on it, like this.</h5>
+    <div id="lunch" data-sandwich="tuna" data-drink="soda" data-side="chips" data-snack="cookie" data-payment-method="credit card">
+        Lunch!
+    </div>
+    <br><br>
+    <p>You need to access all of the data attributes on the element. You could use the techniques we learned about yesterday, but for working with multiple attributes, there’s another way that can be a bit easier.</p>
+    <br><br><br>
+
+    <p>
+        The Element.dataset property #
+The Element.dataset property returns a DOMStringMap, an object-like collection of key-value pairs.
+
+If you wanted to get all of the data attributes in the #lunch element from our example, you could do this.
+
+<script>
+ let lunch = document.querySelector('#lunch');
+let data = lunch.dataset;
+console.log(data);
+/*
+let data = {
+	drink: 'soda',
+	paymentMethod: 'credit card',
+	sandwich: 'tuna',
+	side: 'chips',
+	snack: 'cookie'
+};
+
+
+*/
+
+lunch.dataset.paymentMethod = 'cash';
+
+
+/*
+The Element.dataset property drops the data- prefix and converts the kebab-case used by data attributes to camelCase. The [data-payment-method] attribute is assigned to the key paymentMethod, for example.
+
+You can use the Element.dataset property to assign values as well.
+
+To set a data attribute with the Element.dataset property, skip the data- prefix, and write your properties in camelCase. The property will automatically add the leading data- and convert camelCase to kebab-case.
+
+For example, to change the [data-payment-method] from credit card to cash, you could do this.
+*/
+</script>
+    </p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let person = {
+    name: 'John',
+    getName: function() {
+        console.log("Result: ",this.name);
+    }
+};
+
+window.setTimeout(person.getName, 1000);
+//It does not print the name “John”. Instead, it prints undefined.
+// To understand why this happens, let’s re-write the last line in another equivalent way:
+
+let func4 = person.getName;
+window.setTimeout(func4, 1000);
+
+//func4 person objesinin referansini tutuyor yani o adresten geliyor..
+/*
+When window calls its setTimeout() method, its this object is the window object. Thus, when setTimeout() calls the func4, which refers to person.getName(), it has no idea what the name of the person was. To overcome this, bind the function to the person object using the bind() method. This way no matter where you call the function, it has still access to the name of the person.
+*/
+
+let func5 = person.getName.bind(person);
+setTimeout(func5, 1000);//Output John
+
+
+
+/*
+Bind fonksiyonundan, fonksiyonumuzu başka bir bağlamda daha sonradan kullanabilmek adına yararlanabiliriz (örnek,Javascript Olayları — JS Events). Call ve Apply Fonksiyonlarını ise bir fonksiyonu hemen bir obje ile çağırmak için kullanabiliriz.
+
+*/
+    </script>
+</body>
+</html>

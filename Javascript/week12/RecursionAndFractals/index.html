@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+//Ic-ice fonksiyonlar
+        function createTag(tagName,content){
+            return `<${tagName}>${content}</${tagName}>`;
+        }
+
+        function h2(content){
+            console.log(createTag('h2',content));
+            return createTag('h2',content)
+        }
+
+        h2("Adem");
+
+//Dikkat edelim direk createNewTag i invoke edince bize bir fonksiyon donuyor ama invoke ettigimiz halini bir degiskene atarsak o degisken iste bir fonksiyondur ve onu da invoke etmemiz gerekiyor yani kisacasi eger fonkisyon icinde fonksiyon i dondureceksek o zaman 2 kez invoke gerekiyor ondan dolayi biz ilk invoke da fonksiyonun returnu yerine fonksiyonun kendisini aliyoruz
+        function createNewTag(tagName){
+            return function(content){
+              
+                return `<${tagName}>${content}</${tagName}>`;
+
+            }
+        }
+//COOOK ONEMLI....
+        console.log(createNewTag("h1")("ADemZehra"));
+
+        console.log(createNewTag("h2"));
+      div=createNewTag("div");
+      console.log(div("sdgfadsgfdasgdas"));
+
+      //Biz fonksiyonlara dongulerin yapacagi isi yaptirabiliriz kendi kendilerini bir sarta bagli olarak cagirtarark, yani fonkciyon olustururken ayni fonksiiyonu kendi icinde invoke edersek belli bir sarta bagli olarak, o zaman o fonksiyon o sart gerceklestigi muddetce, calisacaktir....
+
+      function showNumber(n){
+        document.body.innerHTML+=`<li>${n}</li>`;
+      }
+
+      function showNumbers(min,max){
+          showNumber(min);
+          if(min<max)showNumbers(min+1,max);
+      }
+      showNumbers(7,10);
+    </script>
+</body>
+</html>

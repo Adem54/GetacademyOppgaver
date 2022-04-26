@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\bin\Debug\net5.0\StringRefType.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\bin\Debug\net5.0\StringRefType.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\bin\Debug\net5.0\StringRefType.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\bin\Debug\net5.0\StringRefType.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\bin\Debug\net5.0\StringRefType.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\bin\Debug\net5.0\StringRefType.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\refint\StringRefType.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\StringRefType.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\StringRefType\StringRefType\obj\Debug\net5.0\ref\StringRefType.dll

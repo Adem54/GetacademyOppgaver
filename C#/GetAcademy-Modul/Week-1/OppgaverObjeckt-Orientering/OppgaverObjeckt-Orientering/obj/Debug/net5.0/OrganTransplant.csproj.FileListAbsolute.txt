@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\bin\Debug\net5.0\OrganTransplant.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\bin\Debug\net5.0\OrganTransplant.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\bin\Debug\net5.0\OrganTransplant.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\bin\Debug\net5.0\OrganTransplant.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\bin\Debug\net5.0\OrganTransplant.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\bin\Debug\net5.0\OrganTransplant.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\refint\OrganTransplant.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\OrganTransplant.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\OppgaverObjeckt-Orientering\OppgaverObjeckt-Orientering\obj\Debug\net5.0\ref\OrganTransplant.dll

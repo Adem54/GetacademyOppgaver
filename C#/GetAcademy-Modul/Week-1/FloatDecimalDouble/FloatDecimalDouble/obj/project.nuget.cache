@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7nhCaqhED9YRy+CHzDjxJ+J87M/1S1+/hswc8rmayJo4Qqx8sdi+ssb73AWBtsFfuHD6n7eBRdioXDH6hYODng==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Data\\source\\repos\\FloatDecimalDouble\\FloatDecimalDouble\\FloatDecimalDouble.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Data\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.24\\microsoft.netcore.app.host.win-x64.3.1.24.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,16 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\bin\Debug\net5.0\RandomDigitAndRandomLetter.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\bin\Debug\net5.0\RandomDigitAndRandomLetter.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\bin\Debug\net5.0\RandomDigitAndRandomLetter.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\bin\Debug\net5.0\RandomDigitAndRandomLetter.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\bin\Debug\net5.0\RandomDigitAndRandomLetter.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\bin\Debug\net5.0\RandomDigitAndRandomLetter.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\refint\RandomDigitAndRandomLetter.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\RandomDigitAndRandomLetter.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\PasswordGenerator\RandomDigitAndRandomLetter\obj\Debug\net5.0\ref\RandomDigitAndRandomLetter.dll

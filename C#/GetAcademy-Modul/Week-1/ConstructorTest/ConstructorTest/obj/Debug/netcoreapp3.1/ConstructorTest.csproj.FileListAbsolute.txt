@@ -1,0 +1,14 @@
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\bin\Debug\netcoreapp3.1\ConstructorTest.exe
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\bin\Debug\netcoreapp3.1\ConstructorTest.deps.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\bin\Debug\netcoreapp3.1\ConstructorTest.runtimeconfig.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\bin\Debug\netcoreapp3.1\ConstructorTest.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\bin\Debug\netcoreapp3.1\ConstructorTest.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\bin\Debug\netcoreapp3.1\ConstructorTest.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.dll
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.pdb
+C:\Adem\GetAcademy\C#\GetAcademy-Modul\ConstructorTest\ConstructorTest\obj\Debug\netcoreapp3.1\ConstructorTest.genruntimeconfig.cache

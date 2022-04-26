@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 1; //Global Scope
+function fun1(){
+  var b = 2; //Yerel Scope
+  console.log('a =', a, 'b =', b); // Çıktı : a = 1 b = 2 (Hem a hem de b değişkenleri erişilebilir durumda)
+}
+fun1()
+console.log('a =', a, 'b =', b); // Çıktı : ReferenceError: b is not defined
+/*
+Gördüğünüz gibi fonksiyonun dışında b değişkenine erişmek isterseniz hata alırsınız çünkü b değişkeni, fun1() fonksiyonunun yerel scope’unda tanımlı bir yerel değişken. a ise global scope’da ve programın her yerinde kullanılabilir.
+*/
+
+//Daha da saçma bir Inception örneğiyle pekiştirmek istersek aşağıdaki gibi fonksiyonları iç içe yazabiliriz:
+
+//FUN1 ICINDE OLUSTURULAN TUM FONKSIYONLAR KENDI SCOPE LARINDNA OLMAMASINA RAGMAN, KENDILERI FUNC1 ICINDE OLUSTURULDUKLARI ICIN,FUNC1 ICINDE AMA KENDI DISINDA OLAN DEGISKENLERI DE KULLANABILIRLER....
+function fun1(){
+    var a = 1;
+    fun2();
+    function fun2(){
+        var b = 2;
+        fun3();
+        function fun3(){
+            var c = 3;
+            fun4();
+            function fun4(){
+                console.log(a, b, c); // Çıktı : 1 2 3
+            }
+        }
+    }
+}
+fun1();
+/*
+Bu örnek içinde fonksiyon içinde fonksiyonlar tanımladık ve diğer tüm fonksiyonlar fun1 içinde tanımlı oldukları için fun2, fun3 ve fun4 ‘e fun1 in scope’unda ya da kapsamında diyebiliriz. Bu da şu demek oluyor; bütün bu alt kapsam fonksiyonları ait oldukları üst kapsamın değişkenlerine erişebilirler.
+*/
+    </script>
+</body>
+</html>

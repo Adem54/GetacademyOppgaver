@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Eğer viewport 768px ve üstü olduğunda handleTableChange adlı fonksiyonun çalışmasını sağlıyoruz.
+      const mediaQuery = window.matchMedia("(min-width: 768px)");
+ 
+      function tabletDegisiminiAlgila(e) {
+        // Kural kontrolünü yapıyoruz
+        if (e.matches) {
+          // Eğer kuralımız olumlu ile yapacağımız işlemleri burada yapıyoruz.
+          console.log("Media Query Kuralımız Eşleşti!");
+        }
+      }
+ 
+      // Ekran çözünürlüğü değişimlerini dinlemek için addListener fonksiyonu ile register işlemini yapıyoruz.
+      mediaQuery.addListener(tabletDegisiminiAlgila);
+ 
+      // İlk kontrolü manual yapıyoruz
+      tabletDegisiminiAlgila(mediaQuery);
+    </script>
+  </head>
+  <body>
+    <h1>matchMedia Örnek Kullanımı ve Sonucu</h1>
+  </body>
+</html>

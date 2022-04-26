@@ -1,0 +1,9 @@
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\bin\Debug\Project1.exe
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\bin\Debug\Project1.pdb
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\obj\Debug\Project1.csproj.AssemblyReference.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\obj\Debug\Project1.Form1.resources
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\obj\Debug\Project1.Properties.Resources.resources
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\obj\Debug\Project1.csproj.GenerateResource.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\obj\Debug\Project1.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\obj\Debug\Project1.exe
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Project1\obj\Debug\Project1.pdb

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function checkMediaQuery() {
+        // If the inner width of the window is greater then 768px
+        if (window.innerWidth > 768) {
+          // Then log this message to the console
+          console.log("Media Query Matched!");
+        }
+      }
+ 
+      // Add a listener for when the window resizes
+      window.addEventListener("resize", checkMediaQuery);
+      //body icinde kullanabilecegimiz yani window altinda direk kullanabileceigimz bir resize event handling i mevcuttur ve her ekran boyutu degistiginde tetiklenir her bir pixel degisiminde tetiklenecektir
+    </script>
+  </head>
+  <body>
+    <h1>resize olayı Örnek Kullanımı ve Sonucu</h1>
+  </body>
+</html>

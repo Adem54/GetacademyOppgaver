@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal {
+            width: 100%;
+            background-color: aqua;
+            height: 40rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-wrapper {
+            width: 80%;
+            height: 80%;
+            padding: 1rem;
+            background-color: antiquewhite;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-image {
+            width: 40%;
+            background-color: red;
+            height: 100%;
+        }
+
+        .modal-description {
+            width: 60%;
+            height: 100%;
+            background-color: blue;
+        }
+        .modal-description__title {
+            width: 100%;
+            height: 25%;
+            background-color: chartreuse;
+
+        }
+        .modal-description__text {
+            width: 100%;
+            height: 75%;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <section class="modal">
+        <div class="modal-wrapper">
+        <div class="modal-image">Image</div>
+        <div class="modal-description">
+            <div class="modal-description__title">Title</div>
+            <div class="modal-description__text">Text</div>
+            
+        </div>
+    </div>
+    </section>
+
+    <script>
+        function doFirstLetterUpper(text){
+            let firstLetter=text[0].toUpperCase();
+        let restOfText=text.slice(1);
+        let result=firstLetter+restOfText;
+        return result;
+        }
+
+        let text="april";
+        let firstLetter=text[0].toUpperCase();
+        let restOfText=text.slice(1);
+        let result=firstLetter+restOfText;
+        console.log("Text: ",firstLetter+restOfText);
+    </script>
+</body>
+</html>

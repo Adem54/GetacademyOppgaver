@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "OppgaveBossfight/1.0.0": {
+        "runtime": {
+          "OppgaveBossfight.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OppgaveBossfight/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

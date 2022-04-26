@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The Window Object</h1>
+<h2>The matchMedia() Method</h2>
+
+<p>If the viewport is less or equal to 500 pixels wide, set background to yellow,
+otherwise to pink.</p>
+
+<p>Resize the browser window to see the effect.</p>
+
+<script>
+// Create a match Function
+function myFunction(x) {
+  if (x.matches) {
+      console.log("Ekran boyutu 500 un alti oldugunda");
+      //console da direk gozukmeyebiliyor refresh etmek gerekebilir-
+    document.body.style.backgroundColor = "yellow";
+  } else {
+    console.log("Ekran boyutu 500 un ustu oldugunda")
+
+    document.body.style.backgroundColor = "pink";
+  }
+}
+
+// Create a MediaQueryList object
+const mmObj = window.matchMedia("(max-width: 700px)")
+
+// Call the match function at run time:
+myFunction(mmObj);
+
+// Add the match function as a listener for state changes:
+mmObj.addListener(myFunction)
+</script>
+
+</body>
+</html>

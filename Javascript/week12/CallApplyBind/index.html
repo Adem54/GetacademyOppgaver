@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+ var obj = { num: 2 };
+
+function add(a){
+  return this.num + a;
+}
+
+//Bu hali ile bize none verecektir cunku add fonksiyonu obj objesine ait degildir ondan dolayi add fonksiyonu icindeki this obj objesini temsil etmiyor
+console.log("add fonksyonu: ", add(3));
+//Ama bu problemin bir cozumu var biz add fonksiyonunu obj objesine baglayabilirz
+add.call(obj, 3);
+console.log("add fonksyonu call isleminden sonra:  ",add.call(obj, 3) );
+//Bu sekilde cagirirsak eger artik add fonksiyonu bize 5 sonucunu verecektir
+//BIZ BIR FONKSIYONU BU YONTEMLE BIRCOK FARKLI OBJE YE BAGLAYABILIRIZ...
+//Use Call() with Multiple Arguments
+
+var obj2 = { num: 2 };
+
+function add2(a, b){
+  return this.num + a + b;
+}
+
+console.log(add2.call(obj2, 3, 5));
+
+//Apply() Method in JavaScript
+// The apply() method does the exact same as call(). The difference is that call() accepts an argument list, but apply() accepts an array of arguments.
+//Call parametre listesi olarak dizi icine almadan aliyor,yani yanyana yazacak sekilde yazabiliyoruz ama apply dizi olarak aliyor argumentleri
+var obj3 = { num: 2 };
+
+function add3(a, b){
+  return this.num + a + b;
+}
+
+console.log(add3.apply(obj3, [3, 5]));
+
+//KISACASI BIZ HERHANGI BIR FONKSIYONU ALIP ISTEDGIMIZ BIR OBJEYE BAGLAYABILIYORUZ VE O OBJEYE AIT MIS GIBI KULLLANILMAISNI SAGLAYABILYORUZ....BU BIZE INHERITENCE KONUSUNDA VE CLEAN CODE, DO NOT REPEAT YOURSELF KONUSUNDA COK YARDIM EDEBILIR...
+
+/*
+Bind() Method in JavaScript
+You previously learned what call() and apply() methods do. As you saw, they executed the function immediately when called (and returned a value).
+The bind() method is reminiscent of call() and apply(). But instead of executing a function immediately, bind() returns a function that can be executed later on.
+Let’s modify the previous example to use bind():
+*/
+
+//MUTHIS ONEMLI FARK...
+//Call ve Apply da direk fonksiyon cagiriliyor ve bize sonucu direk return ediyordu ama dikkat edelim bind ise add4 fonksiyonunu obj4 e bagliyor ve onu yine bize add fonksiyonunun obj4 e baglanmis halini bir fonksiyon olarak donuyor ve biz artik gelen sonucu istedigimz yerde invoke ederek kullanma sansina sahip oluyoruz...
+var obj4 = { num: 2 };
+
+function add4(a, b){
+  return this.num + a + b;
+}
+
+const func = add4.bind(obj4, 3, 5);
+func(); // Returns 10
+
+/*
+So calling add.bind(obj, 3, 5) returns a function. In this case, you assign it to a constant called func and then run it.
+Calling func() here means calling add() function on the object obj with the arguments of 3, 5.
+Now you understand what call(), apply(), and bind() are and how they work. Here’s a summary of how you can use each with the same object-function setup you saw earlier.
+
+*/
+
+/*
+Bind() fonksiyonu, içine verilen objeye göre yeni bir fonksiyon kopyası yaratır. Oluşan bu kopya fonksiyonu daha sonradan argüman listesi ile beraber gönderilen objeye kullanabiliriz.
+Burada da bind fonksiyonunun kullanımını görüyoruz. Aslında mantık olarak call ve apply’a benzese de yapı olarak epey farklı. Call ve Apply fonksiyonları bir fonksiyonu hemen çalıştırırken, bind fonksiyonu bize yeni bir kopya üretmektedir. Oluşturulan bu kopyayı ise istediğimiz herhangi bir bağlamda(context) kullanabiliriz.
+*/
+
+
+//BIND Ile bize donen fonksiyon demek aslinda add4 fonksiyonunun obj4 icindeki hali demektir ve invoke ettigimizde de add4 fonksiyonunu obj4 e ait olmus halini invoke ediyoruz demektir...
+
+
+
+/*
+Call() fonksiyonu, verilen this anahtar değeriyle(obje) ve bağımsız olarak sağlanan bağımsız argümanlarla bir fonksiyonu çağırır. Argümanlar fonksiyona tek tek gönderilir. (Örnek: test(obj,arg1,arg2,arg3))
+Apply() fonksiyonu, verilen this anahtar değeriyle(obje) ve bağımsız olarak sağlanan değişkenlerle bir fonksiyonu çağırır. Argümanlar fonksiyona argüman listesi şeklinde gönderilir. (Örnek: test(obj,[arg1,arg2,arg3]))
+
+*/
+var obj5 = { num: 2 };
+
+function add5(a, b){
+  return this.num + a + b;
+}
+
+const resultCall  = add5.call(obj5, 3, 5);
+const resultApply = add5.apply(obj5, [3, 5]);
+const funcBind    = add5.bind(obj5, 3, 5)
+const resultBind  = funcBind();
+
+console.log(resultCall, resultApply, resultBind);//10 10 10
+
+
+/*
+Use Call() to Chain Object Constructors
+For example, let’s create an Item object. The constructor of the Item is defined with name and price.
+Let’s also create Car and Fruit objects that are Items. Now, instead of initializing these the same way as Item, you can use the Item object to initialize them. This happens via call() method:
+
+*/
+
+//CALL FONKSIYONUNUN KULLANIM ALANI-INHERITANCE YAPARKEN-DO NOT REPEAT YOURSELF
+
+function Item(name, price) {
+  this.name = name;
+  this.price = price;
+  this.description = `${this.name}, ${this.price}€`;
+}
+
+function Car(name, price) {
+  Item.call(this, name, price);
+  // You can add other car specific fields here
+}
+
+function Fruit(name, price) {
+  Item.call(this, name, price);
+  // You can add other fruit specific fields here
+}
+
+const bmw = new Car("BMW", 120000);
+const banana = new Fruit("Banana", 1);
+//Dikkat edelim Item constructor function ini biz aynen base class gibi base constructor function olarak kullandik ve de ayni ozellikleri kullanacagimiz birden fazla constructor fonksiyonda ayni kodlari tekrar tekrar yazmak tan da kurtulmus olduk....
+
+// Use Call() to Invoke an Anonymous Function
+// Let’s create an anonymous function and use call() to invoke it for each object of an array.
+// The anonymous function adds a displayInfo() function for each array object. This is to make it print the correct position of each person in the queue:
+
+const queue = [
+  { name: 'Matt' },
+  { name: 'Jack' }
+];
+
+for (let i = 0; i < queue.length; i++) {
+  (function(i) {
+    this.displayInfo = function() {
+      console.log(`Position ${i}: ${this.name}`);
+    }
+    this.displayInfo();
+  }).call(queue[i], i);
+}
+
+/*
+
+When Use Apply() in JavaScript
+Use Apply() to Append an Array to Another Array
+
+You can use push() method to append elements into an array.
+
+If you pass an array to push() method, it will add the whole array as a single element into the array. This means you have an array inside an array. Here you can use concat() but it creates a new array.
+
+If you want to append an array as a whole into an existing array, use apply().Sonuna eklmeke, ilave etmek
+*/
+
+const numbers = [1, 2, 3];
+const moreNumbers = [4, 5, 6];
+numbers.push.apply(numbers, moreNumbers);
+console.log(numbers);
+
+
+
+/*
+Use Apply() to Chain Object Constructors
+Similar to using call() to chain constructors, you can chain object constructors with apply(). This time you pass an array of details into the object constructor to initialize the object.
+*/
+function Item2(name, price) {
+  this.name = name;
+  this.price = price;
+  this.description = `${this.name}, ${this.price}€`;
+}
+
+function Car2(details) {
+  Item.apply(this, details);
+  // You can add other car specific fields here
+}
+
+function Fruit2(details) {
+  Item.apply(this, details);
+  // You can add other fruit specific fields here
+}
+
+const carDetails2 = ["BMW", 120000]
+const bmw2 = new Car(carDetails);
+
+const fruitDetails2 = ["Banana", 2]
+const banana2 = new Fruit(fruitDetails);
+
+//Use Bind() to Make SetTimeout Work
+//This piece of code has an issue:
+
+let person = {
+    name: 'John',
+    getName: function() {
+        console.log(this.name);
+    }
+};
+
+window.setTimeout(person.getName, 1000);
+//It does not print the name “John”. Instead, it prints undefined.
+// To understand why this happens, let’s re-write the last line in another equivalent way:
+
+let func4 = person.getName;
+window.setTimeout(func4, 1000);
+
+/*
+When window calls its setTimeout() method, its this object is the window object. Thus, when setTimeout() calls the func, which refers to person.getName(), it has no idea what the name of the person was. To overcome this, bind the function to the person object using the bind() method. This way no matter where you call the function, it has still access to the name of the person.
+*/
+
+let func5 = person.getName.bind(person);
+setTimeout(func5, 1000);//Output John
+    </script>
+</body>
+</html>

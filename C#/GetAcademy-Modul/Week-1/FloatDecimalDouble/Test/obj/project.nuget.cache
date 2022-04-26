@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Vxr4lIVTas1pIrub+IhxweZNIzhzvhovsQcURuoTvu6UgVQnYEYyiCkPMLVPJvOMLeybgnr4kmB2+wgQNbGzyg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Data\\source\\repos\\FloatDecimalDouble\\Test\\Test.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Data\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.24\\microsoft.netcore.app.host.win-x64.3.1.24.nupkg.sha512"
+  ],
+  "logs": []
+}

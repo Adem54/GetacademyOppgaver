@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientertAnalysOgDesignGuessNumber", "ObjectOrientertAnalysOgDesignGuessNumber\ObjectOrientertAnalysOgDesignGuessNumber.csproj", "{E9EAF430-C590-4996-AECF-A58B14ED3EFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9EAF430-C590-4996-AECF-A58B14ED3EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9EAF430-C590-4996-AECF-A58B14ED3EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9EAF430-C590-4996-AECF-A58B14ED3EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9EAF430-C590-4996-AECF-A58B14ED3EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6150FC40-67DD-4D3E-8FA7-7E7A4F78B097}
+	EndGlobalSection
+EndGlobal

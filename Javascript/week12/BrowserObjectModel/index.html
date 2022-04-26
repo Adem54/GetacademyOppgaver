@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+// Varsayılan tarayıcı objesi, pencerenin kendisidir. Bu durum tüm fonksiyonların pencerede direk olarak çalıştırılabilmesi anlamına gelir.
+// BOM’u oluşturan objeler; pencere objesi, 
+//1-(window object) 
+//2-gezgin objesi (navigator) 
+//3-ekran objesi, (screen) 
+//4-yer objesi, (location)
+//5- geçmiş objesi (history) ve
+//6- doküman objesidir. (document object)
+
+        //1-window object
+        //Sekmeli bir tarayıcıda her sekme, bir pencere objesi olarak temsil edilir.
+        //Pencere objesinin; alert(), blur(), close(), confirm(), print(), prompt(), open() gibi metotları bulunur.
+
+        //87 — Başka bir web sayfasına nasıl yönlendirme yapılır?
+        //Js’te başka bir web sayfasına yönlendirme yapmak mümkündür.Bunu direk olarak window.location’a bir değer atayarak ya da location.assign(), location.replace() ve ya location.reload() metodları ile yapabiliriz.
+
+        //2-88 — “Gezgin (Navigator)” objesi nedir?
+        //Gezgin objesi, tarayıcı ile ilgili bilgi almak için kullanılır. Tarayıcının ismi, tipi, dili vb gibi.
+        //javaEnabled() ve taintEnabled() gibi metotları bulunmaktadır.
+        //89 — İstemci cihazın işletim sistemini nasıl öğrenebiliriz?
+        //“Navigator.appVersion” cihazın işletim sistemini bulmak için kullanılır.
+        
+        
+        // “Geçmiş (History) objesi” nedir?
+        //Geçmiş objesi, tarayıcı içerisinde kullanıcının ziyaret ettiği URL’lerin toplamından oluşur.
+        //İleri, geri ve git gibi bazı metotlar sağlar. ( back(), forward(), go() )
+        //Tarayıcı, programatik olarak önceki sayfayı nasıl yükler?
+        // history.back(), önceki sayfayı yüklemek için kullanılır.
+        //Tarayıcı, programatik olarak bir sonraki sayfayı nasıl yükler?
+        //history.forward(), sonraki sayfayı yüklemek için kullanılır.
+        //Geçmiş objesindeki “Git (Go)” metodu nedir?
+        //Git metodu, ( go() ) geçmiş listesinden spesifik bir URL’yi yükler.
+        //history.go(number|URL)
+        //number|URL parametresi, belirli bir pozisyon içinde, URL’ye giden bir sayı olabilir (1, bir sayfa ileri gider, -1, bir sayfa geri gider) ya da bir string şeklinde olabilir. String, tam bir URL ve ya onun bir kısmı olmalıdır. Fonksiyon string’e uyan ilk URL’ye gidecektir.
+
+        // “Ekran-görüntüleme (Screen)” objesi nedir?
+        //Screen objesi, görüntüleme ekranının yükseklik, genişlik ya da renk gibi bazı bilgilerine işaret eder.
+
+        //“Yer (Location)” objesi nedir?
+        //Location objesi, pencere objesinin güncel URL’si hakkındaki bilgilerden oluşmaktadır.
+         //Location objesinin; assign(), reload ve replace() gibi metotları bulunmaktadır.
+
+
+         //Bir web sayfasını yazdırma (Print)
+         //window.print() çalıştırıldığında, mevcut web sayfasını yazdıracaktır.
+    </script>
+</body>
+</html>

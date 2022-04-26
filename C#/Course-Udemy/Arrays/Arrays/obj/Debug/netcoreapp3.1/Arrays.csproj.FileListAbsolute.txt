@@ -1,0 +1,14 @@
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\bin\Debug\netcoreapp3.1\Arrays.exe
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\bin\Debug\netcoreapp3.1\Arrays.deps.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\bin\Debug\netcoreapp3.1\Arrays.runtimeconfig.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\bin\Debug\netcoreapp3.1\Arrays.runtimeconfig.dev.json
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\bin\Debug\netcoreapp3.1\Arrays.dll
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\bin\Debug\netcoreapp3.1\Arrays.pdb
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.AssemblyInfoInputs.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.AssemblyInfo.cs
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.csproj.CoreCompileInputs.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.dll
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.pdb
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.genruntimeconfig.cache
+C:\Adem\GetAcademy\C#\Course-Udemy\Arrays\Arrays\obj\Debug\netcoreapp3.1\Arrays.csproj.AssemblyReference.cache

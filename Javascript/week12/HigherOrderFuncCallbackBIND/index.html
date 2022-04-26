@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        When a function is invoked, the JavaScript interpreter creates what is known as an execution context. This record contains information about where the function was called from (the call-stack), how the function was invoked, what parameters were passed, etc. One of the properties of this record is the ‘this’ reference which will be used for the duration of that function’s execution.																			
+																			
+																			
+Higher order functions					function higherOrderFunc(callback){callback() }							Higher order fonksiyon demek parametresine baska bir fonksiyon alan fonksiyon demektir							
+																			
+Let’s take a quick spin through how callbacks work. A higher order function is a function that accepts another function as an argument. A callback function is a lucky function that gets passed into the enclosing higher-order function:													
+The callback function gets executed (called) inside the higher order function, but not necessarily immediately. It gets “called back” — hence the name																
+ — at whatever point serves the code’s purpose.							
+Callback functions are at the mercy of whichever higher order function they are passed into.
+Geri arama işlevleri, hangi üst düzey işleve aktarıldılarsa onun insafına kalır.
+In other words, to track down what a callback’s ‘this’ is pointing to, you need to inspect the higher order function enclosing it.
+Başka bir deyişle, bir geri aramanın 'bunun' neyi işaret ettiğini bulmak için, onu çevreleyen yüksek dereceli işlevi incelemeniz gerekir.
+        */
+function higherOrder(callback){
+    callback();
+}
+function getThis(){
+    console.log("result: ", this);//window
+}
+
+higherOrder(getThis);
+/*
+This works because, in a callback invoked by an enclosing function, the ‘this’ context changes. The value ‘this’ holds is reassigned to the function that is calling the function — i.e., there’s your call site, which holds your ‘this’:
+Bu işe yarar, çünkü çevreleyen bir işlev tarafından çağrılan bir geri aramada "bu" bağlamı değişir. "Bu" değeri, işlevi çağıran işleve yeniden atanır - yani, "bunu" tutan çağrı siteniz:
+*/
+
+/*
+You can identify ‘this’ by looking at how the outer function, higherOrder(), works: it is defined in global scope, so its ‘this’ will point to the Window object as its invoking object.
+*/
+    </script>
+</body>
+</html>

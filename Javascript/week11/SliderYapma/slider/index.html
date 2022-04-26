@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+
+   <style>
+      *,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+
+
+.carousel {
+  position: relative;
+  width: 24%;
+  height: 550px; 
+  margin: 0 auto;
+}
+
+.carousel-content {
+  position: relative;
+  overflow: hidden;
+  transition: width .4s;
+  height: 100%;
+  border: 5px solid;
+
+}
+
+.slide {
+  height: 100%;
+  background-color:orange;
+  position: absolute;
+  z-index: 5;
+  transition: left .4s cubic-bezier(.47,.13,.15,.89);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.slide-2 {
+  background-color: green;
+}
+
+.slide-3 {
+  background-color: red;
+}
+
+.slide-4 {
+  background-color: purple;
+}
+
+.slide-5 {
+  background-color: yellow;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  background-color: rgba(150,150,150,.3);
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: white;
+  -webkit-user-select: none;
+}
+
+.nav-left {
+  left: -380px;
+  width: 2rem;
+  height: 2rem;
+  background-color: aqua;
+}
+
+.nav-right {
+  right: -600px;
+  width: 2rem;
+  height: 2rem;
+  background-color: aqua;
+}
+
+.carousel-arrow-icon-left {
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.carousel-arrow-icon-right {
+  margin-left: 7px;
+  margin-top: 2px;
+}
+
+
+   </style>
+</head>
+
+<body>
+ 
+   <div class="container">
+
+      <div class="carousel">
+            <div class="nav nav-left">
+              <div class="icon-chevron-left carousel-arrow-icon-left"></div>
+            </div>
+      
+              <div class="carousel-content">
+                
+                <div class="slide slide-1">
+                  <div>cat-1</div>
+                </div>
+                <div class="slide slide-2">
+                  <div>dog-2</div>
+                </div>
+                <div class="slide slide-3">
+                  <div>mouse-3</div>
+                </div>
+                <div class="slide slide-4">
+                  <div>hen-4</div>
+                </div>
+                <div class="slide slide-5">
+                  <div>bug-5</div>
+                </div>
+              
+              </div>
+      
+            <div class="nav nav-right">
+              <div class="icon-chevron-right carousel-arrow-icon-right"></div>
+            </div>
+          </div>
+          
+      </div>
+
+
+
+  <script>
+    /* Carosel ana mantik olarak, surekli kendi icerisinde donen bir sistem uzerine kurulmus biz her right arrow iconun atikladimgizda bir slide i sola dogru cekerken en soldakini bir sola daha kaydiriyoruz ama ana gozuken sliderimizin disina geliyor ve onu gostermiyoruz
+    
+    1-//Defaultta ilk baslarken sadece moveSlidesRight calisiyor icerisinde addClone da old icin ve en son element olan slide-5 i left konumunu 0 konumundan 1 slide daha sola dogru gondererek en basa ekliyor bu sekilde basliyor sliderimiz 5 slider imz var ama 1 tane de biz eklddgimiz icin 5. element ile baslar 5-1-2-3-4-5 seklinde siralanir olarak goruyoruz 
+    2-//Sagdaki icona tiklayinca bu fonksiyon calisiyor....
+     console.log("moving:", moving)
+//True baslangic degeri olan moving deniyor ki eger moving var ise ve moving i false yapiyoruz ardindan da ilk olarak removeClone diyerek remove islmei  yapiliyor...
+    if ( moving ) {
+    moving = false;
+    //Once Ilk bastaki elementi siliyor direk
+    removeClone();
+    //Daha sonra ise geri kalanlradan en bastaki elementi aliyor
+     //replaceToEnd ile en bastaki elementi en bastan siliyor en sona ekliyor, sonra da en sona ekledigi elementi en sona yerlesecek sekilde bir left degeri ile hareket ettiriyor ve en sona getiriyor tabi sonuna px koyarak.Tabi bu en sona ekleme islemine dikkat edersek bir transition efekti ile geliyor ve replaceToEnd fonksiyonun ensonunda da bu fonksiyonu bitiriyor ki transition efetkti boyunca calismasin diye....
+    firstSlide.addEventListener('transitionend', replaceToEnd);
+     //Ve her bir slide 1 slide genislik kadar sola geliyor....
+    //Ve burda da en sondaki elementten 1 tane de basa ekliyor en basa....ama tabi gorunen slider disinda kaliyor....
+    
+    moveSlidesLeft();
+  }
+}
+    
+    */
+     
+var carousel = document.querySelector('.carousel');
+var carouselContent = document.querySelector('.carousel-content');
+
+var slides = document.querySelectorAll('.slide');
+var arrayOfSlides = Array.prototype.slice.call(slides);
+var carouselDisplaying;
+var screenSize;
+setScreenSize();
+var lengthOfSlide;
+
+//Biz bu islemlerin hepsini gidip html icinde yapacagiz....
+//Slider html elementleri uzerinden son elemnti buluyor ve  onu slider in 1 tanesinin genisligi kadar left ile 1 slider kadar - sola dogru cekerek onu sliderin gozuktugu en sol noktadan disari aliyor z-index durumundan doolayi da onu goremiyoruz... ve de o elementi en basa ekliyor
+function addClone() {
+  console.log("AddClone: fungerer ");
+   var lastSlide = carouselContent.lastElementChild.cloneNode(true);
+  //cloneNode tru dedigi elementi alip baska biryerde kullanabiliyor ve ekleyebiliyor...
+   lastSlide.style.left = (-lengthOfSlide) + "px";
+   carouselContent.insertBefore(lastSlide, carouselContent.firstChild);
+}
+// addClone();
+
+//slider elementleri icinden ilk slide i buluyoruz ve onu sliyoruz...
+//Her sagdaki ikona tiklandiginda en basta duran 5 html elementini siliyor ve....
+
+function removeClone() {
+  console.log("removeClone ile en bastaki elemani bir direk siliyor");
+  var firstSlide = carouselContent.firstElementChild;
+  firstSlide.parentNode.removeChild(firstSlide);
+
+}
+
+//Defaultta ilk baslarken sadece moveSlidesRight calisiyor icerisinde addClone da old icin ve en son element olan slide-5 i left konumunu 0 konumundan 1 slide daha sola dogru gondererek en basa ekliyor bu sekilde basliyor sliderimiz 5 slider imz var ama 1 tane de biz eklddgimiz icin 5. element ile baslar 5-1-2-3-4-5 seklinde siralanir olarak goruyoruz 
+function moveSlidesRight() {
+  console.log("moveSlidesRight fungerer: ");
+
+  var slides = document.querySelectorAll('.slide');
+  var slidesArray = Array.prototype.slice.call(slides);
+  var width = 0;
+//Burda slide elementlerinden olusan array dizisini donderiyoruz ve her bir elementin sol konumunu sira ile bir slide boyu kadar arttira arttira saga gonderiyoruz...
+//Yani bunu soyle dusnelim zaten slider lar soldan saga dogru duruyor,  biz aslinda her birisini 1 slider uzunlugunda ittirmis oluyoruz...Yani en solda durani bir slide saga ittirirken diger lerini de 1 slide saga gidecek sekilde ittirmis oluyor bu fonksiyon..Ve en sonunda da bir kere ittirdikten sonra 
+  slidesArray.forEach(function(el, i){
+    
+    el.style.left = width + "px";
+    width += lengthOfSlide;
+  });
+  console.log("carouselContent: ",carouselContent);
+  addClone();
+}
+moveSlidesRight();//Burasi her tikladigimizda da calisacak...
+
+function moveSlidesLeft() {
+  console.log("moveSlidesLeft fungerer: ");
+  var slides = document.querySelectorAll('.slide');
+  var slidesArray = Array.prototype.slice.call(slides);
+  //The Array.reverse() method reverses the order of the elements in an array.
+  //Bir dizi icindeki elemeanlari tersten basa dogru siraliyan bir dizi veriyor.
+  slidesArray = slidesArray.reverse();
+  var maxWidth = (slidesArray.length - 1) * lengthOfSlide;//Toplam 5 element varsa onu 1 eksigi ile 1 tane slide uzunlugunu carparak en sagdaki elementin left uzunlugunu buluyoruz......
+
+  slidesArray.forEach(function(el, i){
+    maxWidth -= lengthOfSlide;//Ve bu maksimumwidth den de her donmede sira ile her bir slide da 1 slide genisligi kadar arttiriyoruz her birisi 1 slider sola gelsin diye.. sola dogru gelmesi icin ...ayni anda yanyana duran html elementlerini hepsi 1 slide kadar sola gelecek sekilde left degerleri vererek hepsini ayni anda sola dogru hareket ettirmis oluyoruz aslinda
+    el.style.left = maxWidth + "px";
+  });
+}
+
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// console.log("FruitsReverse: ",fruits.reverse() );
+// console.log("fruits: ",fruits );
+
+
+
+window.addEventListener('resize', setScreenSize);
+
+function setScreenSize() {
+  if ( window.innerWidth >= 500 ) {
+    carouselDisplaying = 3;
+  } else if ( window.innerWidth >= 300 ) {
+    carouselDisplaying = 2;
+  } else {
+    carouselDisplaying = 1;
+  }
+  getScreenSize();
+}
+
+function getScreenSize() {
+  var slides = document.querySelectorAll('.slide');
+  var slidesArray = Array.prototype.slice.call(slides);
+  lengthOfSlide = ( carousel.offsetWidth  / carouselDisplaying );
+  var initialWidth = -lengthOfSlide;
+  slidesArray.forEach(function(el) {
+    el.style.width = lengthOfSlide + "px";
+    el.style.left = initialWidth + "px";
+    initialWidth += lengthOfSlide;
+  });
+}
+
+//Burasi tiklayacagimiz right iconu ve bu icon uzerinden ya
+var rightNav = document.querySelector('.nav-right');
+rightNav.addEventListener('click', moveLeft);
+
+var moving = true;
+function moveRight() {
+  console.log("moveRight: fungerer")
+  if ( moving ) {
+    moving = false;
+    //moveRight da once movingi kontrol ettikten sonra, moveLeft in tersine son eleman aliniyor ve son eleman siliniyor
+    var lastSlide = carouselContent.lastElementChild;
+    lastSlide.parentNode.removeChild(lastSlide);//En son elementi siliyor
+    carouselContent.insertBefore(lastSlide, carouselContent.firstChild);//Ilk elemente yerlestiriyor
+    removeClone();
+    var firstSlide = carouselContent.firstElementChild;
+    firstSlide.addEventListener('transitionend', activateAgain);
+    moveSlidesRight();
+  }
+}
+
+//Bu soldaki icon ile slide lar saga dogru dondurulurken kullaniliyor...
+function activateAgain() {
+  console.log("activateAgain: fungerer")
+
+  var firstSlide = carouselContent.firstElementChild;
+  moving = true;//moving true olsun ki donme islemleri gerceklesebilsin...
+  firstSlide.removeEventListener('transitionend', activateAgain);//transitioni kapatiyor ve moving i true yaparak tekrar aktif hale getiriyor...
+}
+
+var leftNav = document.querySelector('.nav-left');//icindeki icon olan div elementini child i ile beraber almis oluyor burda onlara tilayinca click eventi calisacak..
+console.log("leftNav: ", leftNav);
+leftNav.addEventListener('click', moveRight);
+
+// var moveLeftAgain = true;
+
+function moveLeft() {//Sagdaki icona tiklayinca bu fonksiyon calisiyor....
+  console.log("moveLeft: fungerer")
+  console.log("moving:", moving)
+//True baslangic degeri olan moving deniyor ki eger moving var ise ve moving i false yapiyoruz ardindan da ilk olarak removeClone diyerek remove islmei  yapiliyor...
+  if ( moving ) {
+    moving = false;
+    //Ilk bastaki elementi siliyor
+    removeClone();
+    //Geri kalanlradan en bastaki elementi aliyor
+    var firstSlide = carouselContent.firstElementChild;
+    console.log("firstSlide after removeFirstSlide", firstSlide);
+    //replaceToEnd ile en bastaki elementi en bastan siliyor en sona ekliyor, sonra da en sona ekledigi elementi en sona yerlesecek sekilde bir left degeri ile hareket ettiriyor ve en sona getiriyor tabi sonuna px koyarak.Tabi bu en sona ekleme islemine dikkat edersek bir transition efekti ile geliyor ve replaceToEnd fonksiyonun ensonunda da bu fonksiyonu bitiriyor ki transition efetkti boyunca calismasin diye....
+    firstSlide.addEventListener('transitionend', replaceToEnd);
+    //Ve her bir slide 1 slide genislik kadar sola geliyor....
+    //Ve burda da en sondaki elementten 1 tane de basa ekliyor en basa....ama tabi gorunen slider disinda kaliyor....
+    moveSlidesLeft();//Bu fonksiyon transitionend asenkron fonksiyonundan once calisiyor buraya dikkat edelim.........
+  }
+}
+//Otomatik yapmak icin bu kodu calistiririz......
+// setInterval(()=>{
+//   moveLeft()
+// },2000)
+
+
+function replaceToEnd() {
+  console.log("replaceToEnd: fungerer")
+  var firstSlide = carouselContent.firstElementChild;
+  firstSlide.parentNode.removeChild(firstSlide);//firstSlide in parentinidan ilk elementi removeChild ile kendini siliyor ilk elementi
+  carouselContent.appendChild(firstSlide);//Sildigi ilk elementi son element olarak eklkiyor aslinda sunu yapiyor elementlerden en bastakini, en bastan alip en sona atiyor yani  yer degistiriyor en bastan en sona aliyor....Ve en sona aldigi elemnte tabi ki left degeri ile de tam istenilen yere yerlesmesii sagliyor en sona alacagi icin tooplam lengtin 1 eksigi ile slide uzunlugunu carpip onu left ine atayinca element en sondaki yerine cuk diye oturuyor....
+  firstSlide.style.left = ( (arrayOfSlides.length -1) * lengthOfSlide) + "px";
+  //En bastaki elementi en sona aldiktan hemen sonra, addClone ile en sondaki elemnenti basa ekliyoruz....
+  addClone();
+  //En sondakki element basa eklnedikten sonra da moving degerimiz true olarak degisitiriliyor ki her sagdaki icona tiklandiginda islem yeniden yapilabilsin.....
+  moving = true;
+  //Son olarak da transitionend ile calismaya baslayan eventi replaceToEnd sonunda sonlandiriyoruz cunku basltmistik durdurmazsak o zaman her transitionend de diger addEventListener ile baslattgimiz transitionend event i her transtion da devam edecektir bu bizim istemedigimiz birsey.....
+  firstSlide.removeEventListener('transitionend', replaceToEnd);
+}
+
+
+
+
+
+
+
+
+
+//BUNDAN ASAGISININ NORMAL CALISMAYA HICBIR ETKISI YOK.....
+/*  
+Click the text! The mouseDown() function is triggered when the mouse button is pressed down over this paragraph, and sets the color of the text to red. The mouseUp() function is triggered when the mouse button is released, and sets the color of the text to green.
+MouseDown : Mouse tuşuna basıldığında çalışacak olaylar burada yer alabilir. MouseDown olayı Click olayından önce çalışan bir olaydır. MouseUp : Mouse tuşuna bastıktan sonra çekildiğinde çalışacak olaylar burada yer alabilirler.14. aug. 2011
+*/
+//mousedown: Fare sol tuşunun eleman üzerindeyken basılması olayıdır. Tuş aşağıya indiği anda ilgili fonksiyon çalışır.
+carouselContent.addEventListener('mousedown', seeMovement);
+
+var initialX;
+var initialPos;
+function seeMovement(e) {
+  console.log("seeMovement: fungerer")
+console.log("e: ", e.target);
+console.log("e.clientX: ", e.clientX);//Mousu tikladigimz yerin coordinatlarini veriyor....
+  initialX = e.clientX;
+  getInitialPos();
+  carouselContent.addEventListener('mousemove', slightMove);//mousemove :Mouse hareket ettirilirken.
+  document.addEventListener('mouseup', moveBasedOnMouse);
+  //mouseup: Fare sol tuşunun eleman üzerindeyken basılıp bırakılması olayıdır. Fare tuşu aşağıdayken çalışmaz, tuş bırakıldığında çalışır.
+}
+
+function slightMove(e) {
+  console.log("slightMove: fungerer")
+
+  if ( moving ) {
+    var movingX = e.clientX;
+    var difference = initialX - movingX;
+    if ( Math.abs(difference) < (lengthOfSlide/4) ) {
+      slightMoveSlides(difference);
+    }  
+  }
+}
+
+
+function getInitialPos() {
+  console.log("getInitialPos: fungerer, tum slide larin left pozisyonlarini sayi kismnini alip bir diziye ekliyor")
+
+  var slides = document.querySelectorAll('.slide');
+  var slidesArray = Array.prototype.slice.call(slides);
+  //Tum slide elementlerini donuyor ve nereye tiklanirsa tiklanan mouse un left uzunlugunun sadece sayi kismini  number,int tipine ceveirerek aliyor
+  initialPos = [];
+  slidesArray.forEach(function(el){
+    var left = Math.floor( parseInt( el.style.left.slice(0, -2 ) ) ); // slide larin left pozisyonundan -210px olarak geliyor ise  px olmadan sadece sayi kismini almak icin...
+   
+    //Alinan left pozisyonunun  sayi kismini initialPos olarak bir dizi icine ekleniyor..
+    initialPos.push( left );
+    console.log("initialPos:  ", initialPos);
+  });
+}
+
+function slightMoveSlides(newX) {
+  console.log("slightMoveSlides: fungerer")
+
+  var slides = document.querySelectorAll('.slide');
+  var slidesArray = Array.prototype.slice.call(slides);
+  slidesArray.forEach(function(el, i){
+    var oldLeft = initialPos[i];
+    el.style.left = (oldLeft + newX) + "px";
+  });
+}
+
+
+function moveBasedOnMouse(e) { 
+  console.log("moveBasedOnMouse: fungerer")
+
+  var finalX = e.clientX;
+  if ( initialX - finalX > 0) {
+    moveRight();
+  } else if ( initialX - finalX < 0 ) {
+    moveLeft();
+  }
+  document.removeEventListener('mouseup', moveBasedOnMouse);
+  carouselContent.removeEventListener('mousemove', slightMove);
+}
+
+  </script>
+</body>
+
+</html>
